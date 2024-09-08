@@ -1,0 +1,23 @@
+{
+   "index": {
+    "title": "Home",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },"content": {
+    "title": "content",
+    "type": "page"
+  },
+  "about": {
+    "title": "about",
+    "type": "page",
+    "theme": {
+    "typesetting": "article"
+    }
+  }
+}
