@@ -4,6 +4,14 @@ export default {
     project: {
       link: 'https://github.com/tobotis/discmath'
     },
+    useNextSeoProps() {
+        const { asPath } = useRouter()
+        if (asPath !== '/') {
+          return {
+            titleTemplate: '%s – DiscMath'
+          }
+        }
+      },
     primaryHue: {dark: 73, light:73 },
     primarySaturation: {dark: 60, light:60},
     footer: {
