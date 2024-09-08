@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
+
 export default {
      docsRepositoryBase: 'https://github.com/tobotis/discmath',
     logo: <span>DiscMath</span>,
@@ -12,6 +15,7 @@ export default {
           }
         }
       },
+      
     primaryHue: {dark: 73, light:73 },
     primarySaturation: {dark: 60, light:60},
     footer: {
