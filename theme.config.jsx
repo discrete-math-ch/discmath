@@ -4,10 +4,10 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 
 
 export default {
-     docsRepositoryBase: 'https://github.com/tobotis/discmath',
+     docsRepositoryBase: 'https://github.com/discmath-ch/discmath',
     logo: <p>discmath.ch</p>,
     project: {
-      link: 'https://github.com/tobotis/discmath'
+      link: 'https://github.com/discmath-ch/discmath'
     },
     useNextSeoProps() {
         const { asPath } = useRouter()
