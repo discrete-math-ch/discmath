@@ -3,13 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "export": "next build && touch out/.nojekyll",
-    "deploy": "gh-pages -d out -t true"
-  },
+        "dev": "next dev",
+        "build": "next build && next export",
+        "start": "next start",
+        "lint": "next lint"
+    },
   "dependencies": {
     "next": "^14.2.8",
     "nextra": "^2.13.4",

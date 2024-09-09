@@ -3,11 +3,8 @@ const withNextra = require('nextra')({
     themeConfig: './theme.config.jsx',
     latex: true
   })
-   
-  module.exports = {
-    ...withNextra(),
-    images: {
-      unoptimized: true,
-    },
-  output: "export",
-  };
+
+  
+let nextraConfig = withNextra()
+nextraConfig.assetPrefix = './'
+module.exports = nextraConfig
