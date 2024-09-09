@@ -1,10 +1,9 @@
 # Disc Math
 
 ## Contributing
-...
-## Run development server
-
-```npm run dev```
+1. Fork this repository
+2. Make changes and run locally using `npm run dev` (`npm run build && npm run start` for production)
+3. Create a Pull Request
 
 ## References
 
