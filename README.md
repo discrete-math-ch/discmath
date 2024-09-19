@@ -1,5 +1,16 @@
 # Disc Math
 
+## How to reach???
+diskmath.ch
+discmath.ch
+discmeth.ch
+diskmeth.ch
+diskmat.ch
+diskm.at
+discmat.ch 
+
+
+
 ## Contributing
 1. Fork this repository
 2. Make changes and run locally using `npm run dev` (`npm run build && npm run start` for production)
