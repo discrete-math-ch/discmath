@@ -10,11 +10,11 @@
       "layout": "full"
     }
   },"content": {
-    "title": "content",
+    "title": "Content",
     "type": "page"
   },
   "about": {
-    "title": "about",
+    "title": "About",
     "type": "page",
     "theme": {
     "typesetting": "article"
