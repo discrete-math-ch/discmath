@@ -1,13 +1,16 @@
 # Disc Math
 
-## How to reach???
-diskmath.ch
-discmath.ch
-discmeth.ch
-diskmeth.ch
-diskmat.ch
-diskm.at
-discmat.ch 
+## You cannot miss this page
+[discmath.ch](discmath.ch)
+[diskmath.ch](diskmath.ch)
+[discmeth.ch](discmeth.ch)
+[diskmeth.ch](diskmeth.ch)
+[diskmat.ch](diskmat.ch)
+[diskm.at](diskm.at)
+[discmat.ch](discmat.ch)
+[discmath.life](discmath.life)
+[discmath.xyz](discmath.xyz)
+[discmath.pro](discmath.pro)
 
 
 
