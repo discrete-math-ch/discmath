@@ -1,4 +1,8 @@
 {
-    "index": "General Information",
-    "introduction-logic": "Introduction to logic"
+    "index":"General Information",
+    "ch2": "2: Introduction to Logic",
+    "ch3": "3: Sets and Functions",
+    "ch4": "4: Number Theory",
+    "ch5": "5: Algebra",
+    "ch6": "6: Logic"
 }
