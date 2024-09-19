@@ -1,16 +1,16 @@
 # Disc Math
 
 ## You cannot miss this page
-[discmath.ch](discmath.ch)
-[diskmath.ch](diskmath.ch)
-[discmeth.ch](discmeth.ch)
-[diskmeth.ch](diskmeth.ch)
-[diskmat.ch](diskmat.ch)
-[diskm.at](diskm.at)
-[discmat.ch](discmat.ch)
-[discmath.life](discmath.life)
-[discmath.xyz](discmath.xyz)
-[discmath.pro](discmath.pro)
+[discmath.ch](https://discmath.ch)
+[diskmath.ch](https://diskmath.ch)
+[discmeth.ch](https://discmeth.ch)
+[diskmeth.ch](https://diskmeth.ch)
+[diskmat.ch](https://diskmat.ch)
+[diskm.at](https://diskm.at)
+[discmat.ch](https://discmat.ch)
+[discmath.life](https://discmath.life)
+[discmath.xyz](https://discmath.xyz)
+[discmath.pro](https://discmath.pro)
 
 
 
