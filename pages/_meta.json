@@ -1,23 +1,28 @@
 {
-   "index": {
-    "title": "Home",
-    "display": "hidden",
-    "theme": {
-      "breadcrumb": false,
-      "footer": true,
-      "sidebar": false,
-      "pagination": false,
-      "layout": "full"
+    "index": {
+        "title": "Home",
+        "display": "hidden",
+        "theme": {
+            "breadcrumb": false,
+            "footer": true,
+            "sidebar": false,
+            "pagination": false,
+            "layout": "full"
+        }
+    },
+    "content": {
+        "title": "Content",
+        "type": "page"
+    },
+    "links": {
+        "title": "Links",
+        "type": "page"
+    },
+    "about": {
+        "title": "About",
+        "type": "page",
+        "theme": {
+            "typesetting": "article"
+        }
     }
-  },"content": {
-    "title": "Content",
-    "type": "page"
-  },
-  "about": {
-    "title": "About",
-    "type": "page",
-    "theme": {
-    "typesetting": "article"
-    }
-  }
 }
