@@ -1,22 +1,15 @@
 import React from 'react';
 import { Tabs } from 'nextra/components';
 
-interface Props {
-  title: string;
-  children: React.ReactNode;
-  source?: string;
-  link?: string;
-}
-
-const Problem: React.FC<Props> = ({ title, children, source, link }) => {
+const Problem = ({ title, children, source, link }) => {
   const labeledChildren = React.Children.toArray(children);
 
-  const question = labeledChildren.filter((child: any) => child?.props?.label === 'question');
-  const answer = labeledChildren.filter((child: any) => child?.props?.label === 'answer');
-  const hints = labeledChildren.filter((child: any) => child?.props?.label === 'hint');
-  const takeaway = labeledChildren.filter((child: any) => child?.props?.label === 'takeaway');
+  const question = labeledChildren.filter(child => child?.props?.label === 'question');
+  const answer = labeledChildren.filter(child => child?.props?.label === 'answer');
+  const hints = labeledChildren.filter(child => child?.props?.label === 'hint');
+  const takeaway = labeledChildren.filter(child => child?.props?.label === 'takeaway');
 
-  const items: string[] = [];
+  const items = [];
 
   if (question.length > 1) {
     question.forEach((_, index) => items.push(`Question ${index + 1}`));
@@ -58,9 +51,9 @@ const Problem: React.FC<Props> = ({ title, children, source, link }) => {
         )}
       </summary>
       <Tabs items={items}>
-        {question.map((question, index) => (
+        {question.map((q, index) => (
           <Tabs.Tab key={`Question-${index}`}>
-            <div>{question}</div>
+            <div>{q}</div>
           </Tabs.Tab>
         ))}
         {hints.map((hint, index) => (
@@ -68,19 +61,18 @@ const Problem: React.FC<Props> = ({ title, children, source, link }) => {
             <div>{hint}</div>
           </Tabs.Tab>
         ))}
-         {answer.map((a, index) => (
+        {answer.map((a, index) => (
           <Tabs.Tab key={`Answer-${index}`}>
             <div>{a}</div>
           </Tabs.Tab>
         ))}
-         {takeaway.map((t, index) => (
-        
+        {takeaway.map((t, index) => (
           <Tabs.Tab key={`Takeaway-${index}`}>
             <div>{t}</div>
           </Tabs.Tab>
         ))}
       </Tabs>
-     </details>
+    </details>
   );
 };
 
