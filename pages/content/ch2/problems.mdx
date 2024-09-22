@@ -3,10 +3,8 @@ import Problem from '@/components/problem';
 
 # Problems
 
-<details>
-<div className='m-5'>
-<Tabs  items={['Statement', 'Hint', 'Solution', 'Takeaway']}>
-  <Tabs.Tab>
+<Problem title="Problem 1" source="Tobias Steinbrecher">
+  <div label="question">
   Define logical binary operator $\circ$ as follows:
 
     |$A$ | $B$ | $A \circ B$|
@@ -20,36 +18,29 @@ import Problem from '@/components/problem';
   1. $\lnot A$ <br/>
   2. $A \land B$ <br/>
   3. $A \lor B$ <br/>
-  </Tabs.Tab>
-  <Tabs.Tab>
-  Note that $A \circ B$ is exactly $0$ when both $A$ and $B$ are $1$.
- </Tabs.Tab> 
-  <Tabs.Tab>
-  **Subtask 1** 
-  
-  First consider:
+  </div>
+  <div label="answer">
+   First consider:
 
-|$A$|$\lnot A$|
-|---|---|
-| 0| 1|
-| 1| 0|
+  |$A$|$\lnot A$|
+  |---|---|
+  | 0| 1|
+  | 1| 0|
 
-    We have to somehow use $\circ$ such that the formula *evaluates* to false exactly when $A$ is $1$. 
-   One could for example find the formula $A \circ A$ and prove the result by writing the function table:
+      We have to somehow use $\circ$ such that the formula *evaluates* to false exactly when $A$ is $1$. 
+    One could for example find the formula $A \circ A$ and prove the result by writing the function table:
 
-   | $A$ |$A \circ A $|
-    |---|---|
-    | 0| 1|
-    | 1| 0|
+    | $A$ |$A \circ A $|
+      |---|---|
+      | 0| 1|
+      | 1| 0|
 
-which is indeed equivalent. Usually one has to make observations in these types of problems and use them cleverly to create the formula. Thus
-$$
-\lnot A \equiv A \circ A
-$$
----
-
-**Subtask 2**
-
+  which is indeed equivalent. Usually one has to make observations in these types of problems and use them cleverly to create the formula. Thus
+  $$
+  \lnot A \equiv A \circ A
+  $$
+  </div>
+<div label="answer">
 Consider $(A \circ B) \circ (A \circ B)$ 
 
  |$A$ | $B$ | $(A \circ B) \circ (A \circ B)$ | $A \land B$ |
@@ -61,8 +52,9 @@ Consider $(A \circ B) \circ (A \circ B)$
 
 The idea here is to use the $\lnot$ operator from the previous exercise to invert the outcome of $A \circ B$, which is exactly $A \land B$ (more precisely, $\circ$ is a [NAND](https://en.wikipedia.org/wiki/Sheffer_stroke) function). 
 
----
-**Subtask 3**
+</div>
+
+<div label="answer">
 
 Consider $(A \circ A) \circ (B \circ B)$ 
 
@@ -76,19 +68,10 @@ Consider $(A \circ A) \circ (B \circ B)$
 Note that $A \circ B \equiv \lnot (A \land B)$ (NAND operation).
 The idea here is to use the $\lnot$ operator we build in the previous exercise to invert $A$ and $B$ individually. Then we basically use De Morgan's equivalence: $\lnot(\lnot A \land \lnot B) \equiv A \lor B$ to obtain the final result (i.e. one more $\circ$ operation between $\lnot A$ and $\lnot B$).
   
-  
-  
-   </Tabs.Tab>
-   <Tabs.Tab>
-   Usually one has to make some kind of observations in these types problems and use them cleverly to create the formula. Sometimes known equivalences such as in the 3. subtask can help.  
-   To prove the **equivalence** one can then simply use *comparison of function tables* (this step is trivial in comparison to finding a correct function). Note that there might be more than one possible solution.
-   </Tabs.Tab>
-</Tabs>
-
-
-> *Source: Tobias Steinbrecher*
 </div>
 
+  <div label="hint">Note that $A \circ B$ is exactly $0$ when both $A$ and $B$ are $1$.</div>
+  <div label= "takeaway">   Usually one has to make some kind of observations in these types problems and use them cleverly to create the formula. Sometimes known equivalences such as in the 3. subtask can help.  
+   To prove the **equivalence** one can then simply use *comparison of function tables* (this step is trivial in comparison to finding a correct function). Note that there might be more than one possible solution.</div>
+</Problem>
 
-<summary>**Problem 1**</summary>
-</details>

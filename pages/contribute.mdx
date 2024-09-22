@@ -1,0 +1,49 @@
+import Problem from '@/components/problem';
+
+import { Callout,Tabs } from 'nextra/components'
+
+# Contribute
+
+## Setup
+
+
+
+<Callout type="warning" emoji="🚧">
+  under construction
+</Callout>
+
+1. Fork the repository on github
+2. Make your changes 
+3. Make a pull request
+
+## Writing Problems
+To write a problem, you can use the `<Problem/>` component in an `.mdx` file as follows:
+
+
+
+```jsx
+<Problem title="Problem 1" source="ChatGPT" link="https://chatgpt.com">
+  <div label="question">What is $2 + 2$?</div>
+      <div label="hint">Think about basic arithmetic.</div>
+       <div label="hint">Think again!</div>
+      <div label="answer">The answer is $4$.</div>
+      <div label="takeaway">Basic arithmetic is fundamental.</div>
+      <div label="takeaway">It is important!</div>
+</Problem>
+```
+<Problem title="Problem 1" source="ChatGPT" link="https://chatgpt.com">
+  <div label="question">What is $2 + 2$?</div>
+      <div label="hint">Think about basic arithmetic.</div>
+       <div label="hint">Think again!</div>
+      <div label="answer">The answer is $4$.</div>
+      <div label="takeaway">Basic arithmetic is fundamental.</div>
+      <div label="takeaway">It is important!</div>
+</Problem>
+
+The `source` and `link` parameters are optional. You can provide just the `source` parameter, which should be your name if you are setting up your own problem.
+
+The possible types for labels are `question`, `answer`, `hint`, and `takeaway`.
+
+The order of the elements you pass as children to the component matters only within the same label type. For example, the first hint will be labeled as *Hint 1*, the second as *Hint 2*, and so on. However, the overall order of the labels will always follow the sequence: *question, hint, answer, takeaway*. This ensures a consistent structure for the problem presentation.
+
+Additionally, you can have multiple questions, answers, hints or takeaways. The numbering will apply only when there are multiple elements of the same type, such as multiple questions or multiple hints.

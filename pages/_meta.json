@@ -16,6 +16,13 @@
     },
     "links": {
         "title": "Links",
+        "type": "page",
+        "theme": {
+            "typesetting": "article"
+        }
+    },
+    "contribute": {
+        "title": "Contribute",
         "type": "page"
     },
     "about": {

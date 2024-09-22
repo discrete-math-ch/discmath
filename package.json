@@ -13,7 +13,10 @@
         "nextra": "^2.13.4",
         "nextra-theme-docs": "^2.13.4",
         "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+        "react-dom": "^18.3.1",
+        "rehype-katex": "^7.0.1",
+        "vfile": "^6.0.3",
+        "vfile-message": "^4.0.2"
     },
     "devDependencies": {
         "@types/node": "20.16.5",
