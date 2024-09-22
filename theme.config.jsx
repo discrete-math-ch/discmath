@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import { DocsThemeConfig } from 'nextra-theme-docs'
-
+import LastCommitAuthor from '@/components/LastCommitAuthor';
 
 export default {
      docsRepositoryBase: 'https://github.com/discrete-math-ch/discmath',
@@ -62,6 +62,7 @@ export default {
           </>
         )
       },
+      //gitTimestamp: <LastCommitAuthor/>,
       editLink: {
         text: 'Edit this page on GitHub →'
       },
@@ -69,6 +70,7 @@ export default {
         content: 'Question? Give us feedback →',
         labels: 'feedback'
       },
+      
     primaryHue: {dark: 80, light:80 },
     search: {
       placeholder: "Search..."
