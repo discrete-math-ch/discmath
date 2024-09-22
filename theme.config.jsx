@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import { DocsThemeConfig } from 'nextra-theme-docs'
-import LastCommitAuthor from '@/components/LastCommitAuthor';
 
 export default {
      docsRepositoryBase: 'https://github.com/discrete-math-ch/discmath',
