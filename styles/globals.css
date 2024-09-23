@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+details > summary .chevron {
+    transition: transform 0.2s;
+  }
+  
+  details[open] > summary .chevron {
+    transform: rotate(90deg);
+  }
