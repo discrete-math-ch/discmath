@@ -39,7 +39,7 @@ const Problem = ({ title, children, source, link }) => {
     <details className="border border-gray-300 rounded-md p-4 shadow-md my-5">
       <summary className="text-lg font-semibold cursor-pointer flex justify-between items-center">
       <span><span className="ml-2 chevron">&#9654;</span>
-      <spanc className="ml-5">{title}</span></span>
+      <span className="ml-5">{title}</span></span>
         {source && !link && (
           <span className="text-sm text-gray-600 dark:text-gray-400 ">
             Source: {source}
