@@ -37,16 +37,16 @@ const Problem = ({ title, children, source, link }) => {
   
   return (
     <details className="border border-gray-300 rounded-md p-4 shadow-md my-5">
-      <summary className="text-lg font-semibold cursor-pointer flex justify-between items-center">
-      <span><span className="ml-2 chevron">&#9654;</span>
-      <span className="ml-5">{title}</span></span>
+      <summary className="text-lg font-semibold cursor-pointer flex  items-center">
+      <span className="ml-2 chevron">&#9654;</span>
+      <span className="ml-5">{title}</span>
         {source && !link && (
-          <span className="text-sm text-gray-600 dark:text-gray-400 ">
+          <span className="ml-auto text-sm text-gray-600 dark:text-gray-400 ">
             Source: {source}
           </span>
         )}
         {source && link && (
-          <span className="text-sm text-gray-600 dark:text-gray-400 ">
+          <span className="ml-auto text-sm text-gray-600 dark:text-gray-400 ">
             Source: <a href={link} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'rgb(170, 255, 0)' }}>{source}</a>
           </span>
         )}
