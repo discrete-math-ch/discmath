@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base state for chevron */
 details > summary .chevron {
-    transition: transform 0.2s;
-  }
-  
-  details[open] > summary .chevron {
-    transform: rotate(90deg);
-  }
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Rotate chevron when the details element is open */
+details[open] > summary .chevron {
+  transform: rotate(90deg);
+}

@@ -76,10 +76,15 @@ The idea here is to use the $\lnot$ operator we build in the previous exercise t
 
 <Problem title="Problem 2" source="Philipp Barski">
   <div label="question">
-      Consider the formula $F = (B \lor A) \lor \neg C$. Find a formula $G$ such that $G$ only contains the logical operation $\to$ and propositonal symbols $A,B,C$ (Note that parentheses are allowed as well). Solve this problem either by using equivalence transformations from Lemma 2.1 and the rules $F \land \neg F \equiv \bot, F \land \bot \equiv \bot, F \lor \bot \equiv F, F \lor \neg F \equiv \top, F \land \top \equiv F$, $F \lor \top \equiv \top$ or drawing the truth table and trying to find a formula fulfilling the upper constraints.
+      Consider the formula $F = (B \lor A) \lor \neg C$. Find a formula $G$ such that $G$ only contains the logical operation $\to$ and propositonal symbols $A,B,C$ (Note that parentheses are allowed as well).<br/> 
+       Solve this problem either by using equivalence transformations from Lemma 2.1 and the rules 
+       $$
+       F \land \neg F \equiv \bot, \  F \land \bot \equiv \bot, \ F \lor \bot \equiv F,\  F \lor \neg F \equiv \top, \ F \land \top \equiv F, \ F \lor \top \equiv \top
+       $$ 
+       or drawing the truth table and trying to find a formula fulfilling the upper constraints.
   </div>
   <div label="answer">
-    We provide an answer using equivalence transformations. The idea is to see that the formula has a form that could give a hint that $C$ will be on the left side of the arrow according to the definition. We just need to find a trick such that the formula gets a better form for us to use, maybe we can find a form similar to the definition of the arrow "\to", or the negation of "\to"? We provide a formal solution in the following. 
+    We provide an answer using equivalence transformations. The idea is to see that the formula has a form that could give a hint that $C$ will be on the left side of the arrow according to the definition. We just need to find a trick such that the formula gets a better form for us to use, maybe we can find a form similar to the definition of the arrow "$\to$", or the negation of "$\to$"? We provide a formal solution in the following. 
     $$
     \begin{aligned}
       && (B \lor A) \lor \neg C &&\\
@@ -99,7 +104,11 @@ The idea here is to use the $\lnot$ operator we build in the previous exercise t
   </div>
 
   <div label="hint">
-    The trick when using equivalence transformations here is to make this step: $(B \lor A) \lor \neg C \equiv ((B \lor A) \land \top) \lor \neg C$. How can we conveniently replace $\top$ such that the formula looks like something we can transform further?
+    The trick when using equivalence transformations here is to make this step: 
+    $$
+    (B \lor A) \lor \neg C \equiv ((B \lor A) \land \top) \lor \neg C
+    $$
+     How can we conveniently replace $\top$ such that the formula looks like something we can transform further?
   </div>
   <div label= "takeaway">
   For such problems you often need to find a clever trick to get the formula to some other nice form. Often, the first thing you want to do is trying out some common tricks and seeing whether you could get the formula into any other form. It is also possible to write down the truth table and try to fit a formula to the truth values.
