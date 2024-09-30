@@ -1,0 +1,32 @@
+# EBNF
+
+This tries to define formulas and statements with EBNF. Note that all literals are in double quotes.
+
+_Symbol_ $\Leftarrow$ A-Z
+
+_LogicalOperator_
+    $\Leftarrow$ "$\land$"
+        | "$\lor$"
+        | "$\to$"
+        | "$\lnot$"
+
+_FormulaToStatementOperator_
+    $\Leftarrow$ "$\equiv$"
+        | "$\models$"
+
+_StatementOperator_
+    $\Leftarrow$ "$\implies$"
+        | "and"
+        | "or"
+_Formula_
+    $\Leftarrow$ _Symbol_
+        | _Symbol_ _LogicalOperator_ _Symbol_
+        | "("_Formula_ _LogicalOperator_ _Formula_")"
+        | "$\top$"
+        | "$\bot$"
+
+_Statement_
+    $\Leftarrow$ _Statement_ _StatementOperator_ _Statement_
+        | _Statement_ "is false"
+        | _Formula_ _FormulaToStatementOperator_ _Formula_
+        | "$\models$" _Formula_
