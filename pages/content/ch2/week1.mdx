@@ -1,0 +1,122 @@
+import { Callout, Tabs} from 'nextra/components'
+import Problem from '@/components/problem'
+
+# Week 1
+
+## Implications
+
+There is a multitude of meanings when it comes to the use of the word "implication". There is a good detailed explanation in the script.
+To provide an overview consider the following:
+
+
+### Implications between Mathematical statments
+
+
+<Callout type="warning" emoji="🚧">
+  we will add some more stuff from the first week here
+</Callout>
+
+The arrow "$\implies$" can be used between mathematical statements to form a new mathematical statement. For example, let $S$ and $T$ be mathematical statements. Then we can form the mathematical statement $S \implies T$. The new statement can be translated into natural language by saying that "that ***if** $S$ is true, **then** $T$ is also true*" (which is a statement that can be false). It does **not** mean that **because** $S$ is true, $T$ is also true.
+
+For example, consider the following statements:
+- $S$: "$2$ is an even number"
+- $T$: "$5 + 10 = 15$"
+
+In this case, $S \implies T$ is true. This may seem counterintuitive, but it is a true mathematical statement. The statement $S \implies T$ does not mean that there is a derivation from $S$ to $T$.
+
+Additionally, it can be quite counterintuitive to consider the statement $S \implies T$ when you know that the statement $S$ is actually false. This automatically makes $S \implies T$ **true** because we essentially *don't care* about the truth value of the statement $T$. Since $S$ is false, the implication *"if $S$ is true, then $T$ is also true"* is vacuously true because $S$ is not true — we don't need to check whether $T$ is true.
+
+For example, consider the following statements:
+- $S$: "$2$ is an odd number"
+- $T$: "$3$ is an even number"
+
+If we now consider $S \implies T$, we would find that $S \implies T$ is indeed a **true** statement because we know $S$ is false.
+
+Note that the only case where the statement $S \implies T$ is false, is when $S$ is a true statement and $T$ is a false statement.
+
+### Derivation step arrow
+$\overset{\cdot}{\implies}$
+
+### Implication as formula operator
+
+
+$\to$
+
+### Logical consequence
+
+$\vDash$
+
+
+## Exercises
+
+<Problem title="Problem 1" source="Tobias Steinbrecher">
+  <div label="question">
+  Define logical binary operator $\circ$ as follows:
+
+    |$A$ | $B$ | $A \circ B$|
+    |---|---|---|
+    |$0$ |$0$ | $1$ |
+    |$0$ |$1$ | $1$ |
+    |$1$ |$0$ | $1$ |
+    |$1$ |$1$ | $0$ |
+
+    For each of the following formulas, write an **equivalent** formula using only the $\circ$ operator. Prove the equivalence in each case.
+  1. $\lnot A$ <br/>
+  2. $A \land B$ <br/>
+  3. $A \lor B$ <br/>
+  </div>
+  <div label="answer">
+   First consider:
+
+  |$A$|$\lnot A$|
+  |---|---|
+  | 0| 1|
+  | 1| 0|
+
+      We have to somehow use $\circ$ such that the formula *evaluates* to false exactly when $A$ is $1$. 
+    One could for example find the formula $A \circ A$ and prove the result by writing the function table:
+
+    | $A$ |$A \circ A $|
+      |---|---|
+      | 0| 1|
+      | 1| 0|
+
+  which is indeed equivalent. Usually one has to make observations in these types of problems and use them cleverly to create the formula. Thus
+  $$
+  \lnot A \equiv A \circ A
+  $$
+  </div>
+<div label="answer">
+Consider $(A \circ B) \circ (A \circ B)$ 
+
+ |$A$ | $B$ | $(A \circ B) \circ (A \circ B)$ | $A \land B$ |
+    |---|---|---| ---| 
+    |$0$ |$0$ | $0$ | $0$ |
+    |$0$ |$1$ | $0$ |$0$ |
+    |$1$ |$0$ | $0$ |$0$ |
+    |$1$ |$1$ | $1$ |$1$ |
+
+The idea here is to use the $\lnot$ operator from the previous exercise to invert the outcome of $A \circ B$, which is exactly $A \land B$ (more precisely, $\circ$ is a [NAND](https://en.wikipedia.org/wiki/Sheffer_stroke) function). 
+
+</div>
+
+<div label="answer">
+
+Consider $(A \circ A) \circ (B \circ B)$ 
+
+ |$A$ | $B$ | $(A \circ A) \circ (B \circ B)$ | $A \lor B$ |
+    |---|---|---| ---| 
+    |$0$ |$0$ | $0$ | $0$ |
+    |$0$ |$1$ | $1$ |$1$ |
+    |$1$ |$0$ | $1$ |$1$ |
+    |$1$ |$1$ | $1$ |$1$ |
+
+Note that $A \circ B \equiv \lnot (A \land B)$ (NAND operation).
+The idea here is to use the $\lnot$ operator we build in the previous exercise to invert $A$ and $B$ individually. Then we basically use De Morgan's equivalence: $\lnot(\lnot A \land \lnot B) \equiv A \lor B$ to obtain the final result (i.e. one more $\circ$ operation between $\lnot A$ and $\lnot B$).
+  
+</div>
+  <div label="hint">Note that $A \circ B \equiv \lnot (A \land B)$</div>
+  <div label= "takeaway">   Usually one has to make some kind of observations in these types problems and use them cleverly to create the formula. Sometimes known equivalences such as in the 3. subtask can help.  
+   To prove the **equivalence** one can then simply use *comparison of function tables* (this step is trivial in comparison to finding a correct function). Note that there might be more than one possible solution.</div>
+</Problem>
+
