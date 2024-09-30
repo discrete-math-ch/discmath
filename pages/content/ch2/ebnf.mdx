@@ -6,6 +6,7 @@ _Symbol_ $\Leftarrow$ A-Z
 
 _LogicalOperator_
     $\Leftarrow$ "$\land$"
+        | "$\leftrightarrow$"
         | "$\lor$"
         | "$\to$"
         | "$\lnot$"
@@ -16,8 +17,10 @@ _FormulaToStatementOperator_
 
 _StatementOperator_
     $\Leftarrow$ "$\implies$"
+        | "$\iff$"
         | "and"
         | "or"
+
 _Formula_
     $\Leftarrow$ _Symbol_
         | _Symbol_ _LogicalOperator_ _Symbol_
