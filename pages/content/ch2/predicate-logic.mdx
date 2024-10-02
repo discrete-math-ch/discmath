@@ -1,0 +1,196 @@
+import { Callout, Tabs} from 'nextra/components'
+import Problem from '@/components/problem';
+
+# Week 2
+
+## Quick Questions
+*True or False?*
+$$
+ \vDash A \lor \lnot A
+$$ 
+<details>
+  <summary>Solution</summary>
+  True, because either $A$ or $\lnot A$ will always be true, we obtain that $A \lor \lnot A$ is a tautology. We use the notation $\vDash F$ to express this fact. 
+</details>
+
+*If $F$ is a tautology, then $\lnot F$ is unsatisfiable.*
+
+<details>
+<summary>
+Solution
+</summary>
+True, see **Lemma 2.2** in script.
+</details>
+
+*What is a Universe in predicate logic?*
+1. The set of all formulas of predicate logic
+2. A function which assigns 0 or 1 to each element of a set.
+3. A formula that is true in every interpretation
+4. The set of objects we want to reason about
+
+<details>
+<summary>
+Solution
+</summary>
+4. is correct.
+</details>
+
+
+*True or false?*
+
+$$
+((A \to B) \lor B) \land C \vDash ((A \to B) \lor (B \to C)) \lor (A \to C)) \lor C
+$$
+
+<details>
+<summary>
+Solution
+</summary>
+True, one can make the observation that in every case where the left-hand side is true, $C$ must be $1$. Therefore, we obtain that the right-hand side automatically becomes true. Thus, we have indeed a logical consequence.
+</details>
+
+*Correct application of exaclty **one** rule of Lemma 2.1?*
+
+$$
+    \lnot(\lnot A \land C) \equiv A \lor \lnot C 
+$$
+
+<details>
+<summary>
+Solution
+</summary>
+No, we used **double negation** and **De-Morgan** at once, we should split it up as follows:
+$$
+    \lnot(\lnot A \land C) \equiv \lnot \lnot A \lor \lnot C \equiv A \lor \lnot C 
+$$
+</details>
+
+*Correct application of exaclty **one** rule of Lemma 2.1?*
+
+$$
+    A \land (B \lor C) \equiv  (A \land B) \lor (A \land C)
+$$
+
+<details>
+<summary>
+Solution
+</summary>
+Yes, we have used only the first distributive law.
+</details>
+
+*Which statements are true?*
+
+1. There are infinitely many interpretations in predicate logic, while there are only finitely many in propositional logic.
+2. A formula of predicate logic always has a fixed truth value
+3. Quantifiers only exists in predicate logic
+4. Propositional logic is "stronger" than predicate logic, i.e. we can express more statements.
+
+<details>
+<summary>
+Solution
+</summary>
+1. True, because there are e.g. infinitely many universes, while there is only a finite amount of propositional symbols in propositional logic, i.e. there are only $2^n$ many interpretations.
+2. False, the truth value may change if we e.g. use another universe.
+3. True
+4. False, predicate logic is "stronger", see 3.
+</details>
+
+*True or False?*
+
+$$
+\forall x \forall y P(x,y) \equiv \forall y \forall x P(x,y)
+$$
+
+<details>
+<summary>
+Solution
+</summary>
+True. See **2.4.7** in script.
+</details>
+
+*Under which interpretation is the following formula true?*
+
+$$
+\forall  x \forall  y \exists  z \ \left(P\left(x,y\right) \to  \left(P\left(x,z\right) \land P\left(z,y\right)\right)\right)
+$$
+
+1. Universe $U = \mathbb{N}$ and $P(x,y) = 1 \iff x < y$
+2. Universe $U = \mathbb{N}$ and $P(x,y) = 1 \iff x \leq y$
+3. Universe $U = \mathbb{R}$ and $P(x,y) = 1 \iff x < y$
+4. Universe $U = \mathbb{N}$ and $P(x,y) = 1 \iff x \text{ is even}$
+
+<details>
+<summary>
+Solution
+</summary>
+1. False, counterexample: $x = 1, y = 2$. There exists no number $z$ "between" $x = 1$ and $y = 2$.
+2. True, if we set $z = x$, then the formula is true (if we fix any $x, y$ and set $z = x$, then $x \le y$ implies $x \le z = x$ and $x = z \le y$)
+3. True, if we set $z = \frac{x + y}{2}$, then the formula is true (we can always "find" a real number between $x$ and $y$ if $x < y$)
+4. True, the value of $y$ doesn't matter here and setting $z = x$ trivially satisfies the formula.
+</details>
+
+
+
+## Predicate Logic
+
+A short rundown of the main concepts:
+
+<Callout type="warning" emoji="💡">
+ **Interpretations and Universes** Instead of assigning truth values to the propositional symbols to interpret the formula and obtain a mathematical statement, as we did in propositional logic, we now always have to choose a set of mathematical objects (such as $\mathbb{N}, \mathbb{R}$ or simlar) we want to reason about. We call this set the **Universe** denoted by $U$.
+</Callout>
+<Callout type="warning" emoji="💡">
+ **Predicates** take elements from the universe and spit out a truth value ($P : U^k \to \{0,1\}$). *Example interpretations for predicates: $\text{prime}(x), \text{less}(x,y)$.*
+</Callout>
+<Callout type="warning" emoji="💡">
+ **Functions** take elements from the universe and spit out an element from the Universe ($f : U^k \to U$). *Example interpretations for functions: $x + y$, $x^2$ (note that we sometimes use the infix notation and not something like $\text{plus}(x,y)$)*. Note that we also allow $k = 0$, so we would obtain a function taking $0$ arguments, in this way, we can define constants and therefore use expressions like $x + 0$ inside the interpreted formula.
+</Callout> 
+<Callout type="warning" emoji="💡">
+ **Variables** (often denoted by $x,y,z$), which are *free* (more about his in chapter 6), can take any value from the universe. A variable is basically free if there is no quantifier, which is at an *outer* level of the formula where the variable appears, referring to the same variable. Consider for example the expression $\forall x Q(x,y)$, here $y$ is a free variable, while $x$ is not. 
+</Callout> 
+
+<Callout type="warning" emoji="💡">
+**Quantifiers**:
+1. $\forall x$ F is true if for any value $x$ in $U$, formula $F$ is true.
+2. $\exists x$ F is true if there exists $x$ in $U$, such that formula $F$ is true.
+</Callout> 
+
+By combining these elements, predicate logic allows for the creation of more complex and expressive statements than propositional logic.
+
+
+## Exercises
+
+<Problem title="Translation of predicate logic" source="Leon Kolmanic (HS23)" link="https://leonkolmanic.com/">
+  <div label="question">
+  Consider the following **interpretation**.
+      Let $U = \mathbb{Z}$ be the universe. And
+      $$
+      Q(x) = 1 \iff x \text{ is square}
+      $$
+      $$
+      P(x,y) = 1 \iff x = y
+      $$
+      $$
+      \text{sum}(x,y) = x+y
+      $$
+      Write down formulas of predicate logic, such that our interpretation is fitting and is expressing the following statements (numbers refer to integers):
+      1. There is a square number
+      2. The sum of two arbitrary numbers is not square
+      3. For every number $a$, there is a number $b$, such that $a + b$ is square
+      4. The sum of two squares is a square
+
+      Additionally, translate these formulas into statments under the given interpretation:
+      1. $\forall x \forall y ((Q(x) \land Q(y)) \to P(x,y))$
+      2. $\forall x (Q(x) \to (\exists a \exists b P(x,\text{sum}(a,b))))$
+  </div>
+  <div label="answer">
+    1. $\exists Q(x)$
+    2. $\forall x \forall y \  (\lnot Q(\text{sum}(x+y)))$
+    3. $\forall x \exists y \ Q(\text{sum}(x,y))$
+    4. $\forall x \forall y \ ((Q(x) \land Q(y)) \to Q(\text{sum}(x,y)))$
+  </div>
+   <div label="answer">
+    1. There is only one square number (if two numbers are square, then they are equal)
+    2. Every square number is the sum of two numbers
+  </div>
+</Problem>
+

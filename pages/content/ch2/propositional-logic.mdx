@@ -1,7 +1,53 @@
-import { Callout,Tabs } from 'nextra/components'
-import Problem from '@/components/problem';
+import { Callout, Tabs} from 'nextra/components'
+import Problem from '@/components/problem'
 
-# Problems
+# Week 1
+
+## Implications
+
+There is a multitude of meanings when it comes to the use of the word "implication". There is a good detailed explanation in the script.
+To provide an overview consider the following:
+
+
+### Implications between Mathematical statments
+
+
+<Callout type="warning" emoji="🚧">
+  we will add some more stuff from the first week here
+</Callout>
+
+The arrow "$\implies$" can be used between mathematical statements to form a new mathematical statement. For example, let $S$ and $T$ be mathematical statements. Then we can form the mathematical statement $S \implies T$. The new statement can be translated into natural language by saying that "that ***if** $S$ is true, **then** $T$ is also true*" (which is a statement that can be false). It does **not** mean that **because** $S$ is true, $T$ is also true.
+
+For example, consider the following statements:
+- $S$: "$2$ is an even number"
+- $T$: "$5 + 10 = 15$"
+
+In this case, $S \implies T$ is true. This may seem counterintuitive, but it is a true mathematical statement. The statement $S \implies T$ does not mean that there is a derivation from $S$ to $T$.
+
+Additionally, it can be quite counterintuitive to consider the statement $S \implies T$ when you know that the statement $S$ is actually false. This automatically makes $S \implies T$ **true** because we essentially *don't care* about the truth value of the statement $T$. Since $S$ is false, the implication *"if $S$ is true, then $T$ is also true"* is vacuously true because $S$ is not true — we don't need to check whether $T$ is true.
+
+For example, consider the following statements:
+- $S$: "$2$ is an odd number"
+- $T$: "$3$ is an even number"
+
+If we now consider $S \implies T$, we would find that $S \implies T$ is indeed a **true** statement because we know $S$ is false.
+
+Note that the only case where the statement $S \implies T$ is false, is when $S$ is a true statement and $T$ is a false statement.
+
+### Derivation step arrow
+$\overset{\cdot}{\implies}$
+
+### Implication as formula operator
+
+
+$\to$
+
+### Logical consequence
+
+$\vDash$
+
+
+## Exercises
 
 <Problem title="Problem 1" source="Tobias Steinbrecher">
   <div label="question">
@@ -74,9 +120,9 @@ The idea here is to use the $\lnot$ operator we build in the previous exercise t
    To prove the **equivalence** one can then simply use *comparison of function tables* (this step is trivial in comparison to finding a correct function). Note that there might be more than one possible solution.</div>
 </Problem>
 
-<Problem title="Problem 2" source="Philipp Barski">
+<Problem title="Equivalence Transformations" source="Philipp Barski">
   <div label="question">
-      Consider the formula $F = (B \lor A) \lor \neg C$. Find a formula $G$ such that $G$ only contains (maybe multiple occurences of) the logical operation $\to$ and propositonal symbols $A,B,C$ such that $F \equiv G$ (Note that parentheses are allowed as well).<br/> 
+      Consider the formula $F = (B \lor A) \lor \neg C$. Find a formula $G$ such that $G$ only contains the logical operation $\to$ and propositonal symbols $A,B,C$ (Note that parentheses are allowed as well).<br/> 
        Solve this problem either by using equivalence transformations from Lemma 2.1 and the rules 
        $$
        F \land \neg F \equiv \bot, \  F \land \bot \equiv \bot, \ F \lor \bot \equiv F,\  F \lor \neg F \equiv \top, \ F \land \top \equiv F, \ F \lor \top \equiv \top
@@ -84,7 +130,7 @@ The idea here is to use the $\lnot$ operator we build in the previous exercise t
        or drawing the truth table and trying to find a formula fulfilling the upper constraints.
   </div>
   <div label="answer">
-    We provide an answer using equivalence transformations. The idea is to see that the formula has a form that could give a hint that $C$ will be on the left side of the arrow according to the definition. We just need to find a trick such that the formula gets a better form for us to use, maybe we can find a form similar to the definition of the arrow "$\to$", or the negation of a formula containing "$\to$"? We provide a formal solution in the following.
+    We provide an answer using equivalence transformations. The idea is to see that the formula has a form that could give a hint that $C$ will be on the left side of the arrow according to the definition. We just need to find a trick such that the formula gets a better form for us to use, maybe we can find a form similar to the definition of the arrow "$\to$", or the negation of "$\to$"? We provide a formal solution in the following. 
     $$
     \begin{aligned}
       && (B \lor A) \lor \neg C &&\\
@@ -111,7 +157,7 @@ The idea here is to use the $\lnot$ operator we build in the previous exercise t
      How can we conveniently replace $\top$ such that the formula looks like something we can transform further?
   </div>
   <div label= "takeaway">
-  For such problems you often need to find a clever trick to get the formula to some other "nice" form. Often, the first thing you want to do is trying out some common tricks and seeing whether you could get the formula into any other form. It is also possible to write down the truth table and try to fit a formula to the truth values.
+  For such problems you often need to find a clever trick to get the formula to some other nice form. Often, the first thing you want to do is trying out some common tricks and seeing whether you could get the formula into any other form. It is also possible to write down the truth table and try to fit a formula to the truth values.
   </div>
 </Problem>
 

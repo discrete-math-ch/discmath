@@ -1,5 +1,4 @@
 {
-    "implications": "Implications",
-    "ebnf": "EBNF: Statements vs Formulas",
-    "problems": "Problems"
+    "propositional-logic": "Propositional Logic",
+    "predicate-logic": "Predicate Logic"
 }
