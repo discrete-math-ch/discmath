@@ -10,7 +10,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const SubmitTopics = () => {
   const [textInput, setTextInput] = useState('');
-  const [_message, setMessage] = useState('');
+  const setMessage = useState('')[1];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
