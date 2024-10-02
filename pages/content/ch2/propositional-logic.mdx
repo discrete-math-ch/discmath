@@ -47,6 +47,44 @@ $\to$
 $\vDash$
 
 
+
+## EBNF: Statements vs Formulas
+
+This tries to define formulas and statements with EBNF. Note that all literals are in double quotes.
+
+$$
+\begin{aligned}
+\textit{Symbol} & \Leftarrow \text{A-Z} \\
+\\
+\textit{LogicalOperator} & \Leftarrow \text{"} \land \text{"} \\
+       & \quad \vert \; \text{"} \leftrightarrow \text{"} \\
+       & \quad \vert \; \text{"} \lor \text{"} \\
+       & \quad \vert \; \text{"} \to \text{"} \\
+       & \quad \vert \; \text{"} \lnot \text{"} \\
+\\  
+\textit{FormulaToStatementOperator} & \Leftarrow \text{"} \equiv \text{"} \\
+        & \quad \vert \; \text{"} \models \text{"} \\
+\\
+\textit{StatementOperator} & \Leftarrow \text{"} \implies \text{"} \\
+       & \quad \vert \; \text{"} \iff \text{"} \\
+       & \quad \vert \; \text{"and"} \\
+       & \quad \vert \; \text{"or"} \\
+\\   
+\textit{Formula} & \Leftarrow \textit{Symbol} \\
+      &  \quad \vert \; \textit{Symbol } \textit{ LogicalOperator } \textit{ Symbol} \\
+      &  \quad \vert \; "("\textit{Formula } \textit{ LogicalOperator } \textit{ Formula}")" \\
+      &  \quad \vert \; \text{"} \top \text{"} \\
+      &  \quad \vert \; \text{"} \bot \text{"} \\
+\\   
+\textit{Statement} & \Leftarrow \textit{Statement } \textit{ StatementOperator } \textit{ Statement} \\
+       & \quad \vert \; \textit{Statement } \text{ "is false"} \\
+       & \quad \vert \; \textit{Formula } \textit{ FormulaToStatementOperator } \textit{ Formula} \\
+       & \quad \vert \; \text{"} \models \text{"} \textit{ Formula} \\
+\end{aligned}
+$$
+
+
+
 ## Exercises
 
 <Problem title="Problem 1" source="Tobias Steinbrecher">
