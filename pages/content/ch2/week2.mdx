@@ -35,18 +35,6 @@ Solution
 4. is correct.
 </details>
 
-*What is a Universe in predicate logic?*
-1. The set of all formulas of predicate logic
-2. A function which assigns 0 or 1 to each element of a set.
-3. A formula that is true in every interpretation
-4. The set of objects we want to reason about
-
-<details>
-<summary>
-Solution
-</summary>
-4. is correct.
-</details>
 
 *True or false?*
 
@@ -71,7 +59,7 @@ $$
 <summary>
 Solution
 </summary>
-No, we used **double negation** and **De-morgan** at once, we should split it up as follows:
+No, we used **double negation** and **De-Morgan** at once, we should split it up as follows:
 $$
     \lnot(\lnot A \land C) \equiv \lnot \lnot A \lor \lnot C \equiv A \lor \lnot C 
 $$
@@ -87,21 +75,24 @@ $$
 <summary>
 Solution
 </summary>
-Yes, we have used only a distributive law.
+Yes, we have used only the first distributive law.
 </details>
 
 *Which statements are true?*
 
 1. There are infinitely many interpretations in predicate logic, while there are only finitely many in propositional logic.
 2. A formula of predicate logic always has a fixed truth value
-3. Qunatifiers only exists in predicate logic
-4. Propositional logic is stronger than predicate logic, i.e. we can express more statements.
+3. Quantifiers only exists in predicate logic
+4. Propositional logic is "stronger" than predicate logic, i.e. we can express more statements.
 
 <details>
 <summary>
 Solution
 </summary>
-True, False, True, False.
+1. True, because there are e.g. infinitely many universes, while there is only a finite amount of propositional symbols in propositional logic, i.e. there are only $2^n$ many interpretations.
+2. False, the truth value may change if we e.g. use another universe.
+3. True
+4. False, predicate logic is "stronger", see 3.
 </details>
 
 *True or False?*
@@ -132,7 +123,10 @@ $$
 <summary>
 Solution
 </summary>
-2., 3. and 4.
+1. False, counterexample: $x = 1, y = 2$. There exists no number $z$ "between" $x = 1$ and $y = 2$.
+2. True, if we set $z = x$, then the formula is true (if we fix any $x, y$ and set $z = x$, then $x \le y$ implies $x \le z = x$ and $x = z \le y$)
+3. True, if we set $z = \frac{x + y}{2}$, then the formula is true (we can always "find" a real number between $x$ and $y$ if $x < y$)
+4. True, the value of $y$ doesn't matter here and setting $z = x$ trivially satisfies the formula.
 </details>
 
 
