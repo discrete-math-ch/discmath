@@ -10,6 +10,10 @@
             "layout": "full"
         }
     },
+    "topic": {
+        "title": "Suggest Topic",
+        "type": "page"
+    },
     "content": {
         "title": "Content",
         "type": "page"
