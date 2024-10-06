@@ -118,7 +118,7 @@ $$
         $$
     </div>
     <div label="hint">
-        Use the fact that $A \cap B \subseteq A$ (see the previous exercise). This means that $A \cap B \ne A$ implies that there is an element in $A$ that is not in $A \cap B$.
+        Use the fact that $A \cap B \subseteq A$ is always true/a tautology (see the previous exercise). This (informally) means that $A \cap B \ne A$ implies that there is an element in $A$ that is not in $A \cap B$ (but prove that!).
     </div>
     <div label="hint">
         If you get stuck, try working from both ends. Start from $A \cap B \ne A$ and move forward, but also work backward from the conclusion $A \not\subseteq B$, since you already know it is true (if not convice yourself with Venn-Diagrams!).
@@ -126,21 +126,35 @@ $$
     <div label="answer">
         $$
             \begin{aligned}
-                & A \cap B \ne A \\
-                \dot\implies & \exists x \left( (x \in A \land \lnot (x \in (A \cap B))) \right) && \text{See Hint 2} \\
-                \dot\iff & \exists x \left( (x \in A \land \lnot (x \in A \land x \in B)) \right) && \text{Def. $A \cap B$} \\
-                \dot\iff & \exists x \left( (x \in A \land (\lnot (x \in A) \lor \lnot (x \in B))) \right) && \text{De-Morgan's Rule} \\
-                \dot\iff & \exists x \left( (x \in A \land \lnot(x \in A)) \lor \exists x (x \in A \land \lnot (x \in B)) \right) && \text{Distributive Law} \\
-                \dot\iff & \exists x \left( \bot \lor \exists x (x \in A \land \lnot (x \in B)) \right) && F \land \lnot F \equiv \bot \\
-                \dot\iff & \exists x (x \in A \land \lnot (x \in B)) && \bot \lor F \equiv F \\
-                \dot\iff & \exists x (\lnot(\lnot(x \in A)) \land \lnot(x \in B)) && \text{Double Negation}^1 \\
-                \dot\iff & \exists x \lnot (\lnot (x \in A) \lor x \in B) && \text{De-Morgan's Rule} \\
-                \dot\iff & \exists x \lnot (x \in A \to x \in B) && \text{Def. $\to$} \\
-                \dot\iff & \lnot \left( \forall x (x \in A \to x \in B) \right) && \lnot (\forall x P(x)) \equiv \exists x (\lnot P(x)) \\
+                & \lnot (A \cap B = A) \\
+                \dot\iff & \lnot \left[ (A \cap B) \subseteq A \land A \subseteq (A \cap B) \right] && \text{Lemma 3.2} \\
+                \dot\iff & \lnot ((A \cap B) \subseteq A) \lor \lnot (A \subseteq (A \cap B)) && \text{De-Morgan's Rule} \\
+                \dot\iff & \lnot \top \lor \lnot (A \subseteq (A \cap B)) && \text{See previous exercise} \\
+                \dot\iff & \bot \lor \lnot (A \subseteq (A \cap B)) && \lnot \top \equiv \bot \\
+                \dot\iff & \lnot (A \subseteq (A \cap B)) && \bot \lor F \equiv F \\
+                \dot\iff & \lnot \forall x \left[ x \in A \to x \in (A \cap B) \right] && \text{Def. $A \subseteq B$} \\
+                \dot\iff & \exists x \; \lnot \left[ x \in A \to x \in (A \cap B) \right] && \lnot (\forall x P(x)) \equiv \exists x (\lnot P(x)) \\
+                \dot\iff & \exists x \; \lnot \left[ \lnot (x \in A) \lor (x \in (A \cap B)) \right] && \text{Def. $\to$} \\
+                \dot\iff & \exists x \left[ (x \in A) \land \lnot (x \in (A \cap B)) \right] && \text{De-Morgan's Rule/Double Negation} \\
+                \dot\iff & \exists x \left[ (x \in A) \land \lnot (x \in A \land x \in B) \right] && \text{Def. $A \cap B$} \\
+                \dot\iff & \exists x \left[ (x \in A) \land (\lnot (x \in A) \lor \lnot (x \in B))) \right] && \text{De-Morgan's Rule} \\
+                \dot\iff & \exists x \left[ ((x \in A) \land \lnot(x \in A)) \lor (x \in A \land \lnot (x \in B)) \right] && \text{Distributive Law} \\
+                \dot\iff & \exists x \left[ \bot \lor (x \in A \land \lnot (x \in B)) \right] && F \land \lnot F \equiv \bot \\
+                \dot\iff & \exists x \left[ (x \in A) \land \lnot (x \in B) \right] && \bot \lor F \equiv F \\
+                \dot\iff & \exists x \left[ \lnot(\lnot(x \in A)) \land \lnot(x \in B) \right] && \text{Double Negation}^1 \\
+                \dot\iff & \exists x \left[ \lnot (\lnot (x \in A) \lor x \in B) \right] && \text{De-Morgan's Rule} \\
+                \dot\iff & \exists x \left[ \lnot (x \in A \to x \in B) \right] && \text{Def. $\to$} \\
+                \dot\iff & \lnot \left[ \forall x (x \in A \to x \in B) \right] && \lnot (\forall x P(x)) \equiv \exists x (\lnot P(x)) \\
                 \dot\iff & \lnot (A \subseteq B) && \text{Def. $A \subseteq B$} \\
             \end{aligned}
         $$
         $^1$: Starting from there it is probably easier to work backwards, i.e. starting at $A \not\subseteq B$.
+    </div>
+    <div label="takeaway">
+        If you get stuck, try working from both ends. And it is always useful to understand why the statement is true (e.g. with Venn-Diagrams).
+    </div>
+    <div label="takeaway">
+        All steps actually hold in both direction; this means that $A \cap B = A \iff A \subseteq B$ (See Theorem 3.4/Consistency).
     </div>
 </Problem>
 
