@@ -63,7 +63,7 @@ $$
        & \quad \vert \; \text{"} \lnot \text{"} \\
 \\  
 \textit{FormulaToStatementOperator} & \Leftarrow \text{"} \equiv \text{"} \\
-        & \quad \vert \; \text{"} \models \text{"} \\
+       & \quad \vert \; \text{"} \models \text{"} \\
 \\
 \textit{StatementOperator} & \Leftarrow \text{"} \implies \text{"} \\
        & \quad \vert \; \text{"} \iff \text{"} \\
@@ -71,12 +71,13 @@ $$
        & \quad \vert \; \text{"or"} \\
 \\   
 \textit{Formula} & \Leftarrow \textit{Symbol} \\
-      &  \quad \vert \; \textit{Symbol } \textit{ LogicalOperator } \textit{ Symbol} \\
-      &  \quad \vert \; "("\textit{Formula } \textit{ LogicalOperator } \textit{ Formula}")" \\
-      &  \quad \vert \; \text{"} \top \text{"} \\
-      &  \quad \vert \; \text{"} \bot \text{"} \\
+       & \quad \vert \; \textit{Symbol } \textit{ LogicalOperator } \textit{ Symbol} \\
+       & \quad \vert \; "("\textit{Formula } \textit{ LogicalOperator } \textit{ Formula}")" \\
+       & \quad \vert \; \text{"} \top \text{"} \\
+       & \quad \vert \; \text{"} \bot \text{"} \\
 \\   
-\textit{Statement} & \Leftarrow \textit{Statement } \textit{ StatementOperator } \textit{ Statement} \\
+\textit{Statement} & \Leftarrow \textit{Symbol} \\
+       & \quad \vert \; \textit{Statement } \textit{ StatementOperator } \textit{ Statement} \\
        & \quad \vert \; \textit{Statement } \text{ "is false"} \\
        & \quad \vert \; \textit{Formula } \textit{ FormulaToStatementOperator } \textit{ Formula} \\
        & \quad \vert \; \text{"} \models \text{"} \textit{ Formula} \\
