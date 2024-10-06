@@ -67,9 +67,41 @@ As an exercise, you can also (easily) prove the above statement with an indirect
     </div>
 </Problem>
 
+## Proof by Case Distinction
+An example for a proof by case distinction are truth tables; to show that $F \equiv G$, we show that for all possible inputs, the output value of $F$ and $G$ are equivalent.
+
+<Problem title="Lemma 2.6" source="Script">
+    <div label="question">
+        Prove the following equivalence:
+        $$
+            A \to B \equiv \lnot B \to \lnot A
+        $$
+        Prove it using a case distinction.
+    </div>
+    <div label="hint">
+        Since the number of possible inputs is finite, we can show that for any input the equivalence holds.
+    </div>
+    <div label="hint">
+        Truth Tables!
+    </div>
+    <div label="answer">
+        |$A$|$B$|$A \to B$|$\lnot B \to \lnot A$|
+        |---|---|---|---|
+        |$0$|$0$|$1$|$1$|
+        |$0$|$1$|$1$|$1$|
+        |$1$|$0$|$0$|$0$|
+        |$1$|$1$|$1$|$1$|
+
+        Since both columns of the truth table are equivalent, it follows that $A \to B \equiv \lnot B \to \lnot A$
+    </div>
+</Problem>
+
 ## Indirect Proof of an Implication
 
-To show that $S \implies T$ holds, we show that $\text{not } T \implies \text{not } S$.
+To show that $S \implies T$ holds, we show that (correctness follows from the truth table from the previous exercise):
+$$
+    \text{not } T \implies \text{not } S
+$$
 
 <Problem title="Consistency 1" source="Theorem 3.4/Consistency.1">
     <div label="question">
@@ -157,7 +189,4 @@ This is a very simple proof pattern. You only have to find a counterexample to s
 
 ## Existence Proof
 A special type of an existence proof is the proof by Counterexample; to show that $F$ is not true, we show that "not $F$" is true for some input.
-
-## Proof by Case Distinction
-An example for a proof by case distinction are truth tables; to show that $F \equiv G$, we show that for all possible inputs, the output value of $F$ and $G$ are equivalent.
 
