@@ -3,7 +3,41 @@ import Problem from '@/components/problem';
 
 # Proof Patterns
 
+Note that this chapter introduces us to the important concept of a proof that we will need throughout the entire course, so pay attention! We will also take some first steps in proving something even more meaningful than statements about logic (though those were also meaningful :)).
+
+Where do proof patterns fit in our big picture of logic and mathematical statements? What is the reason for proof patterns?
+
+Often, we want to prove certain mathematical statements such as $S \implies T$. However, sometimes there is no obvious way to show for example in this case, that if $S$ is true, then $T$ is true. We want to make life easier by showing an equivalent statement that is 
+(not $T$) $\implies$ (not $S$).
+ However, it is not obvious that these two statements new statments are equivalent and it would actually be sufficient to prove the second implication. We need to prove this. A **proof pattern** is, therefore, just the way we choose to try to prove a certain mathematical statement. A proof pattern is called **sound** if we can actually prove our statement using it. Thus, in the sense of the equivalence above, the proof pattern would be **sound** if the equivalence does indeed hold. Obviously, we only want to use proof patterns that are sound. However, this soundness has to be proven first. To prove soundness, we can use propositional logic in easy cases.
+
+After we know that a proof pattern is sound, we can sort of $\emph{use}$ the proof pattern to really prove a meaningful statements.
+
+---
+
 See the definition of the proof patterns in the script (Chapter 2.6). Here are some exercises about proof patterns (and basic set theory).
+
+## Proving Soundness of a proof pattern
+
+<Problem title="Beautiful sound?" source="Tobias Steinbrecher">
+<div label="question">
+        We want to prove that $T$ is true. We choose a statement $S$ and a statement $R$ and show that $S \implies R$ is true. Then we show that $(\text{not } T) \implies (S \text{ or } R)$ is true.
+</div>
+<div label="answer">
+We will show that this proof pattern is **not sound** using propositional logic.
+Let $A$ be the propositional symbol which corresponds to the truth value of the mathematical statment $T$ and $B,C$ be the propositional symbols with which we *model* the mathematical statment $S$ and $R$ respectively. Now proving that $S \implies R$ is true, corresponds to the formula $B \to C$ being true and proving $(\text{not } T) \implies (S \text{ or } R)$ translates to the formula $\lnot A \to (B \lor C)$ being true.
+
+For our proof pattern to be sound we therefore need 
+
+$$
+(B \to C) \land (\lnot A \to (B \lor C)) \vDash A
+$$
+
+to hold.
+
+But now, we can apply our skills from propositional logic. We can either draw a truth table or see that this is not the case. Consider the assignment $A = 0$, $C = 1$ and $B$ to whatever we want. Then we obtain that the right-hand side is false, while the left-hand side is true (verify this as an exercise).
+</div>
+</Problem>
 
 
 ## Direct implication / Composition of Implications
@@ -270,8 +304,6 @@ A special type of an existence proof is the proof by Counterexample; to show tha
         $\text{not } S$ would imply that $T$ is true, which is a contradiction. Therefore, $S$ must be true.
     </div>
 </Problem>
-
-## Proving Soundness of a proof pattern
 
 
 
