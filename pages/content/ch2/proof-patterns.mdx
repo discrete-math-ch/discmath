@@ -7,7 +7,7 @@ Note that this chapter introduces us to the important concept of a proof that we
 
 Where do proof patterns fit in our big picture of logic and mathematical statements? What is the reason for proof patterns?
 
-Often, we want to prove certain mathematical statements such as $S \implies T$. However, sometimes there is no obvious way to show for example in this case, that if $S$ is true, then $T$ is true. We want to make life easier by showing an equivalent statement that is 
+Often, we want to prove certain mathematical statements such as $S \implies T$. However, sometimes there is no obvious way to show for example in this case, that if $S$ is true, then $T$ is true. We want to make life easier by showing an equivalent statement that is
 (not $T$) $\implies$ (not $S$).
  However, it is not obvious that these two statements are equivalent and it would actually be sufficient to prove the second implication. We need to prove this. A **proof pattern** is, therefore, just the way we choose to try to prove a certain mathematical statement. A proof pattern is called **sound** if we can actually prove our statement using it. Thus, in the sense of the equivalence above, the proof pattern would be **sound** if the equivalence does indeed hold. Obviously, we only want to use proof patterns that are sound. However, this soundness has to be proven first. To prove soundness, we can use propositional logic in easy cases.
 
@@ -27,7 +27,7 @@ See the definition of the proof patterns in the script (Chapter 2.6). Here are s
 We will show that this proof pattern is **not sound** using propositional logic.
 Let $A$ be the propositional symbol which corresponds to the truth value of the mathematical statment $T$ and $B,C$ be the propositional symbols with which we *model* the mathematical statment $S$ and $R$ respectively. Now proving that $S \implies R$ is true, corresponds to the formula $B \to C$ being true and proving $(\text{not } T) \implies (S \text{ or } R)$ translates to the formula $\lnot A \to (B \lor C)$ being true.
 
-For our proof pattern to be sound we therefore need 
+For our proof pattern to be sound we therefore need
 
 $$
 (B \to C) \land (\lnot A \to (B \lor C)) \vDash A
@@ -200,15 +200,15 @@ $$
         Let $a,b \in \mathbb{Z}$. If $a + b \geq 9$, then $a \geq 5$ or $b \geq 5$.
     </div>
     <div label="answer">
-       We will use an indirect proof here. We have 
+       We will use an indirect proof here. We have
        $$
        S:  \text{"$a+b \geq 9$"}
        $$
-    and 
+    and
     $$
     T: \text{"$a \geq 5$ or $b \geq 5$"}
     $$
-    Assume that $T$ is false, this means that we have $b \leq 4$ and $a \leq 4$. Adding these inequalities we obtain $a + b \leq 8$, which is exactly the negation of $S$ (thus $S$ is false). Thereby, by the proof pattern of an indirect proof, we can conclude that $S \implies T$ is true, which is what we wanted to prove. 
+    Assume that $T$ is false, this means that we have $b \leq 4$ and $a \leq 4$. Adding these inequalities we obtain $a + b \leq 8$, which is exactly the negation of $S$ (thus $S$ is false). Thereby, by the proof pattern of an indirect proof, we can conclude that $S \implies T$ is true, which is what we wanted to prove.
     </div>
 </Problem>
 
@@ -275,7 +275,7 @@ A special type of an existence proof is the proof by Counterexample; to show tha
     <div label="answer">
         Statement $T$:
         $$
-            x > 0 \land y > 0 \land (x = 0 \lor y = 0) 
+            x > 0 \land y > 0 \land (x = 0 \lor y = 0)
         $$
         Statement $T$ is obviously false:
         $$
@@ -292,18 +292,15 @@ A special type of an existence proof is the proof by Counterexample; to show tha
 
         Assume that $S$ is false, i.e. $x > 0 \land y > 0 \land \sqrt{x + y} = \sqrt{x} + \sqrt{y}$ holds. Then:
         $$
-            \begin{aligned}
-                &&x > 0 \land y > 0 \land \sqrt{x + y} &= \sqrt{x} + \sqrt{y} \\
-                &\dot\implies& x > 0 \land y > 0 \land x + y &= x + 2\sqrt{xy} + y \\
-                &\dot\implies& x > 0 \land y > 0 \land 0 &= 2\sqrt{xy} \\
-                &\dot\implies& x > 0 \land y > 0 \land 0 &= \sqrt{xy} \\
-                &\dot\implies& x > 0 \land y > 0 \land 0 &= xy \\
-                &\dot\implies& x > 0 \land y > 0 \land (x = 0 &\lor y = 0)
-            \end{aligned}
+            \begin{alignat*}{4}
+                &&x > 0 &\land y > 0 \land & \sqrt{x + y} &= \sqrt{x} + \sqrt{y} \\
+                &\dot\implies& x > 0 &\land y > 0 \land & x + y &= x + 2\sqrt{xy} + y \\
+                &\dot\implies& x > 0 &\land y > 0 \land & 0 &= 2\sqrt{xy} \\
+                &\dot\implies& x > 0 &\land y > 0 \land & 0 &= \sqrt{xy} \\
+                &\dot\implies& x > 0 &\land y > 0 \land & 0 &= xy \\
+                &\dot\implies& x > 0 &\land y > 0 \land & (x = 0 &\lor y = 0)
+            \end{alignat*}
         $$
         $\text{not } S$ would imply that $T$ is true, which is a contradiction. Therefore, $S$ must be true.
     </div>
 </Problem>
-
-
-
