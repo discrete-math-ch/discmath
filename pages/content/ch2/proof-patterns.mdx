@@ -5,6 +5,7 @@ import Problem from '@/components/problem';
 
 See the definition of the proof patterns in the script (Chapter 2.6). Here are some exercises about proof patterns (and basic set theory).
 
+
 ## Direct implication / Composition of Implications
 
 <Problem title="The Subset-Relation is transitive" source="Lemma 3.3">
@@ -66,6 +67,8 @@ As an exercise, you can also (easily) prove the above statement with an indirect
         To show $A \subseteq B$, it is sometimes easier to show that any fixed $x \in A$ is also in $B$!
     </div>
 </Problem>
+
+
 
 ## Proof by Case Distinction
 An example for a proof by case distinction are truth tables; to show that $F \equiv G$, we show that for all possible inputs, the output value of $F$ and $G$ are equivalent.
@@ -158,6 +161,24 @@ $$
     </div>
 </Problem>
 
+<Problem title="Easy Arithmetic?" source="Tobias Steinbrecher">
+    <div label="question">
+        Let $a,b \in \mathbb{Z}$. If $a + b \geq 9$, then $a \geq 5$ or $b \geq 5$.
+    </div>
+    <div label="answer">
+       We will use an indirect proof here. We have 
+       $$
+       S:  \text{"$a+b \geq 9$"}
+       $$
+    and 
+    $$
+    T: \text{"$a \geq 5$ or $b \geq 5$"}
+    $$
+    Assume that $T$ is false, this means that we have $b \leq 4$ and $a \leq 4$. Adding these inequalities we obtain $a + b \leq 8$, which is exactly the negation of $S$ (thus $S$ is false). Thereby, by the proof pattern of an indirect proof, we can conclude that $S \implies T$ is true, which is what we wanted to prove. 
+    </div>
+</Problem>
+
+
 ## Proof by Counterexample
 This is a very simple proof pattern. You only have to find a counterexample to show that a statement is false.
 
@@ -249,5 +270,8 @@ A special type of an existence proof is the proof by Counterexample; to show tha
         $\text{not } S$ would imply that $T$ is true, which is a contradiction. Therefore, $S$ must be true.
     </div>
 </Problem>
+
+## Proving Soundness of a proof pattern
+
 
 
