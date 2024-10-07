@@ -13,7 +13,7 @@ x \in A \\
 x \notin A \iff \neg (x \in A)
 $$
 
-We can write a set by enumerating its elements:
+Some sets can be written by enumerating its elements:
 $$
 \{ A, B, C \}
 $$
@@ -24,27 +24,28 @@ $$
     $$ \{ A, B, C \} = \{ A, C, B \} = \{ A, B, C, A \} $$
 </Callout>
 
-The membership predicate has the following properties (simplified version of the *ZF axioms*).
-Note that these
-axioms define the existence of special sets while also introducing some shorthand notation.
+In the following the define some shorthand notation and some properties
+of the membership predicate. If you want a more formal treatment of set theory
+have a look at the
+[Zermelo-Fraenkel set theory](https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory).
 
 <Callout type='axiom'>
 1. **Empty set**: There exists an empty set, usually denoted as $\emptyset$.
     $$
     \forall x \neg (x \in \emptyset)
     $$
-2. **Equality**:
-    $$
-    \begin{align*}
-    A = B &\iff \forall x (x \in A \leftrightarrow x \in B) \\
-            &\iff A \subseteq B \land B \subseteq A
-    \end{align*}
-    $$
 3. **Subset**:
     $$
     \begin{align*}
     A \subseteq B &\iff \forall x (x \in A \to x \in B) \\
     A \subset B &\iff A \subseteq B \land A \neq B \\
+    \end{align*}
+    $$
+2. **Equality**:
+    $$
+    \begin{align*}
+    A = B &\iff \forall x (x \in A \leftrightarrow x \in B) \\
+            &\iff A \subseteq B \land B \subseteq A
     \end{align*}
     $$
 3. **Axiom of pairing**: For any sets $A, B$ there exists a set $\{A, B\}$.
@@ -60,8 +61,6 @@ axioms define the existence of special sets while also introducing some shorthan
     $$
     x \in A \setminus B \iff x \in A \land x \notin B
     $$
-5. **Infinity**: There exists a non-finite set of natural numbers $\mathbb{N}$ as defined in
-chapter 3.2.7 of the script.
 6. **Filter**: For any predicate $P$ and set $A$ there exists a set containing all
 the elements of $A$ for which $P$ holds. In set notation:
     $$
@@ -73,8 +72,19 @@ the elements of $A$ for which $P$ holds. In set notation:
     $$
 </Callout>
 
-<Callout type="info" emoji="💡">
-  The existence of a singleton set $\{x\}$ is a direct consequence of the axiom of pairing.
-</Callout>
+<Problem title="Existance of Singletons" source="Max Obreiter">
+      <div label="question">
+        Prove that for any set $A$ there exists a set $\{ A \}$ containing only $A$.
+      </div>
+      <div label="hint">Make use of the Axiom of Pairing.</div>
+      <div label="answer">
+        The Axiom of Pairing doesn't state that $A$ and $B$ have to be different.
+        We can use the Axiom of Pairing to create a set containing $A$ and $A$:
+        $$
+        \{ A, A \}
+        $$
+        By the definition of equality, we can see that this set is equal to $\{ A \}$.
+      </div>
+</Problem>
 
  {/* TODO exercises */}
