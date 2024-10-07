@@ -204,3 +204,50 @@ This is a very simple proof pattern. You only have to find a counterexample to s
 ## Existence Proof
 A special type of an existence proof is the proof by Counterexample; to show that $F$ is not true, we show that "not $F$" is true for some input.
 
+## Proof by Contradiction
+
+<Problem title="Problem 1" source="Yannick Funke">
+    <div label="question">
+        Prove the following statement:
+        $$
+            x > 0 \land y > 0 \Longrightarrow \sqrt{x + y} \ne \sqrt{x} + \sqrt{y}
+        $$
+        Prove it using a proof by contradiction.
+    </div>
+    <div label="hint">
+        Try to prove $x > 0 \land y > 0 \Longrightarrow \sqrt{x + y} = \sqrt{x} + \sqrt{y}$ and show that this leads to a contradiction; then choose $T$.
+    </div>
+    <div label="answer">
+        Statement $T$:
+        $$
+            x > 0 \land y > 0 \land (x = 0 \lor y = 0) 
+        $$
+        Statement $T$ is obviously false:
+        $$
+            \begin{aligned}
+                & x > 0 \land y > 0 \land (x = 0 \lor y = 0) \\
+                \dot\iff & \left[ (x > 0 \land x = 0) \lor (x > 0 \land y = 0) \right] \land (y > 0) && \text{Distributive Law} \\
+                \dot\iff & \left[ \bot \lor (x > 0 \land y = 0) \right] \land (y > 0) && x > 0 \land x = 0 \equiv \bot \\
+                \dot\iff & (x > 0 \land y = 0) \land (y > 0) && \bot \lor F \equiv F \\
+                \dot\iff & x > 0 \land (y = 0 \land y > 0) && \text{Associative Law} \\
+                \dot\iff & x > 0 \land \bot && y = 0 \land y > 0 \equiv \bot \\
+                \dot\iff & \bot && F \land \bot \equiv \bot
+            \end{aligned}
+        $$
+
+        Assume that $S$ is false, i.e. $x > 0 \land y > 0 \land \sqrt{x + y} = \sqrt{x} + \sqrt{y}$ holds. Then:
+        $$
+            \begin{aligned}
+                &&x > 0 \land y > 0 \land \sqrt{x + y} &= \sqrt{x} + \sqrt{y} \\
+                &\dot\implies& x > 0 \land y > 0 \land x + y &= x + 2\sqrt{xy} + y \\
+                &\dot\implies& x > 0 \land y > 0 \land 0 &= 2\sqrt{xy} \\
+                &\dot\implies& x > 0 \land y > 0 \land 0 &= \sqrt{xy} \\
+                &\dot\implies& x > 0 \land y > 0 \land 0 &= xy \\
+                &\dot\implies& x > 0 \land y > 0 \land (x = 0 &\lor y = 0)
+            \end{aligned}
+        $$
+        $\text{not } S$ would imply that $T$ is true, which is a contradiction. Therefore, $S$ must be true.
+    </div>
+</Problem>
+
+
