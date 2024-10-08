@@ -1,0 +1,312 @@
+import { Callout, Tabs } from 'nextra/components'
+import Problem from '@/components/problem';
+
+# Proof Patterns
+
+Note that this chapter introduces us to the important concept of a proof that we will need throughout the entire course, so pay attention! We will also take some first steps in proving something even more meaningful than statements about logic (though those were also meaningful :)).
+
+Where do proof patterns fit in our big picture of logic and mathematical statements? What is the reason for proof patterns?
+
+Often, we want to prove certain mathematical statements such as $S \implies T$. However, sometimes there is no obvious way to show for example in this case, that if $S$ is true, then $T$ is true. We want to make life easier by showing an equivalent statement that is
+(not $T$) $\implies$ (not $S$).
+ However, it is not obvious that these two statements are equivalent and it would actually be sufficient to prove the second implication. We need to prove this. A **proof pattern** is, therefore, just the way we choose to try to prove a certain mathematical statement. A proof pattern is called **sound** if we can actually prove our statement using it. Thus, in the sense of the equivalence above, the proof pattern would be **sound** if the equivalence does indeed hold. Obviously, we only want to use proof patterns that are sound. However, this soundness has to be proven first. To prove soundness, we can use propositional logic in easy cases.
+
+After we know that a proof pattern is sound, we can sort of $\emph{use}$ the proof pattern to really prove a meaningful statements.
+
+---
+
+See the definition of the proof patterns in the script (Chapter 2.6). Here are some exercises about proof patterns (and basic set theory).
+
+## Proving Soundness of a proof pattern
+
+<Problem title="Beautiful sound?" source="Tobias Steinbrecher">
+<div label="question">
+        We want to prove that $T$ is true. We choose a statement $S$ and a statement $R$ and show that $S \implies R$ is true. Then we show that $(\text{not } T) \implies (S \text{ or } R)$ is true.
+</div>
+<div label="answer">
+We will show that this proof pattern is **not sound** using propositional logic.
+Let $A$ be the propositional symbol which corresponds to the truth value of the mathematical statment $T$ and $B,C$ be the propositional symbols with which we *model* the mathematical statment $S$ and $R$ respectively. Now proving that $S \implies R$ is true, corresponds to the formula $B \to C$ being true and proving $(\text{not } T) \implies (S \text{ or } R)$ translates to the formula $\lnot A \to (B \lor C)$ being true.
+
+For our proof pattern to be sound we therefore need
+
+$$
+(B \to C) \land (\lnot A \to (B \lor C)) \vDash A
+$$
+
+to hold.
+
+But now, we can apply our skills from propositional logic. We can either draw a truth table or see that this is not the case. Consider the assignment $A = 0$, $C = 1$ and $B$ to whatever we want. Then we obtain that the right-hand side is false, while the left-hand side is true (verify this as an exercise).
+</div>
+</Problem>
+
+
+## Direct implication / Composition of Implications
+
+<Problem title="The Subset-Relation is transitive" source="Lemma 3.3">
+    <div label="question">
+        Prove that for any sets $A$, $B$ and $C$:
+        $$
+            A \subseteq B \land B \subseteq C \Longrightarrow A \subseteq C
+        $$
+        Prove it using a composition of implications (or a direct proof of an implication).
+    </div>
+    <div label="hint">
+        Recall the definition of $A \subseteq B$:
+        $$
+            A \subseteq B \overset{def.}{\Longleftrightarrow} \forall x (x \in A \to x \in B)
+        $$
+    </div>
+    <div label="hint">
+        The following equivalence (Chapter 2.4.8) _may_ be useful:
+        $$
+            \left( \forall x P(x) \right) \land \left( \forall x Q(x) \right) \equiv \forall x \left( P(x) \land Q(x) \right)
+        $$
+    </div>
+    <div label="answer">
+        Let $A, B$ be arbitrary but fixed sets:
+        $$
+            \begin{aligned}
+                & A \subseteq B \land B \subseteq C \\
+                \dot\iff & \left( \forall x (x \in A \to x \in B) \right) \land \left( \forall x (x \in B \to x \in C) \right) && \text{Def. $A \subseteq B$} \\
+                \dot\iff & \forall x \left( (x \in A \to x \in B) \land (x \in B \to x \in C) \right) && \left( \forall x P(x) \right) \land \left( \forall x Q(x) \right) \equiv \forall x \left( P(x) \land Q(x) \right) \\
+                \dot\implies & \forall x (x \in A \to x \in C) && \text{Example 2.13} \\
+                \dot\iff & A \subseteq C && \text{Def. $A \subseteq B$}
+            \end{aligned}
+        $$
+    </div>
+</Problem>
+
+As an exercise, you can also (easily) prove the above statement with an indirect proof.
+
+<Problem title="Simple Fact about Subsets/Intersections" source="Max Obreiter">
+    <div label="question">
+        Using composition of implications, prove the following fact:
+        $$
+            A \cap B \subseteq A
+        $$
+    </div>
+    <div label="hint">
+        To prove that $A \cap B$ is a subset of $A$, show that any (fixed) element $x$ in $A \cap B$ is also in $A$.
+    </div>
+    <div label="answer">
+        Let $x \in (A \cap B)$ be arbitrary but fixed:
+        $$
+            \begin{aligned}
+                & x \in (A \cap B) \\
+                \dot\iff & x \in A \land x \in B && \text{Def. $A \cap B$} \\
+                \dot\implies & x \in A && A \land B \models A
+            \end{aligned}
+        $$
+    </div>
+    <div label="takeaway">
+        To show $A \subseteq B$, it is sometimes easier to show that any fixed $x \in A$ is also in $B$!
+    </div>
+</Problem>
+
+
+
+## Proof by Case Distinction
+An example for a proof by case distinction are truth tables; to show that $F \equiv G$, we show that for all possible inputs, the output value of $F$ and $G$ are equivalent.
+
+<Problem title="Lemma 2.6" source="Script">
+    <div label="question">
+        Prove the following equivalence:
+        $$
+            A \to B \equiv \lnot B \to \lnot A
+        $$
+        Prove it using a case distinction.
+    </div>
+    <div label="hint">
+        Since the number of possible inputs is finite, we can show that for any input the equivalence holds.
+    </div>
+    <div label="hint">
+        Truth Tables!
+    </div>
+    <div label="answer">
+        |$A$|$B$|$A \to B$|$\lnot B \to \lnot A$|
+        |---|---|---|---|
+        |$0$|$0$|$1$|$1$|
+        |$0$|$1$|$1$|$1$|
+        |$1$|$0$|$0$|$0$|
+        |$1$|$1$|$1$|$1$|
+
+        Since both columns of the truth table are equivalent, it follows that $A \to B \equiv \lnot B \to \lnot A$
+    </div>
+</Problem>
+
+## Indirect Proof of an Implication
+
+To show that $S \implies T$ holds, we show that (correctness follows from the truth table from the previous exercise):
+$$
+    \text{not } T \implies \text{not } S
+$$
+
+<Problem title="Consistency 1" source="Theorem 3.4/Consistency.1">
+    <div label="question">
+        Prove that for any sets $A$ and $B$:
+        $$
+            A \subseteq B \Longrightarrow A \cap B = A
+        $$
+        Prove it using an indirect proof.
+    </div>
+    <div label="hint">
+        To prove it indirectly, you have to prove:
+        $$
+            A \cap B \ne A \Longrightarrow A \not\subseteq B
+        $$
+    </div>
+    <div label="hint">
+        Use the fact that $A \cap B \subseteq A$ is always true/a tautology (see the previous exercise). This (informally) means that $A \cap B \ne A$ implies that there is an element in $A$ that is not in $A \cap B$ (but prove that!).
+    </div>
+    <div label="hint">
+        If you get stuck, try working from both ends. Start from $A \cap B \ne A$ and move forward, but also work backward from the conclusion $A \not\subseteq B$, since you already know it is true (if not convice yourself with Venn-Diagrams!).
+    </div>
+    <div label="answer">
+        Let $A, B$ be arbitrary but fixed sets:
+        $$
+            \begin{aligned}
+                & \lnot (A \cap B = A) \\
+                \dot\iff & \lnot \left[ (A \cap B) \subseteq A \land A \subseteq (A \cap B) \right] && \text{Lemma 3.2} \\
+                \dot\iff & \lnot ((A \cap B) \subseteq A) \lor \lnot (A \subseteq (A \cap B)) && \text{De-Morgan's Rule} \\
+                \dot\iff & \lnot \top \lor \lnot (A \subseteq (A \cap B)) && \text{See previous exercise} \\
+                \dot\iff & \bot \lor \lnot (A \subseteq (A \cap B)) && \lnot \top \equiv \bot \\
+                \dot\iff & \lnot (A \subseteq (A \cap B)) && \bot \lor F \equiv F \\
+                \dot\iff & \lnot \forall x \left[ x \in A \to x \in (A \cap B) \right] && \text{Def. $A \subseteq B$} \\
+                \dot\iff & \exists x \; \lnot \left[ x \in A \to x \in (A \cap B) \right] && \lnot (\forall x P(x)) \equiv \exists x (\lnot P(x)) \\
+                \dot\iff & \exists x \; \lnot \left[ \lnot (x \in A) \lor (x \in (A \cap B)) \right] && \text{Def. $\to$} \\
+                \dot\iff & \exists x \left[ (x \in A) \land \lnot (x \in (A \cap B)) \right] && \text{De-Morgan's Rule/Double Negation} \\
+                \dot\iff & \exists x \left[ (x \in A) \land \lnot (x \in A \land x \in B) \right] && \text{Def. $A \cap B$} \\
+                \dot\iff & \exists x \left[ (x \in A) \land (\lnot (x \in A) \lor \lnot (x \in B))) \right] && \text{De-Morgan's Rule} \\
+                \dot\iff & \exists x \left[ ((x \in A) \land \lnot(x \in A)) \lor (x \in A \land \lnot (x \in B)) \right] && \text{Distributive Law} \\
+                \dot\iff & \exists x \left[ \bot \lor (x \in A \land \lnot (x \in B)) \right] && F \land \lnot F \equiv \bot \\
+                \dot\iff & \exists x \left[ (x \in A) \land \lnot (x \in B) \right] && \bot \lor F \equiv F \\
+                \dot\iff & \exists x \left[ \lnot(\lnot(x \in A)) \land \lnot(x \in B) \right] && \text{Double Negation}^1 \\
+                \dot\iff & \exists x \left[ \lnot (\lnot (x \in A) \lor x \in B) \right] && \text{De-Morgan's Rule} \\
+                \dot\iff & \exists x \left[ \lnot (x \in A \to x \in B) \right] && \text{Def. $\to$} \\
+                \dot\iff & \lnot \left[ \forall x (x \in A \to x \in B) \right] && \lnot (\forall x P(x)) \equiv \exists x (\lnot P(x)) \\
+                \dot\iff & \lnot (A \subseteq B) && \text{Def. $A \subseteq B$} \\
+            \end{aligned}
+        $$
+        $^1$: Starting from there it is probably easier to work backwards, i.e. starting at $A \not\subseteq B$.
+    </div>
+    <div label="takeaway">
+        If you get stuck, try working from both ends. And it is always useful to understand why the statement is true (e.g. with Venn-Diagrams).
+    </div>
+    <div label="takeaway">
+        All steps actually hold in both direction; this means that $A \cap B = A \iff A \subseteq B$ (See Theorem 3.4/Consistency).
+    </div>
+</Problem>
+
+<Problem title="Easy Arithmetic?" source="Tobias Steinbrecher">
+    <div label="question">
+        Let $a,b \in \mathbb{Z}$. If $a + b \geq 9$, then $a \geq 5$ or $b \geq 5$.
+    </div>
+    <div label="answer">
+        Let $a,b \in \mathbb{Z}$ be arbitrary but fixed.
+
+       We will use an indirect proof here. We have
+       $$
+       S:  \text{"$a+b \geq 9$"}
+       $$
+    and
+    $$
+    T: \text{"$a \geq 5$ or $b \geq 5$"}
+    $$
+    Assume that $T$ is false, this means that we have $b \leq 4$ and $a \leq 4$. Adding these inequalities we obtain $a + b \leq 8$, which is exactly the negation of $S$ (thus $S$ is false). Thereby, by the proof pattern of an indirect proof, we can conclude that $S \implies T$ is true, which is what we wanted to prove.
+    </div>
+</Problem>
+
+
+## Proof by Counterexample
+This is a very simple proof pattern. You only have to find a counterexample to show that a statement is false.
+
+<Problem title="Proof by Counterexample: Example" source="Lemma 2.4 reversed">
+    <div label="question">
+        Show that the following implication ***does not*** hold for all formulas $F, G$:
+        $$
+            (F\text{ is valid} \Longrightarrow G\text{ is valid}) \Longrightarrow (F \models G)
+        $$
+    </div>
+    <div label="hint">
+        Find a counterexample, i.e. find formulas $F, G$, such that:
+        $$
+            F\text{ is valid} \Longrightarrow G\text{ is valid}
+        $$
+        but $F \not\models G$.
+    </div>
+    <div label="hint">
+        If $G$ is valid, then $F \models G$ holds for all $F$ (that's also why we write $\models G$ if $G$ is a tautology).
+    </div>
+    <div label="hint">
+        So we need to find two formulas $F, G$ which are not tautologies, but $F \not\models G$ ...
+    </div>
+    <div label="answer">
+        There are many counterexamples, one of them is:
+        $$
+            F = A, G = A \land B
+        $$
+        ---
+
+        Both formulas are not tautologies, but $F \models G$ does not hold:
+
+        |$A$|$B$|$A$|$A \land B$|
+        |---|---|---|---|
+        |$0$|$0$|$0$|$0$|
+        |$0$|$1$|$0$|$0$|
+        |$1$|$0$|$1$|$0$|
+        |$1$|$1$|$1$|$1$|
+
+        The third row shows that $F \models G$ does not hold.
+    </div>
+</Problem>
+
+## Existence Proof
+A special type of an existence proof is the proof by Counterexample; to show that $F$ is not true, we show that "not $F$" is true for some input.
+
+## Proof by Contradiction
+
+<Problem title="Problem 1" source="Yannick Funke">
+    <div label="question">
+        Prove the following statement:
+        $$
+            x > 0 \land y > 0 \Longrightarrow \sqrt{x + y} \ne \sqrt{x} + \sqrt{y}
+        $$
+        Prove it using a proof by contradiction.
+    </div>
+    <div label="hint">
+        Try to prove $x > 0 \land y > 0 \Longrightarrow \sqrt{x + y} = \sqrt{x} + \sqrt{y}$ and show that this leads to a contradiction; then choose $T$.
+    </div>
+    <div label="answer">
+        Let $x, y \in \mathbb{R}$ be arbitrary but fixed.
+
+        Statement $T$:
+        $$
+            x > 0 \land y > 0 \land (x = 0 \lor y = 0)
+        $$
+        Statement $T$ is obviously false:
+        $$
+            \begin{aligned}
+                & x > 0 \land y > 0 \land (x = 0 \lor y = 0) \\
+                \dot\iff & \left[ (x > 0 \land x = 0) \lor (x > 0 \land y = 0) \right] \land (y > 0) && \text{Distributive Law} \\
+                \dot\iff & \left[ \bot \lor (x > 0 \land y = 0) \right] \land (y > 0) && x > 0 \land x = 0 \equiv \bot \\
+                \dot\iff & (x > 0 \land y = 0) \land (y > 0) && \bot \lor F \equiv F \\
+                \dot\iff & x > 0 \land (y = 0 \land y > 0) && \text{Associative Law} \\
+                \dot\iff & x > 0 \land \bot && y = 0 \land y > 0 \equiv \bot \\
+                \dot\iff & \bot && F \land \bot \equiv \bot
+            \end{aligned}
+        $$
+
+        Assume that $S$ is false, i.e. $x > 0 \land y > 0 \land \sqrt{x + y} = \sqrt{x} + \sqrt{y}$ holds. Then:
+        $$
+            \begin{alignat*}{4}
+                &&x > 0 &\land y > 0 \land & \sqrt{x + y} &= \sqrt{x} + \sqrt{y} \\
+                &\dot\implies& x > 0 &\land y > 0 \land & x + y &= x + 2\sqrt{xy} + y \\
+                &\dot\implies& x > 0 &\land y > 0 \land & 0 &= 2\sqrt{xy} \\
+                &\dot\implies& x > 0 &\land y > 0 \land & 0 &= \sqrt{xy} \\
+                &\dot\implies& x > 0 &\land y > 0 \land & 0 &= xy \\
+                &\dot\implies& x > 0 &\land y > 0 \land & (x = 0 &\lor y = 0)
+            \end{alignat*}
+        $$
+        $\text{not } S$ would imply that $T$ is true, which is a contradiction. Therefore, $S$ must be true.
+    </div>
+</Problem>
