@@ -1,12 +1,13 @@
 {
-    "index": { "title": "General Information",
-    "theme": {
-        "typesetting": "article"
-    }},
+    "index": {
+        "title": "General Information",
+        "theme": {
+            "typesetting": "article"
+        }
+    },
     "ch2": "2: Introduction to Logic",
-    "ch3": "3: Sets and Functions",
+    "ch3": "3: Set Theory",
     "ch4": "4: Number Theory",
     "ch5": "5: Algebra",
     "ch6": "6: Logic"
-
 }

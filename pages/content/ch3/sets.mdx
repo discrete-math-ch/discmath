@@ -1,0 +1,90 @@
+import { Callout, Tabs} from 'nextra/components'
+import Problem from '@/components/problem'
+
+# The most basic object
+
+In mathematics a set constitutes the most basic object. We define
+a mathematical object by the properties of the operations we can perform on it.
+
+In the case of sets, we only have a single operation: the membership predicate taking two
+sets and mapping them to a truth value. In infix notation:
+$$
+x \in A \\
+x \notin A \iff \neg (x \in A)
+$$
+
+Finite sets can be written by enumerating their elements:
+$$
+\{ A, B, C \}
+$$
+
+<Callout type="warning" emoji="💡">
+  When enumerating sets, the order of elements does not matter. Elements
+  can be repeated without an effect:
+    $$ \{ A, B, C \} = \{ A, C, B \} = \{ A, B, C, A \} $$
+</Callout>
+
+In the following the define some shorthand notation and some properties
+of the membership predicate. If you want a more formal treatment of set theory
+have a look at the
+[Zermelo-Fraenkel set theory](https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory).
+
+<Callout type='axiom'>
+1. **Empty set**: There exists an empty set, usually denoted as $\emptyset$.
+    $$
+    \forall x \neg (x \in \emptyset)
+    $$
+3. **Subset**:
+    $$
+    \begin{align*}
+    A \subseteq B &\iff \forall x (x \in A \to x \in B) \\
+    A \subset B &\iff A \subseteq B \land A \neq B \\
+    \end{align*}
+    $$
+2. **Equality**:
+    $$
+    \begin{align*}
+    A = B &\iff \forall x (x \in A \leftrightarrow x \in B) \\
+            &\iff A \subseteq B \land B \subseteq A
+    \end{align*}
+    $$
+3. **Axiom of pairing**: For any sets $A, B$ there exists a set $\{A, B\}$.
+4. **Union**: For any sets $A, B$ there exists a set $A \cup B$. Defined as:
+    $$
+    x \in A \cup B \iff x \in A \lor x \in B
+    $$
+5. **Intersection**: For any sets $A, B$ there exists a set $A \cap B$. Defined as:
+    $$
+    x \in A \cap B \iff x \in A \land x \in B
+    $$
+6. **Difference**: For any sets $A, B$ there exists a set $A \setminus B$. Defined as:
+    $$
+    x \in A \setminus B \iff x \in A \land x \notin B
+    $$
+6. **Filter**: For any predicate $P$ and set $A$ there exists a set containing all
+the elements of $A$ for which $P$ holds. In set notation:
+    $$
+    \{ x \in A \mid P(x) \}
+    $$
+7.  **Power set**: For any set $A$ there exists a set $\mathcal{P}(A)$ containing all subsets of $A$.
+    $$
+    x \in \mathcal{P}(A) \iff x \subseteq A
+    $$
+</Callout>
+
+<Problem title="Existance of Singletons" source="Max Obreiter">
+      <div label="question">
+        Prove that for any set $A$ there exists a set $\{ A \}$ containing only $A$.
+      </div>
+      <div label="hint">Make use of the Axiom of Pairing.</div>
+      <div label="answer">
+        The Axiom of Pairing doesn't state that $A$ and $B$ have to be different.
+        We can use the Axiom of Pairing to create a set containing $A$ and $A$:
+        $$
+        \{ A, A \}
+        $$
+        By the definition of equality, we can see that this set is equal to $\{ A \}$.
+      </div>
+</Problem>
+
+ {/* TODO exercises */}
