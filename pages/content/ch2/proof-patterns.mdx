@@ -265,6 +265,13 @@ A special type of an existence proof is the proof by Counterexample; to show tha
 
 ## Proof by Contradiction
 
+The proof pattern of a proof by contradiction might be a bit confusing when considering it exactly as stated in the script (we want to prove $S$):
+
+1. Find a suitable statement $T$ and prove that $T$ is false.
+2. Assume that $S$ is false and show from this assumption that $T$ is true.
+
+When doing a real proof, we often don't know what our contradiction statement $T$ will be initially. We have some statement $S$, assume it is false, and then show that some incorrect statement follows. Usually, we continue until we have shown that something is *obviously* wrong - such as a statement like "$a = b$ and $a \neq b$". To relate this back to the proof pattern above, this incorrect statement at the end could now be called the statement $T$. We could now pretend that we found this statement initially, but this is rarely the case.
+
 <Problem title="Problem 1" source="Yannick Funke">
     <div label="question">
         Prove the following statement:
