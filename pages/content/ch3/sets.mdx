@@ -1,7 +1,9 @@
 import { Callout, Tabs} from 'nextra/components'
 import Problem from '@/components/problem'
 
-# The most basic object
+# Sets
+
+## Theory
 
 In mathematics a set constitutes the most basic object. We define
 a mathematical object by the properties of the operations we can perform on it.
@@ -9,7 +11,10 @@ a mathematical object by the properties of the operations we can perform on it.
 In the case of sets, we only have a single operation: the membership predicate taking two
 sets and mapping them to a truth value. In infix notation:
 $$
-x \in A \\
+x \in A
+$$
+and the negation
+$$
 x \notin A \iff \neg (x \in A)
 $$
 
@@ -22,7 +27,10 @@ $$
   When enumerating sets, the order of elements does not matter. Elements
   can be repeated without an effect:
     $$ \{ A, B, C \} = \{ A, C, B \} = \{ A, B, C, A \} $$
+    Additionally, a set cannot contain an element twice, i.e. there is no quantity property or something similar. Only the membership predicate.
 </Callout>
+
+### Notation
 
 In the following the define some shorthand notation and some properties
 of the membership predicate. If you want a more formal treatment of set theory
@@ -72,7 +80,7 @@ the elements of $A$ for which $P$ holds. In set notation:
     $$
 </Callout>
 
-<Problem title="Existance of Singletons" source="Max Obreiter">
+<Problem title="Existence of Singletons" source="Max Obreiter">
       <div label="question">
         Prove that for any set $A$ there exists a set $\{ A \}$ containing only $A$.
       </div>
@@ -86,5 +94,38 @@ the elements of $A$ for which $P$ holds. In set notation:
         By the definition of equality, we can see that this set is equal to $\{ A \}$.
       </div>
 </Problem>
+
+
+## Common exercise types
+
+When taking a look at old exams, you will see that set theory is a popular topic when it comes to the first task. There are some common types of quick questions about set theory. These mostly test your understanding of set operations and membership and subset predicates. Not only for the exam, but also for the later chapters, it is super important to have a deep understanding of these concepts. 
+
+### Count number of elements
+
+<Callout type="axiom"> 
+In these types of exercises, you will be given some finite set and have to determine it's cardinality. It is useful to have the following properties in mind (including the intuition why these are true):
+
+1. $|A \times B| = |A| \cdot |B|$
+2. $\mathcal{P}(A) = 2^{|A|}$
+
+</Callout>
+
+How many elements does $\{\}
+
+<details>
+<summary>
+Solution
+</summary>
+True, see **Lemma 2.2** in script.
+</details>
+
+### List each element once
+
+
+### Find sets such that...
+
+
+
+
 
  {/* TODO exercises */}
