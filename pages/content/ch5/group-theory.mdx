@@ -26,3 +26,30 @@ An interesting quesiton
 
 ## Digression 2: Finite abelian groups
 
+
+# Homomorphisms
+
+## Isomorphisms
+
+
+
+
+<Problem title="Matrices and unit circle" source="Tobias Steinbrecher">
+<div label="question">
+Find an isomorphism between $SO(2)$ and 
+</div>
+<div label="answer">
+We will show that this proof pattern is **not sound** using propositional logic.
+Let $A$ be the propositional symbol which corresponds to the truth value of the mathematical statment $T$ and $B,C$ be the propositional symbols with which we *model* the mathematical statment $S$ and $R$ respectively. Now proving that $S \implies R$ is true, corresponds to the formula $B \to C$ being true and proving $(\text{not } T) \implies (S \text{ or } R)$ translates to the formula $\lnot A \to (B \lor C)$ being true.
+
+For our proof pattern to be sound we therefore need
+
+$$
+(B \to C) \land (\lnot A \to (B \lor C)) \vDash A
+$$
+
+to hold.
+
+But now, we can apply our skills from propositional logic. We can either draw a truth table or see that this is not the case. Consider the assignment $A = 0$, $C = 1$ and $B$ to whatever we want. Then we obtain that the right-hand side is false, while the left-hand side is true (verify this as an exercise).
+</div>
+</Problem>
