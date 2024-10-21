@@ -518,8 +518,30 @@ In the graph of a transitive relation, it can never be the case that there is an
   <div label="question">
     Let $V$ be a real vector space, and define a relation $\sim$ on $V$ as follows: For $u, v \in V$, we say $u \sim v$ if and only if $u - v \in W$, where $W$ is a subspace of $V$. Prove that this relation is an equivalence relation.
   </div>
+   <div label="hint">
+    To prove that $R$ is an equivalence relation, you need to verify that it satisfies the three properties of equivalence relations: reflexivity, symmetry, and transitivity. For reflexivity, consider $u - u$. For symmetry, think about how $u - v$ relates to $v - u$. For transitivity, check how the condition $u - v \in W$ and $v - w \in W$ combine.
+  </div>
   <div label="answer">
-    This is an unsolved choclate challenge problem! Check [Challenges](/challenges) for more information.
+    We need to prove that the relation $u \sim v$ (i.e., $u - v \in W$) is an equivalence relation. This requires verifying three properties: reflexivity, symmetry, and transitivity.
+
+    **1. Reflexivity**:  
+    For any $u \in V$, we have:
+    $$
+    u - u = 0
+    $$
+    Since $W$ is a subspace, $0 \in W$. Therefore, $u \sim u$, and the relation is reflexive.
+
+    **2. Symmetry**:  
+    Suppose $u \sim v$, which means $u - v \in W$. We need to show that $v \sim u$. Since $u - v \in W$ and $W$ is a subspace, we know that $-(u - v) = v - u \in W$ (because subspaces are closed under scalar multiplication by $-1$). Therefore, $v \sim u$, and the relation is symmetric.
+
+    **3. Transitivity**:  
+    Suppose $u \sim v$ and $v \sim w$, meaning $u - v \in W$ and $v - w \in W$. We need to show that $u \sim w$. Since $W$ is a subspace and is closed under addition, we have:
+    $$
+    (u - v) + (v - w) = u - w \in W
+    $$
+    Therefore, $u \sim w$, and the relation is transitive.
+
+    Since the relation is reflexive, symmetric, and transitive, $\sim$ is an equivalence relation.
   </div>
 </Problem>
 
