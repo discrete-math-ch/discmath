@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'nextra/components';
 
-const Problem = ({ title, children, source, link }) => {
+const Problem = ({ title, difficulty, children, source, link }) => {
   const labeledChildren = React.Children.toArray(children);
 
   const question = labeledChildren.filter(child => child?.props?.label === 'question');
@@ -40,6 +40,11 @@ const Problem = ({ title, children, source, link }) => {
       <summary className="text-lg font-semibold cursor-pointer flex  items-center">
       <span className="ml-2 chevron">&#9654;</span>
       <span className="ml-5">{title}</span>
+      {difficulty && (
+    <span className="ml-5 text-sm">
+      Difficulty: {difficulty}
+    </span>
+  )}
         {source && !link && (
           <span className="ml-auto text-sm text-gray-600 dark:text-gray-400 ">
             Source: {source}
