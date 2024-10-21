@@ -219,13 +219,19 @@ In the graph of a transitive relation, it can never be the case that there is an
 ### Equivalence Relations
 
 
-### Partial Order Relations
+#### Equivalence classes
 
+
+
+### Partial Order Relations
 
 
 #### Hasse Diagrams
 
 
+#### Special Elements in Posets
+
+#### Lattices
 
 ## Exercises
 
@@ -245,6 +251,19 @@ I won't tell you how it ended. You'll have to figure that out yourself! But you'
 Check out the problems below. The first few are good practice, but if you're feeling adventurous, try the hard ones! Otherwise, skimming the [Wikipedia](https://en.wikipedia.org/wiki/Transitive_relation#Counting_transitive_relations) article first might save you some headaches.
 </Callout>
 
+<Problem title="Number of relations">
+      <div label="question" >
+      How many relations are there on a set of $n$ elements?
+      </div>
+      <div label="answer">
+       There are 
+       $$
+       2^{n^2}
+       $$
+       reflexive relations on a set of $n$ elements. We can decide for each tupel $(a,b) \in (A,B)$ whether it should be part of our relation or not. There are $n^2$ such pairs ($|A \times A| = n^2$).
+      </div>
+</Problem>
+
 <Problem title="Number of reflexive relations">
       <div label="question" >
       How many reflexive relations are there on a set of $n$ elements?
@@ -256,6 +275,19 @@ Check out the problems below. The first few are good practice, but if you're fee
        2^{n (n-1)}
        $$
        reflexive relations on a set of $n$ elements. We can decide for each tupel $(a,b) \in (A,B)$ whether it should be part of our relation or not. Except when $a = b$, then we need it in our relation to ensure reflexivity. How many pair remain? Exactly $n (n-1)$ (we can choose $n$ elements for the first element of the pair and then for each of those, $n-1$ for the second). Because for each pair, we can decide whether we want to take it or not (two choices), we obtain $2^{n (n-1)}$.
+      </div>
+</Problem>
+
+<Problem title="Number of symmetric">
+      <div label="question" >
+      How many symmetric relations are there on a set of $n$ elements?
+      </div>
+      <div label="answer">
+       There are 
+       $$
+       2^{n^2}
+       $$
+       reflexive relations on a set of $n$ elements. We can decide for each tupel $(a,b) \in (A,B)$ whether it should be part of our relation or not. There are $n^2$ such pairs ($|A \times A| = n^2$).
       </div>
 </Problem>
 
