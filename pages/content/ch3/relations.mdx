@@ -221,7 +221,11 @@ In the graph of a transitive relation, it can never be the case that there is an
 
 ### Partial Order Relations
 
+
+
 #### Hasse Diagrams
+
+
 
 ## Exercises
 
@@ -241,6 +245,19 @@ I won't tell you how it ended. You'll have to figure that out yourself! But you'
 Check out the problems below. The first few are good practice, but if you're feeling adventurous, try the hard ones! Otherwise, skimming the [Wikipedia](https://en.wikipedia.org/wiki/Transitive_relation#Counting_transitive_relations) article first might save you some headaches.
 </Callout>
 
+<Problem title="Number of reflexive relations">
+      <div label="question" >
+      How many reflexive relations are there on a set of $n$ elements?
+      </div>
+      <div label="hint">What are the *restrictions* of a reflexive relation? How many possibilities do we have to *choose* the rest freely?</div>
+      <div label="answer">
+       There are 
+       $$
+       2^{n (n-1)}
+       $$
+       reflexive relations on a set of $n$ elements. We can decide for each tupel $(a,b) \in (A,B)$ whether it should be part of our relation or not. Except when $a = b$, then we need it in our relation to ensure reflexivity. How many pair remain? Exactly $n (n-1)$ (we can choose $n$ elements for the first element of the pair and then for each of those, $n-1$ for the second). Because for each pair, we can decide whether we want to take it or not (two choices), we obtain $2^{n (n-1)}$.
+      </div>
+</Problem>
 
 ## References 
 
