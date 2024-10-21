@@ -10,7 +10,7 @@ Relations are super useful and a basic conecpt in many areas of mathematics and 
 
 <Callout type="axiom">
 **Definition 3.9**: A *(binary)* relation $\rho$ from a set $A$ to a set $B$ (also called an $(A, B)$-
-relation) is a subset of $A \times B$. If $A = B$, then $\rho$ is called a relation on $A$. 
+relation) is a subset of $A \times B$. If $A = B$, then $\rho$ is called a relation on $A$.
 </Callout>
 
 Often times we will see something like:
@@ -37,7 +37,7 @@ So what is the graph representation?
 2. For each element $(a,b) \in \rho$ draw an arrow from node $a$ to node $b$. If we again have some generic relation, which satisfies certain properties, try to understand how these properties are represented in your graph. I will elaborate it in the section on [properties](#properties). However it is a good practice to do so.
 
 <Callout type="example">
-**Example**: Consider the set $A = \{1,2,3,4,5,6,7,8\}$ and the relation 
+**Example**: Consider the set $A = \{1,2,3,4,5,6,7,8\}$ and the relation
 $$
 \rho = \{(1,2),(1,3),(1,4),(2,4),(3,7),(3,8),(2,5),(4,5),(5,6),(6,7),(7,8)\}
 $$
@@ -64,8 +64,147 @@ Then we obtain the following graph reprensentation
 ### Matrices
 
 <Callout type="warning">
-under construction
+The formalities defined in this section on matrices are not
+covered in the lecture. However, it might help deepening the understanding
+of the topic.
 </Callout>
+
+For relations on finite sets $A, B$ we can also represent relations as matrices
+in $\{0, 1\}^{n \times m}$ where $n = |A|$ and $m = |B|$.
+The matrix representation gives us an additional tool to understand
+different properties and operations on relations.
+
+Let $A = \{a_1, \dots, a_n\}$ and $B = \{b_1, \dots, b_m\}$,
+$\rho \subseteq A \times B$. We define $M_{\rho} \in \{0, 1\}^{n \times m}$ as follows:
+$$
+M_{\rho}(i,j) = a_i \rho b_j \\
+$$
+
+Thus
+$$
+M_{\rho} = \begin{pmatrix}
+ a_1 \rho b_1 & a_1 \rho b_2 & \dots & a_1 \rho b_m \\
+  a_2 \rho b_1 & a_2 \rho b_2 & \dots & a_2 \rho b_m \\
+  \vdots & \vdots & \ddots & \vdots \\
+  a_n \rho b_1 & a_n \rho b_2 & \dots & a_n \rho b_m \\
+\end{pmatrix}
+$$
+
+<details>
+<summary>Example  $\ \rho = \{ (1, 3), (2, 1), (3, 2), (4, 1) \}$</summary>
+
+Let $A = B = \{1,2,3,4\}$ and $\rho = \{ (1, 3), (2, 1), (3, 2), (4, 1) \}$.
+ Then:
+$$
+M_{\rho} = \begin{pmatrix}
+ 0 & 0 & 1 & 0 \\
+ 1 & 0 & 0 & 0 \\
+ 0 & 1 & 0 & 0 \\
+ 1 & 0 & 0 & 0 \\
+\end{pmatrix}
+$$
+
+</details>
+
+#### Matrix Operations
+
+In Linear Algebra we have seen component-wise addition on matrices.
+Here we will define similar component-wise operations $+$ (OR) and $\ast$ (AND).
+Note that these definitions are the same as in LinAlg but since these matrices
+contain truth values instead of numbers, we define scalar addition as OR and scalar multiplication as AND.
+
+<Callout type="info">
+In Algebra (chapter 5) you will see that these operations correspond to
+addition and multiplication on the field $\mathbb{Z}_2$ and the
+matrices are elements of the vector space $\mathbb{Z}_2^{n \times m}$.
+</Callout>
+
+<br/>
+
+$$
+\begin{aligned}
+
+(A + B)_{i,j} &= A_{i,j} \lor B_{i,j} \\
+(A \ast B)_{i,j} &= A_{i,j} \land B_{i,j} \\
+
+\end{aligned}
+
+$$
+Thus
+
+$$
+\begin{aligned}
+A + B &= \begin{pmatrix}
+A_{1,1} \lor B_{1,1} & \dots & A_{1,m} \lor B_{1,m} \\
+\vdots & \ddots & \vdots \\
+A_{1,n} \lor B_{1,n} & \dots & A_{n,m} \lor B_{n,m} \\
+\end{pmatrix} \\
+
+
+A \ast B &= \begin{pmatrix}
+A_{1,1} \land B_{1,1} & \dots & A_{1,m} \land B_{1,m} \\
+\vdots & \ddots & \vdots \\
+A_{1,n} \land B_{1,n} & \dots & A_{n,m} \land B_{n,m} \\
+\end{pmatrix} \\
+\end{aligned}
+$$
+
+We define standard matrix multiplication again using AND as addition and OR as scalar multiplication:
+
+$$
+(A \cdot B)_{i,j} = \bigvee_{k=1}^{n} A_{i,k} \land B_{k,j}
+$$
+
+
+
+#### Operations on Relations
+
+Proven by intimidation or alternatively by the reader, we can find
+the following correspondance between operations on relations and operations on matrices:
+
+$$
+M^{\rho \cap \sigma} = M^{\rho} \ast M^{\sigma} \\
+M^{\rho \cup \sigma} = M^{\rho} + M^{\sigma} \\
+M^{\rho \circ \sigma} = M^{\rho} \cdot M^{\sigma} \\
+M^{\hat\rho} = (M^{\rho})^\top \\
+$$
+
+$$
+\rho \subseteq \sigma \iff M^{\rho} \ast M^{\sigma} = M^{\rho} \\
+$$
+
+For a relation $\rho$ on $A$ we further find that
+$$
+M^{\rho^k} = (M^{\rho})^k \\
+\exists k \hspace{1em} M^{\rho^*} = (M^{\rho})^k\hspace{1em} \land \hspace{1em}(M^{\rho})^{k+1} = (M^{\rho})^{k} \\
+$$
+
+#### Special Relation Matrices
+
+$$
+\begin{aligned}
+\rho \text{ is reflexive} &\iff M^{\rho} \ast I_n = M^\rho \\
+  &\iff \text{for all } 1 \leq i \leq n  \hspace{1em} M^{\rho}_{i,i} = 1 \\
+  &\iff \text{diagonal of } M^\rho \text{ all } 1 \\[2em]
+
+
+\rho \text{ is irreflexive} &\iff M^{\rho} \ast I_n = \textbf{0}_n \\
+  &\iff \text{for all } 1 \leq i \leq n  \hspace{1em} M^{\rho}_{i,i} = \textbf{0}_n \\
+  &\iff \text{diagonal of } M^\rho \text{ all 0} \\[2em]
+
+
+\rho \text{ is symmetric} &\iff M^{\rho} = (M^{\rho})^\top \\
+  &\iff \text{for all } 1 \leq i,j \leq n  \hspace{1em} M^{\rho}_{i,j} = M^{\rho}_{j,i} \\
+  &\iff \text{matrix } M^\rho \text{ is symmetric} \\[2em]
+
+
+\rho \text{ is antisymmetric} &\iff M^{\rho} \ast (M^{\rho})^\top \ast I_n = M^\rho \\
+  &\iff \text{for all } 1 \leq i,j \leq n  \hspace{1em} M^{\rho}_{i,j} \land M^{\rho}_{j,i} = \textbf{0}_n \\[2em]
+
+
+\rho \text{ is transitive} &\iff (M^{\rho})^2 \ast M^{\rho} = M^{\rho} \\
+\end{aligned}
+$$
 
 ## Theory
 
@@ -75,17 +214,17 @@ under construction
 #### Reflexive Relations
 
 <Callout type="-">
-A relation is called $\rho$ is called *reflexive*, if for all $a \in A$: 
+A relation is called $\rho$ is called *reflexive*, if for all $a \in A$:
 $$
 a \rho a
-$$ 
+$$
 </Callout>
 
-To prove **reflexivity** of a relation, we often start with something like: 
+To prove **reflexivity** of a relation, we often start with something like:
 
 > Let $a \in A$ be arbitrary...
 
-Then our goal is to derive that $a \rho a$ (from some given proeprties about $\rho$). 
+Then our goal is to derive that $a \rho a$ (from some given proeprties about $\rho$).
 
 In the graph visualization of a reflexive relation, we must have a self-loop at each node:
 
@@ -124,9 +263,9 @@ a \rho b \implies b \rho c
 $$
 </Callout>
 
-To prove **symmetry** of a relation, we often start with something like: 
+To prove **symmetry** of a relation, we often start with something like:
 
-> Let $a,b \in A$ be arbitrary, such that $a \rho b$. 
+> Let $a,b \in A$ be arbitrary, such that $a \rho b$.
 > $$
 > \begin{aligned}
 > a \rho b &\overset{\cdot}{\implies} \dots \\
@@ -162,9 +301,9 @@ a \rho b \land b \rho c \implies a \rho c
 $$
 </Callout>
 
-To prove **transitiviy** of a relation, we often start with something like: 
+To prove **transitiviy** of a relation, we often start with something like:
 
-> Let $a,b,c \in A$ be arbitrary, such that $a \rho b$ and $b \rho c$. 
+> Let $a,b,c \in A$ be arbitrary, such that $a \rho b$ and $b \rho c$.
 > $$
 > \begin{aligned}
 > a \rho b \land b \rho c &\overset{\cdot}{\implies} \dots \\
@@ -195,15 +334,15 @@ The following graph is an example of a transitive relation
 #### Antisymmetric Relation
 
 <Callout type="-">
-A relation is called *antisymmetric* if for all $a,b \in A$: 
+A relation is called *antisymmetric* if for all $a,b \in A$:
 $$
 a \rho b \land b\rho a \implies a = b
 $$
 </Callout>
 
-To prove **antisymmetry** of a relation, we often start with something like: 
+To prove **antisymmetry** of a relation, we often start with something like:
 
-> Let $a,b \in A$ be arbitrary, such that $a \rho b$ and $b \rho a$. 
+> Let $a,b \in A$ be arbitrary, such that $a \rho b$ and $b \rho a$.
 > $$
 > \begin{aligned}
 > a \rho b \land b \rho a &\overset{\cdot}{\implies} \dots \\
@@ -253,13 +392,13 @@ In the graph of a transitive relation, it can never be the case that there is an
   <div label="answer">
     Let's analyze each property of the relation $\sim$ (commutativity of matrices):
 
-    1. **Reflexivity**:  
+    1. **Reflexivity**:
     We need to prove that for every matrix $A \in \mathbb{R}^{n \times n}$, we have $A \sim A$, i.e., $AA = AA$. This is clearly true because matrix multiplication is always commutative with itself. Therefore, the relation $\sim$ is **reflexive**.
 
-    2. **Symmetry**:  
+    2. **Symmetry**:
     We need to prove that if $A \sim B$ (i.e., $AB = BA$), then $B \sim A$ (i.e., $BA = AB$). With the symmetry of the $=$ relation, we obtain that $AB = BA$ implies $BA = AB$, therefore $B \sim A$ and the relation is **symmetric**.
 
-    3. **Transitivity**:  
+    3. **Transitivity**:
     Consider two arbitrary $n\times n$ matrices $A$ and $B$ which do not commute. Such matrices exists, because matrix multiplication is not commutative in general. However, every matrix does commute with the identity, as $A I = A =IA$ for arbitrary $A \in \mathbb{R}^{n \times n}$.
     Therefore, we have $A \sim I$ and $I \sim B$, but not $A \sim B$, which contradicts transitivity
 
@@ -367,7 +506,7 @@ In the graph of a transitive relation, it can never be the case that there is an
   </div>
   <div label="answer">
     This is an unsolved choclate challenge problem! Check [Challenges](/challenges) for more information.
-  </div> 
+  </div>
 </Problem>
 
 ### Combinatorics
@@ -408,7 +547,7 @@ Check out the problems below. The first few are good practice, but if you're fee
       </div>
       <div label="hint">What are the *restrictions* of a reflexive relation? How many possibilities do we have to *choose* the rest freely?</div>
       <div label="answer">
-       There are 
+       There are
        $$
        2^{n (n-1)}
        $$
@@ -421,14 +560,14 @@ Check out the problems below. The first few are good practice, but if you're fee
       How many symmetric relations are there on a set of $n$ elements?
       </div>
       <div label="answer">
-       There are 
+       There are
        $$
        2^{n(n+1)/2}
        $$
        symmetric relations on a set of $n$ elements. What can we decide for each tupel $(a,b) \in (A,B)$?  Consider $a = b$, then symmetry does not impose any constraints, thus, we can freely decide whether we want to take it or not (this gives us a factor of $2^n$). Now, if $a \neq b$, if we take the pair $(a,b)$, then we must also take $(b,a)$ (by symmetry). However, we could also decide to choose neither $(a,b)$ nor $(b,a)$. In the graph representation, we can decide for each pair of nodes, whether we want to put an *undirected* edge (formally directed edges in both directions). There are ${n \choose 2} = n(n-1)/2$ such pairs. Thus, we obtain a total of
        $$
        2^(n(n-1)/2) 2^{n} = 2^{(n^2 - n + 2 n)/2} = 2^{n (n+1) /2}
-       $$  
+       $$
       </div>
 </Problem>
 
@@ -449,29 +588,29 @@ Check out the problems below. The first few are good practice, but if you're fee
 </Problem>
 
 <Problem title="Number of antisymmetric relations">
-<div label="question">  
-How many anti-symmetric relations are there on a set of $n$ elements?  
-</div>  
-<div label="hint">  
-What does anti-symmetry imply about pairs $(a,b)$ and $(b,a)$? How many choices are there for each pair when $a \neq b$?  
-</div>  
-<div label="answer">  
-For anti-symmetric relations, if $(a,b)$ is in the relation, $(b,a)$ cannot be, unless $a = b$.  
-- For each pair $(a,b)$ where $a \neq b$, there are three possibilities:  
-  1. Include $(a,b)$ but not $(b,a)$.  
-  2. Include $(b,a)$ but not $(a,b)$.  
-  3. Exclude both $(a,b)$ and $(b,a)$.  
+<div label="question">
+How many anti-symmetric relations are there on a set of $n$ elements?
+</div>
+<div label="hint">
+What does anti-symmetry imply about pairs $(a,b)$ and $(b,a)$? How many choices are there for each pair when $a \neq b$?
+</div>
+<div label="answer">
+For anti-symmetric relations, if $(a,b)$ is in the relation, $(b,a)$ cannot be, unless $a = b$.
+- For each pair $(a,b)$ where $a \neq b$, there are three possibilities:
+  1. Include $(a,b)$ but not $(b,a)$.
+  2. Include $(b,a)$ but not $(a,b)$.
+  3. Exclude both $(a,b)$ and $(b,a)$.
 
 
-Thus, for each pair $(a,b)$ where $a \neq b$, we have 3 choices. There are $\frac{n(n-1)}{2}$ such pairs.  
+Thus, for each pair $(a,b)$ where $a \neq b$, we have 3 choices. There are $\frac{n(n-1)}{2}$ such pairs.
 
-- For the pairs where $a = b$, there are $n$ such pairs, and for each one, we can either include or exclude it, giving us 2 choices per diagonal element.  
+- For the pairs where $a = b$, there are $n$ such pairs, and for each one, we can either include or exclude it, giving us 2 choices per diagonal element.
 
-So, the total number of anti-symmetric relations is:  
+So, the total number of anti-symmetric relations is:
 $$
 3^{\frac{n(n-1)}{2}} \cdot 2^n
-$$  
-</div>  
+$$
+</div>
 </Problem>
 
 <Problem title="Number of Reflexive and Symmetric Relations">
@@ -479,10 +618,10 @@ $$
     How many relations are both reflexive and symmetric on a set of $n$ elements?
   </div>
   <div label="hint">
-    Reflexivity implies that all pairs $(a, a)$ must be included. Symmetry imposes a restriction on pairs $(a, b)$ and $(b, a)$. 
+    Reflexivity implies that all pairs $(a, a)$ must be included. Symmetry imposes a restriction on pairs $(a, b)$ and $(b, a)$.
   </div>
   <div label="answer">
-  Think about the matrix representation here! 
+  Think about the matrix representation here!
     Since the relation must be reflexive, all $n$ diagonal elements $(a, a)$ must be included. Symmetry implies symmetry of the matrix, we could count the number of elements in the upper half of the matrix, excluding the diagonal or use the following argument. For pairs $(a, b)$ with $a \neq b$, symmetry requires that either both $(a, b)$ and $(b, a)$ are included, or neither is included. There are ${n \choose 2} = n(n-1)/2$ such pairs, and for each pair, we have 2 choices: include both or include neither. Therefore, the total number of reflexive and symmetric relations is:
     $$
     2^{n(n-1)/2}
@@ -495,7 +634,7 @@ $$
     How many equivalence relations are there on a set of $n$ elements?
   </div>
   <div label="hint">
-    Recall that an equivalence relation is reflexive, symmetric, and transitive. The number of equivalence relations corresponds to the number of partitions of the set.  
+    Recall that an equivalence relation is reflexive, symmetric, and transitive. The number of equivalence relations corresponds to the number of partitions of the set.
     Think about how adding a new element to the set affects the number of possible partitions (equivalence relations).
   </div>
   <div label="answer">
@@ -511,23 +650,23 @@ $$
 
     **Intuition Behind the Recurrence**:
     The recurrence works by considering how we can form a partition of $n+1$ elements from a partition of $n$ elements. Here's the intuition:
-    
+
     - The *new* item we added must be in some set of the partition. Except for this item itself, let's say there are $k$ other items which are **not** in this same set of the partition ($k$ can range here from $0$ to $n$, because we could also put the $n+1$-the item in a singleton partition).
 
     - Now we remove the whole partition of the $n+1$-th item. To partition the remaining set, we are left with $B_k$ possibilities. Additionally, there are $n \choose k$ possibilities to choose these $k$ items, which are not in the same partition as the $n+1$-th item.
   </div>
 </Problem>
 
-<Problem title="Number of transitive relations" difficulty="🐉" source="Tobias Steinbrecher">
-<div label="question">  
-How many transitive relations are there on a set of $n$ elements?  
-</div>  
-<div label="hint">  
+<Problem title="Number of transitive relations" difficulty="🐉">
+<div label="question">
+How many transitive relations are there on a set of $n$ elements?
+</div>
+<div label="hint">
 interesting problem
-</div>  
-<div label="answer">  
+</div>
+<div label="answer">
 **Unsolved problem** 🙃
-The number of transitive relations is a more complex counting problem. For $n$-element sets, the first couple of the known values of the number of transitive relations are:  
+The number of transitive relations is a more complex counting problem. For $n$-element sets, the known values of the number of transitive relations are:
 $$
 n = 1: \ 1, \quad n = 2: \ 2, \quad n = 3: \ 12, \quad n = 4: \ 3994 \quad  ...
 $$
@@ -535,6 +674,6 @@ see [OEIS: Number of transitive relations](https://oeis.org/A006905).
 </div>
 </Problem>
 
-## References 
+## References
 
 To delve deeper into this topic the [Wikipedia Article](https://en.wikipedia.org/wiki/Relation_(mathematics)) is actually quite interesting and not bloated with stuff which involves higher level mathematics.
