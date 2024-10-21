@@ -336,7 +336,23 @@ $$
 </div>  
 </Problem>
 
-<Problem title="Number of Equivalence Relations (hard 🙂)">
+<Problem title="Number of Reflexive and Symmetric Relations">
+  <div label="question">
+    How many relations are both reflexive and symmetric on a set of $n$ elements?
+  </div>
+  <div label="hint">
+    Reflexivity implies that all pairs $(a, a)$ must be included. Symmetry imposes a restriction on pairs $(a, b)$ and $(b, a)$. 
+  </div>
+  <div label="answer">
+  Think about the matrix representation here! 
+    Since the relation must be reflexive, all $n$ diagonal elements $(a, a)$ must be included. Symmetry implies symmetry of the matrix, we could count the number of elements in the upper half of the matrix, excluding the diagonal or use the following argument. For pairs $(a, b)$ with $a \neq b$, symmetry requires that either both $(a, b)$ and $(b, a)$ are included, or neither is included. There are ${n \choose 2} = n(n-1)/2$ such pairs, and for each pair, we have 2 choices: include both or include neither. Therefore, the total number of reflexive and symmetric relations is:
+    $$
+    2^{n(n-1)/2}
+    $$
+  </div>
+</Problem>
+
+<Problem title="Number of Equivalence Relations (hard 🙂)" source="Tobias Steinbrecher">
   <div label="question">
     How many equivalence relations are there on a set of $n$ elements?
   </div>
