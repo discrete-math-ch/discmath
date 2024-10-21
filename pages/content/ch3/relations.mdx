@@ -278,17 +278,63 @@ Check out the problems below. The first few are good practice, but if you're fee
       </div>
 </Problem>
 
-<Problem title="Number of symmetric">
+<Problem title="Number of symmetric relations">
       <div label="question" >
       How many symmetric relations are there on a set of $n$ elements?
       </div>
       <div label="answer">
        There are 
        $$
-       2^{n^2}
+       2^{n(n+1)/2}
        $$
-       reflexive relations on a set of $n$ elements. We can decide for each tupel $(a,b) \in (A,B)$ whether it should be part of our relation or not. There are $n^2$ such pairs ($|A \times A| = n^2$).
+       symmetric relations on a set of $n$ elements. What can we decide for each tupel $(a,b) \in (A,B)$?  Consider $a = b$, then symmetry does not impose any constraints, thus, we can freely decide whether we want to take it or not (this gives us a factor of $2^n$). Now, if $a \neq b$, if we take the pair $(a,b)$, then we must also take $(b,a)$ (by symmetry). However, we could also decide to choose neither $(a,b)$ nor $(b,a)$. In the graph representation, we can decide for each pair of nodes, whether we want to put an *undirected* edge (formally directed edges in both directions). There are ${n \choose 2} = n(n-1)/2$ such pairs. Thus, we obtain a total of
+       $$
+       2^(n(n-1)/2) 2^{n} = 2^{(n^2 - n + 2 n)/2} = 2^{n (n+1) /2}
+       $$  
       </div>
+</Problem>
+
+<Problem title="Number of antisymmetric relations">
+<div label="question">  
+How many anti-symmetric relations are there on a set of $n$ elements?  
+</div>  
+<div label="hint">  
+What does anti-symmetry imply about pairs $(a,b)$ and $(b,a)$? How many choices are there for each pair when $a \neq b$?  
+</div>  
+<div label="answer">  
+For anti-symmetric relations, if $(a,b)$ is in the relation, $(b,a)$ cannot be, unless $a = b$.  
+- For each pair $(a,b)$ where $a \neq b$, there are three possibilities:  
+  1. Include $(a,b)$ but not $(b,a)$.  
+  2. Include $(b,a)$ but not $(a,b)$.  
+  3. Exclude both $(a,b)$ and $(b,a)$.  
+
+
+Thus, for each pair $(a,b)$ where $a \neq b$, we have 3 choices. There are $\frac{n(n-1)}{2}$ such pairs.  
+
+- For the pairs where $a = b$, there are $n$ such pairs, and for each one, we can either include or exclude it, giving us 2 choices per diagonal element.  
+
+So, the total number of anti-symmetric relations is:  
+$$
+3^{\frac{n(n-1)}{2}} \cdot 2^n
+$$  
+</div>  
+</Problem>
+
+<Problem title="Numnber of transitive relations (hard 🙂)">
+<div label="question">  
+How many transitive relations are there on a set of $n$ elements?  
+</div>  
+<div label="hint">  
+interesting problem
+</div>  
+<div label="answer">  
+**Unsolved problem** 🙃
+The number of transitive relations is a more complex counting problem. For $n$-element sets, the known values of the number of transitive relations are:  
+$$
+n = 1: \ 1, \quad n = 2: \ 2, \quad n = 3: \ 12, \quad n = 4: \ 3994 ...
+$$
+see [OEIS: Number of transitive relations](https://oeis.org/A006905).
+</div>
 </Problem>
 
 ## References 
