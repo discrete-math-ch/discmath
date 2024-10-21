@@ -17,7 +17,6 @@ Often times we will see something like:
 
 > Given some relation $\rho$ on $A$ that is ..., proof that $\rho$ fulfills ...
 
-
 ## Intuition
 
 <Callout type="warning">
@@ -192,6 +191,7 @@ The following graph is an example of a transitive relation
   </figcaption>
 </figure>
 
+
 #### Antisymmetric Relation
 
 <Callout type="-">
@@ -235,18 +235,102 @@ In the graph of a transitive relation, it can never be the case that there is an
 
 ## Exercises
 
+<Problem label="Collatz Conjecture" source="Max Obreiter">
+    <div label="question">
+        The [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) states that for any positive integer $n$, the following sequence will eventually reach 1:
+        $$
+        x_{n + 1} = \begin{cases}
+            x_n / 2 & \text{if } x_n \text{ is even} \\
+            3x_n + 1 & \text{if } x_n \text{ is odd}
+        \end{cases}
+        $$
+        Give a formula in predicate logic that is true iff the Collatz Conjecture is true. (Note that predicates are not allowed to be recursive.) The universe should be $U = \mathbb N \setminus \{ 0 \}$.
+    </div>
+    <div label="hint">
+        Define some relation.
+    </div>
+    <div label="hint">
+        Let's define the relation $\rho$ as:
+        $$
+            a \rho b \iff b = \begin{cases}
+                a / 2 & \text{if } a \text{ is even} \\
+                3a + 1 & \text{if } a \text{ is odd}
+        $$
+    </div>
+    <div label="answer">
+        There are two easy answers to this question.
+
+        The first one is straightforward given the relation $\rho$ (see hint):
+        $$
+            \forall n \left[ \exists m(a \rho^m 1) \right]
+        $$
+        Intuitively, this means that for every positive natural number $n$, there exists a finite number of steps ($m$), such that $n$ reaches $1$.
+    </div>
+    <div label="answer">
+        Another way to capture the "$n$ eventually reaches $1$" idea is to use the transitive closure of the relation $\rho$:
+        $$
+            \rho^* = \bigcup_{i=0}^\infty \rho^i
+        $$
+        Intuitively, $a \rho^* b$ if there is a finite amount of "steps" from $a$ to $b$.
+
+        Then the formula would be:
+        $$
+            \forall n \left[ n \rho^* 1 \right]
+        $$
+    </div>
+</Problem>
 
 ### Equivalence Relations
+
+<Problem title="Intersection of equivalence relations" source="Lemma 3.10">
+    <div label="question">
+        Let $\rho$ and $\sigma$ be equivalence relations on a set $A$. Prove that $\rho \cap \sigma$ is also an equivalence relation on $A$.
+    </div>
+    <div label="hint">
+        Recall the definition of an equivalence relation. You need to show that $\rho \cap \sigma$ is reflexive, symmetric, and transitive.
+    </div>
+    <div label="answer">
+        To show that $\rho \cap \sigma$ is an equivalence relation, we need to prove that it is reflexive, symmetric, and transitive:
+
+        **Reflexive**: Let $a \in A$ be arbitrary but fixed:
+        $$
+            \begin{aligned}
+                &(a, a) \in \rho \land (a, a) \in \sigma && \rho, \sigma \text{ are reflexive} \\
+                \dimplies & (a, a) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
+            \end{aligned}
+        $$
+
+        **Symmetric**: Let $a, b \in A$ be arbitrary but fixed:
+        $$
+            \begin{aligned}
+                &(a, b) \in (\rho \cap \sigma) \\
+                \dimplies & (a, b) \in \rho \land (a, b) \in \sigma && \text{Def. $\cap$} \\
+                \dimplies & (b, a) \in \rho \land (b, a) \in \sigma && \rho, \sigma \text{ are symmetric} \\
+                \dimplies & (b, a) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
+            \end{aligned}
+        $$
+
+        **Transitive**: Let $a, b, c \in A$ be arbitrary but fixed:
+        $$
+            \begin{aligned}
+                &(a, b) \in (\rho \cap \sigma) \land (b, c) \in (\rho \cap \sigma) \\
+                \dimplies & (a, b) \in \rho \land (a, b) \in \sigma \land (b, c) \in \rho \land (b, c) \in \sigma && \text{Def. $\cap$} \\
+                \dimplies & (a, b) \in \rho \land (b, c) \in \rho \land (a, b) \in \sigma \land (b, c) \in \sigma && \text{Commutativity of $\land$} \\
+                \dimplies & (a, c) \in \rho \land (a, c) \in \sigma && \rho, \sigma \text{ are transitive} \\
+                \dimplies & (a, c) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
+            \end{aligned}
+        $$
+
+        Since $\rho \cap \sigma$ is reflexive, symmetric, and transitive, it is an equivalence relation on $A$.
+</Problem>
 
 <Problem title="Equivalence Relation on Vector Spaces" source="Tobias Steinbrecher" difficulty="🐺">
   <div label="question">
     Let $V$ be a vector space over a field $F$, and define a relation $\sim$ on $V$ as follows: For $u, v \in V$, we say $u \sim v$ if and only if $u - v \in W$, where $W$ is a subspace of $V$. Prove that this relation is an equivalence relation.
   </div>
-
-    <div label="answer">
+  <div label="answer">
     This is an unsolved choclate challenge problem! Check [Challenges](/challenges) for more information.
-    </div> 
- 
+  </div> 
 </Problem>
 
 ### Combinatorics
@@ -265,17 +349,20 @@ I won't tell you how it ended. You'll have to figure that out yourself! But you'
 Check out the problems below. The first few are good practice, but if you're feeling adventurous, try the hard ones! Otherwise, skimming the [Wikipedia](https://en.wikipedia.org/wiki/Transitive_relation#Counting_transitive_relations) article first might save you some headaches.
 </Callout>
 
-<Problem title="Number of relations">
-      <div label="question" >
-      How many relations are there on a set of $n$ elements?
-      </div>
-      <div label="answer">
-       There are 
-       $$
-       2^{n^2}
-       $$
-       reflexive relations on a set of $n$ elements. We can decide for each tupel $(a,b) \in (A,B)$ whether it should be part of our relation or not. There are $n^2$ such pairs ($|A \times A| = n^2$).
-      </div>
+<Problem title="Number of relations" source="Max Obreiter">
+    <div label="question">
+        How many relations are there from a finite set $A$ to a finite set $B$?
+    </div>
+    <div label="answer">
+        Let's call the set of all relations from $A$ to $B$ $\texttt{rel}(A, B)$. Then by definition of a relation we have for any $\rho$:
+        $$
+            \rho \in \texttt{rel}(A, B) \iff \rho \subseteq A \times B
+        $$
+        This definition looks familiar; $\texttt{rel}(A, B)$ is the power set of $A \times B$!. So the number of relations from $A$ to $B$ is:
+        $$
+            |\texttt{rel}(A, B)| = 2^{|A \times B|} = 2^{|A| \cdot |B|}
+        $$
+    </div>
 </Problem>
 
 <Problem title="Number of reflexive relations">
@@ -390,7 +477,7 @@ $$
     
     - The *new* item we added must be in some set of the partition. Except for this item itself, let's say there are $k$ other items which are **not** in this same set of the partition ($k$ can range here from $0$ to $n$, because we could also put the $n+1$-the item in a singleton partition).
 
-    - Now we remove the whole parition of the $n+1$-th item. To parition the remaining set, we are left with $B_k$ possibilities. Additionally, there are $n \choose k$ possibilities to choose these $k$ items, which are not in the same partition as the $n+1$-th item.
+    - Now we remove the whole partition of the $n+1$-th item. To partition the remaining set, we are left with $B_k$ possibilities. Additionally, there are $n \choose k$ possibilities to choose these $k$ items, which are not in the same partition as the $n+1$-th item.
   </div>
 </Problem>
 
