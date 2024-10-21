@@ -1,26 +1,247 @@
 import { Callout, Tabs} from 'nextra/components'
 import Problem from '@/components/problem'
+import Image from 'next/image'
 
-# Binary membership
+# Relations
 
+Relations are super useful and basic conecpt in many areas of mathematics and computer science. We can build this concept basically directly from what we learned from set theory. You already know many examples, like $\leq$, $$ and so on. We will also see that functions are simply relations with a special property.
 
-## Tuples
+## Definition
 
-We introduce a special kind of set, the *tuple* or *pair*, which
-stores a finite elements in a specific order. A tuple can be defined as:
-$$
-(a, b) = \{ \{ a \}, \{ a, b \} \}
-$$
-
-<Callout type="def">
- **Cartesian product**:
-  $$
-    A \times B = \{ (a, b) \mid a \in A \land b \in B \}
-  $$
+<Callout type="axiom">
+**Definition 3.9**: A *(binary)* relation $\rho$ from a set $A$ to a set $B$ (also called an $(A, B)$-
+relation) is a subset of $A \times B$. If $A = B$, then $\rho$ is called a relation on $A$. 
 </Callout>
 
-## Relations
+Often times we will see something like:
 
-<Callout type="warning" emoji="🚧">
-  under construction
+> Given some relation $\rho$ on $A$ that is ..., proof that $\rho$ fulfills ...
+
+
+## Intuition
+
+<Callout type="warning">
+Don't use intuition to argue or prove something. This is only meant to be to get an idea of a proof, on logic level or to get an idea whether some statment is true or false. For example about statements like *there is a relation that is ... and ...*. Additionally this intuition will probably make it easier to find counterexamples. But still, you have to always argue using definitions and logic.
 </Callout>
+
+### Graphs
+<Callout type="warning">
+This is not to be confsed with [Hasse Diagrams](#hasse-Diagrams) for partial order relations
+</Callout>
+
+Really, if you think about a relation $\rho \subseteq A \times A$ (i.e. a relation which is defined *on* one set $A$, which might be generic) and you have some [property](#properties), think about the directed graph representation of this property - draw it! Oftetimes, this feels like cheating, because some exercises seem trivial when looking at them in graph representation. After learning about graphs in A&D, you might even be tempted to think about what the different graph algorithms and properties mean in the context of relations.
+
+So what is the graph representation?
+
+1. We use *nodes* to depict elements of the set $A$. Of course, oftentimes $A$ is an arbitrary/generic set, we can still draw some dots for the elements of $A$ to try to understand the structure of the relation.
+
+2. For each element $(a,b) \in \rho$ draw an arrow from node $a$ to node $b$. If we again have some generic relation, which satisfies certain properties, try to understand how these properties are represented in your graph. I will elaborate it in the section on [properties](#properties). However it is a good practice to do so.
+
+<Callout type="example">
+**Example**: Consider the set $A = \{1,2,3,4,5,6,7,8\}$ and the relation 
+$$
+\rho = \{(1,2),(1,3),(1,4),(2,4),(3,7),(3,8),(2,5),(4,5),(5,6),(6,7),(7,8)\}
+$$
+Then we obtain the following graph reprensentation
+
+
+<figure
+  className="block my-10 text-center break-inside-avoid-column">
+  <center>
+  <Image
+    width="500"
+    height="500"
+    className="object-cover rounded-xl align-center"
+    src="/relations/plain.png">
+  </Image>
+  </center>
+  <figcaption className="z-10 mt-4 text-sm italic text-gray-600">
+  Simple graph reprensentation - by Tobias Steinbrecher
+  </figcaption>
+</figure>
+
+
+</Callout>
+### Matrices
+
+<Callout type="warning">
+under construction
+</Callout>
+
+## Theory
+
+### Properties
+
+
+#### Reflexive Relations
+
+<Callout type="-">
+A relation is called $\rho$ is called *reflexive*, if for all $a \in A$: 
+$$
+a \rho a
+$$ 
+</Callout>
+
+To prove **reflexivity** of a relation, we often start with something like: 
+
+> Let $a \in A$ be arbitrary...
+
+Then our goal is to derive that $a \rho a$ (from some given proeprties about $\rho$). 
+
+In the graph visualization of a reflexive relation, we must have a self-loop at each node:
+
+<figure
+  className="block my-10 text-center break-inside-avoid-column">
+  <center>
+  <Image
+    width="500"
+    height="500"
+    className="object-cover rounded-xl align-center"
+    src="/relations/ref.png">
+  </Image>
+  </center>
+  <figcaption className="z-10 mt-4 text-sm italic text-gray-600">
+  Example of a graph of a reflexive relation - by Tobias Steinbrecher
+  </figcaption>
+</figure>
+
+
+#### Irreflexive Relations
+
+<Callout type="-">
+A relation $\rho$ is called *irreflexive* if for all $a \in A$:
+$$
+\lnot(a \rho a)
+$$
+</Callout>
+
+#### Symmetric Relation
+
+<Callout type="-">
+A relation is called *symmetric* if for all $a,b\in A$:
+
+$$
+a \rho b \implies b \rho c
+$$
+</Callout>
+
+To prove **symmetry** of a relation, we often start with something like: 
+
+> Let $a,b \in A$ be arbitrary, such that $a \rho b$. 
+> $$
+> \begin{aligned}
+> a \rho b &\overset{\cdot}{\implies} \dots \\
+> & \overset{\cdot}{\implies} \dots \\
+> &\overset{\cdot}{\implies} b \rho a
+> \end{aligned}
+> $$
+> Therefore $\dots$
+
+In the graph representation, all the edges have to go in both directions:
+<figure
+  className="block my-10 text-center break-inside-avoid-column">
+  <center>
+  <Image
+    width="500"
+    height="500"
+    className="object-cover rounded-xl align-center"
+    src="/relations/symm.png">
+  </Image>
+  </center>
+  <figcaption className="z-10 mt-4 text-sm italic text-gray-600">
+  Example of a graph of a symmetric relation - by Tobias Steinbrecher
+  </figcaption>
+</figure>
+
+
+#### Transitive Relations
+<Callout type="-">
+A relation is called *transitive* if for all $a,b,c \in A$:
+
+$$
+a \rho b \land b \rho c \implies a \rho c
+$$
+</Callout>
+
+To prove **transitiviy** of a relation, we often start with something like: 
+
+> Let $a,b,c \in A$ be arbitrary, such that $a \rho b$ and $b \rho c$. 
+> $$
+> \begin{aligned}
+> a \rho b \land b \rho c &\overset{\cdot}{\implies} \dots \\
+> & \overset{\cdot}{\implies} \dots \\
+> &\overset{\cdot}{\implies} a \rho c
+> \end{aligned}
+> $$
+> Therefore $\dots$
+
+The following graph is an example of a transitive relation
+
+<figure
+  className="block my-10 text-center break-inside-avoid-column">
+  <center>
+  <Image
+    width="500"
+    height="500"
+    className="object-cover rounded-xl align-center"
+    src="/relations/transitive.png">
+  </Image>
+  </center>
+  <figcaption className="z-10 mt-4 text-sm italic text-gray-600">
+  Example of a graph of a transitive relation - by Tobias Steinbrecher
+  </figcaption>
+</figure>
+
+#### Antisymmetric Relation
+
+<Callout type="-">
+A relation is called *antisymmetric* if for all $a,b \in A$: 
+$$
+a \rho b \land b\rho a \implies a = b
+$$
+</Callout>
+
+To prove **antisymmetry** of a relation, we often start with something like: 
+
+> Let $a,b \in A$ be arbitrary, such that $a \rho b$ and $b \rho a$. 
+> $$
+> \begin{aligned}
+> a \rho b \land b \rho a &\overset{\cdot}{\implies} \dots \\
+> & \overset{\cdot}{\implies} \dots \\
+> &\overset{\cdot}{\implies} a = b
+> \end{aligned}
+> $$
+> Therefore $\dots$
+
+In the graph of a transitive relation, it can never be the case that there is an edge from node $a$ to $b$ and an edge from node $b$ to $a$. Otherwise, the two elements corresponding to the nodes would have to be equal, which is a contradiction, as we draw different nodes for different elements.
+
+
+### Equivalence Relations
+
+
+### Partial Order Relations
+
+#### Hasse Diagrams
+
+## Exercises
+
+### Combinatorics
+
+<Callout emoji="☕️" type="info">
+Once upon a time, in the mystical land of Lernphase, there came a fateful day when I innocently decided to tackle some "quick exercises" on relations. Easy, right? I'd seen problems like, "How many reflexive relations are there on a set of $n$ elements?" before. Armed with some intuition from graph theory and a sprinkle of combinatorics, I managed to crack it. "Not bad," I thought. "This was actually a fun exercise!" (Feel free to try it below.)
+
+But then I started wondering... What if they ask about symmetric relations? What about transitive ones? What if they combine different properties? Damn! And what about partial order relations or equivalence? That's when things started to spiral. In the spirit of thoroughness, I began constructing this giant table, trying to work out every possible combination myself. I figured I could add the formulas to my cheat sheet later. Little did I know what I was getting into.
+
+I really should have read the Wikipedia article beforehand—because when I got to transitive relations, I was stuck for hours. There was no simple solution in sight. At some point, I thought, "Surely, they won't ask this on the exam.". But something wouldn't let me quit. So, I first shifted to counting partial order relations, thinking they might be easier since they have more structure. Still, I couldn't let go of the problem.
+
+In a last-ditch effort, I started writing brute-force programs to count relations and derived some recurrences that seemed to work. Of course, verifying this recurrence and brute-forcing larger sets wasn't feasible because there were just too many possibilities.
+
+I won't tell you how it ended. You'll have to figure that out yourself! But you'll definitely learn a lot about combinatorics and graphs in the process.
+
+Check out the problems below. The first few are good practice, but if you're feeling adventurous, try the hard ones! Otherwise, skimming the [Wikipedia](https://en.wikipedia.org/wiki/Transitive_relation#Counting_transitive_relations) article first might save you some headaches.
+</Callout>
+
+
+## References 
+
+To delve deeper into this topic the [Wikipedia Article](https://en.wikipedia.org/wiki/Relation_(mathematics)) is actually quite interesting and not bloated with stuff which involves higher level mathematics.
