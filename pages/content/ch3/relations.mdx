@@ -235,6 +235,41 @@ In the graph of a transitive relation, it can never be the case that there is an
 
 ## Exercises
 
+### Verifying Properties
+
+<Problem title="Commutativity of Matrices" difficulty="🐹" source="Tobias Steinbrecher">
+  <div label="question">
+    Let $\mathbb{R}^{n \times n}$ be the set of all $n \times n$ matrices over the reals. Define a relation $\sim$ on $\mathbb{R}^{n \times n}$ by
+    $$
+    A \sim B \iff AB = BA
+    $$
+     Prove or disprove the following properties:
+
+    1. $\sim$ is reflexive
+    2. $\sim$ is symmetric
+    3. $\sim$ is transitive
+
+  </div>
+  <div label="answer">
+    Let's analyze each property of the relation $\sim$ (commutativity of matrices):
+
+    1. **Reflexivity**:  
+    We need to prove that for every matrix $A \in \mathbb{R}^{n \times n}$, we have $A \sim A$, i.e., $AA = AA$. This is clearly true because matrix multiplication is always commutative with itself. Therefore, the relation $\sim$ is **reflexive**.
+
+    2. **Symmetry**:  
+    We need to prove that if $A \sim B$ (i.e., $AB = BA$), then $B \sim A$ (i.e., $BA = AB$). With the symmetry of the $=$ relation, we obtain that $AB = BA$ implies $BA = AB$, therefore $B \sim A$ and the relation is **symmetric**.
+
+    3. **Transitivity**:  
+    Consider two arbitrary $n\times n$ matrices $A$ and $B$ which do not commute. Such matrices exists, because matrix multiplication is not commutative in general. However, every matrix does commute with the identity, as $A I = A =IA$ for arbitrary $A \in \mathbb{R}^{n \times n}$.
+    Therefore, we have $A \sim I$ and $I \sim B$, but not $A \sim B$, which contradicts transitivity
+
+    Therefore, the relation $\sim$ is reflexive, symmetric, but not transitive.
+  </div>
+</Problem>
+
+
+### Ad-hoc
+
 <Problem title="Collatz Conjecture" source="Max Obreiter">
     <div label="question">
         The [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) states that for any positive integer $x_0 = n$, the following sequence will eventually reach 1:
