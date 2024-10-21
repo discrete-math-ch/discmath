@@ -420,6 +420,84 @@ In the graph of a transitive relation, it can never be the case that there is an
   </div>
 </Problem>
 
+<Problem title="Less Than" difficulty="🐺" source="Yannick Funke and Philipp Barski" >
+  <div label="question">
+    For any poset $(A, \leq)$ we can define a relation $<$ on $A$ such that
+    $$
+    a < b \iff a \leq b \land a \neq b
+    $$
+    Prove that $<$ is irreflexive, antisymmetric and  transitive.
+  </div>
+  <div label="hint">
+  Make use of the partial order properties. Be aware that
+  $\neq$ is not transitive. Instead you might want to make a case distinction for proving
+  transitivity.
+  </div>
+  <div label="answer">
+    Let's prove each the three properties seperately:
+    In the following let $a,b,c \in A$ be arbitrary but fixed.
+
+    **Irreflexivity**: <br/>
+    Obviously $a=a$ is a true statement. Thus any logical consequence
+    will be true as well.
+    $$
+    \begin{aligned}
+    a=a &\dot\implies \neg (a \neq a) && \text{double negation} \\
+    &\dot\implies \neg (a \neq a) \lor \neg (a \leq a) && F \vDash F \lor G \\
+    &\dot\implies \neg (a \neq a \land a \leq a) && \text{de-Morgan} \\
+    &\dot\implies \neg (a < a) && \text{definition of } < \\
+    \end{aligned}
+    $$
+    This proofs that $\forall a ~ a \not< a$ and thus $<$ is irreflexive.
+
+    **Antisymmetry**:
+    $$
+    \begin{aligned}
+    a < b \land b < a &\dot\implies a \leq b \land a \neq b \land b \leq a \land b \neq a && \text{definition of} < \\
+    &\dot\implies a = b \land a \neq b && \text{antisymmetry of} \leq \\
+    &\dot\implies \bot && \text{contradiction} \\
+    &\dot\implies a=b && \text{ex falso quodlibet} \\
+    \end{aligned}
+    $$
+
+    We have shown that no a, b exists such that $a <b \land b < a$ and thus $<$ is antisymmetric.
+    Actually we can derive anything from a false statement.
+
+    **Transitivity**: <br/>
+    The idea of the proof is make a case distinction in Step 3 on $a=c$ and $a \neq c$.
+    Because $F \lor \neg F \equiv \top$ this distinction covers all cases.
+    Then we show by contradiction that $a=c$ is not possible. Thus we can
+    derive $a < c$ from the case distinction. Note that the following proof
+    performs multiple steps at once incldung some logical derivations without explicit justification. Their
+    soundness directly follows from the semantics of first-order logic.
+    $$
+    \begin{aligned}
+    a < b \land b < c &\dot\implies a \leq b \land a \neq b \land b \leq c \land b \neq c && \text{definition of} < \\
+    &\dot\implies a \leq b \land a \neq b \land b \leq c \land a \leq c && \text{transitivity of} \leq \\
+    &\dot\implies a \leq b \land a \neq b \land b \leq c \land a \leq c \land (a=c \lor a \neq c) && F \equiv F \land \top \\
+    &\dot\implies (a \leq c \land a \neq c ) \lor (a \leq b  \land a \neq b \land b \leq c \land a=c) && \text{logic} \\
+    &\dot\implies (a \leq c \land a \neq c ) \lor \bot && \text{contradiction*} \\
+    &\dot\implies (a \leq c \land a \neq c ) && F \lor \bot \equiv F \\
+    &\dot\implies a < c && \text{definition of} < \\
+    \end{aligned}
+    $$
+
+    *) This contradiction can be derived as follows:
+
+    $$
+    \begin{aligned}
+    a \neq b \land a \leq b \land b \leq c \land a=c &\dot\implies a \neq b \land a \leq b \land b \leq a && \text{substitute c with a} \\
+    &\dot\implies a \neq b \land a=b && \text{antisymmetry of} \leq \\
+    &\dot\implies \bot && \text{contradiction} \\
+    \end{aligned}
+    $$
+
+    We have shown that $\forall a ~ \forall b ~ \forall c ~ a < b \land b < c \rightarrow a < c$
+    and thus $<$ is transitive.
+
+  </div>
+</Problem>
+
 
 ### Ad-hoc
 
