@@ -149,7 +149,7 @@ A_{1,n} \land B_{1,n} & \dots & A_{n,m} \land B_{n,m} \\
 \end{aligned}
 $$
 
-We define standard matrix multiplication again using AND as addition and OR as scalar multiplication:
+We define standard matrix multiplication again using OR as addition and AND as scalar multiplication:
 
 $$
 (A \cdot B)_{i,j} = \bigvee_{k=1}^{n} A_{i,k} \land B_{k,j}
@@ -176,19 +176,33 @@ $$
 For a relation $\rho$ on $A$ we further find that
 $$
 M^{\rho^k} = (M^{\rho})^k \\
-\exists k \hspace{1em} M^{\rho^*} = (M^{\rho})^k\hspace{1em} \land \hspace{1em}(M^{\rho})^{k+1} = (M^{\rho})^{k} \\
+M^{\rho^*} = \sum_{k \in \mathbb{N}} (M^{\rho})^k
 $$
+
+The transitive closure of a relation $\rho$ can be determined algorithmically
+using the following pseudocode. It can be shown that the while loop
+terminates after at most $\mathcal{O}(\log n)$ iterations.
+
+
+```python
+A = zero_matrix(n,n)
+B = matrix(\rho)
+while A != B:
+    A = B
+    B = B.multiply(B)
+return A
+```
 
 #### Special Relation Matrices
 
 $$
 \begin{aligned}
-\rho \text{ is reflexive} &\iff M^{\rho} \ast I_n = M^\rho \\
+\rho \text{ is reflexive}
   &\iff \text{for all } 1 \leq i \leq n  \hspace{1em} M^{\rho}_{i,i} = 1 \\
   &\iff \text{diagonal of } M^\rho \text{ all } 1 \\[2em]
 
 
-\rho \text{ is irreflexive} &\iff M^{\rho} \ast I_n = \textbf{0}_n \\
+\rho \text{ is irreflexive}
   &\iff \text{for all } 1 \leq i \leq n  \hspace{1em} M^{\rho}_{i,i} = \textbf{0}_n \\
   &\iff \text{diagonal of } M^\rho \text{ all 0} \\[2em]
 
@@ -198,11 +212,11 @@ $$
   &\iff \text{matrix } M^\rho \text{ is symmetric} \\[2em]
 
 
-\rho \text{ is antisymmetric} &\iff M^{\rho} \ast (M^{\rho})^\top \ast I_n = M^\rho \\
+\rho \text{ is antisymmetric}
   &\iff \text{for all } 1 \leq i,j \leq n  \hspace{1em} M^{\rho}_{i,j} \land M^{\rho}_{j,i} = \textbf{0}_n \\[2em]
 
 
-\rho \text{ is transitive} &\iff (M^{\rho})^2 \ast M^{\rho} = M^{\rho} \\
+\rho \text{ is transitive} &\iff (M^{\rho})^2 \ast M^{\rho} = (M^{\rho})^2 \\
 \end{aligned}
 $$
 
