@@ -75,14 +75,14 @@ The matrix representation gives us an additional tool to understand
 different properties and operations on relations.
 
 Let $A = \{a_1, \dots, a_n\}$ and $B = \{b_1, \dots, b_m\}$,
-$\rho \subseteq A \times B$. We define $M_{\rho} \in \{0, 1\}^{n \times m}$ as follows:
+$\rho \subseteq A \times B$. We define $M^{\rho} \in \{0, 1\}^{n \times m}$ as follows:
 $$
-M_{\rho}(i,j) = a_i \rho b_j \\
+M^{\rho}(i,j) = a_i \rho b_j \\
 $$
 
 Thus
 $$
-M_{\rho} = \begin{pmatrix}
+M^{\rho} = \begin{pmatrix}
  a_1 \rho b_1 & a_1 \rho b_2 & \dots & a_1 \rho b_m \\
   a_2 \rho b_1 & a_2 \rho b_2 & \dots & a_2 \rho b_m \\
   \vdots & \vdots & \ddots & \vdots \\
@@ -96,7 +96,7 @@ $$
 Let $A = B = \{1,2,3,4\}$ and $\rho = \{ (1, 3), (2, 1), (3, 2), (4, 1) \}$.
  Then:
 $$
-M_{\rho} = \begin{pmatrix}
+M^{\rho} = \begin{pmatrix}
  0 & 0 & 1 & 0 \\
  1 & 0 & 0 & 0 \\
  0 & 1 & 0 & 0 \\
