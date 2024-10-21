@@ -235,9 +235,9 @@ In the graph of a transitive relation, it can never be the case that there is an
 
 ## Exercises
 
-<Problem label="Collatz Conjecture" source="Max Obreiter">
+<Problem title="Collatz Conjecture" source="Max Obreiter">
     <div label="question">
-        The [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) states that for any positive integer $n$, the following sequence will eventually reach 1:
+        The [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) states that for any positive integer $x_0 = n$, the following sequence will eventually reach 1:
         $$
         x_{n + 1} = \begin{cases}
             x_n / 2 & \text{if } x_n \text{ is even} \\
@@ -255,6 +255,7 @@ In the graph of a transitive relation, it can never be the case that there is an
             a \rho b \iff b = \begin{cases}
                 a / 2 & \text{if } a \text{ is even} \\
                 3a + 1 & \text{if } a \text{ is odd}
+            \end{cases}
         $$
     </div>
     <div label="answer">
@@ -296,7 +297,7 @@ In the graph of a transitive relation, it can never be the case that there is an
         $$
             \begin{aligned}
                 &(a, a) \in \rho \land (a, a) \in \sigma && \rho, \sigma \text{ are reflexive} \\
-                \dimplies & (a, a) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
+                \dot\implies & (a, a) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
             \end{aligned}
         $$
 
@@ -304,9 +305,9 @@ In the graph of a transitive relation, it can never be the case that there is an
         $$
             \begin{aligned}
                 &(a, b) \in (\rho \cap \sigma) \\
-                \dimplies & (a, b) \in \rho \land (a, b) \in \sigma && \text{Def. $\cap$} \\
-                \dimplies & (b, a) \in \rho \land (b, a) \in \sigma && \rho, \sigma \text{ are symmetric} \\
-                \dimplies & (b, a) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
+                \dot\implies & (a, b) \in \rho \land (a, b) \in \sigma && \text{Def. $\cap$} \\
+                \dot\implies & (b, a) \in \rho \land (b, a) \in \sigma && \rho, \sigma \text{ are symmetric} \\
+                \dot\implies & (b, a) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
             \end{aligned}
         $$
 
@@ -314,14 +315,15 @@ In the graph of a transitive relation, it can never be the case that there is an
         $$
             \begin{aligned}
                 &(a, b) \in (\rho \cap \sigma) \land (b, c) \in (\rho \cap \sigma) \\
-                \dimplies & (a, b) \in \rho \land (a, b) \in \sigma \land (b, c) \in \rho \land (b, c) \in \sigma && \text{Def. $\cap$} \\
-                \dimplies & (a, b) \in \rho \land (b, c) \in \rho \land (a, b) \in \sigma \land (b, c) \in \sigma && \text{Commutativity of $\land$} \\
-                \dimplies & (a, c) \in \rho \land (a, c) \in \sigma && \rho, \sigma \text{ are transitive} \\
-                \dimplies & (a, c) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
+                \dot\implies & (a, b) \in \rho \land (a, b) \in \sigma \land (b, c) \in \rho \land (b, c) \in \sigma && \text{Def. $\cap$} \\
+                \dot\implies & (a, b) \in \rho \land (b, c) \in \rho \land (a, b) \in \sigma \land (b, c) \in \sigma && \text{Commutativity of $\land$} \\
+                \dot\implies & (a, c) \in \rho \land (a, c) \in \sigma && \rho, \sigma \text{ are transitive} \\
+                \dot\implies & (a, c) \in (\rho \cap \sigma) && \text{Def. $\cap$} \\
             \end{aligned}
         $$
 
         Since $\rho \cap \sigma$ is reflexive, symmetric, and transitive, it is an equivalence relation on $A$.
+    </div>
 </Problem>
 
 <Problem title="Equivalence Relation on Vector Spaces" source="Tobias Steinbrecher" difficulty="🐺">
