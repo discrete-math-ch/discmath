@@ -294,6 +294,22 @@ Check out the problems below. The first few are good practice, but if you're fee
       </div>
 </Problem>
 
+<Problem title="Number of Irreflexive Relations">
+  <div label="question">
+    How many irreflexive relations are there on a set of $n$ elements?
+  </div>
+  <div label="hint">
+    What does it mean for a relation to be irreflexive? How many pairs $(a, a)$ must be excluded from the relation?
+  </div>
+  <div label="answer">
+    A relation is irreflexive if no element is related to itself. For each element $a$, the pair $(a, a)$ cannot be in the relation. There are $n$ such pairs to exclude, which leaves us with $n^2 - n$ pairs where we are free to choose whether or not to include them in the relation. Therefore, the total number of irreflexive relations is:
+    $$
+    2^{n(n-1)}
+    $$
+    since we can make a choice for each of the remaining $n(n-1)$ pairs.
+  </div>
+</Problem>
+
 <Problem title="Number of antisymmetric relations">
 <div label="question">  
 How many anti-symmetric relations are there on a set of $n$ elements?  
@@ -320,7 +336,35 @@ $$
 </div>  
 </Problem>
 
-<Problem title="Numnber of transitive relations (hard 🙂)">
+<Problem title="Number of Equivalence Relations (hard 🙂)">
+  <div label="question">
+    How many equivalence relations are there on a set of $n$ elements?
+  </div>
+  <div label="hint">
+    Recall that an equivalence relation is reflexive, symmetric, and transitive. The number of equivalence relations corresponds to the number of partitions of the set.  
+    Think about how adding a new element to the set affects the number of possible partitions (equivalence relations).
+  </div>
+  <div label="answer">
+    The number of equivalence relations on a set of $n$ elements is given by the $n$-th Bell number, $B_n$. The Bell numbers count the number of ways to partition a set into non-empty subsets. For small values of $n$, the Bell numbers are:
+    $$
+    B_1 = 1, \quad B_2 = 2, \quad B_3 = 5, \quad B_4 = 15, \quad B_5 = 52
+    $$
+
+    The recurrence for Bell numbers is:
+    $$
+    B_{n+1} = \sum_{k=0}^{n} {n \choose k} B_k
+    $$
+
+    **Intuition Behind the Recurrence**:
+    The recurrence works by considering how we can form a partition of $n+1$ elements from a partition of $n$ elements. Here's the intuition:
+    
+    - The *new* item we added must be in some set of the partition. Except for this item itself, let's say there are $k$ other items which are **not** in this same set of the partition ($k$ can range here from $0$ to $n$, because we could also put the $n+1$-the item in a singleton partition).
+
+    - Now we remove the whole parition of the $n+1$-th item. To parition the remaining set, we are left with $B_k$ possibilities. Additionally, there are $n \choose k$ possibilities to choose these $k$ items, which are not in the same partition as the $n+1$-th item.
+  </div>
+</Problem>
+
+<Problem title="Number of transitive relations (harder 😁)">
 <div label="question">  
 How many transitive relations are there on a set of $n$ elements?  
 </div>  
