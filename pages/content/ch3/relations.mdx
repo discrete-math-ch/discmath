@@ -176,7 +176,7 @@ $$
 For a relation $\rho$ on $A$ we further find that
 $$
 M^{\rho^k} = (M^{\rho})^k \\
-M^{\rho^*} = \sum_{k \in \mathbb{N}} (M^{\rho})^k
+M^{\rho^*} = \sum_{k \in \mathbb{N}\setminus\{0\}} (M^{\rho})^k
 $$
 
 The transitive closure of a relation $\rho$ can be determined algorithmically
@@ -189,7 +189,7 @@ A = zero_matrix(n,n)
 B = matrix(\rho)
 while A != B:
     A = B
-    B = B.multiply(B)
+    B += B.multiply(B)
 return A
 ```
 
