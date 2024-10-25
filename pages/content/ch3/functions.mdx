@@ -1,6 +1,98 @@
-import { Callout, Tabs} from 'nextra/components'
+import { Callout, Tabs } from 'nextra/components'
 import Problem from '@/components/problem'
 
-<Callout type="warning" emoji="🚧">
-  under construction
-</Callout>
+# Functions
+
+## Definition
+
+A function $f: A \to B$ is a special type of relation from $A$ to $B$; intuitively speaking, a totally and well-defined function must have a single output for each input, i.e. $f(a)$ is a single element for all $a \in A$. In general we are only interested in such functions.
+
+## Image
+
+For some function $f: A \to B$, the image of $A' \subseteq A$ are all elements that are "reached" from $A'$, i.e. $f(A') = \{ b \in B \; \vert \; \exists a \in A' (f(a') = b) \}$
+
+## Preimage
+
+The preimage of $B' \subset B$ under $f: A \to B$ are all elements in $A$ that map to some element in $B'$, i.e. $f^{-1}(B') = \{ a \in A \; \vert \; f(a) \in B' \}$.
+
+While the inverse $f^{-1}$ might not be defined, the preimage is always defined.
+
+## Special Properties
+
+A function $f: A \to B$ can have "special" properties:
+
+- A function is injective, if any two distinct input elements map to two different outputs ($\forall a \forall a' \left[ a \ne a' \to f(a) \ne f(a') \right]$). For "finite" functions (the relation $f$ is finite), this is equivalent to $|A| = |f(A)|$.
+- A function is surjective, if for every element in $B$ there exists some element $a$ in $A$ such that $f(a) = b$, or equivalently, that $f(A) = B$
+- A function is bijective if it is injective and surjective.
+
+# Exercises
+
+<Problem title="Preimage relation" source="Max Obreiter">
+    <div label="question">
+        Show that for every $f: A \to B$ and $B' \subseteq B$, the following holds:
+        $$
+            \{ (f(a), a) \in B' \times A \} = \text{id}_{B'} \circ \hat{f}
+        $$
+        If we "removed" the first element from the tuple of the LHS (but retaining the condition that $f(a) \in B'$), we would get the definition of the preimage. This definition is a bit more powerful since we also know which elements map to what.
+    </div>
+    <div label="answer">
+        Let $x$ be arbitrary but fixed:
+        $$
+            \begin{aligned}
+                             & (y, x) \in \{ (f(a), a) \in B' \times A \}                                                           \\
+                \dot\iff     & (y \in B' \land y = f(x)) \land (x \in A)                                   && \text{Setting $a = x$} \\
+                \dot\iff     & (y \in B' \land (x \, f \, y) \land (x \in A)                                   && \text{A function is a relation} \\
+                \dot\iff     & ((y \, \text{id}_{B'} \, y) \land (x \, f \, y)) \land (x \in A)             && \text{Def. $id_{B'}$}            \\
+                \dot\iff     & ((y \, \text{id}_{B'} \, y) \land (y \, \hat{f} \, x)) \land (x \in A)       && \text{Def. Inverse}              \\
+                \dot\iff     & (y \, (\text{id}_{B'} \circ \hat{f}) \, x) \land (x \in A)             && \text{Def. Composition}          \\
+                \dot\iff     & ((y, x) \in (\text{id}_{B'} \circ \hat{f})) \land (x \in A)      && \text{Use Elementhood Predicate} \\
+                \dot\implies & (y, x) \in (\text{id}_{B'} \circ \hat{f})                        && \text{Logical Consequence, $(1)$}
+            \end{aligned}
+        $$
+
+        $(1)$ Proof of the other direction:
+        $$
+            \begin{aligned}
+                & (y, x) \in (\text{id}_{B'} \circ \hat{f}) \\
+                \dot\implies & ((y, x) \in (\text{id}_{B'} \circ \hat{f})) \land ((y, x) \in (id_{B'} \circ \hat{f})) && \text{Idempotence} \\
+                \dot\implies & ((y, x) \in (\text{id}_{B'} \circ \hat{f})) \land ((y, x) \in (B' \times A)) && (id_{B'} \circ \hat{f}) \subseteq (A \times B) \\
+                \dot\implies & ((y, x) \in (\text{id}_{B'} \circ \hat{f})) \land (x \in A)
+            \end{aligned}
+        $$
+
+        This concludes the proof.
+    </div>
+</Problem>
+
+<Problem title="No bijection to Powerset (Cantor's Theorem)" source="Max Obreiter">
+    <div label="question">
+        Prove that for any set $A$ and any function $f: A \to \mathcal P(A)$, $f$ is not bijective.
+
+        _(This exercise is quite difficult and the first step might appear "random"; with Hint 1 the exercise should be rather easy.)_
+    </div>
+    <div label="hint">
+        Analyze the set $B = \{ x \in A \; \vert \; x \not\in f(x) \}$. Note that this set is well-defined by the filter axiom (unlike the similar-looking set from Russel's Paradox).
+    </div>
+    <div label="hint">
+        Assume that $f$ was bijective; what does this say about $B \subseteq \mathcal P(A)$?
+    </div>
+    <div label="hint">
+        Since $f$ is bijective, it is surjective, which means that there must be some $y \in A$ with $f(y) = B$.
+    </div>
+    <div label="answer">
+        See hints.
+
+        Assume that $y \in B = f(y)$. This is a contradiction since $x \in B \iff x \not\in f(y)$.
+
+        This means that $y \not\in B = f(y)$. But this also leads to a contradiction, since now by definition $B$, we must have $x \in B$.
+
+        This means that such a bijective function $f$ can't exist.
+
+        _Note that this argument only works for the specific choice for $y$, since we need that $B = f(y)$._
+
+        You can also find a slightly more formal version of the proof on [Wikipedia](https://en.wikipedia.org/wiki/Cantor%27s_theorem).
+    </div>
+    <div label="takeaway">
+        Very useful in the next chapter of countability.
+    </div>
+</Problem>
