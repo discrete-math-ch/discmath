@@ -1,6 +1,52 @@
 import { Callout, Tabs} from 'nextra/components'
 import Problem from '@/components/problem'
+import Image from 'next/image'
 
-<Callout type="warning" emoji="🚧">
-  under construction
+import { Cards } from 'nextra/components'
+
+# Countability
+
+Countability is a fundamental concept in set theory and mathematics that deals with the size and nature of sets. The idea that there are different kinds of *infinities* can be quite counterintuitive at first. However, understanding these distinctions is crucial. It helpor uns us determine whether a set is finite, countably infinite, countably infinite, providing insight into concepts like **discrete** and **continuous** (after all this course is called **discrete** mathematics). This understanding significantly influences how we can classify and think about different problems, particularly in computer science.
+
+ <Cards>
+  <Cards.Card
+    title="Intuition"
+    href="/content/ch3/countability#intuition"
+  />
+  <Cards.Card
+    title="Theory"
+    href="/content/ch3/countability#theory"
+  />
+  <Cards.Card
+    title="Exercises"
+    href="/content/ch3/countability#exercises"
+  />
+</Cards>
+
+<Callout type="axiom">
+**Definition 3.42**: 
+1. Two sets $A$ and $B$ are **equinumerous**, denoted $A \sim B$, if there exists a bijection $A \to B$.
+2. The set $B$ **dominates** the set $A$, denotes $A \preccurlyeq B$, if $A \sim C$ for some subset $C \subseteq B$ or, equivalently if there exists an injective function $A \to B$.
+3. A set $A$ is called **countable** if $f : A \preccurlyeq \mathbb{N}$, and **uncountable** otherwise.
+
 </Callout>
+
+The central aspect of this chapter is to decide whether a given set $A$ is countable or uncountable. More precisly you need to find an injection/bijection $\mathbb{N} \to A$ or find some other way to show that there is none.
+
+
+## Intuition
+
+
+
+## Theory
+
+
+### How to approach problems?
+#### Proving countability
+- Take small exaples of the objects of your set
+
+#### Proving uncountability
+
+## Exercises
+
+## References
