@@ -8,16 +8,9 @@
   height: 0;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 8px solid black; /* Default color for light mode */
-  margin-right: 8px;
+  border-left: 8px solid ; /* Explicit color for visibility */
+  margin-right: 8px; /* Adds spacing between chevron and title */
   transition: transform 0.2s ease;
-}
-
-/* Dark mode color change */
-@media (prefers-color-scheme: dark) {
-  .chevron {
-    border-left-color: white; /* Color for dark mode */
-  }
 }
 
 details[open] .chevron {
