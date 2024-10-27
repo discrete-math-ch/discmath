@@ -50,7 +50,7 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
   return (
     <details className="border border-gray-300 rounded-md p-4 shadow-md my-5">
       <summary className="text-lg font-semibold cursor-pointer flex flex-wrap items-center gap-2 sm:gap-5">
-        <span className="chevron mr-2"></span>
+        <span className="chevron mr-2 black dark:white"></span>
         <span className="text-base sm:text-lg font-semibold">{title}</span>
 
         {difficulty && (
@@ -66,21 +66,23 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
         )}
         
         {source && (
-          <span className="ml-auto text-sm sm:text-base text-gray-600 dark:text-gray-400 flex flex-wrap">
-            Source:&nbsp; {link ? (
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-                style={{ color: 'rgb(170, 255, 0)' }} // Custom color retained
-              >
-                {source}
-              </a>
-            ) : (
-              <span style={{ color: 'rgb(170, 255, 0)' }}>{source}</span> // Custom color retained for non-link source
-            )}
-          </span>
+          <span
+          className="ml-auto text-sm sm:text-base flex flex-wrap"
+        >
+          Source:&nbsp; {link ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+              style={{ color: link ? 'rgb(170, 255, 0)' : 'grey' }} 
+            >
+              {source}
+            </a>
+          ) : (
+            <span>{source}</span>
+          )}
+        </span>
         )}
       </summary>
       <Tabs items={items} className="overflow-x-auto whitespace-nowrap sm:whitespace-normal">
