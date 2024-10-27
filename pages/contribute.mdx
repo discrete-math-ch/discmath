@@ -1,5 +1,5 @@
 import Problem from '@/components/problem';
-
+import { Steps } from 'nextra/components'
 import { Callout,Tabs } from 'nextra/components'
 
 # Contribute
@@ -15,6 +15,89 @@ import { Callout,Tabs } from 'nextra/components'
 1. Fork the repository on github
 2. Make your changes 
 3. Make a pull request
+
+## Consistency
+
+### Page structure
+
+We aim to have a separate page for each major subchapter.
+
+ 
+<Steps>
+### Introduction
+ 
+This should contain something like a motivation and the most relevant definition of the chapter. There shouldn't be an extra heading for this. 
+
+### Intuition
+This should
+ 
+### Theory
+
+This should contain the necessary theory in condensed matter.
+</Steps>
+
+### Callout-Blocks
+
+#### Warnings
+
+Use to warn the reader of some pitfall, misusage or ambiguity:
+
+```mdx
+<Callout type="warning">
+ Watch out! $\dots$
+</Callout>
+```
+
+<Callout type="warning">
+ Watch out! $\dots$ 
+</Callout>
+
+
+
+#### Under Construction
+
+Use to denote unfinished sections:
+
+```mdx
+<Callout type="warning" emoji="🚧">
+  under construction
+</Callout>
+```
+<Callout type="warning" emoji="🚧">
+  under construction
+</Callout>
+
+#### Remarks
+
+Use to denote a remark which is not primarily related to the content from a page, but connects to content to something related (like a reference to a later chapter):
+
+```mdx
+<Callout type="info">
+  Note that $\dots$
+</Callout>
+```
+
+<Callout type="info">
+  Note that $\dots$
+</Callout>
+
+#### Stories
+
+If you have something on your mind...
+
+```mdx
+<Callout emoji="☕️" type="info">
+Once upon a time $\dots$
+</Callout>
+```
+
+<Callout emoji="☕️" type="info">
+Once upon atime $\dots$
+</Callout>
+
+
+### Examples
+
 
 ## Writing Problems
 To write a problem, you can use the `<Problem/>` component in an `.mdx` file as follows:

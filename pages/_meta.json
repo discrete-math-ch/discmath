@@ -31,7 +31,10 @@
     },
     "contribute": {
         "title": "Contribute",
-        "type": "page"
+        "type": "page",
+        "theme": {
+            "toc": true
+        }
     },
     "about": {
         "title": "About",
