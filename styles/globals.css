@@ -2,12 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base state for chevron */
-details > summary .chevron {
-  transition: transform 0.2s ease-in-out;
+.chevron {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid black; /* Default color for light mode */
+  margin-right: 8px;
+  transition: transform 0.2s ease;
 }
 
-/* Rotate chevron when the details element is open */
-details[open] > summary .chevron {
+/* Dark mode color change */
+@media (prefers-color-scheme: dark) {
+  .chevron {
+    border-left-color: white; /* Color for dark mode */
+  }
+}
+
+details[open] .chevron {
   transform: rotate(90deg);
 }
