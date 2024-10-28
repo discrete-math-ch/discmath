@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'nextra/components';
 
-const Problem = ({ title, difficulty, children, source, link }) => {
+const Problem = ({ title, difficulty, relevance, children, source, link }) => {
   const labeledChildren = React.Children.toArray(children);
 
   const question = labeledChildren.filter(child => child?.props?.label === 'question');
@@ -34,30 +34,58 @@ const Problem = ({ title, difficulty, children, source, link }) => {
   } else if (takeaway.length === 1) {
     items.push('Takeaway');
   }
+
+  const difficultyToEmoji = (level) => {
+    switch (level) {
+      case 1: return '🐣';
+      case 2: return '🐢';
+      case 3: return '🐱';
+      case 4: return '🐺';
+      case 5: return '🦁';
+      case 6: return '🐉';
+      default: return '';
+    }
+  };
   
   return (
     <details className="border border-gray-300 rounded-md p-4 shadow-md my-5">
-      <summary className="text-lg font-semibold cursor-pointer flex  items-center">
-      <span className="ml-2 chevron">&#x25B6;</span>
-      <span className="ml-5">{title}</span>
-      {difficulty && (
-    <span className="ml-5 text-sm">
-      Difficulty: {difficulty}
-    </span>
-  )}
-        {source && !link && (
-          <span className="ml-auto text-sm text-gray-600 dark:text-gray-400 ">
-            Source: {source}
+      <summary className="text-lg font-semibold cursor-pointer flex flex-wrap items-center gap-2 sm:gap-5">
+        <span className="chevron mr-2 black dark:white"></span>
+        <span className="text-base sm:text-lg font-semibold">{title}</span>
+
+        {difficulty && (
+          <span className="text-sm sm:text-base">
+            Difficulty: {difficultyToEmoji(difficulty)}
           </span>
         )}
-        {source && link && (
-          <span className="ml-auto text-sm text-gray-600 dark:text-gray-400 ">
-            Source: <a href={link} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: 'rgb(170, 255, 0)' }}>{source}</a>
+        
+        {relevance !== undefined && (
+          <span className="text-sm sm:text-base">
+            Relevance: {relevance < 1 ? '🪩' : '🎓'.repeat(relevance)}
           </span>
         )}
-       
+        
+        {source && (
+          <span
+          className="ml-auto text-sm sm:text-base flex flex-wrap"
+        >
+          Source:&nbsp; {link ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+              style={{ color: link ? 'rgb(170, 255, 0)' : 'grey' }} 
+            >
+              {source}
+            </a>
+          ) : (
+            <span>{source}</span>
+          )}
+        </span>
+        )}
       </summary>
-      <Tabs items={items}>
+      <Tabs items={items} className="overflow-x-auto whitespace-nowrap sm:whitespace-normal">
         {question.map((q, index) => (
           <Tabs.Tab key={`Question-${index}`}>
             <div>{q}</div>
