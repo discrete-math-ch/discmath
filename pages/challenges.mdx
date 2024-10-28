@@ -3,7 +3,7 @@ import Problem from '@/components/problem'
 
 # Challenges
 
-The first student enrolled in Discrete Mathematics 2024 who sends a sophisticated proof to [tsteinbreche@ethz.ch](mailto:tsteinbreche@ethz.ch) will receive chocolate in the next exercise session - be honest and don't use external tools :). 
+The first student enrolled in Discrete Mathematics 2024 who sends a sophisticated proof to [submit@discmath.ch](mailto:submit@discmath.ch) will receive chocolate in the next exercise session - be honest and don't use external tools :). 
 Before sending a mail, please check that this challenge is unsolved.
 
 
@@ -43,6 +43,58 @@ Before sending a mail, please check that this challenge is unsolved.
 </Callout>
 
 
-> The idea of challenges is inspired by [aellison](https://n.ethz.ch/~aellison/dm2022/).
+## Week 6
+<Callout type='info' emoji="🔒">
+**UNSOLVED**
+<Problem title="Two be or not two be" source="Yannick Funke, Max Obreiter">
+    <div label="question">
+        *Prove the following statement*:
+        $$
+            \left| \left(\mathbb N / \equiv_2 \right) \right| = 2
+        $$
 
+        You are **NOT** allowed to use:
+        - Proof by Induction
+        - Results from Chapter 4 and 5 unless explicitely allowed
+
+        Assume the following:
+        - The universe is $U = \mathbb Z$
+        - The binary functions $\cdot, +, -$ and the unary function $-$ are defined as usual. You can also use the properties of these functions (e.g. distributivity, etc.).
+        - The predicates $\le$ and $=$ are defined as usual. You can also use the properties of the combination of these predicates and the functions (e.g. the order axioms).
+        - $(\mathbb N; \le)$ is well-ordered
+        - $a \equiv_2 b \overset{\small def}{\Longleftrightarrow} \exists k (2k = a - b)$
+    </div>
+</Problem>
+</Callout>
+
+<Callout type='info' emoji="🔒">
+**UNSOLVED**
+<Problem title="Counting the Uncountable" source="Yannick Funke">
+    <div label="question">
+        Let $B$ be an arbitrary but fixed set. We then define $Q$ as:
+        $$
+            Q = \left\{ (A, f) \in \left( \mathcal P(B) \times B^B \right) \; \vert \; f \in A^A \land A \preceq \mathbb N \land A \not\sim \mathbb N \right\}
+        $$
+        (If this "arbitrary" $B$ looks scary, you can assume that $Q$ contains all elements of the form $(A, f \in A^A)$ where $A$ is finite. Note that this set is not defined though.)
+        
+        We define $\sim$ on $Q$ as:
+        $$
+            (A_1, f_1) \sim (A_2, f_2) \overset{\text{\small def}}{\iff}\text{ there exists a bijection $g: A_1 \to A_2$, such that: }f_1 = g^{-1} \circ f_2 \circ g
+        $$
+        
+        Prove that $Q$ is an equivalence relation (for a fixed $B$). Then prove that $(Q/\sim)$ is countable (for a fixed $B$).
+    </div>
+</Problem>
+</Callout>
+
+<Callout type='info' emoji="🔒">
+**UNSOLVED**
+<Problem title="Linear Combinations" source="Tobias Steinbrecher">
+  <div label="question">
+    Prove that the set of all finite rational linear combinations of elements in a countably infinite set $S = \{s_1, s_2, s_3, \dots\}$ is countable.
+  </div>
+</Problem>
+</Callout>
+
+> The idea of challenges is inspired by [aellison](https://n.ethz.ch/~aellison/dm2022/).
 
