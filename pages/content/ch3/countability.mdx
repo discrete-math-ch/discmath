@@ -22,7 +22,7 @@ This chapter is one where you can truly get creative with proofs, and sometimes 
 </Cards>
 
 <Callout type="axiom">
-**Definition 3.42**: 
+**Definition 3.42**:
 1. Two sets $A$ and $B$ are **equinumerous**, denoted $A \sim B$, if there exists a bijection $A \to B$.
 2. The set $B$ **dominates** the set $A$, denotes $A \preccurlyeq B$, if $A \sim C$ for some subset $C \subseteq B$ or, equivalently if there exists an injective function $A \to B$.
 3. A set $A$ is called **countable** if $A \preccurlyeq \mathbb{N}$, and **uncountable** otherwise.
@@ -36,7 +36,7 @@ The central aspect of this chapter is to decide whether a given set $A$ is count
 The proofs for the following theorems can be found in the script and won't be recited here.
 
 <Callout type="-">
-**Lemma 3.15**: 
+**Lemma 3.15**:
 1. The relation $\sim$ is an equivalence relation.
 2. The relation $\preccurlyeq$ is transitive: $A \preccurlyeq B \land B \preccurlyeq C \Rightarrow A \preccurlyeq C$.
 3. $A \subseteq B \Rightarrow A \preccurlyeq B$.
@@ -47,20 +47,20 @@ The first point provides us with major intuition about countability. And the pro
 
 
 <Callout type="-">
-**Theorem 3.16**: 
+**Theorem 3.16**:
 If $A \preccurlyeq B$ and $B \preccurlyeq A$, then $A \sim B$.
 </Callout>
-This is a rather *extra theorem*. Though, it's sort of intuivive. It somehow captures a notion of antisymmetry (however not in the sense that $A = B$, but only $A \sim B$). It will probably be rarely or might be never be the case in this course that it is easier to show that these two injections exist than that a bijection $A \to B$ exists. 
+This is a rather *extra theorem*. Though, it's sort of intuivive. It somehow captures a notion of antisymmetry (however not in the sense that $A = B$, but only $A \sim B$). It will probably be rarely or might be never be the case in this course that it is easier to show that these two injections exist than that a bijection $A \to B$ exists.
 
 <Callout type="-">
-**Theorem 3.17**: 
+**Theorem 3.17**:
 A set $A$ is countable if and only if it is finite or if $A \sim \mathbb{N}$. This implies there is no cardinality level between finite and countably infinite sets.
 </Callout>
 
 ### Important Countable Sets
 
 <Callout type="-">
-**Theorem 3.18**: 
+**Theorem 3.18**:
 The set $\{0, 1\}^*$, defined as $\{\epsilon, 0, 1, 00, 01, 10, 11, 000, 001, \ldots\}$ of finite binary sequences, is countable.
 </Callout>
 This is a goto set to prove countability. Finding an injection to $\{0,1\}^*$ is often the base of a proof and combining this with Lemma **3.15** (Transitivity), we quickly obtain countability.
@@ -68,27 +68,27 @@ This is a goto set to prove countability. Finding an injection to $\{0,1\}^*$ is
 
 
 <Callout type="-">
-**Theorem 3.19**: 
+**Theorem 3.19**:
 The set $\mathbb{N} \times \mathbb{N}$ of ordered pairs of natural numbers is countable.
 
 </Callout>
 
 <Callout type="-">
-**Corollary 3.20**: 
+**Corollary 3.20**:
 The Cartesian product $A \times B$ of two countable sets $A$ and $B$ is countable, i.e., $A \preccurlyeq \mathbb{N} \land B \preccurlyeq \mathbb{N} \Rightarrow A \times B \preccurlyeq \mathbb{N}$.
 </Callout>
 
 
 
 <Callout type="-">
-**Corollary 3.21**: 
+**Corollary 3.21**:
 The set of rational numbers $\mathbb{Q}$ is countable.
 </Callout>
 
 
 
 <Callout type="-">
-**Theorem 3.22**: 
+**Theorem 3.22**:
 Let $A$ and $A_i$ for $i \in \mathbb{N}$ be countable sets.
 1. For any $n \in \mathbb{N}$, the set $A^n$ of $n$-tuples over $A$ is countable.
 2. The union $\bigcup_{i \in \mathbb{N}} A_i$ of a countable list $A_0, A_1, A_2, \ldots$ of countable sets is countable.
@@ -98,34 +98,34 @@ Let $A$ and $A_i$ for $i \in \mathbb{N}$ be countable sets.
 This is another very central theorem and in the case of certain involved set operations, should be considered as a starting point for proving that some complicated set is countable.
 
 <Callout type="-">
-**Definition 3.43**: 
+**Definition 3.43**:
 Let $\{0, 1\}^\infty$ denote the set of semi-infinite binary sequences or, equivalently, the set of functions $\mathbb{N} \to \{0, 1\}$.
 </Callout>
-Just in case you are wondering: Why are they called semi-infinite? This is because they go infinite in *one-direction*. 
-This is often super useful. We can think about functions as infinite 
+Just in case you are wondering: Why are they called semi-infinite? This is because they go infinite in *one-direction*.
+This is often super useful. We can think about functions as infinite
 
 <Callout type="warning">
-There is a major difference between the set of semi-infinite bitstrings $\{0,1\}^{\infty}$ and $\{0,1\}^*$. 
+There is a major difference between the set of semi-infinite bitstrings $\{0,1\}^{\infty}$ and $\{0,1\}^*$.
 
 The set $\{0,1\}^*$ represents all **finite** sequences (or strings) of bits, including the empty string. Each string in $\{0,1\}^*$ has a **finite** length, and the set is countably infinite because we can list all possible finite bitstrings in a sequence.
 
 On the other hand, the set of semi-infinite bitstrings consists of all sequences of bits that extend **infinitely** in one direction. Each bitstring in this set has an infinite length, and the set is uncountably infinite.
 
 For example we have $0 \in \{0,1\}^*$ but $0 \notin \{0,1\}^{\infty}$. But $000\dots \in \{0,1\}^{\infty}$ (the semi-infinite string of $0$'s).
-</Callout> 
+</Callout>
 
 
 <Callout type="-">
-**Theorem 3.23**: 
+**Theorem 3.23**:
 The set $\{0, 1\}^\infty$ is uncountable.
 
 </Callout>
 
-This theorem is central and a thought about the uncountability of $\{0,1\}^{\infty}$ should be a possible starting point for any uncountability proof. 
+This theorem is central and a thought about the uncountability of $\{0,1\}^{\infty}$ should be a possible starting point for any uncountability proof.
 
 ### Computability
 <Callout type="-">
-**Definition 3.44**: 
+**Definition 3.44**:
 A function $f : \mathbb{N} \to \{0,1\}$ is called computable if there is a program that, for every $n\in \mathbb{N}$, when given $n$ as input, outputs $f(n)$.
 </Callout>
 
@@ -139,14 +139,17 @@ A function $f : \mathbb{N} \to \{0,1\}$ is called computable if there is a progr
 #### Proving uncountability
 Let $A$ be the set we want to prove to be uncountable. Finding an injection from $\{0,1\}^{\infty}$ is almost always the way to go. However, you could also use some other uncountable set.
 
-1. **Define $f: \{0,1\}^{\infty} \to A$**  
-   Argue why $f$ is a function as you defined it.
+1. **Define $f: \{0,1\}^{\infty} \to A$**
+  Formally define a value for each element of the codomain.
 
-2. **Prove that $f$ is injective**  
-   Provide a detailed proof showing that $f$ is an injective function.
+2. **Show that $f$ is well-defined**
+  Argue that $f$ is a valid function including that each value lies in the given domain.
 
-3. **Argue/Prove why $\{0,1\}^{\infty} \preccurlyeq A$ means that $A$ is uncountable**  
-   Explain why the existence of an injection from $\{0,1\}^{\infty}$ to $A$ implies that $A$ is uncountable.
+3. **Prove that $f$ is injective**
+  Provide a detailed proof showing that $f$ is an injective function.
+
+4. **Argue/Prove why $\{0,1\}^{\infty} \preccurlyeq A$ means that $A$ is uncountable**
+  Explain why the existence of an injection from $\{0,1\}^{\infty}$ to $A$ implies that $A$ is uncountable.
 
 ## Exercises
 <Problem title="Points in the Plane" difficulty={1} relevance={4} source="Tobias Steinbrecher">
