@@ -2,6 +2,8 @@ import { Callout, Tabs} from 'nextra/components'
 import Problem from '@/components/problem'
 import Image from 'next/image'
 
+import { Steps } from 'nextra/components'
+
 import { Cards } from 'nextra/components'
 
 # Countability
@@ -135,18 +137,84 @@ A function $f : \mathbb{N} \to \{0,1\}$ is called computable if there is a progr
 
 
 ### How to approach problems?
+ 
+#### Countable or Uncountable
+ 
+Determine whether the set you have is countable or uncountable. This requires to first really understand what's going on in your set. Think about samller examples and similarities to known sets (often finding these similarties will directly lead you to the injection, which you have to find anyway).
 
-#### Proving uncountability
-Let $A$ be the set we want to prove to be uncountable. Finding an injection from $\{0,1\}^{\infty}$ is almost always the way to go. However, you could also use some other uncountable set.
+### Uncountablility Proofs
 
-1. **Define $f: \{0,1\}^{\infty} \to A$**  
-   Argue why $f$ is a function as you defined it.
+You can only start once you more or less understand what's going on in your set.
 
-2. **Prove that $f$ is injective**  
-   Provide a detailed proof showing that $f$ is an injective function.
+The following pattern is a common pattern and surely cannot be used in **every** case. However, oftentimes when having an uncountable set, you can find an injection from the set $\{0,1\}^{\infty}$, which is known to be uncountable. You could of course also use something like $\mathbb{R}$ or $[0,1]$, which might be easier sometimes. Also the order below is not fixed and the proofs can look way different than the form below and still be correct. The purpose of these steps below is more to give you a structure of how one **could** approach problems involving proofs of uncountability.
 
-3. **Argue/Prove why $\{0,1\}^{\infty} \preccurlyeq A$ means that $A$ is uncountable**  
-   Explain why the existence of an injection from $\{0,1\}^{\infty}$ to $A$ implies that $A$ is uncountable.
+
+Let $A$ be the set you want to prove to be uncountable.
+
+
+#### 1. Finding the injection
+The first and probably most difficult step is to **find** an injection:
+
+$$
+f: \{0,1\}^{\infty} \to A
+$$
+
+The intuition here is that you somehow have to encode all the information of a bitstring $b$ in its image $f(b)$. We want to sort of be able to reconstruct $b$ from $f(b)$ uniquely. More formally this is exactly the definition of an injection. Namely, for arbitrary $b, b' \in \{0,1\}^{\infty}$ we want to have:
+
+$$
+b \neq b' \implies f(b) \neq f(b')
+$$
+
+This is just the definition of injectivity. You have to carefully think about this when choosing $f$, to then later prove that it is indeed the case. 
+In this first step the most important thing is, that you really precisely write down the definition of your function $f$ and how it maps the bitstring to elements of $A$. 
+
+#### 2. Proving that your function is a function
+
+Now that you thought about your function it should be clear to you that you have constructed something that is indeed a function. However you still have to prove or at least write some justification why the following properties are fulfilled, because this is not obvious in many cases:
+
+1. *Does your function actually map to elements from $A$ and not something else?* You defined your function to be a map from $\{0,1\}^{\infty}$ however, is it actually the case that for each $b\in \{0,1\}^{\infty}$, $f(b) \in A$?
+
+2. *Is your function actually a function?* Argue why it is *well-defined* and *totally-defined* (definition of a function).
+
+
+This step can in some cases already be quite demanding, in other cases it can also be quite short.
+
+#### 3. Proving injectivity
+
+This is more or less the central part of your proof. Here you have to actually show that what you defined actually is injective. To do this, the definition of injectivity is basically everything we have to show. Two common ways are:
+
+1. *Let $b, b' \in \{0,1\}^{\infty}$ be arbitrary such that $b \neq b'$. Then we have*
+$$
+\begin{aligned}
+b \neq b' &\overset{\cdot}{\implies} \dots \\
+&\overset{\cdot}{\implies} \dots \\
+&\overset{\cdot}{\implies} f(b) \neq f(b')
+\end{aligned}
+$$
+*Therefore, $f$ is injective*.<br/>
+As you can see, this is just the direct method of proving that $f$ fulfills the definition.
+
+2. *Let $b, b' \in \{0,1\}^{\infty}$ be arbitrary such that $f(b) = f(b')$. Then we have*
+$$
+\begin{aligned}
+f(b) = f(b') &\overset{\cdot}{\implies} \dots \\
+&\overset{\cdot}{\implies} \dots \\
+&\overset{\cdot}{\implies} b=b' 
+\end{aligned}
+$$
+*Therefore, we have proven indirectly that $f$ is injective*. <br/>
+As you can see, this is just the contraposition of the definition the injectivity of $f$ (see proof pattern of indirect proof).
+
+---
+
+The difficulty in this step is to provide precise and detailled justifications.
+
+#### 4. Punchline
+
+Now we can actually apply **definition 3.42** to obtain $\{0,1\}^{\infty} \preceq A$. However, it is not immediate how this implies that $A$ is uncountable, as we need to show that **not** $A \preceq \mathbb{N}$. There are multiple short ways how one could argue about this. An easy way is to assume that $A$ is countable ($A \preceq \mathbb{N}$) and that $\{0,1\}^{\infty} \preceq A$. Then we obtain with **Lemma 3.15** (Transitivity) that $\{0,1\}^{\infty} \preceq \mathbb{N}$, which is false as proven in lecture via Cantor's diagonalization argument. Therefore, $A$ must be uncountable. 
+
+
+
 
 ## Exercises
 <Problem title="Points in the Plane" difficulty={1} relevance={4} source="Tobias Steinbrecher">
