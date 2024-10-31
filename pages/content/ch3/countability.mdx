@@ -214,10 +214,12 @@ The difficulty in this step is to provide precise and detailled justifications.
 Now we can actually apply **definition 3.42** to obtain $\{0,1\}^{\infty} \preceq A$. However, it is not immediate how this implies that $A$ is uncountable, as we need to show that **not** $A \preceq \mathbb{N}$. There are multiple short ways how one could argue about this. An easy way is to assume that $A$ is countable ($A \preceq \mathbb{N}$) and that $\{0,1\}^{\infty} \preceq A$. Then we obtain with **Lemma 3.15** (Transitivity) that $\{0,1\}^{\infty} \preceq \mathbb{N}$, which is false as proven in lecture via Cantor's diagonalization argument. Therefore, $A$ must be uncountable. 
 
 
+---
 
+See the exercise "This seems odd" for an application of this *pattern*.
 
 ## Exercises
-<Problem title="Points in the Plane" difficulty={1} relevance={4} source="Tobias Steinbrecher">
+<Problem title="Points in the Plane" difficulty={1} relevance={3} source="Tobias Steinbrecher">
   <div label="question">
     Prove that the set of all points in the plane with rational coordinates is countable.
   </div>
@@ -228,5 +230,42 @@ Now we can actually apply **definition 3.42** to obtain $\{0,1\}^{\infty} \prece
     The set of all points in the plane with rational coordinates can be represented as $\mathbb{Q} \times \mathbb{Q}$.
     Since $\mathbb{Q}$ is countable and the Cartesian product of two countable sets is also countable (**by Theorem 3.22**), $\mathbb{Q} \times \mathbb{Q}$ is countable.
     Therefore, the set of all points in the plane with rational coordinates is countable.
+  </div>
+</Problem>
+
+
+<Problem title="This seems odd" difficulty={2} relevance={4} source="Tobias Steinbrecher">
+  <div label="question">
+    Prove or disprove that the following set is uncountable
+  $$
+    A = \{f \in \{0,1\}^{\mathbb{N}} \mid f(k) = 0 \text{ if $k \equiv_2 0$ }\}
+  $$
+  </div>
+  <div label="hint">
+  First really understand the set. This is simply the se of functions, which maps each even natural number to $0$ and an odd natural number to some $0$ or $1$. Now think about how we could 
+  </div>
+  <div label="answer">
+  We will prove that this set is uncountable by finding an injection from $\{0,1\}^{\infty}$
+
+  1.  Consider the following function:
+
+  $$
+  f : \{0,1\}^{\infty} \to A \qquad b \mapsto g
+  $$
+  such that 
+  $$
+  g(k) = \begin{cases} 0 & \text{if $k \equiv_2 0$}\\ b_{\lfloor k/2 \rfloor} & \text{if $k \equiv_2 1$}
+\end{cases}
+  $$
+  where $b_i$ denotes the $i$-th bit of the bitstring $b$ (with $i \in \mathbb{N}$).
+
+  2. We will prove that this is indeed a function. Let $b \in \{0,1\}^{\infty}$ be arbitrary. For $f(b)$, we obtain that $f(b) \in A$, as for all $k \in \mathbb{N}$ we have $f(k) = 0$ by construction. The function is well-defined and totally-defined, as we map every bitstring $b \in \{0,1\}^{\infty}$ to at most one function $g \in A$.
+
+  3. Now we want to prove injectivity. Let $b, b' \in \{0,1\}^{\infty}$ be two bitstrings such that $b \neq b'$. Then we obtain that $b$ and $b'$ must differ in at least one position $b_j \neq b_j'$ (for some $j \in \mathbb{N}$). Because by construction of $f$, we obtain $f(b)(2 \cdot j + 1) = b_{j}$ and $f(b')(2 \cdot j + 1) = b'_{j}$, we have $f(b) \neq f(b')$ as these function differ for the value $2 \cdot j + 1$ (more formally $(2j + 1, b_j) \in f(b)$ and $(2j + 1, b'j) \in f(b')$).
+  
+  4. Thus, we have $\{0,1\}^{\infty} \preceq A$. Now assume for a contradiction that $A$ is countable, i.e. $A \preceq \mathbb{N}$. By transitivity, we therefore have $\{0,1\}^{\infty} \preceq \mathbb{N}$ which implies that $\{0,1\}^{\infty}$ is countable. This is a contradiction, as $\{0,1\}^{\infty}$ is known to be uncountable (by diagonalization argument).
+  Thus, $A$ must be uncountable, which is what we wanted to prove.  
+
+
   </div>
 </Problem>
