@@ -72,7 +72,7 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
         )}
         
         {relevance !== undefined && (
-          <span className="text-sm sm:text-base">
+          <span className="text-sm sm:text-base" title={relevance < 1 ? 'Irrelevant' : `Relevancy ${relevance}/4`}>
             Relevance: {relevance < 1 ? '🪩' : '🎓'.repeat(relevance)}
           </span>
         )}
