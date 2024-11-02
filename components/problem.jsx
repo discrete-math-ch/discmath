@@ -46,6 +46,18 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
       default: return '';
     }
   };
+
+  const difficultyToText = (level) => {
+    switch (level) {
+      case 1: return 'Easy';
+      case 2: return 'Fairly Easy';
+      case 3: return 'Moderate';
+      case 4: return 'Hard';
+      case 5: return 'Very Hard';
+      case 6: return 'Hmmm?';
+      default: return '';
+    }
+  };
   
   return (
     <details className="border border-gray-300 rounded-md p-4 shadow-md my-5">
@@ -54,13 +66,13 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
         <span className="text-base sm:text-lg font-semibold">{title}</span>
 
         {difficulty && (
-          <span className="text-sm sm:text-base">
+          <span className="text-sm sm:text-base" title={difficultyToText(difficulty)}>
             Difficulty: {difficultyToEmoji(difficulty)}
           </span>
         )}
         
         {relevance !== undefined && (
-          <span className="text-sm sm:text-base">
+          <span className="text-sm sm:text-base" title={relevance < 1 ? 'Irrelevant' : `Relevancy ${relevance}/4`}>
             Relevance: {relevance < 1 ? '🪩' : '🎓'.repeat(relevance)}
           </span>
         )}
