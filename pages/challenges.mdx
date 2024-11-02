@@ -12,7 +12,7 @@ deployment `21.10.2024 18:32`
 
 
 <Callout type='info' emoji="🔓">
-**SOLVED** by `nwessbecher`, `00:20h` after deployment ([solution file](/challenge_solutions/c01_nwessbecher.pdf))):
+**SOLVED** by `nwessbecher`, `00:20h` after deployment ([solution file](/challenge_solutions/c01_nwessbecher.pdf)):
 <Problem title="Equivalence Relation on Vector Spaces" source="Tobias Steinbrecher">
   <div label="question">
     Let $V$ be a real vector space, and define a relation $\sim$ on $V$ as follows: For $u, v \in V$, we say $u \sim v$ if and only if $u - v \in W$, where $W$ is a subspace of $V$. Prove that this relation is an equivalence relation.
@@ -50,12 +50,12 @@ deployment `21.10.2024 18:32`
 deployment `28.10.2024 18:17`
 
 <Callout type='info' emoji="🔓">
-**SOLVED** by `leoschmidt`, `3d 05:41h` after deployment ([solution file](/challenge_solutions/c02-1_leoschmidt.pdf))):
-<Problem title="Two be or not two be" source="Yannick Funke, Max Obreiter">
+**SOLVED** by `leoschmidt`, `3d 05:41h` after deployment ([solution file](/challenge_solutions/c02-1_leoschmidt.pdf)):
+<Problem title="Two be or not two be" difficulty={5} relevance={0} source="Yannick Funke, Max Obreiter">
     <div label="question">
         *Prove the following statement*:
         $$
-            \left| \left(\mathbb N / \equiv_2 \right) \right| = 2
+            \left| \mathbb N / \! \equiv_2 \right| = 2
         $$
 
         You are **NOT** allowed to use:
@@ -68,13 +68,85 @@ deployment `28.10.2024 18:17`
         - The predicates $\le$ and $=$ are defined as usual. You can also use the properties of the combination of these predicates and the functions (e.g. the order axioms).
         - $(\mathbb N; \le)$ is well-ordered
         - $a \equiv_2 b \overset{\small def}{\Longleftrightarrow} \exists k (2k = a - b)$
+
+        This challenge is very difficult, so don't worry if you need to look at the hints!
+
+        There are multiple ways to prove this statement, the hint/answer show the intended way.
+    </div>
+    <div label="hint">
+        Prove the following statement (for $U = \mathbb N$):
+        $$
+            \forall n \exists c \left[ c \le 1 \land n \equiv_2 c ) \right]
+        $$
+    </div>
+    <div label="hint">
+        Prove it by contradiction (it's a little bit trickier than usual, see the next hint for more help). You might want to prove $m \equiv_2 m - 2$ first.
+    </div>
+    <div label="hint">
+        Assume that $c \ge 2$ is the smallest natural number such that $m \equiv_2 c$ and show that $c$ is actually not minimal. You might want to use the well-ordering principle here.
+    </div>
+    <div label="hint">
+        Conclude that $\left| \mathbb N / \! \equiv_2 \right| \le 2$.
+    </div>
+    <div label="hint">
+        Show that $\left| \mathbb N / \! \equiv_2 \right| \ge 2$. This should be easier.
+    </div>
+    <div label="hint">
+        Show that a set with two elements is a subset of $\mathbb N / \! \equiv_2$. Then conclude that $\left| \mathbb N / \! \equiv_2 \right| = 2$.
+    </div>
+    <div label="answer">
+        We first prove that $m \equiv_2 m - 2$ for some arbitrary but fixed $m \in \mathbb Z$:
+        $$
+            \begin{aligned}
+                m \equiv_2 m - 2 &\overset{\text{def}}{\Longleftrightarrow} \exists k (2k = m - (m - 2)) \\
+                \dot\Longleftrightarrow & \exists k (2k = 2) \\
+                \dot\Longleftrightarrow & \exists k (k = 1) \\
+                \dot\Longleftrightarrow & \top
+            \end{aligned}
+        $$
+
+        Now we prove that for any fixed but arbitrary natrual number $n \in \mathbb N$ the following holds:
+        $$
+            \exists c \in \mathbb N \; \left( c \le 1 \land n \equiv_2 c \right)
+        $$
+        We prove this by contradiction. Assume that the smallest such $c \in [n]_{\equiv_2}$ is $c \ge 2$ (for the fixed $n$). Because $n \in [n]_{\equiv_2}$, we have $[n]_{\equiv_2} \ne \varnothing$, so by the well-ordering principle there exists a least element $c \in [n]_{\equiv_2}$. Then we have:
+        $$
+            \begin{aligned}
+                n &\equiv_2 c && \text{Def. of $c$} \\
+                &\equiv_2 c - 2 && \text{Proved above} \\
+            \end{aligned}
+        $$
+        Since $c \ge 2 \iff c - 2 \ge 0$, we have $(c - 2) \in \mathbb N$. This means that $c \ge c - 2$, which is a contradiction to the minimality of $c$. Therefore, $c \le 1$.
+        This implies that $\left| \mathbb N / \! \equiv_2 \right| \le 2$. 
+
+        Now we show that $\left| \mathbb N / \! \equiv_2 \right| \ge 2$. We show that by proving that $[0]_{\equiv_2} \ne [1]_{\equiv_2}$, i.e. $0 \not\equiv_2 1$.
+        Assume that $0 \equiv_2 1$. Then we have:
+        $$
+            \begin{aligned}
+                & 0 \equiv_2 1 \\
+                \dot\Longrightarrow & \exists k (2k = 1) && \text{Def. of $\equiv_2$} \\
+            \end{aligned}
+        $$
+
+        We distinguish two cases:
+        - If $k \ge 1$, then $2k \ge 2$, which is a contradiction to $2k = 1$.
+        - If $k \le 0$, then $2k \le 0$, which is a contradiction to $2k = 1$.
+        
+        Since the two cases cover all possibilities, we have shown that $0 \not\equiv_2 1$ and thus $[0]_{\equiv_2} \ne [1]_{\equiv_2}$.
+
+        This means that $\left\{ [0]_{\equiv_2}, [1]_{\equiv_2} \right\} \subseteq (\mathbb N / \! \equiv_2)$, which implies that $\left| \mathbb N / \! \equiv_2 \right| \ge 2$.
+
+        By the anti-symmetry of $\le$ (and $\ge$), we have $\left| \mathbb N / \! \equiv_2 \right| = 2$.
+    </div>
+    <div label="takeaway">
+        This proof (without hints) is very difficult.
     </div>
 </Problem>
 </Callout>
 
 <Callout type='info' emoji="🔓">
-**SOLVED** by `leoschmidt`, `3d 05:41h` after deployment ([solution file](/challenge_solutions/c02-2_leoschmidt.pdf))):
-<Problem title="Counting the Uncountable" source="Yannick Funke">
+**SOLVED** by `leoschmidt`, `3d 05:41h` after deployment ([solution file](/challenge_solutions/c02-2_leoschmidt.pdf)):
+<Problem title="Counting the Uncountable" difficulty={3} relevance={3} source="Yannick Funke">
     <div label="question">
         Let $B$ be an arbitrary but fixed set. We then define $Q$ as:
         $$
@@ -93,8 +165,8 @@ deployment `28.10.2024 18:17`
 </Callout>
 
 <Callout type='info' emoji="🔓">
-**SOLVED** by `leoschmidt`, `3d 04:33h` after deployment ([solution file](/challenge_solutions/c02-3_leoschmidt.pdf))):
-<Problem title="Linear Combinations" source="Tobias Steinbrecher">
+**SOLVED** by `leoschmidt`, `3d 04:33h` after deployment ([solution file](/challenge_solutions/c02-3_leoschmidt.pdf)):
+<Problem title="Linear Combinations" difficulty={2} relevance={3} source="Tobias Steinbrecher">
   <div label="question">
     Prove that the set of all finite rational linear combinations of elements in a countably infinite set $S = \{s_1, s_2, s_3, \dots\}$ is countable.
 
