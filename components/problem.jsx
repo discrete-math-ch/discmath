@@ -66,8 +66,8 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
         <span className="text-base sm:text-lg font-semibold">{title}</span>
 
         {difficulty && (
-          <span className="text-sm sm:text-base" title={difficultyToText(difficulty)}>
-            Difficulty: {difficulty}/5
+          <span className="text-sm sm:text-base">
+            Difficulty: {difficulty + '/5'}
           </span>
         )}
         
