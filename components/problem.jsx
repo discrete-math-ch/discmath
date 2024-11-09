@@ -35,7 +35,7 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
     items.push('Takeaway');
   }
 
-  const difficultyToEmoji = (level) => {
+  /*const difficultyToEmoji = (level) => {
     switch (level) {
       case 1: return '🐣';
       case 2: return '🐢';
@@ -57,7 +57,7 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
       case 6: return 'Hmmm?';
       default: return '';
     }
-  };
+  };*/
   
   return (
     <details className="border border-gray-300 rounded-md p-4 shadow-md my-5">
