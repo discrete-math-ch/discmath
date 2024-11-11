@@ -126,7 +126,8 @@ So what we are doing here is we simply take an element and *multiply it* (in the
 
 1. The kernel forms the foundation of symmetry in $G$ - all elements in the kernel behave indistinguishably under $h$.
 2. We can sort of see at least in the picture (there is no reason why we should expect/believe this intuitively in the first place!) that there are some sort of *classes* of elements (e.g. $a N$) which map all to the same value $h(a)$. These can be build from these ominous construction we called cosets. There is no reason to believe that this is actually true... well there is - after we proved interesting properties which are more investigated below - also take a look at the exercsies.
-3. <span className="relative group inline-block"><span className="block px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-md cursor-pointer">Think about what would happen in the picture above if $h$ was injective! (*hover to reveal*)</span><span className="absolute z-10 left-0 mt-2 hidden w-max px-4 py-2 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-lg group-hover:block"><div className="whitespace-normal break-words max-w-xs overflow-hidden">If $h$ was injective, then there would not be two different elements in $G$ which map to the same element in $H$. So we sort of would need the group $H$ to be at least as big (restricting ourselves to finite groups). Actually, even we haven't defined the notion of subgroups yet, we could actually show that $\text{im} h$ is a subgroup of $H$. The intuition here is that we can sort of not *escape* $\text{im} h$ by *multiplying* with elements in $\text{im} h$. If we could, we could show that we could also reach this element by applying $h$ to some element in $G$ (by the properties of the homomorphism $h$) We will formulate these [Additional properties](#additional-properties)</div></span></span>
+3. <span className="relative group inline-block no-overflow"> <span className="block px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-md cursor-pointer"> Think about what would happen in the picture above if $h$ was injective! (*hover to reveal*)</span> <span className="absolute z-10 left-0 mt-2 hidden w-max px-4 py-2 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md sh adow-lg group-hover:block no-overflow">
+  If $h$ was injective, then there would not be two different elements in $G$ which map to the same element in $H$. So we sort of would need the group $H$ to be at least as big (restricting ourselves to finite groups).  even we haven't defined the notion of subgroups yet, we could actually show that $\text{im} h$ is a subgroup of $H$. The intuition here is that we can sort of not *escape* $\text{im} h$ by *multiplying* with elements in $\text{im} h$,</span></span>
 
 There are so many more connections here which 
 Let's try to look at a specific example to get a better grasp for what we did until now.
@@ -147,7 +148,28 @@ Then what is the additionaly property we obtain from an **isomorphism** (i.e. ad
 
 
 
-#### Additional Properties
+#### Properties Summary
+
+<Callout type='warning'>
+Some of these properties go beyond of what you *should technically* know for the course. However, knowing these and having an intuition of where they come from, makes life so much easier when thinking about or constructing isomorphisms/homomorphisms which is definitely a main topic in this chapter. Additionally, you might be asked to prove properties like these in an exem ;).
+</Callout>
+
+We will consider the homomorphism $h : G \to H$, where $\langle G; *, \hat{}, e_G \rangle$ is a group and $\langle H; \star, \tilde{}, e_h \rangle$ is group.
+
+| Property                                  | Intuitive Meaning                                                                 |
+|-------------------------------------------|------------------------------------------------------------------------------------|
+| $h(e_G) = e_H$                            | The identity in $G$ maps to the identity in $H$, meaning the structure's "base point" is preserved. |
+| $h(g^{-1}) = h(g)^{-1}$                   | Inverses in $G$ map to inverses in $H$, so reversing elements in $G$ reverses them in $H$ as well.  |
+| $h(g_1 \cdot g_2) = h(g_1) \cdot h(g_2)$  | Multiplication (or addition) is preserved, maintaining the group operation’s structure.             |
+| $\ker(h) = \{g \in G \mid h(g) = e_H\}$   | The kernel tells us which elements of $G$ are "collapsed" into the identity in $H$, essentially measuring how much structure is “lost” under $h$. |
+| $h(G)$ is a subgroup of $H$               | The image of $G$ under $h$ is itself a group within $H$, showing that $G$’s structure can partially "live" inside $H$. |
+| $h$ is injective $\iff \ker(h) = \{e_G\}$ | If only the identity maps to the identity, then $h$ preserves distinct elements, showing that $h$ is an embedding of $G$ into $H$. |
+
+
+
+
+
+
 
 
 ### Subgroups
@@ -163,11 +185,94 @@ Lagrange's Theorem states:
 
 > If $G$ is a finite group and $H$ is a subgroup of $G$, then the order (number of elements) of $H$ divides the order of $G$.
 
-#### Proof
-1. Partition $G$ into disjoint left cosets of $H$.
-2. Each coset has exactly $|H|$ elements.
-3. The number of cosets, denoted $[G : H]$, satisfies $|G| = |H| \cdot [G : H]$.
-4. Hence, $|H|$ divides $|G|$.
+We want to prove this theorem here! Because it illustrates interesting concepts and provides deep insights into the structure of groups
+
+#### Useful Definitions
+
+<Callout type='definition'>
+**Definition (Left Coset):**  
+Let $H$ be a subgroup of $G$, and let $g \in G$. The **left coset** of $H$ with respect to $g$ is the set:
+$$
+gH = \{ gh \mid h \in H \}.
+$$
+</Callout>
+
+<Callout type='definition'>
+**Definition (Right Coset):**  
+Similarly, the **right coset** of $H$ with respect to $g$ is the set:
+$$
+Hg = \{ hg \mid h \in H \}.
+$$
+</Callout>
+
+#### Key Properties of Cosets
+
+<Callout type='lemma'>
+**Lemma (Equal Size of Cosets):**  
+Every left coset $gH$ has the same number of elements as the subgroup $H$. Specifically, $|gH| = |H|$.
+</Callout>
+
+**Proof:**  
+Define a map $\varphi: H \to gH$ by $\varphi(h) = gh$. We show that $\varphi$ is a bijection:
+1. **Injectivity:**  
+   Assume $\varphi(h_1) = \varphi(h_2)$. Then:
+   $$
+   gh_1 = gh_2.
+   $$
+   Multiplying on the left by $g^{-1}$, we get $h_1 = h_2$. Thus, $\varphi$ is injective.
+
+2. **Surjectivity:**  
+   Let $x \in gH$. By definition of $gH$, $x = gh$ for some $h \in H$. Thus, there exists $h \in H$ such that $\varphi(h) = x$. Hence, $\varphi$ is surjective.
+
+Since $\varphi$ is both injective and surjective, it is a bijection, and $|gH| = |H|$.  
+
+<Callout type='lemma'>
+**Lemma (Disjoint or Equal Cosets):**  
+If $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$.
+</Callout>
+
+**Proof:**  
+Assume $g_1H \cap g_2H \neq \emptyset$. Then there exists $x \in g_1H \cap g_2H$, so $x \in g_1H$ and $x \in g_2H$. Thus:
+$$
+x = g_1h_1 = g_2h_2,
+$$
+for some $h_1, h_2 \in H$. Rearranging, we get:
+$$
+g_2^{-1}g_1 = h_2h_1^{-1}.
+$$
+Since $h_2h_1^{-1} \in H$ (because $H$ is a subgroup), $g_2^{-1}g_1 \in H$. Let $h = g_2^{-1}g_1 \in H$, so:
+$$
+g_1 = g_2h.
+$$
+Now consider any element $x \in g_1H$. By definition, $x = g_1h'$ for some $h' \in H$. Substituting $g_1 = g_2h$, we get:
+$$
+x = g_2(hh') \in g_2H.
+$$
+Thus, $g_1H \subseteq g_2H$. By symmetry, $g_2H \subseteq g_1H$. Hence, $g_1H = g_2H$.  
+ 
+
+<Callout type='lemma'>
+**Lemma (Cosets Partition $G$):**  
+The cosets $gH$ form a partition of $G$, meaning:
+1. Every element of $G$ is in some coset $gH$.
+2. Two cosets $g_1H$ and $g_2H$ are either disjoint or identical.
+</Callout>
+
+**Proof:**  
+1. By definition of a coset, for any $g \in G$, $g \in gH$. Thus, every element of $G$ is in at least one coset.
+2. By the previous lemma, if $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$. Otherwise, $g_1H \cap g_2H = \emptyset$. Hence, the cosets are either disjoint or identical.  
+ 
+
+---
+
+#### Proof of Lagrange's Theorem
+
+Let $G$ be a finite group and $H$ a subgroup of $G$. By the lemmas above, the cosets $gH$ partition $G$. Let $k$ be the number of distinct cosets. Since each coset has size $|H|$ and the cosets are disjoint, the total number of elements in $G$ is:
+$$
+|G| = k \cdot |H|,
+$$
+where $k = [G : H]$ is the number of cosets (the **index** of $H$ in $G$). Thus, $|H|$ divides $|G|$.  
+ 
 
 ### Euler's Totient Function and multiplicative groups
 
@@ -196,4 +301,22 @@ Representation theory studies groups by representing their elements as matrices 
 
 ## Exercises
 
+<Problem title="Finite group of even order" difficulty={2} relevance={3} source="Abstract Algebra: Theory and Applications" link="https://judsonbooks.org/aata-files/aata-20240706.pdf">
+  <div label="question">
+    Show that if $G$ is a finite group of even order, then there is an $a \in G$ such that $a$ is not the identity and 
+    $$
+    a^2 = e
+    $$
+  </div>
+  <div label="hint">
+    Pair up the elements.
+  </div>
+  <div label="answer">
+    Let $|G| = n$ be the order of the group $G$. Since $n$ is even, the group has an even number of elements. Consider the identity element $e \in G$, which satisfies $e^2 = e$. For each $x \in G$, observe the following:
+    
+    - If $x \neq x^{-1}$ (i.e., $x$ is not its own inverse), then $x$ and $x^{-1}$ form a distinct pair.
+    - If $x = x^{-1}$, then $x^2 = e$.
 
+    Now, partition the elements of $G$ into disjoint pairs $(x, x^{-1})$. The identity element $e$ is its own inverse, so it cannot be paired with any other element. Thus, the remaining elements of $G \setminus \{e\}$ must also form pairs under the inverse operation (since the inverse is unique). Since $|G|$ is even, the set $G \setminus \{e\}$ has an odd number of elements. Therefore, at least one element $a \neq e$ must satisfy $a = a^{-1}$, which implies $a^2 = e$. Thus, such an element $a$ exists.
+  </div>
+</Problem>
