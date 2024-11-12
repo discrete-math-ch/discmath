@@ -25,7 +25,7 @@ A *group* is an algebra $\langle G; *, \hat{}, e \rangle$, where:
 Note that we assume that $* : G \times G \to G$, thus we have closure.
 </Callout>
 
-Note that these axioms are not **minimal** (i.e. for example the property that not only $a * e = a$ but also $e * a = a$ is implied by the rest of the  ).
+Note that these axioms are not **minimal**.
 
 ## Theory \& Intuition
 
@@ -81,8 +81,6 @@ But here's something interesting: does every homomorphism have to be injective? 
 A nice way to think of this is like projecting a 3D object onto a flat surface: the object's details might be lost, but the structure of relationships between points can still hold.
 
 
-
-
 To gain intuition about homomorphisms, I think the following image is incredible helpful:
 
 <figure
@@ -129,49 +127,125 @@ So what we are doing here is we simply take an element and *multiply it* (in the
 
 1. The kernel forms the foundation of symmetry in $G$ - all elements in the kernel behave indistinguishably under $h$.
 2. We can sort of see at least in the picture (there is no reason why we should expect/believe this intuitively in the first place!) that there are some sort of *classes* of elements (e.g. $a N$) which map all to the same value $h(a)$. These can be build from these ominous construction we called cosets. There is no reason to believe that this is actually true... well there is - after we proved interesting properties which are more investigated below - also take a look at the exercsies.
-3. <span className="relative group inline-block no-overflow"> <span className="block px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-md cursor-pointer"> Think about what would happen in the picture above if $h$ was injective! (*hover to reveal*)</span> <span className="absolute z-10 left-0 mt-2 hidden w-max px-4 py-2 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md sh adow-lg group-hover:block no-overflow">
-  If $h$ was injective, then there would not be two different elements in $G$ which map to the same element in $H$. So we sort of would need the group $H$ to be at least as big (restricting ourselves to finite groups).  even we haven't defined the notion of subgroups yet, we could actually show that $\text{im} h$ is a subgroup of $H$. The intuition here is that we can sort of not *escape* $\text{im} h$ by *multiplying* with elements in $\text{im} h$,</span></span>
+
+
+3. <><span className="relative group inline-block"><span className="block px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-md cursor-pointer">Think about what would happen in the picture above if $h$ was injective!</span><span className="absolute z-10 left-0 mt-2 hidden w-max px-4 py-2 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-lg group-hover:block"><div className="whitespace-normal break-words max-w-xs overflow-hidden">If $h$ was injective, then there would not be two different elements in $G$ which map to the same element in $H$. So we sort of would need the group $H$ to be at least as big (restricting ourselves to finite groups).</div></span></span></>
 
 There are so many more connections here which 
 Let's try to look at a specific example to get a better grasp for what we did until now.
 
 
-<details>
-<summary>$h: \mathbb{Z}_{24} \to \mathbb{Z}_{18}$</summary>
-
-
-</details>
-
 With this deeper understanding, try exploring homomorphisms in different contexts - like how polynomials, matrices, or symmetry groups map to each other. **It's all connected!**
 
 #### Intuition of Isomorphisms
 
-Then what is the additionaly property we obtain from an **isomorphism** (i.e. additional bijectivity)? From the chapter on functions, you should know that bijectivity gives us a sense
+A **group isomorphism** is a special type of group homomorphism that provides a perfect "translation" between two groups. If two groups are isomorphic, they have the **same structure**, just represented differently. Every operation in one group corresponds exactly to an operation in the other group under the isomorphism. Importantly, the correspondence is **bijective**, meaning it pairs every element of one group with a unique element of the other group and vice versa.
+
+An isomorphism between two groups $G$ and $H$ is a bijective map $\phi: G \to H$ such that:
+1. $\phi(g_1 \cdot g_2) = \phi(g_1) \cdot \phi(g_2)$ for all $g_1, g_2 \in G$ (preserves the group operation).
+2. $\phi$ is a one-to-one and onto mapping (bijective).
+
+If such a map exists, $G$ and $H$ are said to be **isomorphic**, denoted $G \simeq H$.
+
+*Analogy*: Think of two jigsaw puzzles that look completely different on the surface but are constructed from pieces with identical shapes. You can perfectly match every piece in one puzzle with a piece in the other puzzle, and the way the pieces fit together is preserved. The isomorphism is the "perfect match" function that pairs each piece in one puzzle with the corresponding piece in the other.
+
+In the same way, group isomorphisms preserve the "shape" of the group's structure, ensuring every element and operation in one group corresponds to those in another.
+
+When thinking about a set of all possible groups. It is the case that the $\simeq$ relation is an equivalence relation. Now it really gets interesting. We could now ask questions like how many different groups (in the sense of equivalence classes) are there which have $k$ elements? There are super interesting results about this question. For example that if $k$ is prime, there is only one group, i.e. all groups of order $k$ are isomorphic.
+
+---
+
+#### Steps to Prove an Isomorphism
+
+To rigorously prove that two groups $G$ and $H$ are isomorphic, follow these steps:
+
+1. **Define a Candidate Map**:
+   Identify a function $\phi: G \to H$ that you suspect to be an isomorphism.
+
+2. **Verify the Map is Well-Defined**:
+   Ensure that the proposed map is unambiguous and consistent. That is, for any $g \in G$, $\phi(g)$ is uniquely determined.
+
+3. **Verify the Map is Totally Defined**:
+   Confirm that the map is defined for all elements of $G$ (i.e., $\phi$ applies to every element of $G$).
+  
+4. **Verify the Map Maps to the Codomain**:
+   Ensure that $\phi(g) \in H$ for all $g \in G$, so that the image of $\phi$ lies entirely within $H$.
+
+5. **Check the Homomorphism Property**:
+   Verify that $\phi(g_1 \cdot g_2) = \phi(g_1) \cdot \phi(g_2)$ for all $g_1, g_2 \in G$. This ensures the map preserves the group operation.
+
+6. **Check Injectivity**:
+   Prove that $\phi$ is one-to-one by showing that if $\phi(g_1) = \phi(g_2)$, then $g_1 = g_2$.
+
+7. **Check Surjectivity**:
+   Prove that $\phi$ is onto by demonstrating that for every $h \in H$, there exists $g \in G$ such that $\phi(g) = h$.
+
+8. **Conclude Isomorphism**:
+   If the map satisfies the homomorphism property, is well-defined, maps to the codomain, and is bijective, then $\phi$ is an isomorphism, and $G \simeq H$.
 
 
+#### Example
+
+Prove that $\mathbb{Z}_6 \simeq \mathbb{Z}_2 \times \mathbb{Z}_3$.
 
 
-#### Properties Summary
+##### Step 1: Define a Candidate Map
+Define $\phi: \mathbb{Z}_6 \to \mathbb{Z}_2 \times \mathbb{Z}_3$ by:
+$$
+\phi(n) = (R_2(n), R_3(n))
+$$
+where $R_k(n)$ denotes the remainder when $n$ is divided by $k$ (i.e., $R_k(n) \in \{0, 1, \dots, k-1\}$).
 
-<Callout type='warning'>
-Some of these properties go beyond of what you *should technically* know for the course. However, knowing these and having an intuition of where they come from, makes life so much easier when thinking about or constructing isomorphisms/homomorphisms which is definitely a main topic in this chapter. Additionally, you might be asked to prove properties like these in an exem ;).
-</Callout>
+##### Step 2: Verify the Map is Well-Defined
+The group $\mathbb{Z}_6$ consists of integers modulo 6. For any $n \in \mathbb{Z}_6$, $R_2(n)$ and $R_3(n)$ are uniquely determined remainders modulo 2 and 3, respectively. Since remainders are unique, $\phi(n)$ produces unique and consistent pairs $(R_2(n), R_3(n))$. Thus, $\phi$ is well-defined.
 
-We will consider the homomorphism $h : G \to H$, where $\langle G; *, \hat{}, e_G \rangle$ is a group and $\langle H; \star, \tilde{}, e_h \rangle$ is group.
+##### Step 3: Verify the Map is Totally Defined
+The map $\phi$ is defined for all $n \in \mathbb{Z}_6$. Since $R_2(n)$ and $R_3(n)$ exist for any integer $n$, $\phi$ is totally defined.
 
-| Property                                  | Intuitive Meaning                                                                 |
-|-------------------------------------------|------------------------------------------------------------------------------------|
-| $h(e_G) = e_H$                            | The identity in $G$ maps to the identity in $H$, meaning the structure's "base point" is preserved. |
-| $h(g^{-1}) = h(g)^{-1}$                   | Inverses in $G$ map to inverses in $H$, so reversing elements in $G$ reverses them in $H$ as well.  |
-| $h(g_1 \cdot g_2) = h(g_1) \cdot h(g_2)$  | Multiplication (or addition) is preserved, maintaining the group operation’s structure.             |
-| $\ker(h) = \{g \in G \mid h(g) = e_H\}$   | The kernel tells us which elements of $G$ are "collapsed" into the identity in $H$, essentially measuring how much structure is “lost” under $h$. |
-| $h(G)$ is a subgroup of $H$               | The image of $G$ under $h$ is itself a group within $H$, showing that $G$’s structure can partially "live" inside $H$. |
-| $h$ is injective $\iff \ker(h) = \{e_G\}$ | If only the identity maps to the identity, then $h$ preserves distinct elements, showing that $h$ is an embedding of $G$ into $H$. |
+##### Step 4: Verify the Map Maps to the Codomain
+The codomain is $\mathbb{Z}_2 \times \mathbb{Z}_3$, where $\mathbb{Z}_2 = \{0, 1\}$ and $\mathbb{Z}_3 = \{0, 1, 2\}$. For any $n \in \mathbb{Z}_6$, $R_2(n) \in \mathbb{Z}_2$ and $R_3(n) \in \mathbb{Z}_3$, so $\phi(n) \in \mathbb{Z}_2 \times \mathbb{Z}_3$. Thus, $\phi$ maps into the codomain.
 
+##### Step 5: Check the Homomorphism Property
+Let $a, b \in \mathbb{Z}_6$. We can compute
+$$
+\phi(a +_6 b) = (R_2(a) +_2 R_2(b), R_3(a) +_3 R_3(b)).
+$$
+(where $+_m$ means addition modulo $m$, i.e. we take remainder modulo $m$ after doing addition).
 
+Using the modular arithmetic property $a +_k b = R_k(a + b) = R_k(R_k(a) + R_k(b))$, we have:
+$$
+\phi(a +_6 b) = (R_2(R_2(a) +_2 R_2(b)), R_3(R_3(a) +_3 R_3(b))) 
+$$
+On the other hand:
+$$
+\phi(a) +_6 \phi(b) = (R_2(a), R_3(a)) + (R_2(b), R_3(b)) = (R_2(a) +_2 R_2(b), R_3(a) +_3 R_3(b))
+$$
+Therefore
+$$
+\phi(a +_6 b) = \phi(a) + \phi(b)
+$$
+Thus, $\phi$ preserves the group operation.
 
+##### Step 6: Check Injectivity
+Assume $\phi(a) = \phi(b)$. Then:
+$$
+(R_2(a), R_3(a)) = (R_2(b), R_3(b)).
+$$
+This implies:
+$$
+R_2(a) = R_2(b) \quad \text{and} \quad R_3(a) = R_3(b).
+$$
+Hence, $a \equiv_2 b$ and $a \equiv_3 b$. By the Chinese Remainder Theorem (as $\gcd(2,3)=1$), $a \equiv_6 b$. Thus, $a = b$ in $\mathbb{Z}_6$, and $\phi$ is injective.
 
+##### Step 7: Check Surjectivity
+For any $(x, y) \in \mathbb{Z}_2 \times \mathbb{Z}_3$, where $x \in \{0, 1\}$ and $y \in \{0, 1, 2\}$, the Chinese Remainder Theorem ($\gcd(2,3)=1$) guarantees the existence of an integer $z$ such that:
+$$
+z \equiv_2 x \quad \text{and} \quad z \equiv_3 y .
+$$
+By construction, $z \in \mathbb{Z}_6$, and $\phi(z) = (R_2(z), R_3(z)) = (x, y)$. Thus, $\phi$ is surjective.
 
+##### Step 8: Conclude Isomorphism
+Since $\phi$ is well-defined, totally defined, maps to the codomain, preserves the group operation, and is bijective, $\phi$ is an isomorphism. Therefore, $\mathbb{Z}_6 \simeq \mathbb{Z}_2 \times \mathbb{Z}_3$.
 
 
 
@@ -193,20 +267,13 @@ We want to prove this theorem here! Because it illustrates interesting concepts 
 #### Useful Definitions
 
 <Callout type='definition'>
-**Definition (Left Coset):**  
+**Definition (*Left* Coset):**  
 Let $H$ be a subgroup of $G$, and let $g \in G$. The **left coset** of $H$ with respect to $g$ is the set:
 $$
 gH = \{ gh \mid h \in H \}.
 $$
 </Callout>
 
-<Callout type='definition'>
-**Definition (Right Coset):**  
-Similarly, the **right coset** of $H$ with respect to $g$ is the set:
-$$
-Hg = \{ hg \mid h \in H \}.
-$$
-</Callout>
 
 #### Key Properties of Cosets
 
@@ -264,9 +331,7 @@ The cosets $gH$ form a partition of $G$, meaning:
 **Proof:**  
 1. By definition of a coset, for any $g \in G$, $g \in gH$. Thus, every element of $G$ is in at least one coset.
 2. By the previous lemma, if $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$. Otherwise, $g_1H \cap g_2H = \emptyset$. Hence, the cosets are either disjoint or identical.  
- 
 
----
 
 #### Proof of Lagrange's Theorem
 
@@ -283,7 +348,6 @@ where $k = [G : H]$ is the number of cosets (the **index** of $H$ in $G$). Thus,
 ### RSA
 
 
-
 ## Digressions
 
 
@@ -295,11 +359,9 @@ where $k = [G : H]$ is the number of cosets (the **index** of $H$ in $G$). Thus,
 A fundamental result for finite abelian groups is the **Fundamental Theorem of Finite Abelian Groups**, which states that every finite abelian group is isomorphic to a direct product of cyclic groups of prime power order.
 
 
-
 ### Representation Theory
 
 Representation theory studies groups by representing their elements as matrices or linear transformations. This approach is widely used in quantum mechanics, crystallography, and other fields.
-
 
 
 ## Exercises
