@@ -1,0 +1,433 @@
+import { Callout, Tabs } from 'nextra/components'
+import Problem from '@/components/problem';
+import Image from 'next/image'
+
+import { Cards } from 'nextra/components'
+ 
+
+<Callout type="warning" emoji="🚧">
+  under construction
+</Callout>
+
+# Group Theory
+
+Group theory is a fascinating area of mathematics. It reveals deep connections between seemingly unrelated fields, from cryptography to quantum mechanics. The concept of a "group" provides a unifying framework to study symmetry and structure.
+
+The most central definition is the definition of a group:
+
+<Callout type='def'>
+**Definition 5.7:** 
+A *group* is an algebra $\langle G; *, \hat{}, e \rangle$, where:
+1. **Associativity**: For all $a, b, c \in G$, $(a * b) * c = a * (b * c)$.
+2. **Identity Element**: There exists an $e \in G$ such that for all $a \in G$, $a * e = e * a = a$.
+3. **Inverse Element**: For each $a \in G$, there exists $b \in G$ such that $a * b = b * a = e$.
+
+Note that we assume that $* : G \times G \to G$, thus we have closure.
+</Callout>
+
+Note that these axioms are not **minimal**.
+
+## Theory \& Intuition
+
+### Direct Product of Groups
+
+<Callout type='definition'>
+**Definition 5.9:** The **direct product** of $n$ groups $\langle G_1; *_1 \rangle, \dots, \langle G_n; *_n \rangle$ is the algebra:
+
+$$
+\langle G_1 \times \cdots \times G_n; \star \rangle,
+$$
+
+where the operation $\star$ is defined component-wise:
+
+$$
+(a_1, \dots, a_n) \star (b_1, \dots, b_n) = (a_1 *_1 b_1, \dots, a_n *_n b_n).
+$$
+</Callout>
+
+<Callout type='lemma'>
+**Lemma 5.4:** $\langle G_1 \times \cdots \times G_n; \star \rangle$ is a group, where the neutral element and the inversion operation are defined component-wise in the respective groups.
+</Callout>
+
+Why are these product groups interesting? Well, as we will see in the following subsection, the notion of an isomorphism provides a way to sort of say *two groups have the same structure*. In that sense, being able to find an *equivalent form* written as a direct product of smaller groups, can be very helpful.
+
+### Homomorphisms \& Isomorphisms
+<Callout type='definition'>
+**Definition 5.10:** For two groups $\langle G; *, \hat{}, e \rangle$ and $\langle H; \star, \tilde{}, e' \rangle$, a function $\psi : G \to H$ is called a **group homomorphism** if, for all $a, b \in G$:
+
+$$
+\psi(a * b) = \psi(a) \star \psi(b).
+$$
+
+If $\psi$ is a bijection from $G$ to $H$, then it is called an **isomorphism**, and we say that $G$ and $H$ are isomorphic and write $G \simeq H$.
+</Callout>
+
+What does this actually mean? It sort of means, that it does not matter if we apply the map $\psi$ first and compute the group operation $\star$ (in $H$) and **then** look at the result in $H$ or if we compute the product $*$ (in $G$) and the apply the homomorphism $\psi$ and look at the output in $H$. Both ways yield the same result if the equation above holds. So one could intuitively say the *role* of an element $a$ when computing the group operation with some other element $b$ in $G$, is preserved through the mapping $\psi$. While this observation and description is very imprecise, the following section should make the intuition behind this kind of preservation clear. The little property from above actually lets us derive more nice properties of $\psi$. Namely:
+
+<Callout type='lemma'>
+**Lemma 5.5:** A group homomorphism $\psi$ from $\langle G; *, \hat{}, e \rangle$ to $\langle H; \star, \tilde{}, e' \rangle$ satisfies:
+
+1. $\psi(e) = e'$,  
+2. $\psi(\hat{a}) = \tilde{\psi(a)}$ for all $a \in G$.
+</Callout>
+
+
+#### Intuition about Homomorphisms
+
+Why does a homomorphism map the neutral element in $G$ to the neutral element in $H$? Well, this is exactly what we would expect intuitively. The neutral element in a group is like "doing nothing" to an element - it's the identity operation. If we apply $\psi$ after $e \in G$ has acted on $a \in G$, it should produce the same result as letting $\psi$ map $a$ first and then applying $e' \in H$.
+
+But here's something interesting: does every homomorphism have to be injective? No! For instance, consider an extreme case where the entire group $G$ maps to just the neutral element $e' \in H$. This mapping satisfies the homomorphism property because applying the neutral element under any group operation still respects the structure.
+
+A nice way to think of this is like projecting a 3D object onto a flat surface: the object's details might be lost, but the structure of relationships between points can still hold.
+
+
+To gain intuition about homomorphisms, I think the following image is incredible helpful:
+
+<figure
+  className="block my-10 text-center break-inside-avoid-column">
+  <center>
+
+  <div className="bg-white inline-block">
+  <Image
+    width="500"
+    height="500"
+    className="object-cover rounded-xl align-center"
+    
+    src="/algebra/homomorphism.png">
+  </Image>
+</div>
+  
+  </center>
+  <figcaption className="z-10 mt-4 text-sm italic text-gray-600">
+  Von <a href="//commons.wikimedia.org/wiki/User:Cronholm144" title="User:Cronholm144">Cronholm144</a> - <span class="int-own-work" lang="de">Eigenes Werk</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=2185673">Link</a>
+  </figcaption>
+</figure>
+
+**So what's going on in this picture?** First of all we have to clarify some naming and notation:
+
+1. $h : G \to H$ is a **homomorphism** in this picture
+2. $\ker h$ is the so-called **kernel** of the map $h$. This is simply the set of all elements which map to the neutral element. You might of heard of the concept of **kernel** or *null-space* in linear algebra. The concept is totally related - for every linear map (or more concretely matrix), there is some set of elements in the domain, which maps to $0$ in the codomain. So in our case it is simply consider the following set:
+$$
+\ker h = \{a \in G \mid h(g) = 1_H\}
+$$ 
+So as you can see in the picture and as pointed out before, there can be more than one element in the kernel. We could actually have the case that $\ker h = G$.
+
+3. $\text{im} h$ is the so-called **image** of the map $h$. Again you might have heared about a concept like this in linear algebra. It is simply the set of all elements we can possibly get as an outputÖ
+$$
+\text{im} h = \{h(a) \mid a \in G\}
+$$
+
+4. The set $a N$ is a so-called **coset**. This concept is not explicity stated in this course, but super useful when you explore more properties. You will find more about it in the [Cosets](#cosets) section. We defined $N = \ker h$ (i.e. all elements in $G$ which map to $1_H$). Now for an arbitrary element $a \in G$, we can define: 
+$$ 
+a N = \{a *_G g \mid g \in N\}
+$$ 
+So what we are doing here is we simply take an element and *multiply it* (in the sense of the group operation in $G$) to all elements which are in $N$ and make a set of all the outputs. We can do this for in arbitary $N \subseteq G$, however in this case we choose $\ker h$. 
+
+**What is interesting about this picture?**
+
+1. The kernel forms the foundation of symmetry in $G$ - all elements in the kernel behave indistinguishably under $h$.
+2. We can sort of see at least in the picture (there is no reason why we should expect/believe this intuitively in the first place!) that there are some sort of *classes* of elements (e.g. $a N$) which map all to the same value $h(a)$. These can be build from these ominous construction we called cosets. There is no reason to believe that this is actually true... well there is - after we proved interesting properties which are more investigated below - also take a look at the exercsies.
+
+
+3. <><span className="relative group inline-block"><span className="block px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-md cursor-pointer">Think about what would happen in the picture above if $h$ was injective!</span><span className="absolute z-10 left-0 mt-2 hidden w-max px-4 py-2 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-lg group-hover:block"><div className="whitespace-normal break-words max-w-xs overflow-hidden">If $h$ was injective, then there would not be two different elements in $G$ which map to the same element in $H$. So we sort of would need the group $H$ to be at least as big (restricting ourselves to finite groups).</div></span></span></>
+
+There are so many more connections here which 
+Let's try to look at a specific example to get a better grasp for what we did until now.
+
+
+With this deeper understanding, try exploring homomorphisms in different contexts - like how polynomials, matrices, or symmetry groups map to each other. **It's all connected!**
+
+#### Intuition of Isomorphisms
+
+A **group isomorphism** is a special type of group homomorphism that provides a perfect "translation" between two groups. If two groups are isomorphic, they have the **same structure**, just represented differently. Every operation in one group corresponds exactly to an operation in the other group under the isomorphism. Importantly, the correspondence is **bijective**, meaning it pairs every element of one group with a unique element of the other group and vice versa.
+
+An isomorphism between two groups $G$ and $H$ is a bijective map $\phi: G \to H$ such that:
+1. $\phi(g_1 \cdot g_2) = \phi(g_1) \cdot \phi(g_2)$ for all $g_1, g_2 \in G$ (preserves the group operation).
+2. $\phi$ is a one-to-one and onto mapping (bijective).
+
+If such a map exists, $G$ and $H$ are said to be **isomorphic**, denoted $G \simeq H$.
+
+*Analogy*: Think of two jigsaw puzzles that look completely different on the surface but are constructed from pieces with identical shapes. You can perfectly match every piece in one puzzle with a piece in the other puzzle, and the way the pieces fit together is preserved. The isomorphism is the "perfect match" function that pairs each piece in one puzzle with the corresponding piece in the other.
+
+In the same way, group isomorphisms preserve the "shape" of the group's structure, ensuring every element and operation in one group corresponds to those in another.
+
+When thinking about a set of all possible groups. It is the case that the $\simeq$ relation is an equivalence relation. Now it really gets interesting. We could now ask questions like how many different groups (in the sense of equivalence classes) are there which have $k$ elements? There are super interesting results about this question. For example that if $k$ is prime, there is only one group, i.e. all groups of order $k$ are isomorphic.
+
+---
+
+#### Steps to Prove an Isomorphism
+
+To rigorously prove that two groups $G$ and $H$ are isomorphic, follow these steps:
+
+1. **Define a Candidate Map**:
+   Identify a function $\phi: G \to H$ that you suspect to be an isomorphism.
+
+2. **Verify the Map is Well-Defined**:
+   Ensure that the proposed map is unambiguous and consistent. That is, for any $g \in G$, $\phi(g)$ is uniquely determined.
+
+3. **Verify the Map is Totally Defined**:
+   Confirm that the map is defined for all elements of $G$ (i.e., $\phi$ applies to every element of $G$).
+  
+4. **Verify the Map Maps to the Codomain**:
+   Ensure that $\phi(g) \in H$ for all $g \in G$, so that the image of $\phi$ lies entirely within $H$.
+
+5. **Check the Homomorphism Property**:
+   Verify that $\phi(g_1 \cdot g_2) = \phi(g_1) \cdot \phi(g_2)$ for all $g_1, g_2 \in G$. This ensures the map preserves the group operation.
+
+6. **Check Injectivity**:
+   Prove that $\phi$ is one-to-one by showing that if $\phi(g_1) = \phi(g_2)$, then $g_1 = g_2$.
+
+7. **Check Surjectivity**:
+   Prove that $\phi$ is onto by demonstrating that for every $h \in H$, there exists $g \in G$ such that $\phi(g) = h$.
+
+8. **Conclude Isomorphism**:
+   If the map satisfies the homomorphism property, is well-defined, maps to the codomain, and is bijective, then $\phi$ is an isomorphism, and $G \simeq H$.
+
+
+#### Example
+
+Prove that $\mathbb{Z}_6 \simeq \mathbb{Z}_2 \times \mathbb{Z}_3$.
+
+
+##### Step 1: Define a Candidate Map
+Define $\phi: \mathbb{Z}_6 \to \mathbb{Z}_2 \times \mathbb{Z}_3$ by:
+$$
+\phi(n) = (R_2(n), R_3(n))
+$$
+where $R_k(n)$ denotes the remainder when $n$ is divided by $k$ (i.e., $R_k(n) \in \{0, 1, \dots, k-1\}$).
+
+##### Step 2: Verify the Map is Well-Defined
+The group $\mathbb{Z}_6$ consists of integers modulo 6. For any $n \in \mathbb{Z}_6$, $R_2(n)$ and $R_3(n)$ are uniquely determined remainders modulo 2 and 3, respectively. Since remainders are unique, $\phi(n)$ produces unique and consistent pairs $(R_2(n), R_3(n))$. Thus, $\phi$ is well-defined.
+
+##### Step 3: Verify the Map is Totally Defined
+The map $\phi$ is defined for all $n \in \mathbb{Z}_6$. Since $R_2(n)$ and $R_3(n)$ exist for any integer $n$, $\phi$ is totally defined.
+
+##### Step 4: Verify the Map Maps to the Codomain
+The codomain is $\mathbb{Z}_2 \times \mathbb{Z}_3$, where $\mathbb{Z}_2 = \{0, 1\}$ and $\mathbb{Z}_3 = \{0, 1, 2\}$. For any $n \in \mathbb{Z}_6$, $R_2(n) \in \mathbb{Z}_2$ and $R_3(n) \in \mathbb{Z}_3$, so $\phi(n) \in \mathbb{Z}_2 \times \mathbb{Z}_3$. Thus, $\phi$ maps into the codomain.
+
+##### Step 5: Check the Homomorphism Property
+Let $a, b \in \mathbb{Z}_6$. We can compute
+$$
+\phi(a +_6 b) = (R_2(a) +_2 R_2(b), R_3(a) +_3 R_3(b)).
+$$
+(where $+_m$ means addition modulo $m$, i.e. we take remainder modulo $m$ after doing addition).
+
+Using the modular arithmetic property $a +_k b = R_k(a + b) = R_k(R_k(a) + R_k(b))$, we have:
+$$
+\phi(a +_6 b) = (R_2(R_2(a) +_2 R_2(b)), R_3(R_3(a) +_3 R_3(b))) 
+$$
+On the other hand:
+$$
+\phi(a) +_6 \phi(b) = (R_2(a), R_3(a)) + (R_2(b), R_3(b)) = (R_2(a) +_2 R_2(b), R_3(a) +_3 R_3(b))
+$$
+Therefore
+$$
+\phi(a +_6 b) = \phi(a) + \phi(b)
+$$
+Thus, $\phi$ preserves the group operation.
+
+##### Step 6: Check Injectivity
+Assume $\phi(a) = \phi(b)$. Then:
+$$
+(R_2(a), R_3(a)) = (R_2(b), R_3(b)).
+$$
+This implies:
+$$
+R_2(a) = R_2(b) \quad \text{and} \quad R_3(a) = R_3(b).
+$$
+Hence, $a \equiv_2 b$ and $a \equiv_3 b$. By the Chinese Remainder Theorem (as $\gcd(2,3)=1$), $a \equiv_6 b$. Thus, $a = b$ in $\mathbb{Z}_6$, and $\phi$ is injective.
+
+##### Step 7: Check Surjectivity
+For any $(x, y) \in \mathbb{Z}_2 \times \mathbb{Z}_3$, where $x \in \{0, 1\}$ and $y \in \{0, 1, 2\}$, the Chinese Remainder Theorem ($\gcd(2,3)=1$) guarantees the existence of an integer $z$ such that:
+$$
+z \equiv_2 x \quad \text{and} \quad z \equiv_3 y .
+$$
+By construction, $z \in \mathbb{Z}_6$, and $\phi(z) = (R_2(z), R_3(z)) = (x, y)$. Thus, $\phi$ is surjective.
+
+##### Step 8: Conclude Isomorphism
+Since $\phi$ is well-defined, totally defined, maps to the codomain, preserves the group operation, and is bijective, $\phi$ is an isomorphism. Therefore, $\mathbb{Z}_6 \simeq \mathbb{Z}_2 \times \mathbb{Z}_3$.
+
+
+
+### Subgroups
+
+
+### Order
+
+### Cyclic Groups
+
+### Lagrange Theorem
+
+Lagrange's Theorem states:
+
+> If $G$ is a finite group and $H$ is a subgroup of $G$, then the order (number of elements) of $H$ divides the order of $G$.
+
+We want to prove this theorem here! Because it illustrates interesting concepts and provides deep insights into the structure of groups
+
+#### Useful Definitions
+
+<Callout type='definition'>
+**Definition (*Left* Coset):**  
+Let $H$ be a subgroup of $G$, and let $g \in G$. The **left coset** of $H$ with respect to $g$ is the set:
+$$
+gH = \{ gh \mid h \in H \}.
+$$
+</Callout>
+
+
+#### Key Properties of Cosets
+
+<Callout type='lemma'>
+**Lemma (Equal Size of Cosets):**  
+Every left coset $gH$ has the same number of elements as the subgroup $H$. Specifically, $|gH| = |H|$.
+</Callout>
+
+**Proof:**  
+Define a map $\varphi: H \to gH$ by $\varphi(h) = gh$. We show that $\varphi$ is a bijection:
+1. **Injectivity:**  
+   Assume $\varphi(h_1) = \varphi(h_2)$. Then:
+   $$
+   gh_1 = gh_2.
+   $$
+   Multiplying on the left by $g^{-1}$, we get $h_1 = h_2$. Thus, $\varphi$ is injective.
+
+2. **Surjectivity:**  
+   Let $x \in gH$. By definition of $gH$, $x = gh$ for some $h \in H$. Thus, there exists $h \in H$ such that $\varphi(h) = x$. Hence, $\varphi$ is surjective.
+
+Since $\varphi$ is both injective and surjective, it is a bijection, and $|gH| = |H|$.  
+
+<Callout type='lemma'>
+**Lemma (Disjoint or Equal Cosets):**  
+If $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$.
+</Callout>
+
+**Proof:**  
+Assume $g_1H \cap g_2H \neq \emptyset$. Then there exists $x \in g_1H \cap g_2H$, so $x \in g_1H$ and $x \in g_2H$. Thus:
+$$
+x = g_1h_1 = g_2h_2,
+$$
+for some $h_1, h_2 \in H$. Rearranging, we get:
+$$
+g_2^{-1}g_1 = h_2h_1^{-1}.
+$$
+Since $h_2h_1^{-1} \in H$ (because $H$ is a subgroup), $g_2^{-1}g_1 \in H$. Let $h = g_2^{-1}g_1 \in H$, so:
+$$
+g_1 = g_2h.
+$$
+Now consider any element $x \in g_1H$. By definition, $x = g_1h'$ for some $h' \in H$. Substituting $g_1 = g_2h$, we get:
+$$
+x = g_2(hh') \in g_2H.
+$$
+Thus, $g_1H \subseteq g_2H$. By symmetry, $g_2H \subseteq g_1H$. Hence, $g_1H = g_2H$.  
+ 
+
+<Callout type='lemma'>
+**Lemma (Cosets Partition $G$):**  
+The cosets $gH$ form a partition of $G$, meaning:
+1. Every element of $G$ is in some coset $gH$.
+2. Two cosets $g_1H$ and $g_2H$ are either disjoint or identical.
+</Callout>
+
+**Proof:**  
+1. By definition of a coset, for any $g \in G$, $g \in gH$. Thus, every element of $G$ is in at least one coset.
+2. By the previous lemma, if $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$. Otherwise, $g_1H \cap g_2H = \emptyset$. Hence, the cosets are either disjoint or identical.  
+
+
+#### Proof of Lagrange's Theorem
+
+Let $G$ be a finite group and $H$ a subgroup of $G$. By the lemmas above, the cosets $gH$ partition $G$. Let $k$ be the number of distinct cosets. Since each coset has size $|H|$ and the cosets are disjoint, the total number of elements in $G$ is:
+$$
+|G| = k \cdot |H|,
+$$
+where $k = [G : H]$ is the number of cosets (the **index** of $H$ in $G$). Thus, $|H|$ divides $|G|$.  
+ 
+
+### Euler's Totient Function and multiplicative groups
+
+
+### RSA
+
+
+## Digressions
+
+
+### Cosets
+
+
+### Finite Abelian Groups
+
+A fundamental result for finite abelian groups is the **Fundamental Theorem of Finite Abelian Groups**, which states that every finite abelian group is isomorphic to a direct product of cyclic groups of prime power order.
+
+
+### Representation Theory
+
+Representation theory studies groups by representing their elements as matrices or linear transformations. This approach is widely used in quantum mechanics, crystallography, and other fields.
+
+
+## Exercises
+
+<Problem title="Finite group of even order" difficulty={2} relevance={3} source="Abstract Algebra: Theory and Applications" link="https://judsonbooks.org/aata-files/aata-20240706.pdf">
+  <div label="question">
+    Show that if $G$ is a finite group of even order, then there is an $a \in G$ such that $a$ is not the identity and 
+    $$
+    a^2 = e
+    $$
+  </div>
+  <div label="hint">
+    Pair up the elements.
+  </div>
+  <div label="answer">
+    Let $|G| = n$ be the order of the group $G$. Since $n$ is even, the group has an even number of elements. Consider the identity element $e \in G$, which satisfies $e^2 = e$. For each $x \in G$, observe the following:
+    
+    - If $x \neq x^{-1}$ (i.e., $x$ is not its own inverse), then $x$ and $x^{-1}$ form a distinct pair.
+    - If $x = x^{-1}$, then $x^2 = e$.
+
+    Now, partition the elements of $G$ into disjoint pairs $(x, x^{-1})$. The identity element $e$ is its own inverse, so it cannot be paired with any other element. Thus, the remaining elements of $G \setminus \{e\}$ must also form pairs under the inverse operation (since the inverse is unique). Since $|G|$ is even, the set $G \setminus \{e\}$ has an odd number of elements. Therefore, at least one element $a \neq e$ must satisfy $a = a^{-1}$, which implies $a^2 = e$. Thus, such an element $a$ exists.
+  </div>
+</Problem>
+
+<Problem title="Subgroups of a Cyclic Group" difficulty={3} relevance={4} source="Tobias Steinbrecher">
+<div label="question">
+Let $\langle G; *, \hat{}, e \rangle$ be a cyclic group. Prove that every subgroup of $G$ is cyclic.
+</div>
+<div label="hint">
+Write every element from $H$ as $g^k$ for some $k \in \mathbb{Z}$ and take *some* minimum. Then use Euclidean Divison Theorem. 
+</div>
+<div label="answer">
+Because $G$ is cyclic, there is some generator $g \in G$ such that we can write every element $a \in G$ as $g^k = a$ for some $k \in \mathbb{Z}$. This also holds for elements of $H$, because $H \subseteq G$. Define the set of exponents of $g$ that correspond to elements of $H$:
+$$
+S = \{ n \in \mathbb{Z} \mid g^n \in H \}.
+$$
+Since $e \in H$, and $e = g^0$, we have $0 \in S$. Also, $S$ is non-empty because $H$ is a subgroup.
+
+Now consider the following:
+
+1. Since $S$ is a subset of $\mathbb{Z}$, it contains positive integers if $H$ is non-trivial (i.e., $H \neq \{ e \}$).
+2. Let $d$ be the smallest positive integer in $S$. By the well-ordering principle, such a $d$ exists.
+
+We claim that $H = \langle g^d \rangle$, where $g^d$ is a power of $g$ in $H$.
+
+---
+
+**Step 1: $\langle g^d \rangle \subseteq H$**
+
+Let $h \in \langle g^d \rangle$. By definition of a cyclic subgroup, $h$ is of the form $h = (g^d)^k = g^{dk}$ for some $k \in \mathbb{Z}$. Since $d \in S$, we know $g^d \in H$, and since $H$ is closed under the group operation, $h = g^{dk} \in H$. Thus, $\langle g^d \rangle \subseteq H$.
+
+---
+
+**Step 2: $H \subseteq \langle g^d \rangle$**
+
+Let $h \in H$. By definition of $S$, $h = g^n$ for some $n \in S$. Using the division algorithm, write:
+$$
+n = qd + r, \quad \text{where } q \in \mathbb{Z} \text{ and } 0 \leq r < d.
+$$
+Thus, $g^n = g^{qd} g^r$. Since $g^n \in H$ and $g^d \in H$, the closure property of $H$ implies $g^r \in H$. However, $r < d$, and $d$ is the smallest positive integer in $S$. Therefore, $r = 0$. Hence, $n = qd$, and $g^n = (g^d)^q$. This shows that $h \in \langle g^d \rangle$, so $H \subseteq \langle g^d \rangle$.
+
+---
+
+**Conclusion:**
+
+From Steps 1 and 2, we conclude that $H = \langle g^d \rangle$. Thus, $H$ is cyclic, generated by $g^d$.
+
+</div>
+</Problem>

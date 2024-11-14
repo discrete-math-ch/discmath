@@ -13,9 +13,13 @@ For some function $f: A \to B$, the image of $A' \subseteq A$ are all elements t
 
 ## Preimage
 
-The preimage of $B' \subset B$ under $f: A \to B$ are all elements in $A$ that map to some element in $B'$, i.e. $f^{-1}(B') = \{ a \in A \; \vert \; f(a) \in B' \}$.
+The preimage of $B' \subseteq B$ under $f: A \to B$ are all elements in $A$ that map to some element in $B'$, i.e. $f^{-1}(B') = \{ a \in A \; \vert \; f(a) \in B' \}$.
 
-While the inverse $f^{-1}$ might not be defined, the preimage is always defined.
+<Callout type="warning" emoji="💡">
+    While the inverse $f^{-1}$ might not be defined, the preimage is always defined.
+
+    _Note: The inverse exists if the preimage relation is a function._
+</Callout>
 
 ## Special Properties
 
@@ -82,9 +86,9 @@ A function $f: A \to B$ can have "special" properties:
     <div label="answer">
         See hints.
 
-        Assume that $y \in B = f(y)$. This is a contradiction since $x \in B \iff x \not\in f(y)$.
+        Assume that $y \in B = f(y)$. This is a contradiction since $y \in B \iff y \not\in f(y) = B$.
 
-        This means that $y \not\in B = f(y)$. But this also leads to a contradiction, since now by definition $B$, we must have $x \in B$.
+        This means that $y \not\in B = f(y)$. But this also leads to a contradiction, since now by definition $B$, we must have $y \in B$.
 
         This means that such a bijective function $f$ can't exist.
 
