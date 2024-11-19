@@ -8,7 +8,7 @@ import { Cards } from 'nextra/components'
 
 # Relations
 
-Relations are super useful and a basic conecpt in many areas of mathematics and computer science. We can build this concept basically directly from what we learned from set theory. You already know many examples, like $\leq$ and $>$, and so on. We will also see that functions are simply relations with a special property.
+Relations are super useful and a basic concept in many areas of mathematics and computer science. We can build this concept basically directly from what we learned from set theory. You already know many examples, like $\leq$ and $>$, and so on. We will also see that functions are simply relations with a special property.
 
 <Cards>
   <Cards.Card
@@ -38,28 +38,28 @@ Often times we will see something like:
 ## Intuition
 
 <Callout type="warning">
-Don't use intuition to argue or prove something. This is only meant to be to get an idea of a proof, on logic level or to get an idea whether some statment is true or false. For example about statements like *there is a relation that is ... and ...*. Additionally this intuition will probably make it easier to find counterexamples. But still, you have to always argue using definitions and logic.
+Don't use intuition to argue or prove something. This is only meant to be to get an idea of a proof, on logic level, or to get an idea of whether some statement is true or false. For example, statements like *there is a relation that is ... and ...*. Additionally, this intuition will probably make it easier to find counterexamples. But still, you have to always argue using definitions and logic.
 </Callout>
 
 ### Graphs
 <Callout type="warning">
-This is not to be confsed with [Hasse Diagrams](#hasse-Diagrams) for partial order relations
+This is not to be confused with [Hasse Diagrams](#hasse-Diagrams) for partial order relations
 </Callout>
 
-Really, if you think about a relation $\rho \subseteq A \times A$ (i.e. a relation which is defined *on* one set $A$, which might be generic) and you have some [property](#properties), think about the directed graph representation of this property - draw it! Oftetimes, this feels like cheating, because some exercises seem trivial when looking at them in graph representation. After learning about graphs in A&D, you might even be tempted to think about what the different graph algorithms and properties mean in the context of relations.
+Really, if you think about a relation $\rho \subseteq A \times A$ (i.e. a relation which is defined *on* one set $A$, which might be generic) and you have some [property](#properties), think about the directed graph representation of this property - draw it! Oftentimes, this feels like cheating, because some exercises seem trivial when looking at them in graph representation. After learning about graphs in A&D, you might even be tempted to think about what the different graph algorithms and properties mean in the context of relations.
 
 So what is the graph representation?
 
 1. We use *nodes* to depict elements of the set $A$. Of course, oftentimes $A$ is an arbitrary/generic set, we can still draw some dots for the elements of $A$ to try to understand the structure of the relation.
 
-2. For each element $(a,b) \in \rho$ draw an arrow from node $a$ to node $b$. If we again have some generic relation, which satisfies certain properties, try to understand how these properties are represented in your graph. I will elaborate it in the section on [properties](#properties). However it is a good practice to do so.
+2. For each element $(a,b) \in \rho$ draw an arrow from node $a$ to node $b$. If we again have some generic relation, that satisfies certain properties, try to understand how these properties are represented in your graph. I will elaborate on it in the section on [properties](#properties). However, it is a good practice to do so.
 
 <Callout type="example">
 **Example**: Consider the set $A = \{1,2,3,4,5,6,7,8\}$ and the relation
 $$
 \rho = \{(1,2),(1,3),(1,4),(2,4),(3,7),(3,8),(2,5),(4,5),(5,6),(6,7),(7,8)\}
 $$
-Then we obtain the following graph reprensentation
+Then we obtain the following graph representation
 
 
 <figure
@@ -83,13 +83,13 @@ Then we obtain the following graph reprensentation
 
 <Callout type="warning">
 The formalities defined in this section on matrices are not
-covered in the lecture. However, it might help deepening the understanding
+covered in the lecture. However, it might help deepen the understanding
 of the topic.
 </Callout>
 
 For relations on finite sets $A, B$ we can also represent relations as matrices
 in $\{0, 1\}^{n \times m}$ where $n = |A|$ and $m = |B|$.
-The matrix representation gives us an additional tool to understand
+The matrix representation gives us an additional tool for understanding
 different properties and operations on relations.
 
 Let $A = \{a_1, \dots, a_n\}$ and $B = \{b_1, \dots, b_m\}$,
@@ -178,7 +178,7 @@ $$
 #### Operations on Relations
 
 Proven by intimidation or alternatively by the reader, we can find
-the following correspondance between operations on relations and operations on matrices:
+the following correspondence between operations on relations and operations on matrices:
 
 $$
 M^{\rho \cap \sigma} = M^{\rho} \ast M^{\sigma} \\
@@ -256,7 +256,7 @@ To prove **reflexivity** of a relation, we often start with something like:
 
 > Let $a \in A$ be arbitrary...
 
-Then our goal is to derive that $a \rho a$ (from some given proeprties about $\rho$).
+Then our goal is to derive that $a \rho a$ (from some given properties about $\rho$).
 
 In the graph visualization of a reflexive relation, we must have a self-loop at each node:
 
@@ -333,7 +333,7 @@ a \rho b \land b \rho c \implies a \rho c
 $$
 </Callout>
 
-To prove **transitiviy** of a relation, we often start with something like:
+To prove **transitivity** of a relation, we often start with something like:
 
 > Let $a,b,c \in A$ be arbitrary, such that $a \rho b$ and $b \rho c$.
 > $$
@@ -384,7 +384,7 @@ To prove **antisymmetry** of a relation, we often start with something like:
 > $$
 > Therefore $\dots$
 
-In the graph of a antisymmetric relation, it can never be the case that there is an edge from node $a$ to $b$ and an edge from node $b$ to $a$. Otherwise, the two elements corresponding to the nodes would have to be equal, which is a contradiction, as we draw different nodes for different elements.
+In the graph of an antisymmetric relation, it can never be the case that there is an edge from node $a$ to $b$ and an edge from node $b$ to $a$. Otherwise, the two elements corresponding to the nodes would have to be equal, which is a contradiction, as we draw different nodes for different elements.
 
 
 ### Equivalence Relations
@@ -431,7 +431,7 @@ In the graph of a antisymmetric relation, it can never be the case that there is
     We need to prove that if $A \sim B$ (i.e., $AB = BA$), then $B \sim A$ (i.e., $BA = AB$). With the symmetry of the $=$ relation, we obtain that $AB = BA$ implies $BA = AB$, therefore $B \sim A$ and the relation is **symmetric**.
 
     3. **Transitivity**:
-    Consider two arbitrary $n\times n$ matrices $A$ and $B$ which do not commute. Such matrices exists, because matrix multiplication is not commutative in general. However, every matrix does commute with the identity, as $A I = A =IA$ for arbitrary $A \in \mathbb{R}^{n \times n}$.
+    Consider two arbitrary $n\times n$ matrices $A$ and $B$ which do not commute. Such matrices exist because matrix multiplication is not commutative in general. However, every matrix does commute with the identity, as $A I = A =IA$ for arbitrary $A \in \mathbb{R}^{n \times n}$.
     Therefore, we have $A \sim I$ and $I \sim B$, but not $A \sim B$, which contradicts transitivity
 
     Therefore, the relation $\sim$ is reflexive, symmetric, but not transitive.
@@ -444,19 +444,19 @@ In the graph of a antisymmetric relation, it can never be the case that there is
     $$
     a < b \iff a \leq b \land a \neq b
     $$
-    Prove that $<$ is irreflexive, antisymmetric and  transitive.
+    Prove that $<$ is irreflexive, antisymmetric, and transitive.
   </div>
   <div label="hint">
   Make use of the partial order properties. Be aware that
-  $\neq$ is not transitive. Instead you might want to make a case distinction for proving
+  $\neq$ is not transitive. Instead, you might want to make a case distinction for proving
   transitivity.
   </div>
   <div label="answer">
-    Let's prove each the three properties seperately:
+    Let's prove each of the three properties separately:
     In the following let $a,b,c \in A$ be arbitrary but fixed.
 
     **Irreflexivity**: <br/>
-    Obviously $a=a$ is a true statement. Thus any logical consequence
+    Obviously, $a=a$ is a true statement. Thus any logical consequence
     will be true as well.
     $$
     \begin{aligned}
@@ -466,7 +466,7 @@ In the graph of a antisymmetric relation, it can never be the case that there is
     &\dot\implies \neg (a < a) && \text{definition of } < \\
     \end{aligned}
     $$
-    This proofs that $\forall a ~ a \not< a$ and thus $<$ is irreflexive.
+    This proves that $\forall a ~ a \not< a$ and thus $<$ is irreflexive.
 
     **Antisymmetry**:
     $$
@@ -479,14 +479,14 @@ In the graph of a antisymmetric relation, it can never be the case that there is
     $$
 
     We have shown that no a, b exists such that $a <b \land b < a$ and thus $<$ is antisymmetric.
-    Actually we can derive anything from a false statement.
+    Actually, we can derive anything from a false statement.
 
     **Transitivity**: <br/>
-    The idea of the proof is make a case distinction in Step 3 on $a=c$ and $a \neq c$.
+    The idea of the proof is to make a case distinction in Step 3 on $a=c$ and $a \neq c$.
     Because $F \lor \neg F \equiv \top$ this distinction covers all cases.
     Then we show by contradiction that $a=c$ is not possible. Thus we can
     derive $a < c$ from the case distinction. Note that the following proof
-    performs multiple steps at once incldung some logical derivations without explicit justification. Their
+    performs multiple steps at once including some logical derivations without explicit justification. Their
     soundness directly follows from the semantics of first-order logic.
     $$
     \begin{aligned}
@@ -615,7 +615,7 @@ In the graph of a antisymmetric relation, it can never be the case that there is
     Let $V$ be a real vector space, and define a relation $\sim$ on $V$ as follows: For $u, v \in V$, we say $u \sim v$ if and only if $u - v \in W$, where $W$ is a subspace of $V$. Prove that this relation is an equivalence relation.
   </div>
    <div label="hint">
-    To prove that $\sim$ is an equivalence relation, you need to verify that it satisfies the three properties of equivalence relations: reflexivity, symmetry, and transitivity. For reflexivity, consider $u - u$. For symmetry, think about how $u - v$ relates to $v - u$. For transitivity, check how the condition $u - v \in W$ and $v - w \in W$ combine.
+    To prove that $\sim$ is an equivalence relation, you need to verify that it satisfies the three properties of equivalence relations: reflexivity, symmetry, and transitivity. For reflexivity, consider $u - u$. For symmetry, think about how $u - v$ relates to $v - u$. For transitivity, check how the conditions $u - v \in W$ and $v - w \in W$ combine.
   </div>
   <div label="answer">
     We need to prove that the relation $u \sim v$ (i.e., $u - v \in W$) is an equivalence relation. This requires verifying three properties: reflexivity, symmetry, and transitivity.
@@ -666,7 +666,7 @@ Check out the problems below. The first few are good practice, but if you're fee
         $$
             \rho \in \texttt{rel}(A, B) \iff \rho \subseteq A \times B
         $$
-        This definition looks familiar; $\texttt{rel}(A, B)$ is the power set of $A \times B$!. So the number of relations from $A$ to $B$ is:
+        This definition looks familiar; $\texttt{rel}(A, B)$ is the power set of $A \times B$! So the number of relations from $A$ to $B$ is:
         $$
             |\texttt{rel}(A, B)| = 2^{|A \times B|} = 2^{|A| \cdot |B|}
         $$
@@ -683,7 +683,7 @@ Check out the problems below. The first few are good practice, but if you're fee
        $$
        2^{n (n-1)}
        $$
-       reflexive relations on a set of $n$ elements. We can decide for each tupel $(a,b) \in (A,B)$ whether it should be part of our relation or not. Except when $a = b$, then we need it in our relation to ensure reflexivity. How many pair remain? Exactly $n (n-1)$ (we can choose $n$ elements for the first element of the pair and then for each of those, $n-1$ for the second). Because for each pair, we can decide whether we want to take it or not (two choices), we obtain $2^{n (n-1)}$.
+       reflexive relations on a set of $n$ elements. We can decide for each tuple $(a,b) \in (A,B)$ whether it should be part of our relation or not. Except when $a = b$, then we need it in our relation to ensure reflexivity. How many pairs remain? Exactly $n (n-1)$ (we can choose $n$ elements for the first element of the pair and then for each of those, $n-1$ for the second). Because for each pair, we can decide whether we want to take it or not (two choices), we obtain $2^{n (n-1)}$.
       </div>
 </Problem>
 
@@ -696,7 +696,7 @@ Check out the problems below. The first few are good practice, but if you're fee
        $$
        2^{n(n+1)/2}
        $$
-       symmetric relations on a set of $n$ elements. What can we decide for each tupel $(a,b) \in (A,B)$?  Consider $a = b$, then symmetry does not impose any constraints, thus, we can freely decide whether we want to take it or not (this gives us a factor of $2^n$). Now, if $a \neq b$, if we take the pair $(a,b)$, then we must also take $(b,a)$ (by symmetry). However, we could also decide to choose neither $(a,b)$ nor $(b,a)$. In the graph representation, we can decide for each pair of nodes, whether we want to put an *undirected* edge (formally directed edges in both directions). There are ${n \choose 2} = n(n-1)/2$ such pairs. Thus, we obtain a total of
+       symmetric relations on a set of $n$ elements. What can we decide for each tuple $(a,b) \in (A,B)$?  Consider $a = b$, then symmetry does not impose any constraints, thus, we can freely decide whether we want to take it or not (this gives us a factor of $2^n$). Now, if $a \neq b$, if we take the pair $(a,b)$, then we must also take $(b,a)$ (by symmetry). However, we could also decide to choose neither $(a,b)$ nor $(b,a)$. In the graph representation, we can decide for each pair of nodes, whether we want to put an *undirected* edge (formally directed edges in both directions). There are ${n \choose 2} = n(n-1)/2$ such pairs. Thus, we obtain a total of
        $$
        2^(n(n-1)/2) 2^{n} = 2^{(n^2 - n + 2 n)/2} = 2^{n (n+1) /2}
        $$
@@ -727,7 +727,7 @@ How many anti-symmetric relations are there on a set of $n$ elements?
 What does anti-symmetry imply about pairs $(a,b)$ and $(b,a)$? How many choices are there for each pair when $a \neq b$?
 </div>
 <div label="answer">
-For anti-symmetric relations, if $(a,b)$ is in the relation, $(b,a)$ cannot be, unless $a = b$.
+For anti-symmetric relations, if $(a,b)$ is in the relation, $(b,a)$ cannot be unless $a = b$.
 - For each pair $(a,b)$ where $a \neq b$, there are three possibilities:
   1. Include $(a,b)$ but not $(b,a)$.
   2. Include $(b,a)$ but not $(a,b)$.
@@ -754,7 +754,7 @@ $$
   </div>
   <div label="answer">
   Think about the matrix representation here!
-    Since the relation must be reflexive, all $n$ diagonal elements $(a, a)$ must be included. Symmetry implies symmetry of the matrix, we could count the number of elements in the upper half of the matrix, excluding the diagonal or use the following argument. For pairs $(a, b)$ with $a \neq b$, symmetry requires that either both $(a, b)$ and $(b, a)$ are included, or neither is included. There are ${n \choose 2} = n(n-1)/2$ such pairs, and for each pair, we have 2 choices: include both or include neither. Therefore, the total number of reflexive and symmetric relations is:
+    Since the relation must be reflexive, all $n$ diagonal elements $(a, a)$ must be included. Symmetry implies symmetry of the matrix, we could count the number of elements in the upper half of the matrix, excluding the diagonal, or use the following argument. For pairs $(a, b)$ with $a \neq b$, symmetry requires that either both $(a, b)$ and $(b, a)$ are included, or neither is included. There are ${n \choose 2} = n(n-1)/2$ such pairs, and for each pair, we have 2 choices: include both or include neither. Therefore, the total number of reflexive and symmetric relations is:
     $$
     2^{n(n-1)/2}
     $$
@@ -783,7 +783,7 @@ $$
     **Intuition Behind the Recurrence**:
     The recurrence works by considering how we can form a partition of $n+1$ elements from a partition of $n$ elements. Here's the intuition:
 
-    - The *new* item we added must be in some set of the partition. Except for this item itself, let's say there are $k$ other items which are **not** in this same set of the partition ($k$ can range here from $0$ to $n$, because we could also put the $n+1$-the item in a singleton partition).
+    - The *new* item we added must be in some set of the partition. Except for this item itself, let's say there are $k$ other items that are **not** in this same set of the partition ($k$ can range here from $0$ to $n$ because we could also put the $n+1$-the item in a singleton partition).
 
     - Now we remove the whole partition of the $n+1$-th item. To partition the remaining set, we are left with $B_k$ possibilities. Additionally, there are $n \choose k$ possibilities to choose these $k$ items, which are not in the same partition as the $n+1$-th item.
   </div>
@@ -808,4 +808,4 @@ see [OEIS: Number of transitive relations](https://oeis.org/A006905).
 
 ## References
 
-To delve deeper into this topic the [Wikipedia Article](https://en.wikipedia.org/wiki/Relation_(mathematics)) is actually quite interesting and not bloated with stuff which involves higher level mathematics.
+To delve deeper into this topic the [Wikipedia Article](https://en.wikipedia.org/wiki/Relation_(mathematics)) is actually quite interesting and not bloated with stuff that involves higher-level mathematics.
