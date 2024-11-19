@@ -8,9 +8,9 @@ import { Cards } from 'nextra/components'
 
 # Countability
 
-Countability is a fundamental concept in set theory and mathematics that deals with the size and nature of sets. The idea that there are different kinds of *infinities* can be quite counterintuitive at first. However, understanding these distinctions is crucial. It helpor uns us determine whether a set is finite, countably infinite, countably infinite, providing insight into concepts like **discrete** and **continuous** (after all this course is called **discrete** mathematics). This understanding significantly influences how we can classify and think about different problems, particularly in computer science.
+Countability is a fundamental concept in set theory and mathematics that deals with the size and nature of sets. The idea that there are different kinds of *infinities* can be quite counterintuitive at first. However, understanding these distinctions is crucial. It helps us determine whether a set is finite, countably infinite, or countably infinite, providing insight into concepts like **discrete** and **continuous** (after all this course is called **discrete** mathematics). This understanding significantly influences how we can classify and think about different problems, particularly in computer science.
 
-This chapter is one where you can truly get creative with proofs, and sometimes you have to. That's what makes proofs so rewarding — sometimes it's just about finding that neat idea. It requires a lot of practice to build up intuition and ideas that you can adapt to different cases. But this is what makes it so enjoyable - really trust us :). Every problem is more or less unique. That's what makes proofs really rewarding - sometimes it just this neat idea. Oftentime people think this makes this chapter harder, because afterall there is no recipe to approach every problem. It just a lot of practice which builds up some intuition and idea you might be able to use and alter in different cases. But this really makes is super fun. Because every problem is really different. Not like in the basics of set theory, where proofs always went by showing double-sided inclusion.
+This chapter is one where you can truly get creative with proofs, and sometimes you have to. That's what makes proofs so rewarding — sometimes it's just about finding that neat idea. It requires a lot of practice to build up intuition and ideas that you can adapt to different cases. But this is what makes it so enjoyable - really, trust us :). Every problem is more or less unique. That's what makes proofs really rewarding - sometimes it's just this neat idea. Oftentimes people think this makes this chapter harder because, after all, there is no recipe to approach every problem. It's just a lot of practice that builds up some intuition and ideas you might be able to use and alter in different cases. But this really makes it super fun. Because every problem is really different. Not unlike the basics of set theory, where proofs always go by showing double-sided inclusion.
 
  <Cards>
   <Cards.Card
@@ -31,7 +31,7 @@ This chapter is one where you can truly get creative with proofs, and sometimes 
 
 </Callout>
 
-The central aspect of this chapter is to decide whether a given set $A$ is countable or uncountable. More precisly you need to find an injection/bijection $\mathbb{N} \to A$ or find some other way to show that there is none.
+The central aspect of this chapter is to decide whether a given set $A$ is countable or uncountable. More precisely you need to find an injection/bijection $\mathbb{N} \to A$ or find some other way to show that there is none.
 
 ## Theory
 
@@ -44,7 +44,7 @@ The proofs for the following theorems can be found in the script and won't be re
 3. $A \subseteq B \Rightarrow A \preccurlyeq B$.
 </Callout>
 
-The first point provides us with major intuition about countability. And the proof follows quite immediate from composing two bijections and obtaining a new one. This is a central idea. These properties can be combined with *proof-patterns* to prove uncountability or countability.
+The first point provides us with major intuition about countability. The proof follows quite immediately from composing two bijections and obtaining a new one. This is a central idea. These properties can be combined with *proof-patterns* to prove uncountability or countability.
 
 
 
@@ -52,7 +52,7 @@ The first point provides us with major intuition about countability. And the pro
 **Theorem 3.16**: 
 If $A \preccurlyeq B$ and $B \preccurlyeq A$, then $A \sim B$.
 </Callout>
-This is a rather *extra theorem*. Though, it's sort of intuivive. It somehow captures a notion of antisymmetry (however not in the sense that $A = B$, but only $A \sim B$). It will probably be rarely or might be never be the case in this course that it is easier to show that these two injections exist than that a bijection $A \to B$ exists. 
+This is a rather *extra theorem*. Though, it's sort of intuitive. It somehow captures a notion of antisymmetry (however not in the sense that $A = B$, but only $A \sim B$). It will probably be rarely or might never be the case in this course that it is easier to show that these two injections exist than that a bijection $A \to B$ exists. 
 
 <Callout type="-">
 **Theorem 3.17**: 
@@ -103,7 +103,7 @@ This is another very central theorem and in the case of certain involved set ope
 **Definition 3.43**: 
 Let $\{0, 1\}^\infty$ denote the set of semi-infinite binary sequences or, equivalently, the set of functions $\mathbb{N} \to \{0, 1\}$.
 </Callout>
-Just in case you are wondering: Why are they called semi-infinite? This is because they go infinite in *one-direction*. 
+Just in case you are wondering: Why are they called semi-infinite? This is because they go on infinitely in *one direction*. 
 This is often super useful. We can think about functions as infinite 
 
 <Callout type="warning">
@@ -140,13 +140,13 @@ A function $f : \mathbb{N} \to \{0,1\}$ is called computable if there is a progr
  
 #### Countable or Uncountable
  
-Determine whether the set you have is countable or uncountable. This requires to first really understand what's going on in your set. Think about samller examples and similarities to known sets (often finding these similarties will directly lead you to the injection, which you have to find anyway).
+Determine whether the set you have is countable or uncountable. This requires you to first really understand what's going on in your set. Think about similar examples and similarities to known sets (often finding these similarities will directly lead you to the injection, which you have to find anyway).
 
 ### Uncountablility Proofs
 
 You can only start once you more or less understand what's going on in your set.
 
-The following pattern is a common pattern and surely cannot be used in **every** case. However, oftentimes when having an uncountable set, you can find an injection from the set $\{0,1\}^{\infty}$, which is known to be uncountable. You could of course also use something like $\mathbb{R}$ or $[0,1]$, which might be easier sometimes. Also the order below is not fixed and the proofs can look way different than the form below and still be correct. The purpose of these steps below is more to give you a structure of how one **could** approach problems involving proofs of uncountability.
+The following pattern is a common pattern and surely cannot be used in **every** case. However, oftentimes when having an uncountable set, you can find an injection from the set $\{0,1\}^{\infty}$, which is known to be uncountable. You could of course also use something like $\mathbb{R}$ or $[0,1]$, which might be easier sometimes. Also, the order below is not fixed and the proofs can look way different than the form below and still be correct. The purpose of these steps below is more to give you a structure of how one **could** approach problems involving proofs of uncountability.
 
 
 Let $A$ be the set you want to prove to be uncountable.
@@ -166,11 +166,11 @@ b \neq b' \implies f(b) \neq f(b')
 $$
 
 This is just the definition of injectivity. You have to carefully think about this when choosing $f$, to then later prove that it is indeed the case. 
-In this first step the most important thing is, that you really precisely write down the definition of your function $f$ and how it maps the bitstring to elements of $A$. 
+In this first step, the most important thing is, that you really precisely write down the definition of your function $f$ and how it maps the bitstring to elements of $A$. 
 
 #### 2. Proving that your function is a function
 
-Now that you thought about your function it should be clear to you that you have constructed something that is indeed a function. However you still have to prove or at least write some justification why the following properties are fulfilled, because this is not obvious in many cases:
+Now that you thought about your function it should be clear to you that you have constructed something that is indeed a function. However you still have to prove or at least write some justification for why the following properties are fulfilled, because this is not obvious in many cases:
 
 1. *Does your function actually map to elements from $A$ and not something else?* You defined your function to be a map from $\{0,1\}^{\infty}$ however, is it actually the case that for each $b\in \{0,1\}^{\infty}$, $f(b) \in A$?
 
@@ -181,7 +181,7 @@ This step can in some cases already be quite demanding, in other cases it can al
 
 #### 3. Proving injectivity
 
-This is more or less the central part of your proof. Here you have to actually show that what you defined actually is injective. To do this, the definition of injectivity is basically everything we have to show. Two common ways are:
+This is more or less the central part of your proof. Here you have to show that what you defined is actually injective. To do this, the definition of injectivity is basically everything we have to show. Two common ways are:
 
 1. *Let $b, b' \in \{0,1\}^{\infty}$ be arbitrary such that $b \neq b'$. Then we have*
 $$
@@ -203,14 +203,14 @@ f(b) = f(b') &\overset{\cdot}{\implies} \dots \\
 \end{aligned}
 $$
 *Therefore, we have proven indirectly that $f$ is injective*. <br/>
-As you can see, this is just the contraposition of the definition the injectivity of $f$ (see proof pattern of indirect proof).
+As you can see, this is just the contraposition of the definition of the injectivity of $f$ (see proof pattern of indirect proof).
 
 
-The difficulty in this step is to provide precise and detailled justifications.
+The difficulty in this step is to provide precise and detailed justifications.
 
 #### 4. Punchline
 
-Now we can actually apply **definition 3.42** to obtain $\{0,1\}^{\infty} \preceq A$. However, it is not immediate how this implies that $A$ is uncountable, as we need to show that **not** $A \preceq \mathbb{N}$. There are multiple short ways how one could argue about this. An easy way is to assume that $A$ is countable ($A \preceq \mathbb{N}$) and that $\{0,1\}^{\infty} \preceq A$. Then we obtain with **Lemma 3.15** (Transitivity) that $\{0,1\}^{\infty} \preceq \mathbb{N}$, which is false as proven in lecture via Cantor's diagonalization argument (we obtain a contradiction). Therefore, $A$ must be uncountable. 
+Now we can actually apply **definition 3.42** to obtain $\{0,1\}^{\infty} \preceq A$. However, it is not immediate how this implies that $A$ is uncountable, as we need to show that **not** $A \preceq \mathbb{N}$. There are multiple ways how one could argue this. An easy way is to assume that $A$ is countable ($A \preceq \mathbb{N}$) and that $\{0,1\}^{\infty} \preceq A$. Then we obtain with **Lemma 3.15** (Transitivity) that $\{0,1\}^{\infty} \preceq \mathbb{N}$, which is false as proven in lecture via Cantor's diagonalization argument (we obtain a contradiction). Therefore, $A$ must be uncountable. 
 
 
 ---
@@ -255,7 +255,7 @@ See the exercise "This seems odd" for an application of this *pattern*.
   $$
   where $b_i$ denotes the $i$-th bit of the bitstring $b$ (with $i \in \mathbb{N}$).
 
-  2. We will prove that this is indeed a function. Let $b \in \{0,1\}^{\infty}$ be arbitrary. For $f(b)$, we obtain that $f(b) \in A$, as for all $k \in \mathbb{N}$ we have $f(k) = 0$ by construction. The function is well-defined and totally-defined, as we map every bitstring $b \in \{0,1\}^{\infty}$ to at most one function $g \in A$.
+  2. We will prove that this is indeed a function. Let $b \in \{0,1\}^{\infty}$ be arbitrary. For $f(b)$, we obtain that $f(b) \in A$, as for all $k \in \mathbb{N}$ we have $f(k) = 0$ by construction. The function is well-defined and totally defined, as we map every bitstring $b \in \{0,1\}^{\infty}$ to at most one function $g \in A$.
 
   3. Now we want to prove injectivity. Let $b, b' \in \{0,1\}^{\infty}$ be two bitstrings such that $b \neq b'$. Then we obtain that $b$ and $b'$ must differ in at least one position $b_j \neq b_j'$ (for some $j \in \mathbb{N}$). Because by construction of $f$, we obtain $f(b)(2 \cdot j + 1) = b_{j}$ and $f(b')(2 \cdot j + 1) = b'_{j}$, we have $f(b) \neq f(b')$ as these function differ for the value $2 \cdot j + 1$ (more formally $(2j + 1, b_j) \in f(b)$ and $(2j + 1, b'j) \in f(b')$).
   
