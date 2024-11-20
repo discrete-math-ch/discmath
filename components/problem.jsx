@@ -87,7 +87,7 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
-              style={{ color: link ? 'rgb(170, 255, 0)' : 'grey' }} 
+              style={{ color: link ? 'rgb(179, 196, 232)' : 'grey' }} 
             >
               {source}
             </a>

@@ -35,7 +35,7 @@ const Contributors: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline"
-                style={{ color: 'rgb(170, 255, 0)' }}
+                style={{ color: 'rgb(179, 196, 232)' }}
               >
                 {contributor.login}
               </a>

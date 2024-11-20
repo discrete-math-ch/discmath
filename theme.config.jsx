@@ -1,10 +1,18 @@
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
 import { DocsThemeConfig } from 'nextra-theme-docs'
+import React from 'react';
+import 'katex/dist/katex.min.css'; // Import KaTeX styles
+import { InlineMath } from 'react-katex'; // Import KaTeX inline math component
 
 export default {
+
      docsRepositoryBase: 'https://github.com/discrete-math-ch/discmath',
-    logo: <p>discmath.ch</p>,
+    logo:(
+      <p>
+          <InlineMath>{"\\mathcal{D}\\mathrm{isc}\\mathcal{M}\\mathrm{ath.ch}"}</InlineMath>
+      </p>
+  ),
     project: {
       link: 'https://github.com/discrete-math-ch/discmath'
     },
@@ -69,12 +77,18 @@ export default {
         content: 'Question? Give us feedback →',
         labels: 'feedback'
       },
-      
-    primaryHue: {dark: 80, light:80 },
     search: {
       placeholder: "Search..."
     },
-    primarySaturation: {dark: 100, light:100},
+      primaryHue: {dark:223, light:221},
+      primarySaturation: {
+        dark: 55,
+        light: 54
+      },
+      primaryLightness: {
+        dark: 26,
+        light: 81
+      },
     footer: {
         text: (
           <div className="flex w-full flex-col items-center sm:items-start">
