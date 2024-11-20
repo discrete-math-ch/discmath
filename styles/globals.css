@@ -16,3 +16,13 @@
 details[open] .chevron {
   transform: rotate(90deg);
 }
+
+.bg-primary-light-hover {
+  background-color: #e0e0e0; /* Adjust to your preferred light mode hover color */
+}
+
+.dark .bg-primary-dark-hover {
+  background-color: #333333; /* Adjust to your preferred dark mode hover color */
+}
+
+
