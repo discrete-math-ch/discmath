@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
           Welcome to Discrete Mathematics
         </h1>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-        This collection of content is created by some student Teaching Assistants to follow along 252-0025-01L Discrete Mathematics in HS24 at ETH Zürich. 
+        This collection of content has been created by student Teaching Assistants to accompany the course 252-0025-01L Discrete Mathematics in HS24 at ETH Zürich. Feel free to contribute wherever you believe your input could benefit other students.
         </p>
       </div>
 
