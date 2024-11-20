@@ -24,7 +24,7 @@ True, see **Lemma 2.2** in script.
 
 *What is a Universe in predicate logic?*
 1. The set of all formulas of predicate logic
-2. A function which assigns 0 or 1 to each element of a set.
+2. A function that assigns 0 or 1 to each element of a set.
 3. A formula that is true in every interpretation
 4. The set of objects we want to reason about
 
@@ -82,7 +82,7 @@ Yes, we have used only the first distributive law.
 
 1. There are infinitely many interpretations in predicate logic, while there are only finitely many in propositional logic.
 2. A formula of predicate logic always has a fixed truth value
-3. Quantifiers only exists in predicate logic
+3. Quantifiers only exist in predicate logic
 4. Propositional logic is "stronger" than predicate logic, i.e. we can express more statements.
 
 <details>
@@ -136,7 +136,7 @@ Solution
 A short rundown of the main concepts:
 
 <Callout type="warning" emoji="💡">
- **Interpretations and Universes** Instead of assigning truth values to the propositional symbols to interpret the formula and obtain a mathematical statement, as we did in propositional logic, we now always have to choose a set of mathematical objects (such as $\mathbb{N}, \mathbb{R}$ or simlar) we want to reason about. We call this set the **Universe** denoted by $U$.
+ **Interpretations and Universes** Instead of assigning truth values to the propositional symbols to interpret the formula and obtain a mathematical statement, as we did in propositional logic, we now always have to choose a set of mathematical objects (such as $\mathbb{N}, \mathbb{R}$ or similar) we want to reason about. We call this set the **Universe** denoted by $U$.
 </Callout>
 <Callout type="warning" emoji="💡">
  **Predicates** take elements from the universe and spit out a truth value ($P : U^k \to \{0,1\}$). *Example interpretations for predicates: $\text{prime}(x), \text{less}(x,y)$.*
@@ -172,13 +172,13 @@ By combining these elements, predicate logic allows for the creation of more com
       $$
       \text{sum}(x,y) = x+y
       $$
-      Write down formulas of predicate logic, such that our interpretation is fitting and is expressing the following statements (numbers refer to integers):
+      Write down formulas of predicate logic, such that our interpretation is fitting and expresses the following statements (numbers refer to integers):
       1. There is a square number
       2. The sum of two arbitrary numbers is not square
       3. For every number $a$, there is a number $b$, such that $a + b$ is square
       4. The sum of two squares is a square
 
-      Additionally, translate these formulas into statments under the given interpretation:
+      Additionally, translate these formulas into statements under the given interpretation:
       1. $\forall x \forall y ((Q(x) \land Q(y)) \to P(x,y))$
       2. $\forall x (Q(x) \to (\exists a \exists b P(x,\text{sum}(a,b))))$
   </div>

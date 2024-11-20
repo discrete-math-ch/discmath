@@ -9,7 +9,7 @@ There is a multitude of meanings when it comes to the use of the word "implicati
 To provide an overview consider the following:
 
 
-### Implications between Mathematical statments
+### Implications between Mathematical statements
 
 
 <Callout type="warning" emoji="🚧">
@@ -32,7 +32,7 @@ For example, consider the following statements:
 
 If we now consider $S \implies T$, we would find that $S \implies T$ is indeed a **true** statement because we know $S$ is false.
 
-Note that the only case where the statement $S \implies T$ is false, is when $S$ is a true statement and $T$ is a false statement.
+Note that the only case where the statement $S \implies T$ is false is when $S$ is a true statement and $T$ is a false statement.
 
 ### Derivation step arrow
 $\overset{\cdot}{\implies}$
@@ -105,7 +105,7 @@ $$
   3. $A \lor B$ <br/>
   </div>
   <div label="answer">
-   First consider:
+   First, consider:
 
   |$A$|$\lnot A$|
   |---|---|
@@ -151,17 +151,17 @@ Consider $(A \circ A) \circ (B \circ B)$
     |$1$ |$1$ | $1$ |$1$ |
 
 Note that $A \circ B \equiv \lnot (A \land B)$ (NAND operation).
-The idea here is to use the $\lnot$ operator we build in the previous exercise to invert $A$ and $B$ individually. Then we basically use De Morgan's equivalence: $\lnot(\lnot A \land \lnot B) \equiv A \lor B$ to obtain the final result (i.e. one more $\circ$ operation between $\lnot A$ and $\lnot B$).
+The idea here is to use the $\lnot$ operator we built in the previous exercise to invert $A$ and $B$ individually. Then we basically use De Morgan's equivalence: $\lnot(\lnot A \land \lnot B) \equiv A \lor B$ to obtain the final result (i.e. one more $\circ$ operation between $\lnot A$ and $\lnot B$).
   
 </div>
   <div label="hint">Note that $A \circ B \equiv \lnot (A \land B)$</div>
-  <div label= "takeaway">   Usually one has to make some kind of observations in these types problems and use them cleverly to create the formula. Sometimes known equivalences such as in the 3. subtask can help.  
+  <div label= "takeaway">   Usually one has to make some kind of observations in these types of problems and use them cleverly to create the formula. Sometimes known equivalences such as in the 3. subtask can help.  
    To prove the **equivalence** one can then simply use *comparison of function tables* (this step is trivial in comparison to finding a correct function). Note that there might be more than one possible solution.</div>
 </Problem>
 
 <Problem title="Equivalence Transformations" source="Philipp Barski">
   <div label="question">
-      Consider the formula $F = (B \lor A) \lor \neg C$. Find a formula $G$ such that $G$ only contains the logical operation $\to$ and propositonal symbols $A,B,C$ (Note that parentheses are allowed as well).<br/> 
+      Consider the formula $F = (B \lor A) \lor \neg C$. Find a formula $G$ such that $G$ only contains the logical operation $\to$ and propositional symbols $A,B,C$ (Note that parentheses are allowed as well).<br/> 
        Solve this problem either by using equivalence transformations from Lemma 2.1 and the rules 
        $$
        F \land \neg F \equiv \bot, \  F \land \bot \equiv \bot, \ F \lor \bot \equiv F,\  F \lor \neg F \equiv \top, \ F \land \top \equiv F, \ F \lor \top \equiv \top
@@ -196,7 +196,7 @@ The idea here is to use the $\lnot$ operator we build in the previous exercise t
      How can we conveniently replace $\top$ such that the formula looks like something we can transform further?
   </div>
   <div label= "takeaway">
-  For such problems you often need to find a clever trick to get the formula to some other nice form. Often, the first thing you want to do is trying out some common tricks and seeing whether you could get the formula into any other form. It is also possible to write down the truth table and try to fit a formula to the truth values.
+  For such problems, you often need to find a clever trick to get the formula to some other nice form. Often, the first thing you want to do is try out some common tricks and see whether you can get the formula into any other form. It is also possible to write down the truth table and try to fit a formula to the truth values.
   </div>
 </Problem>
 

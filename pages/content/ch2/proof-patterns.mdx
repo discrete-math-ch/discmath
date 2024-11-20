@@ -11,7 +11,7 @@ Often, we want to prove certain mathematical statements such as $S \implies T$. 
 (not $T$) $\implies$ (not $S$).
  However, it is not obvious that these two statements are equivalent and it would actually be sufficient to prove the second implication. We need to prove this. A **proof pattern** is, therefore, just the way we choose to try to prove a certain mathematical statement. A proof pattern is called **sound** if we can actually prove our statement using it. Thus, in the sense of the equivalence above, the proof pattern would be **sound** if the equivalence does indeed hold. Obviously, we only want to use proof patterns that are sound. However, this soundness has to be proven first. To prove soundness, we can use propositional logic in easy cases.
 
-After we know that a proof pattern is sound, we can sort of $\emph{use}$ the proof pattern to really prove a meaningful statements.
+After we know that a proof pattern is sound, we can sort of $\emph{use}$ the proof pattern to really prove a meaningful statement.
 
 ---
 
@@ -25,7 +25,7 @@ See the definition of the proof patterns in the script (Chapter 2.6). Here are s
 </div>
 <div label="answer">
 We will show that this proof pattern is **not sound** using propositional logic.
-Let $A$ be the propositional symbol which corresponds to the truth value of the mathematical statment $T$ and $B,C$ be the propositional symbols with which we *model* the mathematical statment $S$ and $R$ respectively. Now proving that $S \implies R$ is true, corresponds to the formula $B \to C$ being true and proving $(\text{not } T) \implies (S \text{ or } R)$ translates to the formula $\lnot A \to (B \lor C)$ being true.
+Let $A$ be the propositional symbol that corresponds to the truth value of the mathematical statement $T$ and $B,C$ be the propositional symbols with which we *model* the mathematical statement $S$ and $R$ respectively. Now proving that $S \implies R$ is true, corresponds to the formula $B \to C$ being true, and proving $(\text{not } T) \implies (S \text{ or } R)$ translates to the formula $\lnot A \to (B \lor C)$ being true.
 
 For our proof pattern to be sound we therefore need
 
@@ -35,7 +35,7 @@ $$
 
 to hold.
 
-But now, we can apply our skills from propositional logic. We can either draw a truth table or see that this is not the case. Consider the assignment $A = 0$, $C = 1$ and $B$ to whatever we want. Then we obtain that the right-hand side is false, while the left-hand side is true (verify this as an exercise).
+But now, we can apply our skills from propositional logic. We can either draw a truth table or see that this is not the case. Consider the assignment $A = 0$, $C = 1$, and $B$ to whatever we want. Then we obtain that the right-hand side is false, while the left-hand side is true (verify this as an exercise).
 </div>
 </Problem>
 
@@ -106,7 +106,7 @@ As an exercise, you can also (easily) prove the above statement with an indirect
 
 
 ## Proof by Case Distinction
-An example for a proof by case distinction are truth tables; to show that $F \equiv G$, we show that for all possible inputs, the output value of $F$ and $G$ are equivalent.
+An example of a proof by case distinction is truth tables; to show that $F \equiv G$, we show that for all possible inputs, the output value of $F$ and $G$ are equivalent.
 
 <Problem title="Lemma 2.6" source="Script">
     <div label="question">
@@ -159,7 +159,7 @@ $$
         Use the fact that $A \cap B \subseteq A$ is always true/a tautology (see the previous exercise). This (informally) means that $A \cap B \ne A$ implies that there is an element in $A$ that is not in $A \cap B$ (but prove that!).
     </div>
     <div label="hint">
-        If you get stuck, try working from both ends. Start from $A \cap B \ne A$ and move forward, but also work backward from the conclusion $A \not\subseteq B$, since you already know it is true (if not convice yourself with Venn-Diagrams!).
+        If you get stuck, try working from both ends. Start from $A \cap B \ne A$ and move forward, but also work backward from the conclusion $A \not\subseteq B$, since you already know it is true (if not convince yourself with Venn-Diagrams!).
     </div>
     <div label="answer">
         Let $A, B$ be arbitrary but fixed sets:
@@ -187,13 +187,13 @@ $$
                 \dot\iff & \lnot (A \subseteq B) && \text{Def. $A \subseteq B$} \\
             \end{aligned}
         $$
-        $^1$: Starting from there it is probably easier to work backwards, i.e. starting at $A \not\subseteq B$.
+        $^1$: Starting from there it is probably easier to work backward, i.e. starting at $A \not\subseteq B$.
     </div>
     <div label="takeaway">
-        If you get stuck, try working from both ends. And it is always useful to understand why the statement is true (e.g. with Venn-Diagrams).
+        If you get stuck, try working from both ends. It is always useful to understand why the statement is true (e.g. with Venn-Diagrams).
     </div>
     <div label="takeaway">
-        All steps actually hold in both direction; this means that $A \cap B = A \iff A \subseteq B$ (See Theorem 3.4/Consistency).
+        All steps actually hold in both directions; this means that $A \cap B = A \iff A \subseteq B$ (See Theorem 3.4/Consistency).
     </div>
 </Problem>
 
