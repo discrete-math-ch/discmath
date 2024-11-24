@@ -1,5 +1,6 @@
 {
     "group-theory": "Group Theory",
+    "fields": "Fields",
       "poly-remainder": {
         "title": "Practice: Polynomial Division in Finite Fields"
       }
