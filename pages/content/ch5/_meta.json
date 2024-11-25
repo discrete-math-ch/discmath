@@ -1,7 +1,8 @@
 {
     "group-theory": "Group Theory",
+    "rings": "Rings",
     "fields": "Fields",
       "poly-remainder": {
-        "title": "Practice: Polynomial Division in Finite Fields"
+        "title": "Practice: Remainder Polynomial Division"
       }
 }
