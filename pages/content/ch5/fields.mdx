@@ -10,3 +10,98 @@ import { Cards } from 'nextra/components'
 </Callout>
 
 # Fields
+
+
+<Callout type="info">
+We continue our discussion of Rings, but now we require every non-zero element to have an inverse in the multiplicative group and define an algebra fulfilling this new requirement a Field (expressed more precisely $F \setminus \{0\} = F^*$). We can directly show that a field must be also be an **integral domain**. Why are fields interesting? Well, we can sort of compute normally inside a field (division is defined for all non-zero elements), we could for example execute Gaussian Elimination over arbitrary fields. Next, we continue the discussion of Polynomials. This time over a field: $F[x]$. They are super interesting for many reasons, we will investigate. First, we define some useful things in $F[x]$, for example **monic**, **irreducible** 
+</Callout>
+
+## Theory
+
+### Fields
+
+### Polynomials over Fields
+
+#### Division
+
+#### Euclidean Domains
+
+
+#### Polynomials as Functions
+
+#### Polynomial Interpolation
+
+
+### Finite Fields
+
+So we discussed different properties of Fields and Polynomials over Fields. 
+
+
+## Tips and Tricks
+
+### How to check irreducibility of a polynomial?
+
+Intuitively, this is the same problem as checking whether an integer is a prime number.
+
+We cite the part of the script here, as this explanation is perfect:
+
+>It follows immediately from the definition (and from the fact that the degrees are added when polynomials are multiplied) that every polynomial of degree $1$ is irreducible. Moreover, a polynomial of degree $2$ is either irreducible or the product of two polynomials of degree $1$. A polynomial of degree $3$ is either irreducible or it has at least one factor of degree $1$ (which is equivalent to being a root). Similarly, a polynomial of degree $4$ is either irreducible, has a factor of degree $1$, or has an irreducible factor of degree $2$.
+> Irreducibility of a polynomial of degree $d$ can be checked by testing all irreducible polynomials of degree $\leq d/2$ as possible divisors. Actually, it suffices to test only the monic polynomials because one could always multiply a divisor by a constant, for example the inverse of the highest coefficient. This irreducibility test is very similar to the primality test which checks all divisors up to the square root of the number to be tested.
+
+Really try to understand every claim in the paragraph above!
+
+
+<Callout type='info'>
+There are some tricks to quickly deduce non-irreducibility of a polynomial over $GF(2)$. Namely, the following two:
+
+1. Let $p(x) \in GF(2)[x]$ such that $\deg(p) \geq 2$ if there is no constant term, then the polynomial is reducible. This is simply because we obtain quickly that $0$ is a root, thus the polynomial is divisble by $x$. This is actually true for polynomials over any field.
+
+2. Let $p(x) \in GF(2)[x]$ such that $\deg(p) \geq 2$, if there is an even number of terms overall, then the polynomial is reducible. This is simply because we directly obtain $0$ when plugging in $1$, because all the terms will evaluate to $1$ and there is an even number of terms, so we obtain that $1$ is a root.
+</Callout>
+
+### How to prove that something is a field?
+
+To prove that $F$ we technically have to go by definition, i.e. show that it is a **commutative nontrivial Ring** with $F \setminus \{0\} = F^*$. This would be very annoying, because we would have to verify a big list of requirements and then even show that every non-zero element is a unit. This is why you will probably most often use one of the following theorems:
+
+1. **Thm. 5.23.** $\mathbb{Z}_p$ is a field if and only if $p$ is prime (because this is a rather trivial task, it will probably not be an exercise, however it might be an important first step to notice this for other proofs)
+2. **
+
+#### Example
+
+**Proving that $GF(5)[x]_{x^2 + 4x + 1}$ is a field**:
+
+Note that $5$ is a prime number. With Theorem 5.23 we obtain that $\mathbb{Z}_5$ is a field.
+ To prove that $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field, we can use Theorem 5.37. We can show that $x^2+4x+1$ is irreducible over $\mathbb{Z}_5$ and then apply Theorem 5.37 to obtain that  $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field.
+To prove that $x^2+4x+1$  over $\mathbb{Z}_5$ is irreducible, we can apply Corollary 5.30. We have to show that $x^2+4x+1$ has not roots in $\mathbb{Z}_5$. Let $m(x) = x^2+4x+1$. We can deduce irreducibility because $m(x)$ is of degree $2$ and thus, at least one divisor would need to be of degree $1$.
+By definition of a root, $\alpha \in \mathbb{Z}_5$ is a root of $m(x)$ if $m(\alpha) = 0$. As there are finite possibilities for $\alpha \in \mathbb{Z}_5$, namely $5$, we can try them all:
+
+| $\alpha \in \mathbb{Z}_5$ | $m(\alpha)$                                                                 |
+|---------------------------|-----------------------------------------------------------------------------|
+| $0$                       | $m(0) = R_5(0^2 + 4\cdot 0 + 1)= 1 \neq 0 \implies$ not a root (definition 5.33) |
+| $1$                       | $m(1) = R_5(1^2 + 4\cdot 1 + 1)= 1 \neq 0 \implies$ not a root (definition 5.33) |
+| $2$                       | $m(2) = R_5(2^2 + 4\cdot 2 + 1)= 3 \neq 0 \implies$ not a root (definition 5.33) |
+| $3$                       | $m(3) = R_5(3^2 + 4\cdot 3 + 1)= 2 \neq 0 \implies$ not a root (definition 5.33) |
+| $4$                       | $m(4) = R_5(4^2 + 4\cdot 4 + 1)= 3 \neq 0 \implies$ not a root (definition 5.33) |
+
+As there is no $\alpha \in \mathbb{Z}_5$ such that $m(\alpha) = 0$, i.e. there is no root, we obtain with Corollary 5.30, that $m(x) = x^2 + 4x + 1$ is irreducible over $\mathbb{Z}_5$. Therefore, with Theorem 5.37, $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field.
+
+
+
+### How to find zero-divisors?
+
+### How to find units?
+
+
+### How to find modular inverse of a polynomial?
+
+
+### How to do modular division fast?
+
+For more details on polynomial remainders, see [Practice: Polynomial Remainder Division](./poly-remainder.mdx).
+
+
+
+
+
+## Exercises
+
