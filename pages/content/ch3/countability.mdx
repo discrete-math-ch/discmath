@@ -135,7 +135,6 @@ A function $f : \mathbb{N} \to \{0,1\}$ is called computable if there is a progr
 **Corollary 3.24**: There are **uncomputable function** $\mathbb{N} \to \{0,1\}$
 </Callout>
 
-
 ### How to approach problems?
  
 #### Countable or Uncountable
@@ -217,6 +216,32 @@ Now we can actually apply **definition 3.42** to obtain $\{0,1\}^{\infty} \prece
 
 See the exercise "This seems odd" for an application of this *pattern*.
 
+### Tricks
+
+Often you can try out some handy tricks when tackling countability exercises. Many students think that you should skip countability problems in the exam, but if you have a good overview over the theorems, lemmas and corollaries, equipped with some techniques, experience and tricks, the idea to some of those problems can get to you pretty fast. Often you can combine those with constructing a specific injection.
+
+**The Complement Trick**
+
+To prove that a given set $A$ is uncountable, find an uncountable set $B$ such that $A \subseteq B$ and prove that $B \setminus A$ is countable.
+
+Intuitively this corresponds to, instead of directly proving that a set $A$ is uncountable, proving that it is part of a huge set, in which the complement of $A$ is very small (countable). Then this means $A$ is very big, because if it was not $B$ would not be very big. Translating this into a more formal language:
+
+In the following we prove the validity of this pattern: Assume towards a contradiction that $A$ is countable. $A \cup (B \setminus A)$ is countable by Theorem 3.22. But notice that $A \cup (B \setminus A) = B$. Hence we have that $B$ is countable, a contradiction.
+
+For a simple application of this pattern we prove that $[0,1] \setminus \mathbb{Q}$ is uncountable. Consider $[0,1]$ (which we know is uncountable). By definition we have $[0,1] \setminus \mathbb{Q} \subseteq [0,1]$. We have that $[0,1] \setminus ([0,1] \setminus \mathbb{Q}) = \mathbb{Q} \cap [0,1]$. Now we know that $\mathbb{Q} \cap [0,1] \subseteq \mathbb{Q}$ and by Lemma 3.15 (iii) hence $\mathbb{Q} \cap [0,1] \preceq \mathbb{Q}$ and by transitivity of $\preceq$ we have that $\mathbb{Q} \cap [0,1] \preceq \mathbb{N}$ which means that $\mathbb{Q} \cap [0,1]$ is countable. Now we can directly use the complement trick (which you would have to prove in an exam) to conclude that $[0,1] \setminus \mathbb{Q}$ is uncountable.
+
+If you see a countability problem where a direct proof of uncountability doesn't come to mind, you can think about the complement, at many times this is much easier :)
+
+**Fundamental Theorem of Arithmetic**
+
+Often when working with natural numbers, one can apply the fundamental theorem of arithmetic (i.e. that every natural number $\geq 1$ can be uniquely factored into a product of prime powers).
+
+For example, one can very easily create an injection $f : \mathbb{N} \times \mathbb{N} \to \mathbb{N}, (a,b) \mapsto 2^a3^b$. If we have $f((a,b)) = f((c,d))$, then $2^a3^b = 2^c3^d$. Since for every number the exponents of primes in the prime factorization are unique we have that $(a,b) = (c,d)$ which means that $f$ is injective.
+
+This can expedite many injection constructions, but can also lead to some problems if applied incorrectly as shown in the following:
+
+One could allege that the following is an injection: $f : \{0,1\}^\infty \to \mathbb{N}, b \mapsto n$ where $n = \prod_{i} {p_i}^{b_i}$ where where $p_i$ corresponds to the $i$'th prime. Now we could "prove" the same way as above that this is an injection. But this would mean that $\{0,1\}^\infty$ is countable which is not the case, right? The issue here is that $\prod_i {p_i}^{b_i}$ does not necessarily converge. If $b_i = 1$ for distinctly infinite $i \in \mathbb{N}$ the product will be infinity which is not in $\mathbb{N}$, so $f$ is not a function. Often this can constitute a trap when using the fundamental theorem of arithmetic to construct an injection to $\mathbb{N}$.
+
 ## Exercises
 <Problem title="Points in the Plane" difficulty={1} relevance={3} source="Tobias Steinbrecher">
   <div label="question">
@@ -264,4 +289,14 @@ See the exercise "This seems odd" for an application of this *pattern*.
 
 
   </div>
+</Problem>
+
+<Problem title="Classy Counting" difficulty={2} relevance={4} source="Philipp Barski">
+<div label="question">
+    Prove the following. Let $A$ be an uncountable set. Let $\theta$ be an equivalence relation over $A$. Prove that $A/\theta$ or $[a]_\theta$ for some $a \in A$ are uncountable.
+  </div>
+  <div label="answer">
+  Assume towards a contradiction that $A/\theta$ is countable and $[a]_\theta$ is countable for all $a \in \theta$. Then since $A/\theta$ is countable let $[a_i]_\theta$ be the $i$'th equivalence class in $A/\theta$. Then we have that $A = \bigcup_i [a_i]_\theta$ since $A/\theta$ is a partition of $A$ and it is a countable union of countable sets. By theorem 3.22 we hence have that $A$ is countable. This is a contradiction. 
+  </div>
+
 </Problem>
