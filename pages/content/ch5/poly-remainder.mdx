@@ -21,7 +21,7 @@ We basically always do the following steps (We want to divide $f(x)$ by $g(x)$):
 
 1. $\text{\textcolor{green}{GREEN PHASE}}$ Take a look at look at the part which is not factored in terms of $g(x)$ yet, let's call this part $b(x)$ (when starting, we have $b(x) = f(x)$). Take a look at the highest order term and eliminate it (written in green in the following example).
 2. $\text{\textcolor{teal}{BLUE PHASE}}$ How to eliminate? Think about how to obtain this using $g(x)$. More precisely find some $\textcolor{teal}{c(x)}$ such that the leading term of highest order of $g(x) \textcolor{teal}{c(x)}$ and $b(x)$ is the same.
-3. $\text{\textcolor{red}{RED PHASE}}$ Subtract all the *evil terms* you produced by this multiplication (we only wanted to eliminate the highest order term) - all lower order terms of $b(x) c(x)$, let's call them $\textcolor{red}{s(x)}$ 
+3. $\text{\textcolor{red}{RED PHASE}}$ Subtract all the *evil terms* you produced by this multiplication (we only wanted to eliminate the highest order term) - all lower order terms of $g(x) c(x)$, let's call them $\textcolor{red}{s(x)}$ 
 4. Now we have a part which is factored in terms of $g(x)$ and some rest part. We go back to step 1, and call this *rest part* $b(x)$ as long as the degree is greater or equal to the degree of $g(x)$ otherwise, we cannot divide $b(x)$ by $g(x)$ anymore.
 
 Consider the following example and try to understand it in detail:
