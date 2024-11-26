@@ -23,7 +23,7 @@ export default {
         New Challenges :) See more →
       </a>
     )
-  }
+  },
     useNextSeoProps() {
         const { asPath } = useRouter()
         if (asPath !== '/') {
