@@ -16,6 +16,14 @@ export default {
     project: {
       link: 'https://github.com/discrete-math-ch/discmath'
     },
+     banner: {
+    key: 'challenges-1',
+    content: (
+      <a href="https://discmath.ch/challenges" target="_blank">
+        New Challenges :) See more →
+      </a>
+    )
+  }
     useNextSeoProps() {
         const { asPath } = useRouter()
         if (asPath !== '/') {
