@@ -192,5 +192,48 @@ deployment `11.11.2024 19:50`
 </Problem>
 </Callout>
 
+
+## Week 10
+
+deployment `26.11.2024 20:39`
+
+<Callout type='info' emoji="🔒">
+**UNSOLVED**
+<Problem title="Ueli's Security Agency" source="chopingu, Tobias Steinbrecher">
+  <div label="question">
+Alice and Bob are top operatives of rival intelligence agencies. Despite their rivalry, a crisis has forced them to collaborate. They want to securely communicate using their only shared secret $m$, a critical code that unlocks a ton of sensitive information essential to global catastrophe. You know the two public keys of the two organizations $a$ and $b$. Because they are rivals, $a$ and $b$ are obviously coprime.
+Both Alice and Bob already know $m$, but they need to ensure its secrecy during the exchange. Unfortunately, years of rivalry and agency-specific training have left Alice and Bob with incompatible cryptographic practices. Their instructions mistakenly consist of elements of RSA and Diffie-Hellman protocols, leading to a flawed scheme, which makes it possible for you to intercept $A = R_p(m^a)$ and $B = R_p(m^b)$ for some big prime $p$ also known to you (such that $m < p < \min(m^a, m^b)$).
+A third party, USA (Ueli's Security Agency), hires you.
+How could you recover $m$? 
+
+**Bonus**:
+
+For training purposes, your boss provided you with the following values to practice before working with the actual data:
+
+- `A=0x185ea966031f220259b35d26f7f3aa059427f91ae95fd51d4fcce086645ebd0f64cf0bedb51a5c2118b7620c7725cdcc4d7bbeb36362c546956ef7ccdee566aff98fdae92791ab7d5b1dfd7633fded925c586db9363d615ed0304ff93d688e9f1e40260b62ef32e0e220c7f20cf12d481663965a67d8d03f99ca66a158f3c311`
+- `B=0xafd19f1f20b823ca16cbea684b892240289feaac141615c859698fe5b22a6653a48acf68675e130466d1ba3faeaf8d5d57c03bd3ece06f7ab803aaafe1e30062ac9ebd532589e590345cf22bf564d539d092ffb5cdfde4149118796b4517186aac3b8e6868c49903b14bc7021927f963b784c2bdf2b7f7f674a9bb7b75bba3cd`
+
+- `a=0xab75c71b2577e217c7ab5d04a7342e4539ca07bd33c0dd55639fd3df593a38ef612114799b1da377fada3748f47960aead03edd0c6c9aaa936c5b35bbff9b76d`
+
+- `b=0xea186540a997c53185faeebf9a2861432a1e03445b772ae1a554a556fb8304ca06260874d792ff2ce5474670ce670478ac91174092f88ddc51e2464865a04279`
+
+- `p=0xbabb7eb5c93c2c584f69efd5755aaea9b602c16e8fa469c67182dc0b873bb53a287f00bf970873acc43caa2260782c4a5caa60be176e88601c7dbc3fe467c10af91524f9ef0d6db540c0c6f8d87c272f9a90fa2c4668694105ec02216d730c78f832bf2d1ccbe4162036c04deb99b7f2aface73cf80fc9051bff4ae875c2a377`
+
+Is there any information in here?
+ </div>
+  
+</Problem>
+</Callout>
+
+<Callout type='info' emoji="🔒">
+**UNSOLVED**
+<Problem title="Chinese Lagrange Interpolation" source="Tobias Steinbrecher">
+  <div label="question">
+    There is a deep connection between Lagrange Interpolation and the Chinese Remainder Theorem. Find this connection, i.e. formulate a theorem on a more general level (list all the necessary conditions for a Ring to satisfy, for this Theorem to hold) and show how it gives rise to Lagrange Interpolation and the Chinese Remainder Theorem as special cases.
+  </div>
+  
+</Problem>
+</Callout>
+
 > The idea of challenges is inspired by [aellison](https://n.ethz.ch/~aellison/dm2022/).
 
