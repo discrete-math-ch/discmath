@@ -6,7 +6,13 @@ import 'katex/dist/katex.min.css'; // Import KaTeX styles
 import { InlineMath } from 'react-katex'; // Import KaTeX inline math component
 
 export default {
-
+  banner: {
+    content: (
+      <a href="https://discmath.ch/challenges" target="_blank">
+        New Challenges :) See more →
+      </a>
+    )
+  },
      docsRepositoryBase: 'https://github.com/discrete-math-ch/discmath',
     logo:(
       <p>

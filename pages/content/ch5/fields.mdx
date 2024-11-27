@@ -16,23 +16,158 @@ import { Cards } from 'nextra/components'
 We continue our discussion of Rings, but now we require every non-zero element to have an inverse in the multiplicative group and define an algebra fulfilling this new requirement and commutativity a Field (expressed more precisely $F \setminus \{0\} = F^*$). We can directly show that a field must be also be an **integral domain**. Why are fields interesting? Well, we can sort of compute normally inside a field (division is defined for all non-zero elements), we could for example execute Gaussian Elimination over arbitrary fields. Next, we continue the discussion of Polynomials. This time over a field: $F[x]$. They are super interesting for many reasons, we will investigate (more precisely they can be basically thought of as an analogon to $\mathbb{Z}$ we have many analog properties (like divisibily, or some notion of primaliy/irreducibility).
 </Callout>
 
+
 ## Theory
 
 ### Fields
 
+<Callout type="">
+**Definition 5.26** A *field* is a nontrivial ring $F$ in which every nonzero element is a unit i.e. $F^* = F\setminus \{0\}$.
+</Callout>
+
+Note that this gives us the possibility to invert every element except for $0$ in the multiplicative group. This means, we can sort of divide by every element. Why is this useful? This notion of invertibility gives us powerful tools for example from Linear Algebra. We could for example do Gaussian Elimination over arbitrary fields. Think about why this is not possible over Rings.
+
+<Callout type="">
+**Theorem 5.23** $\mathbb{Z}_p$ is a field if and only if $p$ is prime.
+</Callout>
+
+This is what we already know from earlier chapters. If $p$ is prime, all elements (except for $0$) are comprime and therefore have an inverse. This is quite interesting, because we now have a significant class of fields. Often these are also denoted by $GF(p)$ (Galois Field).
+
+<Callot type="">
+**Theorem 5.24** Every field is an integral domain
+</Callout>
+This should be quite intuitive and the proof is quite fast: assume that $uv = 0$, then $v = u^{-1}uv = u^{-1} 0 = 0$. What we are doing here is, because of the invertibility, we can simply *solve* $uv = 0$ for $u$ or $v$ and obtain that at least one of them must be $0$.
+
+
+---
+
+What is the takeaway here? **Remember Fields are special commutative Rings (people often forget commutativity here), in which we can sort of divide by every non-zero element. Also think about why it does not make sense to require $0$ to be invertible and what would follow in this case. So we are actually sort of requiring the maximal number of nice things (invertible elements), we could possibly have.
+
 ### Polynomials over Fields
 
-#### Division
+In the last chapter we considered polynomials over Rings. Now we want to combine this with our *new notion* of a **field**. Namely, we consider Polynomials over Fields: $F[x]$ (where $F$ is a field). Intuitively, think about what this gives us. We can now invert all the non-zero coefficients of the polynomials. Actually, this property is super strong, we will see that we can now define many things we know from the Integers $\mathbb{Z}$ (divison, gcd, etc...). Note however, $F[x]$ is still a ring, because it is impossible to invert any element which is non-constant (we can only increase the degree by mulplying with another polynomial). From the last chapter we classfied elements as zero-divisor, units, zero (this worked for finite integral domains: we know that in a finite integral domein, every element belongs to one of the three classes). However, now we are in infinte integral domains (*why is $F[x]$ and integral domain?*), therefore this classification will not work anymore. We will come back to it later though.
 
-#### Euclidean Domains
+For the infinite case (i.e. $\mathbb{Z}$) we were able to classify the elements as unit, zero, composite, prime. We can actually do the same thing for the infinite case $F[x]$. Really just think about $F[x]$ in the same way you think about $\mathbb{Z}$. 
 
+<Callout type="">
+**Definition 5.27** A polynomial $a(x) \in F[x]$ is called *monic* if the leading coefficient is $1$. 
+</Callout>
+
+Why do we care about this definition? Well, because of the invertibility of the field elements, we obtain that if $a(x)$ divides $b(x)$ (i.e. $a(x) \cdot c(x) = b(x)$) then also $v a(x)$ divides $b(x)$ for any $v \in F$ (because $v a(x) \cdot v^{-1} c(x) = b(x)$). So if one polynomial divides another then sort of $|F*|$ polynomials (all mulitples of this polynomial) will also divide the other. We had a similar problem in $\mathbb{Z}$. If $2 \mid 4$, then we could multiply the divisor with $-1$ or $1$ and it $-2 \mid 4$ and $2 \mid 4$. We just discovered something very interesting. In $\mathbb{Z}$ the only invertible elements were $-1$ and $1$. In $F[x]$ the only invertible elements are all the constant non-zero polynomials are invertible. For example:
+
+$$
+GF(5)[x]^* = \{1,2,3,4\}
+$$ 
+
+So for a divisor, we can sort of think of an equivalence class of divisors with repsect the multiplying it by a unit (in $\mathbb{Z}$ the units were $-1$ and $1$, so we had equivalence classes of size $2$, now we have equivalence classes of size $|F^*|). We always picked one element from the equivalence class as some *distinguished* element (for example when saying $\gcd(4,6) = 2$, we picked $2$ and not $-2$). We want to do the same thing for our polynomials. To establish this notion, we always pick the monic polynomial from the equivalence class (note that the leading coefficient would is different for every unit with which we multiply the divior, so there is only one monic polynomial in every equivalence class of divisors). 
+
+---
+
+We just made major observations about the similarities of $\mathbb{Z}$ and $F[x]$. I would like to go into more detail about it (see [Euclidean Domains](https://en.wikipedia.org/wiki/Euclidean_domain)). We will later see that what we did for $\mathbb{Z}$ to generate Rings and fields using modular arithmetic, works exaclty the same way for $F[x]$ (we were able to generate fields with $\mathbb{Z}_p$, where $p$ is prime, how are we able to generate fields with $F[x]_{m(x)}$?). This is what we will explore next. 
+
+
+#### Division \& Irreducibility
+
+As we already discussed the similarity between $\mathbb{Z}$ and $F[x]$, it should not come as a surprise to you, that we can also have some notion of primality. 
+
+<Callout type="">
+**Definition 5.28** A polynomial $a(x) \in F[x]$ with degree at least $1$ is called *irreducible* if it is divisible only by constant polynomials and by constant multiples of $a(x)$.
+</Callout>
+
+So here we are introducing the definition for *primality* of polynomials. We can now classify all the elements of $F[x]$. Either zero (only $0 \in F[x]$), unit (only all non-zero constant polynomials), reducible and irreducible polynomials.
+
+Note that every degree one polynomial is irreducible directly by definition.
+
+<Callout type="">
+**Definition 5.29** The monic polynomial $g(x)$ of largest degree such that $g(x) \mid  a(x)$ and $g(x) \mid b(x)$ is called the greatest common divisor of $a(x)$ and $b(x)$ and is denoted by $\gcd(a(x),b(x))$
+</Callout>
+
+Just the same as in $\mathbb{Z}$. We can now also think about how we would compute this. Just apply Euclidean algorithm!
+
+
+<Callout type="">
+**Theorem 5.25** Let $F$ be a field. For any $a(x)$ and $b(x) \neq 0$ in $F[x]$ there exists a unique $q(x)$ and a unique $r(x)$ (with $\deg r(x) < \deg b(x)$) such that 
+$$
+a(x) = b(x) \cdot q(x) + r(x) 
+$$
+</Callout>
+
+See the later section on polynomial division. I think the best thing to get intuition here is to practice polynomial division. Intuitively, it is the same as for $\mathbb{Z}$. We cannot pull anymore $b(x)$'s out of $r(x)$ if $\deg r(x) < \deg b(x)$. 
+
+Now, as we introduced this, we could introduce everything we know about modular arithmetic to $F[x]_{m(x)}$ which now means modulo the polynomial $m(x)$. We can think about the remainders and stuff :).  
 
 #### Polynomials as Functions
+
+Before, we considere polynomials as abstract objects. Basically we didn't care about the $x$ in the polynomial it was just some symbol to simplify the operations we can perform. We could also just treated the polynomials as lists of numbers and some special operation (this would be a [discrete convolution](https://en.wikipedia.org/wiki/Convolution) between the two lists instead of multiplication and elementwise addition for addition). However, now we want to combine the real notion of polynomials (by reconsidering what we can do with the $x$ and what we couldn't do with a list of numbers - well we could just think of the list of numbers as a polynomial). 
+
+<Callout type="">
+**Definition 5.33**  Let $a(x) \in R[x]$. An element $\alpha \in R$ for which $a(\alpha) = 0$ is called a root of $a(x)$. 
+</Callout>
+
+The following Lemma is probably the most important in this section. It combines the previous way we thought about divisibility and stuff (considering the similarity of $F[x]$ and $\mathbb{Z}$) with the things we can do when evaluating polynomials.
+
+<Callout type="">
+**Lemma 5.29**  For a field $F$, $\alpha \in F$ is a root of $\alpha(x)$ if and only if $x-\alpha$ divides $a(x)$
+</Callout>
+
+<Callout type="">
+**Corollary 5.20** A polynomial $a(x)$ of degree $2$ or $3$ over a field $F$ is irreducible if and only if it has no root.
+</Callout>
+
+The above Corollary will be one of the most important irreducibility checks you will use. 
+
 
 #### Polynomial Interpolation
 
 
 ### Finite Fields
+
+So we discussed different properties of Fields and Polynomials over Fields. What stood out is that $\mathbb{Z}$ and $F[x]$ are very similar Rings. We were able to create Fields $\mathbb{Z}_p$ for $p$ prime and now we are interested in creating so-called extension fields (which is just a special term, it nothing else but a field) from $F[x]_{m(x)}$ (we actually haven't defined this notation yet):
+
+<Callout type="">
+**Lemma 5.33** Congruence modulo $m(x)$ is an equivalence relation on $F[x]$ and each equivalence class has a unique representation of degree less than $\deg(m(x))$
+</Callout>
+
+<Callout type="">
+**Definition 5.34** Let $m(x)$ be a polynomial of degree $d$ over $F$. Then 
+
+$$
+F[x]_{m(x)} = \{a(x) \in F[x] \mid \deg(a(x)) < d\}
+$$
+</Callout>
+
+The degree will always we kept smaller than $d$, because otherwise we could divide by $m(x)$.
+
+<Callout type="">
+**Lemma 5.34** Let $F$ be a finite field with $q$ elements and let $m(x)$ be a polynomial of degree $d$ over $F$. Then $|F[x]_{m(x)}| = q^d$. 
+</Callout>
+
+We can think of the polynomials again of lists of numbers, because are compute modulo $m(x)$ every list has $d$ entries (for terms from order $0$ to $d-1$). For each of the entries we have $q$ choices of elements from the field, so overall $q^d$ different $d$-Tuples.
+
+
+<Callout type="">
+**Lemma 5.35** $F[x]_{m(x)}$ is a ring with respect to addition and multiplication modulo $m(x)$. 
+</Callout>
+
+This should not come as a surprise as $\mathbb{Z}_m$ were also Rings.
+
+
+<Callout type="">
+**Lemma 5.36** The congruence equation:
+$$
+a(x)b(x) \equiv_{m(x)} 1
+$$
+has a solution if and only if $\gcd(a(x),b(x)) = 1$. We define:
+
+$$
+F[x]_{m(x)}^* = \{a(x) \in F[x]_{m(x)} \mid \gcd(a(x), m(x)) = 1\}
+$$
+</Callout>
+This is really exaclty what we did for $\mathbb{Z}_m^*$.
+
+How can we classify the elements from $F[x]_{m(x)}$? We can do the same as for $\mathbb{Z}$: zero, zero-divisors, units. 
+
+There is more to come here...
 
 ## Tips and Tricks
 
@@ -46,6 +181,10 @@ We cite the part of the script here, as this explanation is perfect:
 > Irreducibility of a polynomial of degree $d$ can be checked by testing all irreducible polynomials of degree $\leq d/2$ as possible divisors. Actually, it suffices to test only the monic polynomials because one could always multiply a divisor by a constant, for example the inverse of the highest coefficient. This irreducibility test is very similar to the primality test which checks all divisors up to the square root of the number to be tested.
 
 Really try to understand every claim in the paragraph above!
+
+In most cases you will have to verify the irreducibility of degree 2 or 3. In this case just plug in all the elements from your field and try to find roots (verify by showing that they indeed evaluate to $0$).
+
+For degree $d > 3$, it is often more work as stated above. Here, really think about the analogy to $\mathbb{Z}$. You want to check for some number whether it is prime or not. What you do is try all prime numbers up to $\sqrt{n}$ to divide the number. The same applies for polynomials. 
 
 
 <Callout type='info'>
@@ -61,35 +200,12 @@ There are some tricks to quickly deduce non-irreducibility of a polynomial over 
 To prove that $F$ we technically have to go by definition, i.e. show that it is a **commutative nontrivial Ring** with $F \setminus \{0\} = F^*$. This would be very annoying, because we would have to verify a big list of requirements and then even show that every non-zero element is a unit. This is why you will probably most often use one of the following theorems:
 
 1. **Thm. 5.23.** $\mathbb{Z}_p$ is a field if and only if $p$ is prime (because this is a rather trivial task, it will probably not be an exercise, however it might be an important first step to notice this for other proofs)
-2. **Thm. 5.73.** $F[x]_{m(x)}$ is a field if and only if $m(x)$ is irreducible
-
-Consider the exercise below for a detailed example with solution.
+2. **Thm. 5.37.** $F[x]_{m(x)}$ is a field if and only if $m(x)$ is irreducible. Here we have to check irreducibility of $m(x)$ (see above).
 
 
+#### Example
 
-
-
-
-
-### How to find zero-divisors?
-
-### How to find units?
-
-### How to find modular inverse of a polynomial?
-
-
-### How to do modular division fast?
-
-For more details on polynomial remainders, see [Practice: Polynomial Remainder Division](./poly-remainder.mdx).
-
-
-## Exercises
-
-<Problem title="Proving that something is a Field" difficulty={1} relevance={5} source={"Tobias Steinbrecher"}>
-<div label="question">
-Prove that $GF(5)[x]_{x^2 + 4x + 1}$ is a field.
-</div>
-<div label="answer">
+**Proving that $GF(5)[x]_{x^2 + 4x + 1}$ is a field**:
 
 Note that $5$ is a prime number. With Theorem 5.23 we obtain that $\mathbb{Z}_5$ is a field.
  To prove that $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field, we can use Theorem 5.37. We can show that $x^2+4x+1$ is irreducible over $\mathbb{Z}_5$ and then apply Theorem 5.37 to obtain that  $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field.
