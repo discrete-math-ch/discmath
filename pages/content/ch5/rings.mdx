@@ -1,0 +1,84 @@
+import { Callout, Tabs } from 'nextra/components'
+import Problem from '@/components/problem';
+import Image from 'next/image'
+
+import { Cards } from 'nextra/components'
+ 
+
+<Callout type="warning" emoji="🚧">
+  under construction
+</Callout>
+
+# Rings
+
+## Integral Domains
+Commutative Rings with no zerodivisors.
+
+## Theory
+
+## Exercises
+<Problem title="Alternative Solution Bonus 9a" source="Max Obreiter">
+    <div label="question">
+        Let $\langle R; +, -, 0, \cdot, 1 \rangle$ be an integral domain; $a, b \in R$ and $n, m \in \mathbb N$. We then define condition $(1)$:
+        $$
+            \begin{aligned}
+                0 < m \le n \land \gcd(m, n) = 1 \land a^m = b^m \land a^n = b^n && (1)
+            \end{aligned}
+        $$
+        Prove that if $(1)$ is satisfied, we have $a = b$.
+
+        Show it without using the fact that there exist $x, y \in \mathbb Z$ s.t. $xm + yn = 1$ holds.
+    </div>
+    <div label="hint">
+        Show it using a contradiction proof!
+    </div>
+    <div label="hint">
+        Assume that $n$ is minimal, then derive a contradiction.
+    </div>
+    <div label="answer">
+        Note that we already assumed that $m \le n$.
+
+        Assume that this statement was false. Then there must exist a smallest $n$, such that $(1)$ holds but $a \ne b$. We now show that this $n$ can't exist:
+
+        If $m = n$, then by $\gcd(m, n) = 1$, we know that $m = n = 1$ and we get $a = a^1 = b^1 = b$ which is a contradiction to $a \ne b$.
+
+        So assume $0 < m < n$. We then know:
+        $$
+            \begin{aligned}
+                && a^n &= b^n \\
+                & \dot\iff & a^m \cdot a^{n - m} &= b^m \cdot b^{n - m} && \text{Def. $r^k$} \\
+                & \dot\iff & a^m \cdot a^{n - m} &= a^m \cdot b^{n - m} && a^m = b^m \\
+                & \dot\iff & a^m \cdot a^{n - m} - a^m \cdot b^{n - m} &= 0 && -a^m \cdot b^{n - m} \\
+                & \dot\iff & a^m \cdot (a^{n - m} - b^{n - m}) &= 0 && \text{Distr. Law}
+            \end{aligned}
+        $$
+
+        Now we distinguish two cases (either term must be zero because $R$ is an integral domain).
+
+        If $a^m = 0$, then we must have $a = 0 = b^m = b$ (since $R$ has no zerodivisors); a contradiction to $a \ne b$.
+
+        So $a^m \ne 0$, but this means that:
+        $$
+            \begin{aligned}
+                && a^{n - m} - b^{n - m} &= 0 \\
+                &\dot\iff & a^{n - m} &= b^{n - m}
+            \end{aligned}
+        $$
+
+        Since $0 < m < n$ we have $0 < n - m < n$ and $m < n$. Now we can define $m'$ and $n'$:
+        $$
+            m' = \min(n - m, m) \\ n' = \max(n - m, m)
+        $$
+        Note that $0 < m' \le n' < n$.
+
+        By Lemma 4.2 we have $\gcd(n, n - m) = gcd(n, m) = 1$. This means that $m'$ and $n'$ satisfy $(1)$.
+
+        And by assumption $a \ne b$; but $n' < n$, which is a contradiction to the assumption that $n$ was minimal!
+
+        Since there is no minimal $n$ for which the statement does not hold, it must hold for all $n$.
+
+        <Callout type="info">
+            If we instead continued with $(m', n')$ and continued to apply these steps, we would reach $(1, 1)$, since we are essentially running euclids algorithm in the exponent!
+        </Callout>
+    </div>
+</Problem>

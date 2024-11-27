@@ -42,7 +42,7 @@ const VerifyToken = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-6">
+    <div className="flex flex-col items-center p-6">
       <div className="shadow-md rounded-lg p-6 max-w-md w-full text-center">
         <h1 className="text-2xl font-bold mb-4">Verify Token</h1>
         <input

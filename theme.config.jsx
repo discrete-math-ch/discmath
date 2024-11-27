@@ -6,7 +6,7 @@ import 'katex/dist/katex.min.css'; // Import KaTeX styles
 import { InlineMath } from 'react-katex'; // Import KaTeX inline math component
 
 export default {
-
+  
      docsRepositoryBase: 'https://github.com/discrete-math-ch/discmath',
     logo:(
       <p>
@@ -84,10 +84,6 @@ export default {
       primarySaturation: {
         dark: 55,
         light: 54
-      },
-      primaryLightness: {
-        dark: 26,
-        light: 81
       },
     footer: {
         text: (
