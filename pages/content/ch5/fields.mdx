@@ -33,7 +33,7 @@ Note that this gives us the possibility to invert every element except for $0$ i
 
 This is what we already know from earlier chapters. If $p$ is prime, all elements (except for $0$) are comprime and therefore have an inverse. This is quite interesting, because we now have a significant class of fields. Often these are also denoted by $GF(p)$ (Galois Field).
 
-<Callot type="">
+<Callout type="">
 **Theorem 5.24** Every field is an integral domain
 </Callout>
 This should be quite intuitive and the proof is quite fast: assume that $uv = 0$, then $v = u^{-1}uv = u^{-1} 0 = 0$. What we are doing here is, because of the invertibility, we can simply *solve* $uv = 0$ for $u$ or $v$ and obtain that at least one of them must be $0$.
@@ -205,7 +205,12 @@ To prove that $F$ we technically have to go by definition, i.e. show that it is 
 
 #### Example
 
-**Proving that $GF(5)[x]_{x^2 + 4x + 1}$ is a field**:
+
+<Problem title="Proving that something is a Field (old bonus)" difficulty={1} relevance={4} source={"Tobias Steinbrecher"}>
+<div label="question">
+Prove that $GF(5)[x]_{x^2 + 4x + 1}$ is a field.
+</div>
+<div label="answer">
 
 Note that $5$ is a prime number. With Theorem 5.23 we obtain that $\mathbb{Z}_5$ is a field.
  To prove that $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field, we can use Theorem 5.37. We can show that $x^2+4x+1$ is irreducible over $\mathbb{Z}_5$ and then apply Theorem 5.37 to obtain that  $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field.
@@ -222,6 +227,111 @@ By definition of a root, $\alpha \in \mathbb{Z}_5$ is a root of $m(x)$ if $m(\al
 
 As there is no $\alpha \in \mathbb{Z}_5$ such that $m(\alpha) = 0$, i.e. there is no root, we obtain with Corollary 5.30, that $m(x) = x^2 + 4x + 1$ is irreducible over $\mathbb{Z}_5$. Therefore, with Theorem 5.37, $F = \mathbb{Z}_5[x]_{x^2+4x+1}$ is a field.
 
+</div>
+</Problem>
+
+
+<Problem title="Proving that something is a Generator (old bonus)" difficulty={1} relevance={4} source={"Tobias Steinbrecher"}>
+<div label="question">
+Prove that $\langle x+3 \rangle = GF(5)[x]_{x^2 + 4x + 1}^*$ (given that $F = GF(5)[x]_{x^2 + 4x + 1}$ is a field).
+</div>
+<div label="answer">
+*Note that I will use $=$ between polynomials, respecting that the coefficients are in $\mathbb{Z}_5$. Therefore, something like $4x + 3x = 2x$ will be used such that no coefficient bigger than $4$ will appear (instead of stating explicitly that the coefficients are congruent modulo $5$). However, I will still use $R_{m(x)}(...)$ or $\equiv_{m(x)}$ to make explicit that I consider the remainder modulo the polynomial $m(x)$.*
+
+With Lemma 5.34, we obtain that $|F| = 5^2 = 25$ (because $|\mathbb{Z}_5| = 5$ and $\deg(x^2+4x+1) = 2$). As $F$ is a field, we obtain by definition 5.26: $F^* = F \setminus \{0\}$, where $0$ denotes the $0$ polynomial (neutral element of addition). Therefore, we have $|F^*| = |F| - 1 = 24$.  
+
+By Corollary 5.9, we obtain that the order of every element $a \in F^*$ divides $|F^*|$.  
+Hence, $\text{ord}(a) \in \{1, 2, 3, 4, 6, 8, 12, 24\}$ for every $a \in F^*$. We know that if $\text{ord}(x+3) = 24$, then $x+3$ is a generator (which is what we want to prove). This follows directly from the fact that definition 5.14 implies that $|\langle a \rangle| = \text{ord}(a)$ for an arbitrary $a$. Hence, if we want to have $\langle a \rangle = F^*$, we need $\text{ord}(a) = |F^*|$. Hence, we can simply prove that $\text{ord}(x+3) \notin \{1, 2, 3, 4, 6, 8, 12\}$ such that we obtain $\text{ord}(x+3) = 24$ directly.  
+
+We will do so by showing that $(x+3)^n \neq 1$ (neutral element of multiplication in $F^*$) for all $n \in \{1, 2, 3, 4, 6, 8, 12\}$. By definition of the order, we obtain that $n$ cannot be the order in the corresponding case. Let $m(x) = x^2 + 4x + 1$ (the modulus for the group operation). We will use the properties of modular arithmetic implicitly (the remainder modulo $m(x)$ can be calculated at any intermediate step, see Corollary 4.17).
+
+1. **$n = 1$** As $(x+3)^1 = (x+3) \neq 1$, we have $\text{ord}(x+3) \neq 1$.
+
+2. **$n = 2$**  We have:
+   $$
+   \begin{aligned}
+       (x+3)^2 &\equiv_{m(x)} R_{m(x)}(x^2 + x + 4) \\
+       &= R_{m(x)}((x^2 + 4x + 1) + 2x + 3) \\
+       &= 2x + 3 \quad (\in F^{*}) \\
+       &\neq 1
+   \end{aligned}
+   $$
+   Therefore, $\text{ord}(x+3) \neq 2$.
+
+3. **$n = 3$**  
+   We have:
+   $$
+   \begin{aligned}
+       (x+3)^3 &= (x+3)(x+3)^2 \\
+       &\equiv_{m(x)} (x+3)(2x+3) \quad \text{(previous result)} \\
+       &\equiv_{m(x)} R_{m(x)}(2x^2 + 4x + 4) \\
+       &= R_{m(x)}(2(x^2 + 4x + 1) + x + 2) \\
+       &= x + 2 \quad (\in F^{*}) \\
+       &\neq 1
+   \end{aligned}
+   $$
+   Therefore, $\text{ord}(x+3) \neq 3$.
+
+4. **$n = 4$**  
+   We have:
+   $$
+   \begin{aligned}
+       (x+3)^4 &= (x+3)^2(x+3)^2 \\
+       &\equiv_{m(x)} (2x+3)^2 \quad \text{(previous result)} \\
+       &\equiv_{m(x)} R_{m(x)}(4x^2 + 2x + 4) \\
+       &= R_{m(x)}(4(x^2 + 4x + 1) + x) \\
+       &= x \quad (\in F^{*}) \\
+       &\neq 1
+   \end{aligned}
+   $$
+   Therefore, $\text{ord}(x+3) \neq 4$.
+
+5. **$n = 6$**  
+   We have:
+
+   $$
+   \begin{aligned}
+       (x+3)^6 &= ((x+3)^3)^2 \\
+       &\equiv_{m(x)} (x+2)^2 \quad \text{(previous result)} \\
+       &\equiv_{m(x)} R_{m(x)}(x^2 + 4x + 4) \\
+       &= R_{m(x)}((x^2 + 4x + 1) + 3) \\
+       &= 3 \quad (\in F^*) \\
+       &\neq 1
+   \end{aligned}
+   $$
+
+   Therefore, $\text{ord}(x+3) \neq 6$.
+
+6. **$n = 8$**  
+   We have:
+
+   $$
+   \begin{aligned}
+       (x+3)^8 &= ((x+3)^4)^2 \\
+       &\equiv_{m(x)} x^2 \quad \text{(previous result)} \\
+       &\equiv_{m(x)} R_{m(x)}(x^2) \\
+       &= R_{m(x)}((x^2 + 4x + 1) + x + 4) \\
+       &= x+4 \quad (\in F^*) \\
+       &\neq 1
+   \end{aligned}
+   $$
+   
+   Therefore, $\text{ord}(x+3) \neq 8$.
+
+7. **$n = 12$**  
+   We have:
+   $$
+   \begin{aligned}
+       (x+3)^{12} &= ((x+3)^6)^2 \\
+       &\equiv_{m(x)} 3^2 \quad \text{(previous result)} \\
+       &\equiv_{m(x)} R_{m(x)}(4) \\
+       &= 4 \quad (\in F^*) \\
+       &\neq 1
+   \end{aligned}
+   $$
+   Therefore, $\text{ord}(x+3) \neq 12$.
+
+Because we were able to eliminate the possibilities $1, 2, 3, 4, 6, 8, 12$ as orders for $x+3 \in F^*$, we obtain by the argument above that $x+3$ has order $24$ and thus is a generator of $F^*$. We have $\langle x+3 \rangle = F^*$.
 </div>
 </Problem>
 
