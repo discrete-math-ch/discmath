@@ -92,11 +92,13 @@ const PolyRemainder = () => {
     const { modulus, dividend, p } = task;
     const correctRemainder = calculateRemainder(dividend, modulus, p);
     const userPoly = reverse(userAnswer)
-  .split(",")
-  .map((x) => {
-    const parsed = parseInt(x.trim(), 10);
-    return isNaN(parsed) ? 0 : parsed % p;
-  });
+    .split(",")
+    .map((x) => {
+      const trimmed = x.trim();
+      if (trimmed === "0") return 0; 
+      const parsed = parseInt(trimmed, 10);
+      return isNaN(parsed) ? 0 : parsed % p;
+    });
 
     setAnswered(true); // Mark as answered
 
