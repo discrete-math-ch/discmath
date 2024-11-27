@@ -41,7 +41,7 @@ This should be quite intuitive and the proof is quite fast: assume that $uv = 0$
 
 ---
 
-What is the takeaway here? **Remember Fields are special commutative Rings (people often forget commutativity here), in which we can sort of divide by every non-zero element. Also think about why it does not make sense to require $0$ to be invertible and what would follow in this case. So we are actually sort of requiring the maximal number of nice things (invertible elements), we could possibly have.
+What is the takeaway here? Remember Fields are special commutative Rings (people often forget commutativity here), in which we can sort of divide by every non-zero element. Also think about why it does not make sense to require $0$ to be invertible and what would follow in this case. So we are actually sort of requiring the maximal number of nice things (invertible elements), we could possibly have.
 
 ### Polynomials over Fields
 
@@ -53,13 +53,13 @@ For the infinite case (i.e. $\mathbb{Z}$) we were able to classify the elements 
 **Definition 5.27** A polynomial $a(x) \in F[x]$ is called *monic* if the leading coefficient is $1$. 
 </Callout>
 
-Why do we care about this definition? Well, because of the invertibility of the field elements, we obtain that if $a(x)$ divides $b(x)$ (i.e. $a(x) \cdot c(x) = b(x)$) then also $v a(x)$ divides $b(x)$ for any $v \in F$ (because $v a(x) \cdot v^{-1} c(x) = b(x)$). So if one polynomial divides another then sort of $|F*|$ polynomials (all mulitples of this polynomial) will also divide the other. We had a similar problem in $\mathbb{Z}$. If $2 \mid 4$, then we could multiply the divisor with $-1$ or $1$ and it $-2 \mid 4$ and $2 \mid 4$. We just discovered something very interesting. In $\mathbb{Z}$ the only invertible elements were $-1$ and $1$. In $F[x]$ the only invertible elements are all the constant non-zero polynomials are invertible. For example:
+Why do we care about this definition? Well, because of the invertibility of the field elements, we obtain that if $a(x)$ divides $b(x)$ (i.e. $a(x) \cdot c(x) = b(x)$) then also $v a(x)$ divides $b(x)$ for any $v \in F$ (because $v a(x) \cdot v^{-1} c(x) = b(x)$). So if one polynomial divides another then sort of $|F^*|$ polynomials (all mulitples of this polynomial) will also divide the other. We had a similar problem in $\mathbb{Z}$. If $2 \mid 4$, then we could multiply the divisor with $-1$ or $1$ and it $-2 \mid 4$ and $2 \mid 4$. We just discovered something very interesting. In $\mathbb{Z}$ the only invertible elements were $-1$ and $1$. In $F[x]$ the only invertible elements are all the constant non-zero polynomials are invertible. For example:
 
 $$
 GF(5)[x]^* = \{1,2,3,4\}
 $$ 
 
-So for a divisor, we can sort of think of an equivalence class of divisors with repsect the multiplying it by a unit (in $\mathbb{Z}$ the units were $-1$ and $1$, so we had equivalence classes of size $2$, now we have equivalence classes of size $|F^*|). We always picked one element from the equivalence class as some *distinguished* element (for example when saying $\gcd(4,6) = 2$, we picked $2$ and not $-2$). We want to do the same thing for our polynomials. To establish this notion, we always pick the monic polynomial from the equivalence class (note that the leading coefficient would is different for every unit with which we multiply the divior, so there is only one monic polynomial in every equivalence class of divisors). 
+So for a divisor, we can sort of think of an equivalence class of divisors with repsect the multiplying it by a unit (in $\mathbb{Z}$ the units were $-1$ and $1$, so we had equivalence classes of size $2$, now we have equivalence classes of size $|F^*|$). We always picked one element from the equivalence class as some *distinguished* element (for example when saying $\gcd(4,6) = 2$, we picked $2$ and not $-2$). We want to do the same thing for our polynomials. To establish this notion, we always pick the monic polynomial from the equivalence class (note that the leading coefficient would is different for every unit with which we multiply the divior, so there is only one monic polynomial in every equivalence class of divisors). 
 
 ---
 
