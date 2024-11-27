@@ -30,6 +30,11 @@ const HomePage: React.FC = () => {
       description: "Advanced concepts of logic, involving logical calculi and more. ",
       link: "/content/ch6",
     },
+    {
+      title: "Challenges",
+      description: "Some challenge exercises :)",
+      link: "/challenges",
+    },
   ];
 
   const placeholders = (3 - (chapters.length % 3)) % 3; // Calculate needed placeholders
