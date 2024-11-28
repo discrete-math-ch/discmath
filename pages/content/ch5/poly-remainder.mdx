@@ -11,16 +11,16 @@ import VerifyToken from '@/components/VerifyToken'
 
 ## Tips on modular polynomial division
 
-Computations like the ones above arise in many different context (testing divisibility, Euclidean Algorithm on Polynomials etc.).
-Everything we do about Polynomial Division is based on **Theorem 5.25** which is just Euclid's Division Thoerem for Polynomials (note that we can genearlize everything to the more general case of Euclidean domains). This page focuses on doing fast polynomial divison.
+Computations like the ones above arise in many different contexts (testing divisibility, Euclidean Algorithm on Polynomials, etc.).
+Everything we do about Polynomial Division is based on **Theorem 5.25** which is just Euclid's Division Theorem for Polynomials (note that we can generalize everything to the more general case of Euclidean domains). This page focuses on doing fast polynomial division.
 
 ### Normal Polynomial Division
 
-Consider the polynomials $f(x) = x^3 + 2x^2 + 4x + 8 $ and $ g(x) = x + 1 $. To divide $f(x) $ by $g(x)$ one could use the notation in the same manner as the integer division algorithm from *primary school*. However, I think the following notation is much quicker and more intuitive when practiced a lot. I would call it the $\text{{Inline Method}}$, because we use no fancy tabular notation or anything, but just $=$ signs and cleverly factor everything in one line. In the end **it's really nothing but rewriting the polynomial in a clever way**, we don't change anything or do anything special.
+Consider the polynomials $f(x) = x^3 + 2x^2 + 4x + 8 $ and $ g(x) = x + 1 $. To divide $f(x) $ by $g(x)$ one could use the notation in the same manner as the integer division algorithm from *primary school*. However, I think the following notation is much quicker and more intuitive when practiced a lot. I would call it the $\text{{Inline Method}}$ because we use no fancy tabular notation or anything, but just $=$ signs and cleverly factor everything in one line. In the end **it's really nothing but rewriting the polynomial in a clever way**, we don't change anything or do anything special.
 We basically always do the following steps (We want to divide $f(x)$ by $g(x)$):
 
-1. $\text{\textcolor{green}{GREEN PHASE}}$ Take a look at look at the part which is not factored in terms of $g(x)$ yet, let's call this part $b(x)$ (when starting, we have $b(x) = f(x)$). Take a look at the highest order term and eliminate it (written in green in the following example).
-2. $\text{\textcolor{teal}{BLUE PHASE}}$ How to eliminate? Think about how to obtain this using $g(x)$. More precisely find some $\textcolor{teal}{c(x)}$ such that the leading term of highest order of $g(x) \textcolor{teal}{c(x)}$ and $b(x)$ is the same.
+1. $\text{\textcolor{green}{GREEN PHASE}}$ Take a look at look at the part that is not factored in terms of $g(x)$ yet, let's call this part $b(x)$ (when starting, we have $b(x) = f(x)$). Take a look at the highest-order term and eliminate it (written in green in the following example).
+2. $\text{\textcolor{teal}{BLUE PHASE}}$ How to eliminate? Think about how to obtain this using $g(x)$. More precisely find some $\textcolor{teal}{c(x)}$ such that the leading term of the highest order of $g(x) \textcolor{teal}{c(x)}$ and $b(x)$ is the same.
 3. $\text{\textcolor{red}{RED PHASE}}$ Subtract all the *evil terms* you produced by this multiplication (we only wanted to eliminate the highest order term) - all lower order terms of $g(x) c(x)$, let's call them $\textcolor{red}{s(x)}$ 
 4. Now we have a part which is factored in terms of $g(x)$ and some rest part. We go back to step 1, and call this *rest part* $b(x)$ as long as the degree is greater or equal to the degree of $g(x)$ otherwise, we cannot divide $b(x)$ by $g(x)$ anymore.
 
@@ -40,12 +40,12 @@ $$
 \end{aligned}
 $$
 
-Now, as our remainder has degree smaller than the degree of $g(x)$ (intuitively, we cannot pull out any factor of $g(x)$ anymore), we are finished.
+Now, as our remainder has a degree smaller than the degree of $g(x)$ (intuitively, we cannot pull out any factor of $g(x)$ anymore), we are finished.
 
 
-### Modular Polynomial divison
+### Modular Polynomial division
 
-From the computation above, we also were able to find the unique remainder of $5$. Oftentimes this is the only thing we are interested in, for example in the case of an extension field or computing *modulo a polynomial*. Consider the above example, but now we only want to compute $R_{g(x)}(f(x))$. It makes the whole notation a lot easier, because what we can intuitively do is to throw away all of the terms which divisble by $g(x)$ in each line, because we replace the $=$ signs with $\equiv_{g(x)}$ signs. This makes it much more beautiful:
+From the computation above, we also were able to find the unique remainder of $5$. Oftentimes this is the only thing we are interested in, for example in the case of an extension field or computing *modulo a polynomial*. Consider the above example, but now we only want to compute $R_{g(x)}(f(x))$. It makes the whole notation a lot easier because what we can intuitively do is throw away all of the terms which divisible by $g(x)$ in each line because we replace the $=$ signs with $\equiv_{g(x)}$ signs. This makes it much more beautiful:
 
 $$
 \begin{aligned}
@@ -59,14 +59,14 @@ $$
 \end{aligned}
 $$
 
-Look how neat this is. The more you practice the more steps can you skip (for example do the subtraction of the *evil terms* direcly) - but watch out, don't too many at once :).
+Look how neat this is. The more you practice the more steps can you skip (for example do the subtraction of the *evil terms* directly) - but watch out, don't do too many at once :).
 
 
 ### Modular Polynomial Divison over Finite Fields
 
-Even more often we might be working with polynomials over some finite field. We could for example want to compute the remainder of $f(x)$ mod $g(x)$ over $GF(5)$. Actually, we can just do the same, and in the end take all coefficients modulo $5$. However, we could also do all of the things *on the fly* and always work with the coefficients in $GF(5)$. Remember that we basically can consider the coefficients as representatives of modular equivalence classes (i.e. for example $[8]_{\equiv_5} = [3]_{\equiv_3}$). You might want to write a note in the beginning of the calculations like:
+Even more often we might be working with polynomials over some finite field. We could for example want to compute the remainder of $f(x)$ mod $g(x)$ over $GF(5)$. Actually, we can just do the same, and in the end, take all coefficients modulo $5$. However, we could also do all of the things *on the fly* and always work with the coefficients in $GF(5)$. Remember that we basically can consider the coefficients as representatives of modular equivalence classes (i.e. for example $[8]_{\equiv_5} = [3]_{\equiv_3}$). You might want to write a note at the beginning of the calculations like:
 
-> *Note that I will use treat two polynomials as equal, respecting that the coefficients are in $GF(5)$. Therefore, something like $4x + 3x = 2x$ will be used such that no coefficient bigger than $4$ will appear (instead of stating explicitly that the coefficients are congruent modulo $5$). However, I will still use $R_{m(x)}(...)$ or $\equiv_{m(x)}$ to make explicit that I consider the remainder modulo the polynomial $m(x)$*.
+> *Note that I will treat two polynomials as equal, respecting that the coefficients are in $GF(5)$. Therefore, something like $4x + 3x = 2x$ will be used such that no coefficient bigger than $4$ will appear (instead of stating explicitly that the coefficients are congruent modulo $5$). However, I will still use $R_{m(x)}(...)$ or $\equiv_{m(x)}$ to make explicit that I consider the remainder modulo the polynomial $m(x)$*.
 
 
 In this context it is often handy to have a quick intuition about what negative numbers are in the respective fields, as you will subtract something quite often, you can also directly write it as an addition. For example $-x$ (remember the *evil terms*) would over $GF(5)$ be the same as $4x$.
