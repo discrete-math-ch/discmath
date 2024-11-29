@@ -641,6 +641,52 @@ In the graph of an antisymmetric relation, it can never be the case that there i
   </div>
 </Problem>
 
+### Lattices
+<Problem title="Missing join" difficulty={2} relevance={3} source="Max Obreiter/GCA Ex. 10.21">
+    <div label="question">
+        Let $(\mathcal F; \preceq)$ be a finite poset with the greatest element $f_\text{max}$. Show that if every pair of elements has a meet, then $(\mathcal F; \preceq)$ is a lattice, i.e. every pair of elements has a join.
+
+        *Source: [HS24 Geometry: Combinatorics and Algorithms, Chapter 10 Exercise 10.21](https://ti.inf.ethz.ch/ew/courses/Geo24/index.html)*
+    </div>
+    <div label="hint">
+        You will need all given conditions!
+    </div>
+    <div label="hint">
+        Remember the definition of the join ...
+    </div>
+    <div label="answer">
+        Let $a, b \in \mathcal F$ be arbitrary. To show that $a$ and $b$ have a join, we need to show that $a$ and $b$ have a least upper bound.
+
+        Let $A$ be the upper bound of $a$ and $b$. By the definition of the greatest element we have:
+        $$
+            \forall f \in \mathcal F \; (f \preceq f_\text{max}) \dot\implies a \preceq f_\text{max} \land b \preceq f_\text{max}
+        $$
+        The upper bound is defined as:
+        $$
+            A = \{ f \in \mathcal F \; \vert \; a \preceq f \land b \preceq f \}
+        $$
+
+        Combining both statements, we get that $f_\text{max} \in A$, i.e. $A$ is not empty!
+
+        Let $M$ be the set of minimal elements in $A$. Note that $M$ is not empty, since $A$ is not empty. If $|M| = 1$, we are done since $M$ is the singleton set of the unique minimal element in the upper bound, i.e. the least upper bound.
+
+        Assume by contradiction that $|M| \ge 2$. Then there must be two different minimal elements $m_1, m_2 \in M$. Since $M \subseteq A$, we have $m_1, m_2 \in A$. This means that $m_1$ and $m_2$ have a meet $m$.
+
+        If $m \in M$, we know that $m_1 \ne m \ne m_2$ (assume by contradiction that w.l.o.g. $m_1 = m$, then $m_1 = m \preceq m_2$. Since $m_1 \ne m_2$ and with the definition of $\prec$, we get $m_1 \prec m_2$, which is a contradiction to $m_2$ being minimal). This means that $m \prec m_1$ and $m \prec m_2$, i.e. $m_1$ and $m_2$ are not minimal, which is a contradiction.
+
+        <Callout type="warning">
+            But note that this meet is not guaranteed to be in $M$!
+        </Callout>
+
+        So let's have a look at the meet $m$.
+        By definition, it is the greatest element of the lower bound of the set $\{ m_1, m_2 \}$.
+        Since $a \preceq m_1$ and $a \preceq m_2$ by the definition of $m_1$ and $m_2$, we know that $a$ is in the lower bound of $\{ m_1, m_2 \}$.
+        This implies that by definition of the greatest element, we have $a \preceq m$.
+        Similarly, we can show that $b \preceq m$.
+        But this means that $a \preceq m$ and $b \preceq m$, i.e. $m \in M$, which is a contradiction as shown before.
+    </div>
+</Problem>
+
 ### Combinatorics
 
 <Callout emoji="☕️" type="info">
