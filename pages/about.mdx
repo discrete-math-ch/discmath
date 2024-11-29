@@ -10,13 +10,6 @@ The content of this website is not intended to replace the [official script](htt
 
 We encourage students to use this content alongside the official script. Whether you are looking for clarification on specific concepts or seeking new study strategies, this supplementary material is designed to support your learning journey.
 
----
-
-<Contributors />
-
-
----
-
 *We are student teaching assistants for the 2024 edition of the course of Discrete Mathematics.*
 
 - Tobias Steinbrecher [tsteinbreche@ethz.ch](mailto:tsteinbreche@ethz.ch)
@@ -24,25 +17,26 @@ We encourage students to use this content alongside the official script. Whether
 - Max Obreiter [mobreiter@ethz.ch](mailto:mobreiter@ethz.ch) 
 - Philipp Barski [pbarski@ethz.ch](mailto:pbarski@ethz.ch)
 
+## Contributing
 
-## Contribute
+We encourage anyone who finds a mistake or is motivated to share useful explanations/problems to contribute to the website :). 
+
+--- 
+<Contributors />
 
 ### Setup
 
-
-
-<Callout type="warning" emoji="🚧">
-  under construction
-</Callout>
+To contribute, you can either press the `Edit this page on Github` button on any page and then follow the steps on Github or you can directly do the following:
 
 1. Fork the repository on github
-2. Make your changes 
-3. Make a pull request
+2. Make your changes locally by cloning your forked repo
+    - To run locally use `npm run dev`
+    - To test production use `npm run build && npm run start`
+3. Open a pull request (for example by *contribute* button on the github page of your fork)
 
-## Writing Problems
+
+### Writing Problems
 To write a problem, you can use the `<Problem/>` component in an `.mdx` file as follows:
-
-
 
 ```jsx
 <Problem
@@ -94,12 +88,12 @@ To write a problem, you can use the `<Problem/>` component in an `.mdx` file as 
 
 ##### `difficulty`
 - **Type**: `number` (optional)
-- **Description**: Represents the difficulty level of the problem. Accepts an integer from `1` to `6`, which displays as an animal emoji to provide a visual indicator of difficulty:
-  - 1 🐣 (Easy)
-  - 2 🐢 (Fairly Easy)
-  - 3 🐱 (Moderate)
-  - 4 🐺 (Hard)
-  - 5 🦁 (Very Hard)
+- **Description**: Represents the difficulty level of the problem. Accepts an integer from `1` to `6` (currently it won'):
+  - 1 (Easy)
+  - 2 (Fairly Easy)
+  - 3 (Moderate)
+  - 4 (Hard)
+  - 5 (Very Hard)
   - 6 🐉 (Hmmm?)
 
 ##### `relevance`
