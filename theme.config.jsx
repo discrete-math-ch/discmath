@@ -1,13 +1,11 @@
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
-import { DocsThemeConfig } from 'nextra-theme-docs'
 import React from 'react';
-import 'katex/dist/katex.min.css'; // Import KaTeX styles
-import { InlineMath } from 'react-katex'; // Import KaTeX inline math component
+import 'katex/dist/katex.min.css';
+import { InlineMath } from 'react-katex'; 
 
 export default {
-  
-     docsRepositoryBase: 'https://github.com/discrete-math-ch/discmath',
+    docsRepositoryBase: 'https://github.com/discrete-math-ch/discmath/tree/main',
     logo:(
       <p>
           <InlineMath>{"\\mathcal{D}\\mathrm{isc}\\mathcal{M}\\mathrm{ath.ch}"}</InlineMath>
@@ -69,9 +67,9 @@ export default {
           </>
         )
       },
-      //gitTimestamp: <LastCommitAuthor/>,
       editLink: {
-        text: 'Edit this page on GitHub →'
+        text: 'Edit this page on GitHub →',
+
       },
       feedback: {
         content: 'Question? Give us feedback →',
@@ -94,4 +92,5 @@ export default {
           </div>
         )
       },
+
   }
