@@ -43,6 +43,7 @@ const PolyRemainder = () => {
 
   const polynomialToLatex = (poly) => {
     if (!poly.length) return "0"; // Explicitly show zero if the polynomial is empty
+    if (poly.length == 1 && poly[0] == 0) return "0"; 
     return poly
       .map((coeff, index) => {
         if (coeff === 0) return null;
@@ -92,16 +93,17 @@ const PolyRemainder = () => {
     const { modulus, dividend, p } = task;
     const correctRemainder = calculateRemainder(dividend, modulus, p);
     const userPoly = reverse(userAnswer)
-    .split(",")
-    .map((x) => {
-      const trimmed = x.trim();
-      if (trimmed === "0") return 0; 
-      const parsed = parseInt(trimmed, 10);
-      return isNaN(parsed) ? 0 : parsed % p;
-    });
+      .split(",")
+      .map((x) => (parseInt(x.trim(), 10) || 0) % p);
 
     setAnswered(true); // Mark as answered
-
+    while (correctRemainder.length < userPoly.length) {
+      correctRemainder.push(0);
+    }
+    while (userPoly.length < correctRemainder.length) {
+      userPoly.push(0);
+    }
+    console.log(JSON.stringify(correctRemainder), JSON.stringify(userPoly));
     if (JSON.stringify(correctRemainder) === JSON.stringify(userPoly)) {
       setScore((prev) => prev + 1);
       setStreak((prev) => {
