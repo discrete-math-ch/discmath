@@ -31,9 +31,6 @@
     },
     "about": {
         "title": "About",
-        "type": "page",
-        "theme": {
-            "typesetting": "article"
-        }
+        "type": "page"
     }
 }
