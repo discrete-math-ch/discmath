@@ -103,7 +103,6 @@ const PolyRemainder = () => {
     while (userPoly.length < correctRemainder.length) {
       userPoly.push(0);
     }
-    console.log(JSON.stringify(correctRemainder), JSON.stringify(userPoly));
     if (JSON.stringify(correctRemainder) === JSON.stringify(userPoly)) {
       setScore((prev) => prev + 1);
       setStreak((prev) => {
