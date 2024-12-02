@@ -3,7 +3,7 @@ import Problem from '@/components/problem';
 import Image from 'next/image'
 
 import { Cards } from 'nextra/components'
- 
+
 
 <Callout type="warning" emoji="🚧">
   under construction
@@ -80,5 +80,53 @@ Commutative Rings with no zerodivisors.
         <Callout type="info">
             If we instead continued with $(m', n')$ and continued to apply these steps, we would reach $(1, 1)$, since we are essentially running euclids algorithm in the exponent!
         </Callout>
+    </div>
+</Problem>
+
+
+<Problem title="MGO" source="Philipp Barski, Yannick Funke">
+    <div label="question">
+    What is the order of $\mathrm{GF}(p)[x]_{x^m}^*$? Prove your answer.
+    </div>
+    <div label="hint">
+        Use the fact that $\mathrm{GF}(p)[x]_{x^m}^* = \{ a \in \mathrm{GF}(p)[x]_{x^m} | \gcd(a, x^m)=1 \}$.
+    </div>
+    <div label="hint">
+        Show that $\gcd(a, x^m) \neq 1 \implies x | a$.
+    </div>
+    <div label="hint">
+        Every polynomial in $\mathrm{GF}(p)[x]$ can be factored uniquely into irreducible polynomials.
+    </div>
+    <div label="answer">
+        Define $R = \mathrm{GF}(p)[x]_{x^m}$. Let $a, g \in R$.
+
+        $\gcd(a, x^m) = g \neq 1 \implies g | x^m$. From Theorem 5.27 we know
+        that every element in $\mathrm{GF}(p)[x]$ can be factored uniquely into irreducible polynomials.
+        Clearly this factorization consists only of factors of the form $x$ since
+        $x$ is of degree 1 and therefore irreducible. By contradiction this implies
+        that $ x | g$. Note that we refer to the devision relation on $\mathrm{GF}(p)[x]$ here.
+
+        For the other direction we have $x | a \implies x | \gcd(a, x^m) \implies \gcd(a, x^m) \neq 1$.
+        Using Lemma 5.36 we find $R^* = \{ a \in R | \gcd(a, x^m)=1 \} = \{ a \in R | x \nmid a \}$.
+
+        Now we determine the order of
+        $$
+        \begin{aligned}
+        \{ a \in R | x \mid a \} &= \{ xb | b \in R \land xb \in R \ \{0\} \} \\
+        &= \{ xb | b \in R \land 0 \leq \mathrm{deg}(b) \lt m - 1 \}
+        \end{aligned}
+        $$
+
+        The last equalitiy holds since in an integral $deg(xb) = deg(x) + deg(b) = 1 + deg(b)$.
+        Since GF(p) is a field, it is also an integral domain and so is $\mathrm{GF}(p)[x]$.
+        Therefore
+        $$
+        \begin{aligned}
+        \left| \mathrm{GF}(p)[x]_{x^m}^*\right| &= \left| R \ \{0\} \ \{ xb | b \in R \land 0 \leq \mathrm{deg}(b) \lt m - 1 \} \right| \\
+        &= p^m - 1 - (p^{m-1} -1)  \\
+        &= p^m - p^{m-1} = p^{m-1}(p-1) \\
+        &= \varphi(p^{m}) \\
+        \end{aligned}
+        $$
     </div>
 </Problem>
