@@ -3,7 +3,7 @@ import Problem from '@/components/problem'
 
 # Challenges
 
-The first student enrolled in Discrete Mathematics 2024 who sends a sophisticated proof to [submit@discmath.ch](mailto:submit@discmath.ch) will receive chocolate in the next exercise session (indicate which exercise session you will attend, you can obsviously try any challenge you like :)) - be honest and don't use external tools :). 
+The first student enrolled in Discrete Mathematics 2024 who sends a sophisticated proof to [submit@discmath.ch](mailto:submit@discmath.ch) will receive chocolate in the next exercise session (indicate which exercise session you will attend, you can obsviously try any challenge you like :)) - be honest and don't use external tools :).
 Before sending a mail, please check that this challenge is unsolved.
 
 
@@ -23,17 +23,17 @@ deployment `21.10.2024 18:32`
   <div label="answer">
     We need to prove that the relation $u \sim v$ (i.e., $u - v \in W$) is an equivalence relation. This requires verifying three properties: reflexivity, symmetry, and transitivity.
 
-    **1. Reflexivity**:  
+    **1. Reflexivity**:
     For any $u \in V$, we have:
     $$
     u - u = 0
     $$
     Since $W$ is a subspace, $0 \in W$. Therefore, $u \sim u$, and the relation is reflexive.
 
-    **2. Symmetry**:  
+    **2. Symmetry**:
     Suppose $u \sim v$, which means $u - v \in W$. We need to show that $v \sim u$. Since $u - v \in W$ and $W$ is a subspace, we know that $-(u - v) = v - u \in W$ (because subspaces are closed under scalar multiplication by $-1$). Therefore, $v \sim u$, and the relation is symmetric.
 
-    **3. Transitivity**:  
+    **3. Transitivity**:
     Suppose $u \sim v$ and $v \sim w$, meaning $u - v \in W$ and $v - w \in W$. We need to show that $u \sim w$. Since $W$ is a subspace and is closed under addition, we have:
     $$
     (u - v) + (v - w) = u - w \in W
@@ -46,7 +46,7 @@ deployment `21.10.2024 18:32`
 </Callout>
 
 
-## Week 6 
+## Week 6
 deployment `28.10.2024 18:17`
 
 <Callout type='info' emoji="🔓">
@@ -117,7 +117,7 @@ deployment `28.10.2024 18:17`
             \end{aligned}
         $$
         Since $c \ge 2 \iff c - 2 \ge 0$, we have $(c - 2) \in \mathbb N$. This means that $c \ge c - 2$, which is a contradiction to the minimality of $c$. Therefore, $c \le 1$.
-        This implies that $\left| \mathbb N / \! \equiv_2 \right| \le 2$. 
+        This implies that $\left| \mathbb N / \! \equiv_2 \right| \le 2$.
 
         Now we show that $\left| \mathbb N / \! \equiv_2 \right| \ge 2$. We show that by proving that $[0]_{\equiv_2} \ne [1]_{\equiv_2}$, i.e. $0 \not\equiv_2 1$.
         Assume that $0 \equiv_2 1$. Then we have:
@@ -131,7 +131,7 @@ deployment `28.10.2024 18:17`
         We distinguish two cases:
         - If $k \ge 1$, then $2k \ge 2$, which is a contradiction to $2k = 1$.
         - If $k \le 0$, then $2k \le 0$, which is a contradiction to $2k = 1$.
-        
+
         Since the two cases cover all possibilities, we have shown that $0 \not\equiv_2 1$ and thus $[0]_{\equiv_2} \ne [1]_{\equiv_2}$.
 
         This means that $\left\{ [0]_{\equiv_2}, [1]_{\equiv_2} \right\} \subseteq (\mathbb N / \! \equiv_2)$, which implies that $\left| \mathbb N / \! \equiv_2 \right| \ge 2$.
@@ -153,13 +153,78 @@ deployment `28.10.2024 18:17`
             Q = \left\{ (A, f) \in \left( \mathcal P(B) \times B^B \right) \; \vert \; f \in A^A \land A \preceq \mathbb N \land A \not\sim \mathbb N \right\}
         $$
         (If this "arbitrary" $B$ looks scary, you can assume that $Q$ contains all elements of the form $(A, f \in A^A)$ where $A$ is finite. Note that this set is not defined though.)
-        
+
         We define $\sim$ on $Q$ as:
         $$
             (A_1, f_1) \sim (A_2, f_2) \overset{\text{\small def}}{\iff}\text{ there exists a bijection $g: A_1 \to A_2$, such that: }f_1 = g^{-1} \circ f_2 \circ g
         $$
-        
-        Prove that $Q$ is an equivalence relation (for a fixed $B$). Then prove that $(Q/\sim)$ is countable (for a fixed $B$).
+
+        Prove that $~$ is an equivalence relation on Q (for a fixed $B$). Then prove that $(Q/\sim)$ is countable (for a fixed $B$).
+    </div>
+    <div label="hint">
+        Recall that equivalence relations need to fullfill reflexivity,
+        symmetry and transitivity.
+        Note that the existence of a bijection between two sets implies that
+        they are equinumerous.
+    </div>
+    <div label="hint">
+        Use a set of representatives of $Q/~$
+    </div>
+    <div label="answer">
+        **Reflexivity** <br/>
+        Let $(A, f) \in Q$. Clearly $\mathrm{id}_A$ is a bijective function on A.
+        $$
+        f = \mathrm{id}_A \circ f \circ \mathrm{id}_A = \mathrm{id}_A^{-1} \circ f \circ \mathrm{id}_A \text{,}
+        $$
+        since $\mathrm{id}_A = \mathrm{id}_A^{-1}$.
+        Thus by definition of $\sim$, $(A, f) \sim (A, f)$. Proving that $\sim$ is reflexive.
+
+        **Symmetry** <br/>
+        Let $(A_1, f_1), (A_2, f_2) \in Q$ s.t. (such that) $(A_1, f_1) \sim (A_2, f_2)$.
+        Then there is a bijection $g: A_1 \to A_2$ s.t.: $f_1 = g^{-1} \circ f_2 \circ g$.
+        $$
+        \begin{aligned}
+        f_2 &=  g \circ g^{-1} \circ f_2 \circ g \circ g^{-1} && g \circ g^{-1} = \mathrm{id}_A \\
+            &= g \circ f_1 \circ g^{-1} && \text{substitute $f_1$}\\
+            &= (g^{-1})^{-1} \circ f_1 \circ g^{-1} && (g^{-1}) ^{-1} = g\\
+        \end{aligned}
+        $$
+        Using the fact that $g^{-1}$ is bijective wich we will prove in the following,
+        this implies that $(A_2, f_2) \sim (A_1, f_1)$.
+
+        From the script, we know that $g^{-1}$ is a function. It remains to show
+        injectivity and surjectivity.
+
+        $$
+        \begin{aligned}
+        &\text{$g$ is totally defined} \\
+        &\implies \forall a \in A_1 \hspace{1em}\exists b \in A_2 \hspace{1em} a\ g\ b && \text{Def. totally defined}\\
+        &\implies \forall a \in A_1 \hspace{1em}\exists b \in A_2 \hspace{1em} b\ g^{-1}\ a && \text{Def. inverse relation}\\
+        &\implies \forall a \in A_1 \hspace{1em}\exists b \in A_2 \hspace{1em} g^{-1}(b) = a && \text{Def. function} \\
+        &\implies \text{$g^{-1}$ is surjective} && \text{Def. surjective}
+        \end{aligned}
+        $$
+
+        $$
+        \begin{aligned}
+        &\text{$g$ is well-defined} \\
+        &\implies \forall a \in A_1 \hspace{1em}\forall b, b' \in A_2 \hspace{1em} a\ g\ b \land a\ g\ b' \rightarrow b = b'  && \text{Def. well defined}\\
+            &\implies \forall a \in A_1 \hspace{1em}\forall b, b' \in A_2 \hspace{1em} b\ g^{-1}\ a \land b'\ g^{-1}\ a \rightarrow b = b'  && \text{Def. inverse relation}\\
+            &\implies \forall a \in A_1 \hspace{1em}\forall b, b' \in A_2 \hspace{1em} g^{-1}(b) = a \land g^{-1}(b') = a \rightarrow b = b'  && \text{Def. function}\\
+            &\implies \forall b, b' \in A_2 \hspace{1em} (\exists a \in A_1 \hspace{1em} g^{-1}(b) = a = g^{-1}(b')) \rightarrow b = b'  && \text{logic}\\
+            &\implies \forall b, b' \in A_2 \hspace{1em} g^{-1}(b) = g^{-1}(b') \rightarrow b = b'  \\
+            &\implies \forall b, b' \in A_2 \hspace{1em} b \neq b' \rightarrow g^{-1}(b) \neq g^{-1}(b') && \text{contraposition}\\
+            &\implies \text{$g^{-1}$ is injective} && \text{Def. injective}
+        \end{aligned}
+        $$
+
+    </div>
+    <div label="takeaway">
+        We used equivalence classes to categorize functions that behave the
+        same while being defined on different sets of same cardinality.
+        While there are uncountable many sets that have the same cardinality
+        this abstraction allowed us to reduce the set of functions to a
+        countable set.
     </div>
 </Problem>
 </Callout>
@@ -179,4 +244,3 @@ deployment `28.10.2024 18:17`
 </Callout>
 
 > The idea of challenges is inspired by [aellison](https://n.ethz.ch/~aellison/dm2022/).
-
