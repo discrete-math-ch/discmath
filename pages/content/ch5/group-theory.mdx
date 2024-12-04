@@ -3,7 +3,7 @@ import Problem from '@/components/problem';
 import Image from 'next/image'
 
 import { Cards } from 'nextra/components'
- 
+
 
 <Callout type="warning" emoji="🚧">
   under construction
@@ -16,7 +16,7 @@ Group theory is a fascinating area of mathematics. It reveals deep connections b
 The most central definition is the definition of a group:
 
 <Callout type='def'>
-**Definition 5.7:** 
+**Definition 5.7:**
 A *group* is an algebra $\langle G; *, \hat{}, e \rangle$, where:
 1. **Associativity**: For all $a, b, c \in G$, $(a * b) * c = a * (b * c)$.
 2. **Identity Element**: There exists an $e \in G$ such that for all $a \in G$, $a * e = e * a = a$.
@@ -67,7 +67,7 @@ What does this actually mean? It sort of means, that it does not matter if we ap
 <Callout type='lemma'>
 **Lemma 5.5:** A group homomorphism $\psi$ from $\langle G; *, \hat{}, e \rangle$ to $\langle H; \star, \tilde{}, e' \rangle$ satisfies:
 
-1. $\psi(e) = e'$,  
+1. $\psi(e) = e'$,
 2. $\psi(\hat{a}) = \tilde{\psi(a)}$ for all $a \in G$.
 </Callout>
 
@@ -92,11 +92,11 @@ To gain intuition about homomorphisms, I think the following image is incredibly
     width="500"
     height="500"
     className="object-cover rounded-xl align-center"
-    
+
     src="/algebra/homomorphism.png">
   </Image>
 </div>
-  
+
   </center>
   <figcaption className="z-10 mt-4 text-sm italic text-gray-600">
   Von <a href="//commons.wikimedia.org/wiki/User:Cronholm144" title="User:Cronholm144">Cronholm144</a> - <span class="int-own-work" lang="de">Eigenes Werk</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=2185673">Link</a>
@@ -109,7 +109,7 @@ To gain intuition about homomorphisms, I think the following image is incredibly
 2. $\ker h$ is the so-called **kernel** of the map $h$. This is simply the set of all elements which map to the neutral element. You might have heard of the concept of **kernel** or *null-space* in linear algebra. The concept is related - for every linear map (or more concretely matrix), there is some set of elements in the domain, which maps to $0$ in the codomain. So in our case it is simply consider the following set:
 $$
 \ker h = \{a \in G \mid h(g) = 1_H\}
-$$ 
+$$
 So as you can see in the picture and as pointed out before, there can be more than one element in the kernel. We could actually have the case that $\ker h = G$.
 
 3. $\text{im} h$ is the so-called **image** of the map $h$. Again you might have heard about a concept like this in linear algebra. It is simply the set of all elements we can possibly get as an outputÖ
@@ -117,11 +117,11 @@ $$
 \text{im} h = \{h(a) \mid a \in G\}
 $$
 
-4. The set $a N$ is a so-called **coset**. This concept is not explicitly stated in this course, but super useful when you explore more properties. You will find more about it in the [Cosets](#cosets) section. We defined $N = \ker h$ (i.e. all elements in $G$ which map to $1_H$). Now for an arbitrary element $a \in G$, we can define: 
-$$ 
+4. The set $a N$ is a so-called **coset**. This concept is not explicitly stated in this course, but super useful when you explore more properties. You will find more about it in the [Cosets](#cosets) section. We defined $N = \ker h$ (i.e. all elements in $G$ which map to $1_H$). Now for an arbitrary element $a \in G$, we can define:
+$$
 a N = \{a *_G g \mid g \in N\}
-$$ 
-So what we are doing here is simply taking an element and *multiplying it* (in the sense of the group operation in $G$) to all elements which are in $N$ and making a set of all the outputs. We can do this in arbitrary $N \subseteq G$, however in this case we choose $\ker h$. 
+$$
+So what we are doing here is simply taking an element and *multiplying it* (in the sense of the group operation in $G$) to all elements which are in $N$ and making a set of all the outputs. We can do this in arbitrary $N \subseteq G$, however in this case we choose $\ker h$.
 
 **What is interesting about this picture?**
 
@@ -131,7 +131,7 @@ So what we are doing here is simply taking an element and *multiplying it* (in t
 
 3. <><span className="relative group inline-block"><span className="block px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-md cursor-pointer">Think about what would happen in the picture above if $h$ was injective!</span><span className="absolute z-10 left-0 mt-2 hidden w-max px-4 py-2 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-md shadow-lg group-hover:block"><div className="whitespace-normal break-words max-w-xs overflow-hidden">If $h$ was injective, then there would not be two different elements in $G$ which map to the same element in $H$. So we sort of would need the group $H$ to be at least as big (restricting ourselves to finite groups).</div></span></span></>
 
-There are so many more connections here which 
+There are so many more connections here which
 Let's try to look at a specific example to get a better grasp of what we have done until now.
 
 
@@ -167,7 +167,7 @@ To rigorously prove that two groups $G$ and $H$ are isomorphic, follow these ste
 
 3. **Verify the Map is Totally Defined**:
    Confirm that the map is defined for all elements of $G$ (i.e., $\phi$ applies to every element of $G$).
-  
+
 4. **Verify the Map Maps to the Codomain**:
    Ensure that $\phi(g) \in H$ for all $g \in G$, so that the image of $\phi$ lies entirely within $H$.
 
@@ -214,7 +214,7 @@ $$
 
 Using the modular arithmetic property $a +_k b = R_k(a + b) = R_k(R_k(a) + R_k(b))$, we have:
 $$
-\phi(a +_6 b) = (R_2(R_2(a) +_2 R_2(b)), R_3(R_3(a) +_3 R_3(b))) 
+\phi(a +_6 b) = (R_2(R_2(a) +_2 R_2(b)), R_3(R_3(a) +_3 R_3(b)))
 $$
 On the other hand:
 $$
@@ -267,7 +267,7 @@ We want to prove this theorem here! Because it illustrates interesting concepts 
 #### Useful Definitions
 
 <Callout type='definition'>
-**Definition (*Left* Coset):**  
+**Definition (*Left* Coset):**
 Let $H$ be a subgroup of $G$, and let $g \in G$. The **left coset** of $H$ with respect to $g$ is the set:
 $$
 gH = \{ gh \mid h \in H \}.
@@ -278,30 +278,30 @@ $$
 #### Key Properties of Cosets
 
 <Callout type='lemma'>
-**Lemma (Equal Size of Cosets):**  
+**Lemma (Equal Size of Cosets):**
 Every left coset $gH$ has the same number of elements as the subgroup $H$. Specifically, $|gH| = |H|$.
 </Callout>
 
-**Proof:**  
+**Proof:**
 Define a map $\varphi: H \to gH$ by $\varphi(h) = gh$. We show that $\varphi$ is a bijection:
-1. **Injectivity:**  
+1. **Injectivity:**
    Assume $\varphi(h_1) = \varphi(h_2)$. Then:
    $$
    gh_1 = gh_2.
    $$
    Multiplying on the left by $g^{-1}$, we get $h_1 = h_2$. Thus, $\varphi$ is injective.
 
-2. **Surjectivity:**  
+2. **Surjectivity:**
    Let $x \in gH$. By definition of $gH$, $x = gh$ for some $h \in H$. Thus, there exists $h \in H$ such that $\varphi(h) = x$. Hence, $\varphi$ is surjective.
 
-Since $\varphi$ is both injective and surjective, it is a bijection, and $|gH| = |H|$.  
+Since $\varphi$ is both injective and surjective, it is a bijection, and $|gH| = |H|$.
 
 <Callout type='lemma'>
-**Lemma (Disjoint or Equal Cosets):**  
+**Lemma (Disjoint or Equal Cosets):**
 If $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$.
 </Callout>
 
-**Proof:**  
+**Proof:**
 Assume $g_1H \cap g_2H \neq \emptyset$. Then there exists $x \in g_1H \cap g_2H$, so $x \in g_1H$ and $x \in g_2H$. Thus:
 $$
 x = g_1h_1 = g_2h_2,
@@ -318,19 +318,19 @@ Now consider any element $x \in g_1H$. By definition, $x = g_1h'$ for some $h' \
 $$
 x = g_2(hh') \in g_2H.
 $$
-Thus, $g_1H \subseteq g_2H$. By symmetry, $g_2H \subseteq g_1H$. Hence, $g_1H = g_2H$.  
- 
+Thus, $g_1H \subseteq g_2H$. By symmetry, $g_2H \subseteq g_1H$. Hence, $g_1H = g_2H$.
+
 
 <Callout type='lemma'>
-**Lemma (Cosets Partition $G$):**  
+**Lemma (Cosets Partition $G$):**
 The cosets $gH$ form a partition of $G$, meaning:
 1. Every element of $G$ is in some coset $gH$.
 2. Two cosets $g_1H$ and $g_2H$ are either disjoint or identical.
 </Callout>
 
-**Proof:**  
+**Proof:**
 1. By definition of a coset, for any $g \in G$, $g \in gH$. Thus, every element of $G$ is in at least one coset.
-2. By the previous lemma, if $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$. Otherwise, $g_1H \cap g_2H = \emptyset$. Hence, the cosets are either disjoint or identical.  
+2. By the previous lemma, if $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$. Otherwise, $g_1H \cap g_2H = \emptyset$. Hence, the cosets are either disjoint or identical.
 
 
 #### Proof of Lagrange's Theorem
@@ -339,8 +339,8 @@ Let $G$ be a finite group and $H$ a subgroup of $G$. By the lemmas above, the co
 $$
 |G| = k \cdot |H|,
 $$
-where $k = [G : H]$ is the number of cosets (the **index** of $H$ in $G$). Thus, $|H|$ divides $|G|$.  
- 
+where $k = [G : H]$ is the number of cosets (the **index** of $H$ in $G$). Thus, $|H|$ divides $|G|$.
+
 
 ### Euler's Totient Function and multiplicative groups
 
@@ -368,7 +368,7 @@ Representation theory studies groups by representing their elements as matrices 
 
 <Problem title="Finite group of even order" difficulty={2} relevance={3} source="Abstract Algebra: Theory and Applications" link="https://judsonbooks.org/aata-files/aata-20240706.pdf">
   <div label="question">
-    Show that if $G$ is a finite group of even order, then there is an $a \in G$ such that $a$ is not the identity and 
+    Show that if $G$ is a finite group of even order, then there is an $a \in G$ such that $a$ is not the identity and
     $$
     a^2 = e
     $$
@@ -378,7 +378,7 @@ Representation theory studies groups by representing their elements as matrices 
   </div>
   <div label="answer">
     Let $|G| = n$ be the order of the group $G$. Since $n$ is even, the group has an even number of elements. Consider the identity element $e \in G$, which satisfies $e^2 = e$. For each $x \in G$, observe the following:
-    
+
     - If $x \neq x^{-1}$ (i.e., $x$ is not its own inverse), then $x$ and $x^{-1}$ form a distinct pair.
     - If $x = x^{-1}$, then $x^2 = e$.
 
@@ -391,7 +391,7 @@ Representation theory studies groups by representing their elements as matrices 
 Let $\langle G; *, \hat{}, e \rangle$ be a cyclic group. Prove that every subgroup of $G$ is cyclic.
 </div>
 <div label="hint">
-Write every element from $H$ as $g^k$ for some $k \in \mathbb{Z}$ and take *some* minimum. Then use the Euclidean Divison Theorem. 
+Write every element from $H$ as $g^k$ for some $k \in \mathbb{Z}$ and take *some* minimum. Then use the Euclidean Divison Theorem.
 </div>
 <div label="answer">
 Because $G$ is cyclic, there is some generator $g \in G$ such that we can write every element $a \in G$ as $g^k = a$ for some $k \in \mathbb{Z}$. This also holds for elements of $H$, because $H \subseteq G$. Define the set of exponents of $g$ that correspond to elements of $H$:
@@ -429,5 +429,57 @@ Thus, $g^n = g^{qd} g^r$. Since $g^n \in H$ and $g^d \in H$, the closure propert
 
 From Steps 1 and 2, we conclude that $H = \langle g^d \rangle$. Thus, $H$ is cyclic, generated by $g^d$.
 
+</div>
+</Problem>
+
+<Problem title="The Square Root" difficulty={2} relevance={4} source="Yannick Funke">
+<div label="question">
+   Let $G$ be a (finite) group of odd order. Define the operation $\sqrt{} : G \to G$
+   such that
+   $$
+   \sqrt{a}^2 = a
+   $$
+   Show that $\sqrt{}$ is a bijective, well- and totally defined function.
+</div>
+<div label="hint">
+   Use the fact that $x^{|G|}=e$.
+</div>
+<div label="answer">
+   Let $a \in G$. Since $|G|$ is odd, $|G| = 2k - 1$ for some $k \in \mathbb{N}$.
+
+   Consider the function $s: G \to G, a \mapsto a^2$ which is obviously
+   well- and totally defined (inherited from the group operation).
+
+   **Injectivity:**
+   Assume $s(a) = s(b)$. Then $a^2 = b^2$.
+   Additionally for any $x \in G$ $x^{2k-1} = x^{|G|} = e$. Multiplying $x$ yields
+   $ x^{2k} = x$.
+   Consequently $a = a^{2k} = (a^2)^k = (b^2)^k = b^{2k} = b$.
+
+   **Surjectivity:**
+   Let $a \in G$. Then $a = a^{2k} = (a^k)^2 = s(a^k)$.
+
+   <Callout type="info">
+      Injectivity between two finite sets of same order implies surjectivity.
+      However this is not a lemma from the script.
+   </Callout>
+
+   Since $s$ is bijective, $s$ has an inverse.
+   By definition $\sqrt{}$ is exactly this inverse and therefore
+   $\sqrt{}$ is bijective, well- and totally defined.
+
+   **Note:**
+   Well-definition of $s$ translates to injectivity of $\sqrt{}$.
+   Totality of $s$ translates to surjectivity of $\sqrt{}$.
+   Injectivity of $s$ translates to well-defintion of $\sqrt{}$.
+   Surjectivity of $s$ translates to totality of $\sqrt{}$.
+</div>
+<div label="takeaway">
+   This shows that a valid square root operations exists on
+   odd groups. The counterexample $\mathbb{Z}_3^*$ and $\sqrt{2}$ shows that the same
+   cannot be said about even groups.
+   In particular we cannot apply this finding to the multiplicative monoid of
+   arbitrary rings.
+   In a later exercise we will look at the square root on integral rings.
 </div>
 </Problem>
