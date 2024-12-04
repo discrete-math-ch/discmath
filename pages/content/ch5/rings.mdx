@@ -3,7 +3,7 @@ import Problem from '@/components/problem';
 import Image from 'next/image'
 
 import { Cards } from 'nextra/components'
- 
+
 
 <Callout type="warning" emoji="🚧">
   under construction
@@ -80,5 +80,24 @@ Commutative Rings with no zerodivisors.
         <Callout type="info">
             If we instead continued with $(m', n')$ and continued to apply these steps, we would reach $(1, 1)$, since we are essentially running euclids algorithm in the exponent!
         </Callout>
+    </div>
+</Problem>
+
+<Problem title="Counting Multiplicative Generators" difficulty={2} relevance={4} source="Yannick Funke">
+    <div label="question">
+        How many generators does the cyclic group $\mathrm{GF}(3)_{x^3+2 x^2+1}^*$ have?
+        Why is the group cyclic in the first place?
+    </div>
+    <div label="hint">
+        Find an useful isomorphism.
+    </div>
+    <div label="answer">
+        From the weekly exercise sheets (ex 10.5) we know that
+        $F := \mathrm{GF}(3)_{x^3+2 x^2+1}$ is a field because $x^3+2 x^2+1$ is irreducible.
+        Since $|F| = 3^3 = 27$, $|F^*| = | F \setminus \{0\} | = 27 - 1 = 26$.
+        By Theorem 5.40 the multiplicative group of a finite field is cyclic.
+        Thus $F^*$ must be isomorph to $\mathbb Z_{26}$.
+        This implies that both have the same number of generators. By definition
+        this is $\varphi(26) = \varphi(2 \cdot 13) = (2-1) \cdot (13-1) = 12$.
     </div>
 </Problem>
