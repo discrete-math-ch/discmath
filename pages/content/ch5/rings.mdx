@@ -85,7 +85,7 @@ Commutative Rings with no zerodivisors.
 
 <Problem title="Counting Multiplicative Generators" difficulty={2} relevance={4} source="Yannick Funke">
     <div label="question">
-        How many generators does the cyclic group $\mathrm{GF}(3)_{x^3+2 x^2+1}^*$ have?
+        How many generators does the cyclic group $\mathrm{GF}(3)[x]_{x^3+2 x^2+1}^*$ have?
         Why is the group cyclic in the first place?
     </div>
     <div label="hint">
@@ -93,7 +93,7 @@ Commutative Rings with no zerodivisors.
     </div>
     <div label="answer">
         From the weekly exercise sheets (ex 10.5) we know that
-        $F := \mathrm{GF}(3)_{x^3+2 x^2+1}$ is a field because $x^3+2 x^2+1$ is irreducible.
+        $F := \mathrm{GF}(3)[x]_{x^3+2 x^2+1}$ is a field because $x^3+2 x^2+1$ is irreducible.
         Since $|F| = 3^3 = 27$, $|F^*| = | F \setminus \{0\} | = 27 - 1 = 26$.
         By Theorem 5.40 the multiplicative group of a finite field is cyclic.
         Thus $F^*$ must be isomorph to $\mathbb Z_{26}$.
