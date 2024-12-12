@@ -339,7 +339,7 @@ Because we were able to eliminate the possibilities $1, 2, 3, 4, 6, 8, 12$ as or
 
 <Problem title="MGO" source="Philipp Barski, Yannick Funke" difficulty={3} relevance={3}>
     <div label="question">
-    What is the order of $\mathrm{GF}(p)[x]_{x^m}^*$? Prove your answer.
+    Let $m \in \mathbb{N} \setminus \{0\}$ and $p$ be a prime power. What is the order of $\mathrm{GF}(p)[x]_{x^m}^*$? Prove your answer.
     </div>
     <div label="hint">
         Use the fact that $\mathrm{GF}(p)[x]_{x^m}^* = \{ a \in \mathrm{GF}(p)[x]_{x^m} \mid \gcd(a, x^m)=1 \}$.
@@ -357,7 +357,7 @@ Because we were able to eliminate the possibilities $1, 2, 3, 4, 6, 8, 12$ as or
 
         Let $a(x) \in R$ be arbitrary.
 
-        We first show $\implies$: Assume $\gcd(a(x), x^m) \eqqcolon g(x) \neq 1$. Then we have that $g(x) \vert x^m$, by definition. This implies that we have $g(x)b(x) = x^m$ for some $b(x) \in \mathrm{GF}(p)[x]$. Note that by definition $g(x)$ has to be monic and since $g(x) \neq 1$ we have that $g(x)$ is not constant. Note that by Theorem 5.27 we need that $g(x) = k \cdot x^d$ with $0 \leq d \leq m$ and $k \in \mathrm{GF}(p)$ since $x$ is irreducible in $\mathrm{GF}(p)[x]$ and we have that degrees of polynomials are added for polynomials on integral domains and a field is in particular an integral domain. As $g(x)$ is monic and not constant we have that $k = 1$ and $1 \leq d \leq m$. Note that this means that $x \vert g(x)$. Since $g(x) \vert a(x)$ by transitivity of $\vert$ we obtain that $x \vert a(x)$.
+        We first show $\implies$: Assume $\gcd(a(x), x^m) \eqqcolon g(x) \neq 1$. Then we have that $g(x) \vert x^m$, by definition. This implies that we have $g(x)b(x) = x^m$ for some $b(x) \in \mathrm{GF}(p)[x]$. Note that by definition $g(x)$ has to be monic and since $g(x) \neq 1$ we have that $g(x)$ is not constant. Note that by Theorem 5.27 (unique factorization of elements over Euclidean Domains) we need that $g(x) = x^d$ with $0 \leq d \leq m$ since $x$ is irreducible in $\mathrm{GF}(p)[x]$ and we have that degrees of polynomials are added for polynomials on integral domains and a field is in particular an integral domain and $g(x)$ is monic. As $g(x)$ is not constant we have that $1 \leq d \leq m$. Note that this means that $x \vert g(x)$. Since $g(x) \vert a(x)$ by transitivity of $\vert$ we obtain that $x \vert a(x)$.
 
         For the other direction "$\impliedby$" we have $x | a(x) \implies x | \gcd(a(x), x^m) \implies \gcd(a(x), x^m) \neq 1$.
 
@@ -366,7 +366,7 @@ Because we were able to eliminate the possibilities $1, 2, 3, 4, 6, 8, 12$ as or
         Now we determine the order of
         $$
         \begin{aligned}
-        \{ a(x) \in R \text{ | } x | a(x) \} &= \{ x b(x) \text{ | } b(x) \in R \} \\
+        \{ a(x) \in R \text{ | } x | a(x) \} &= \{ x b(x) \in R \text{ | } b(x) \in R \} \\
         &= \{ x b(x) \text{ | } b(x) \in R \land \mathrm{deg}(b(x)) \lt m - 1 \}
         \end{aligned}
         $$
