@@ -1,1 +1,92 @@
-# Proof System
+import { Callout, Tabs } from 'nextra/components'
+import Problem from '@/components/problem';
+
+# Proof Systems
+
+{/* We are coming back to the problem of formalizing the notion of proving something.
+In chapter 1 we studied the basics of logic, now we want to talk about **a logic** in a more abstract way - we want to formmalise the notion of what it means when proving something *inside a logic*.
+We want to make general statements about different *logics* (e.g. propositional logic or predicate logic, but also all other logics).
+
+## Theory
+
+
+Try to really understand the three main definitions:
+
+<Callout type='-'>
+**Definition 6.1** A *proof system* is a quadruple $\Pi = (\mathcal{S}, \mathcal{P}, \tau, \phi)$ such that:
+
+1. $\mathcal{S} \subseteq \Sigma^*$ is the set of **mathematical statements**
+2. $\mathcal{P} \subseteq \Sigma^*$ is the set of **mathematical proofs**
+
+
+Here $\Sigma$ is some *alphabet* and $\Sigma^*$ is the set of all finite strings of symbols from this *alphabet*. 
+
+</Callout>
+
+<Callout type="-">
+**Definition 6.2** A *proof system* $\Pi = (\mathcal{S}, \mathcal{P}, \tau, \phi)$ is **sound** if no false statement has a proof, i.e., if for all $s \in \mathcal{S}$ for which there exists $p \in \mathcal{P}$ with $\phi(s,p) = 1$, we have $\tau(s) = 1$
+</Callout>
+
+
+
+<Callout type='warning'>
+Note that we might be tempted to express the statements about **soundness** and **completeness** for example in predicate logic. However, we want to make a general definition, formulating these statments about proof systems in a specific proof system (e.g. predicate logic) would not be approriate. This is the point where we have to switch to natural language.
+</Callout> */}
+
+## Exercises
+
+<Problem title="Powerset Proof System" source="Tobias Steinbrecher">
+    <div label="question">
+        Consider the following exercise. You are given a sound and complete proof system. You are tasked to define a new proof system, which is based on the first proof system. The new proof system deals with statements about sets of statements from the original proof system and considers a set to be true if at least one statement in the set is true. 
+
+        Let 
+
+        $$
+        \Pi_1 = (\mathcal{S}, \mathcal{P}_1, \tau_1, \phi_1)
+        $$
+
+        be a proof system which is sound and complete (consider $\mathcal{S}$ to be finite). <br/> 
+
+Now define $\phi_2$ and $\mathcal{P}_2$ such that the following proof system is sound and complete (and prove these properties):
+
+        $$
+        \Pi_2 = (P(\mathcal{S}), \mathcal{P}_2, \tau_2, \phi_2)
+        $$
+
+        with 
+
+        $$
+        \tau_2(\sigma) = 1 \iff \text{there exists some } s \in \sigma \text{ such that } \tau_1(s) = 1,
+        $$
+
+        where $\sigma \in P(\mathcal{S})$.
+    </div>
+    <div label="answer">
+        To define the proof system $\Pi_2$, we proceed as follows:
+
+        Define $\mathcal{P}_2 = \mathcal{P}_1$.
+
+        For all $\sigma \in P(\mathcal{S})$ and $p \in \mathcal{P}_2$, define:
+
+        $$
+        \phi_2(\sigma, p) = 1 \iff \text{there exists some } s \in \sigma \text{ such that } \phi_1(s, p) = 1.
+        $$
+
+        ---
+         
+        **Proof of Soundness:**   
+        Let $\sigma \in P(\mathcal{S})$ such that there exists a $p \in \mathcal{P}_2$ with $\phi_2(\sigma, p) = 1$. By the definition of $\phi_2$, there exists some $s \in \sigma$ such that $\phi_1(s, p) = 1$. From the soundness of $\Pi_1$, $\phi_1(s, p) = 1$ implies $\tau_1(s) = 1$. 
+
+        Since there exists $s \in \sigma$ such that $\tau_1(s) = 1$, the definition of $\tau_2$ ensures that $\tau_2(\sigma) = 1$. Thus, $\Pi_2$ is sound.
+
+        ---
+
+        **Proof of Completeness:**  
+        Let $\sigma \in P(\mathcal{S})$ such that $\tau_2(\sigma) = 1$. By the definition of $\tau_2$, there exists some $s \in \sigma$ such that $\tau_1(s) = 1$. Since $\Pi_1$ is complete, there exists $p \in \mathcal{P}_1 = \mathcal{P}_2$ such that $\phi_1(s, p) = 1$. 
+
+        By the definition of $\phi_2$, this implies $\phi_2(\sigma, p) = 1$. Hence, there exists $p \in \mathcal{P}_2$ such that $\phi_2(\sigma, p) = 1$, and $\Pi_2$ is complete.
+
+        
+    </div>
+</Problem>
+
