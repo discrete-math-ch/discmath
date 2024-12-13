@@ -335,3 +335,56 @@ Because we were able to eliminate the possibilities $1, 2, 3, 4, 6, 8, 12$ as or
 </div>
 </Problem>
 
+## Exercises
+
+<Problem title="MGO" source="Philipp Barski, Yannick Funke" difficulty={3} relevance={3}>
+    <div label="question">
+    Let $m \in \mathbb{N} \setminus \{0\}$ and $p$ be a prime power. What is the order of $\mathrm{GF}(p)[x]_{x^m}^*$? Prove your answer.
+    </div>
+    <div label="hint">
+        Use the fact that $\mathrm{GF}(p)[x]_{x^m}^* = \{ a \in \mathrm{GF}(p)[x]_{x^m} \mid \gcd(a, x^m)=1 \}$.
+    </div>
+    <div label="hint">
+        Show that $\gcd(a, x^m) \neq 1 \iff x | a$.
+    </div>
+    <div label="hint">
+        Every polynomial in $\mathrm{GF}(p)[x]$ can be factored uniquely into irreducible polynomials up to taking associates (constant factors).
+    </div>
+    <div label="answer">
+        Define $R = \mathrm{GF}(p)[x]_{x^m}$.
+
+        In the following we will show that, for any $a(x) \in R$ we have that $\gcd(a(x), x^m) \neq 1 \iff x|a(x)$.
+
+        Let $a(x) \in R$ be arbitrary.
+
+        We first show $\implies$: Assume $\gcd(a(x), x^m) \eqqcolon g(x) \neq 1$. Then we have that $g(x) \vert x^m$, by definition. This implies that we have $g(x)b(x) = x^m$ for some $b(x) \in \mathrm{GF}(p)[x]$. Note that by definition $g(x)$ has to be monic and since $g(x) \neq 1$ we have that $g(x)$ is not constant. Note that by Theorem 5.27 (unique factorization of elements over Euclidean Domains) we need that $g(x) = x^d$ with $0 \leq d \leq m$ since $x$ is irreducible in $\mathrm{GF}(p)[x]$ and we have that degrees of polynomials are added for polynomials on integral domains and a field is in particular an integral domain and $g(x)$ is monic. As $g(x)$ is not constant we have that $1 \leq d \leq m$. Note that this means that $x \vert g(x)$. Since $g(x) \vert a(x)$ by transitivity of $\vert$ we obtain that $x \vert a(x)$.
+
+        For the other direction "$\impliedby$" we have $x | a(x) \implies x | \gcd(a(x), x^m) \implies \gcd(a(x), x^m) \neq 1$.
+
+        Using Lemma 5.36 we find $R^* = \{ a(x) \in R \text{ | } \gcd(a(x), x^m)=1 \} = \{ a(x) \in R \text{ | } x \nmid a(x) \}$.
+
+        Now we determine the order of
+        $$
+        \begin{aligned}
+        \{ a(x) \in R \text{ | } x | a(x) \} &= \{ x b(x) \in R \text{ | } b(x) \in R \} \\
+        &= \{ x b(x) \text{ | } b(x) \in R \land \mathrm{deg}(b(x)) \lt m - 1 \}
+        \end{aligned}
+        $$
+
+        The last equality holds since in an integral $deg(xb) = deg(x) + deg(b) = 1 + deg(b)$.
+        Since $\mathrm{GF}(p)$ is a field, it is also an integral domain and so is $\mathrm{GF}(p)[x]$.
+
+        Therefore
+        $$
+        \begin{aligned}
+        \left| \mathrm{GF}(p)[x]_{x^m}^*\right|
+        &= \left| R \setminus \{ a(x) \in R \text{ | } x \mid a(x) \} \right|
+         \\&= \left| R \setminus \{ x b(x) \mid b(x) \in R \land \mathrm{deg}(b(x)) \lt m - 1 \} \right| \\
+        &= p^m - p^{m-1} = p^{m-1}(p-1) \\
+        &= \varphi(p^{m}) \\
+        \end{aligned}
+        $$
+
+        Caution: Note that showed that only in this special case the order of the multiplicative group evaluates to $\varphi(|R|)$.
+    </div>
+    </Problem>
