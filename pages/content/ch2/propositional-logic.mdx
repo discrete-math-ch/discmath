@@ -54,18 +54,18 @@ $\vDash$
 
   This tries to define formulas and statements with EBNF. Bold symbols are used to denote EBNF syntax elements **(** **)** **\[** **]** **│**. References to existing rules are made using `Rulename…` element.
 
-  | Rule                | Expression                                                                                                 |
-  |---------------------|------------------------------------------------------------------------------------------------------------|
-  | `PropSymbol`        | $A$ **│** $B$ **│** $C$ **│** ••• **│** $Z$                                                                |
-  | `Symbol`            | `PropSymbol` **│** $\top$ **│** $\bot$                                                                     |
-  | `LogicOperator`     | $\land$ **│** $\lor$ **│** $\leftrightarrow$ **│** $\to$                                                   |
-  | `Negation`          | $\lnot$                                                                                                    |
-  | `Combination`       | **(**`Formula` **│** $($`Combination`$)$**)** `Operator` **(**`Formula` **│** $($`Combination`$)$**)**     |
-  | `Formula`           | **[**`Negation`**]**`Symbol` **│** `Combination` **│** `Negation`$($`Combination`$)$                       |
-  | `FormulaStatement`  | `Formula` **(** $\equiv$ **│** $\models$ **)** `Formula` **│** $\models$ `Formula`                         |
-  | `StatementOperator` | $\implies$ **│** $\iff$ **│** $\text{ and }$ **│** $\text{ or }$                                           |
-  | `Proposition`       | `FormulaStatement` **│** `Statement` **│** `PropSymbol`&nbsp;or&nbsp;mathematical&nbsp;statement           |
-  | `Statement`         | `FormulaStatement` **│** `Proposition` **(**`StatementOperator` `Proposition` **│** $\text{is false}$**)** |
+  | Rule               | Expression                                                                                               |
+  |--------------------|----------------------------------------------------------------------------------------------------------|
+  | `PropSymbol`       | $A$ **│** $B$ **│** $C$ **│** ••• **│** $Z$                                                              |
+  | `Symbol`           | `PropSymbol` **│** $\top$ **│** $\bot$                                                                   |
+  | `LogicOp`          | $\land$ **│** $\lor$ **│** $\leftrightarrow$ **│** $\to$                                                 |
+  | `Negation`         | $\lnot$                                                                                                  |
+  | `Combination`      | **(**`Formula` **│** $($`Combination`$)$**)** `LogicOp` **(**`Formula` **│** $($`Combination`$)$**)**    |
+  | `Formula`          | **[**`Negation`**]**`Symbol` **│** `Combination` **│** `Negation`$($`Combination`$)$                     |
+  | `FormulaStatement` | `Formula` **(** $\equiv$ **│** $\models$ **)** `Formula` **│** $\models$ `Formula`                       |
+  | `StatementOp`      | $\implies$ **│** $\iff$ **│** $\text{ and }$ **│** $\text{ or }$                                         |
+  | `Proposition`      | `FormulaStatement` **│** `Statement` **│** `PropSymbol` **│** Mathematical&nbsp;statement                |
+  | `Statement`        | `FormulaStatement` **│** `Proposition` **(**`StatementOp` `Proposition` **│** $\text{is false}$**)**     |
 
 </div>
 
