@@ -744,7 +744,7 @@ Check out the problems below. The first few are good practice, but if you're fee
        $$
        symmetric relations on a set of $n$ elements. What can we decide for each tuple $(a,b) \in (A,B)$?  Consider $a = b$, then symmetry does not impose any constraints, thus, we can freely decide whether we want to take it or not (this gives us a factor of $2^n$). Now, if $a \neq b$, if we take the pair $(a,b)$, then we must also take $(b,a)$ (by symmetry). However, we could also decide to choose neither $(a,b)$ nor $(b,a)$. In the graph representation, we can decide for each pair of nodes, whether we want to put an *undirected* edge (formally directed edges in both directions). There are ${n \choose 2} = n(n-1)/2$ such pairs. Thus, we obtain a total of
        $$
-       2^(n(n-1)/2) 2^{n} = 2^{(n^2 - n + 2 n)/2} = 2^{n (n+1) /2}
+       2^{(n(n-1)/2)} 2^{n} = 2^{(n^2 - n + 2 n)/2} = 2^{n (n+1) /2}
        $$
       </div>
 </Problem>
