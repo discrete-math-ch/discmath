@@ -1,18 +1,20 @@
 import React from "react";
 import Card from "@/components/UI/Card";
 import Button from "@/components/UI/Button";
-import { Callout } from 'nextra/components';
+import { Callout } from "nextra/components";
 
 const HomePage: React.FC = () => {
   const chapters = [
     {
       title: "Introduction to Logic",
-      description: "Foundations of Logic Notation and mathematical proof writing.",
+      description:
+        "Foundations of Logic Notation and mathematical proof writing.",
       link: "/content/ch2",
     },
     {
       title: "Sets, Relations, Functions",
-      description: "Fundamental concepts of set theory, relations, functions and countability.",
+      description:
+        "Fundamental concepts of set theory, relations, functions and countability.",
       link: "/content/ch3/sets",
     },
     {
@@ -27,7 +29,8 @@ const HomePage: React.FC = () => {
     },
     {
       title: "Logic",
-      description: "Advanced concepts of logic, involving logical calculi and more. ",
+      description:
+        "Advanced concepts of logic, involving logical calculi and more. ",
       link: "/content/ch6",
     },
     {
@@ -47,7 +50,10 @@ const HomePage: React.FC = () => {
           Welcome to Discrete Mathematics
         </h1>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-        This collection of content has been created by student Teaching Assistants to accompany the course 252-0025-01L Discrete Mathematics in HS24 at ETH Zürich. Feel free to contribute wherever you believe your input could benefit other students.
+          This website was originally created by a few teaching assisitants for
+          the HS24 Discrete Mathematics course. It is now maintained by a group
+          of HS25 TAs. Feel free to contribute wherever you believe your input
+          could benefit other students.
         </p>
       </div>
 
@@ -62,10 +68,7 @@ const HomePage: React.FC = () => {
           />
         ))}
         {Array.from({ length: placeholders }).map((_, index) => (
-          <div
-            key={`placeholder-${index}`}
-            className="invisible"
-          />
+          <div key={`placeholder-${index}`} className="invisible" />
         ))}
       </div>
 
@@ -77,7 +80,8 @@ const HomePage: React.FC = () => {
       {/* Disclaimer Section */}
       <div className="mt-10 w-full max-w-4xl">
         <Callout type="warning" emoji="⚠️">
-          This webpage is not affiliated with ETH Zurich and does not guarantee the accuracy of its content.
+          This webpage is not affiliated with ETH Zurich and does not guarantee
+          the accuracy of its content.
         </Callout>
       </div>
     </div>

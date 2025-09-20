@@ -1,36 +1,36 @@
 {
-    "index": {
-        "title": "Home",
-        "display": "hidden",
-        "theme": {
-            "breadcrumb": false,
-            "footer": true,
-            "sidebar": false,
-            "pagination": false,
-            "layout": "full"
-        }
-    },
-    "topic": {
-        "title": "Suggest Topic",
-        "type": "page"
-    },
-    "challenges": {
-        "title": "Challenges",
-        "type": "page"
-    },
-    "content": {
-        "title": "Content",
-        "type": "page"
-    },
-    "links": {
-        "title": "Links",
-        "type": "page",
-        "theme": {
-            "typesetting": "article"
-        }
-    },
-    "about": {
-        "title": "About",
-        "type": "page"
+  "index": {
+    "title": "Home",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "pagination": false,
+      "layout": "full"
     }
+  },
+  "topic": {
+    "title": "Suggest Topic",
+    "type": "page"
+  },
+  "challenges": {
+    "title": "Challenges",
+    "type": "page"
+  },
+  "content": {
+    "title": "Content",
+    "type": "page"
+  },
+  "links": {
+    "title": "Links",
+    "type": "page",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
+  "about": {
+    "title": "About",
+    "type": "page"
+  }
 }
