@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+"use client";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const LastCommitAuthor: React.FC = () => {
-  const [author, setAuthor] = useState<string>('');
-  const [commitDate, setCommitDate] = useState<string>('');
+  const [author, setAuthor] = useState<string>("");
+  const [commitDate, setCommitDate] = useState<string>("");
 
   const router = useRouter();
   const filePath = router.asPath;
@@ -11,7 +12,9 @@ const LastCommitAuthor: React.FC = () => {
   useEffect(() => {
     const fetchLastCommitAuthor = async () => {
       try {
-        const response = await fetch(`https://api.github.com/repos/discrete-math-ch/discmath/commits?path=${filePath}`);
+        const response = await fetch(
+          `https://api.github.com/repos/discrete-math-ch/discmath/commits?path=${filePath}`,
+        );
         const data = await response.json();
         if (data.length > 0) {
           setAuthor(data[0].commit.author.name);
@@ -19,7 +22,7 @@ const LastCommitAuthor: React.FC = () => {
         }
         console.log(data[0].commit);
       } catch (error) {
-        console.error('Error fetching commit data:', error);
+        console.error("Error fetching commit data:", error);
       }
     };
 
@@ -39,3 +42,4 @@ const LastCommitAuthor: React.FC = () => {
 };
 
 export default LastCommitAuthor;
+

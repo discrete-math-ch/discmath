@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import crypto from "crypto";
 import Button from "@/components/UI/Button";
@@ -29,13 +30,19 @@ const VerifyToken = () => {
         message: `Token verified! Max Streak: ${maxStreak}, Time: ${timeAchieved}`,
       });
     } else {
-      setVerificationResult({ valid: false, message: "Token verification failed." });
+      setVerificationResult({
+        valid: false,
+        message: "Token verification failed.",
+      });
     }
   };
 
   const handleVerify = () => {
     if (!inputHash) {
-      setVerificationResult({ valid: false, message: "Please enter a token to verify." });
+      setVerificationResult({
+        valid: false,
+        message: "Please enter a token to verify.",
+      });
       return;
     }
     verifyToken(inputHash);
@@ -52,15 +59,9 @@ const VerifyToken = () => {
           onChange={(e) => setInputHash(e.target.value)}
           className="border rounded-lg px-4 py-2 w-full text-lg mb-4"
         />
-        <Button
-          onClick={handleVerify}
-        >
-          Verify
-        </Button>
+        <Button onClick={handleVerify}>Verify</Button>
         {verificationResult && (
-          <div
-            className={`mt-4 p-4 rounded-lg`}
-          >
+          <div className={`mt-4 p-4 rounded-lg`}>
             <p className="text-lg">{verificationResult.message}</p>
           </div>
         )}

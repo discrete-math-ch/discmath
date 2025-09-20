@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import { BlockMath } from "react-katex";
 import Button from "@/components/UI/Button";
@@ -33,7 +34,7 @@ const PolyRemainder = () => {
 
   const generatePolynomial = (deg, p) => {
     const coefficients = Array.from({ length: deg + 1 }, () =>
-      Math.floor(Math.random() * p)
+      Math.floor(Math.random() * p),
     );
 
     coefficients[deg] = Math.floor(Math.random() * (p - 1)) + 1;
@@ -43,12 +44,13 @@ const PolyRemainder = () => {
 
   const polynomialToLatex = (poly) => {
     if (!poly.length) return "0"; // Explicitly show zero if the polynomial is empty
-    if (poly.length == 1 && poly[0] == 0) return "0"; 
+    if (poly.length == 1 && poly[0] == 0) return "0";
     return poly
       .map((coeff, index) => {
         if (coeff === 0) return null;
         const term =
-          (coeff > 1 ? coeff : "") + (index > 0 ? (index === 1 ? `x` : `x^{${index}}`) : "");
+          (coeff > 1 ? coeff : "") +
+          (index > 0 ? (index === 1 ? `x` : `x^{${index}}`) : "");
         return index > 0 ? term : `${coeff}`;
       })
       .filter(Boolean)
@@ -62,13 +64,14 @@ const PolyRemainder = () => {
 
     const modulusDegree = Math.floor(Math.random() * 3) + 1;
     const modulus = generatePolynomial(modulusDegree, p);
-    const dividendDegree = Math.floor(Math.random() * modulusDegree) + modulusDegree;
+    const dividendDegree =
+      Math.floor(Math.random() * modulusDegree) + modulusDegree;
     const dividend = generatePolynomial(dividendDegree, p);
 
     setTask({ modulus, dividend, p });
     setUserAnswer("");
     setCorrectAnswer(null);
-    setAnswered(false); 
+    setAnswered(false);
   };
 
   const calculateRemainder = (dividend, modulus, p) => {
@@ -145,14 +148,16 @@ const PolyRemainder = () => {
   return (
     <div className="flex flex-col items-center p-6">
       <div className="shadow-md rounded-lg p-6 max-w-3xl w-full text-center">
-        <h1 className="text-2xl font-bold mb-4">Polynomial Remainder Practice</h1>
+        <h1 className="text-2xl font-bold mb-4">
+          Polynomial Remainder Practice
+        </h1>
         <div className="text-xl mb-4">
           <BlockMath>
             {`\\text{GF}(${task.p})[x]_{${polynomialToLatex(task.modulus)}}`}
           </BlockMath>
           <BlockMath>
             {`R_{${polynomialToLatex(task.modulus)}}(${polynomialToLatex(
-              task.dividend
+              task.dividend,
             )}) = \\dots`}
           </BlockMath>
         </div>
@@ -166,14 +171,14 @@ const PolyRemainder = () => {
             disabled={answered}
           />
           <div className="text-lg">
-          <BlockMath>
-            {`${polynomialToLatex(
-              reverse(userAnswer)
-                .split(",")
-                .map((x) => (parseInt(x.trim(), 10) || 0) % task.p)
-            )}`}
-          </BlockMath>
-        </div>
+            <BlockMath>
+              {`${polynomialToLatex(
+                reverse(userAnswer)
+                  .split(",")
+                  .map((x) => (parseInt(x.trim(), 10) || 0) % task.p),
+              )}`}
+            </BlockMath>
+          </div>
           <Button onClick={checkAnswer} disabled={answered} className="mt-2">
             Submit Answer
           </Button>
