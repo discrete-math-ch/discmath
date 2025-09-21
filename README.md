@@ -1,6 +1,6 @@
 # Disc Math
 
-## Website Address
+## Website
 
 - [discmath.ch](https://discmath.ch)
 
