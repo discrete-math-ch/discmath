@@ -10,11 +10,6 @@
       "layout": "full"
     }
   },
-  "past_challenges": {
-    "title": "Past Challenges",
-    "display": "hidden",
-    "type": "page"
-  },
   "topic": {
     "title": "Suggest Topic",
     "type": "page"
@@ -37,5 +32,10 @@
   "about": {
     "title": "About",
     "type": "page"
+  },
+  "past_challenges": {
+    "title": "Past Challenges",
+    "type": "page",
+    "display": "hidden"
   }
 }
