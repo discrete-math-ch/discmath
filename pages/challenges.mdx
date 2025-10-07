@@ -10,6 +10,8 @@ Please check that this challenge is unsolved before sending in your solutions.
 
 ## Week 3
 
+<Callout type='info' emoji="🔓">
+**SOLVED** by `rmajumdar`, `02:00h` after deployment ([solution file](/challenge_solutions/pigeonhole_party.pdf)):
 <Problem
 title="Pigeonhole Party"
 difficulty={3}
@@ -22,6 +24,16 @@ Six mathematicians attend a party. Any two mathematicians either both know each 
 <div label="hint">
 Use the pigeonhole principle.
 </div>
+<div label="answer">
+The question can be formulated as a graph coloring problem: let the mathematicians be the vertices of a complete graph of size 6. Color the edge between two mathematicians red if they know each other, otherwise black. We now wish to prove the existence of a monochromatic triangle in this graph.
+
+Consider an arbitrary vertex $v$ in the graph. $v$ has $5$ edges, which means at least $\left\lceil\frac{5}{2}\right\rceil=3$ of its edges share a color. W.l.o.g., assume they are colored red. Now consider the three vertices these edges lead to. We distinguish 2 cases: 
+- If any edge between these three vertices is red, we have our triangle.
+- Otherwise, all edges between said vertices are black, which also gives us a monochromatic triangle.
+
+By case distinction, such a triangle must exist.
+</div>
 </Problem>
+</Callout>
 
 Challenges from the past year as well as their solutions can be found [here](/past_challenges/2024)
