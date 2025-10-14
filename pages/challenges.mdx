@@ -38,17 +38,19 @@ By case distinction, such a triangle must exist.
 
 ## Week 4
 <Problem
-title="Taming the tuple"
+title="Taming the Tuple"
 difficulty={3}
 relevance={4}
 source="Leo Schmidt-Traub"
 >
 <div label="question">
-In the script, you are told that the tuple $(a,b)$ can be uniquely defined as the set $\{\{a\},\{a,b\}\}$.
+In the script, you are told that the tuple $(a,b)$ can be uniquely defined as the set $\{\{a\},\{a,b\}\}$. (this means that for any tuples $t_1$ and $t_2$: $t_1=t_2\iff S_{t_1}=S_{t_2}$, where $S_{t_1},S_{t_2}$ are the corresponding sets)
 
 For an arbitrary set $A$, we define $A^*=\bigcup\limits_{n=1}^\infty A^n$ as the set of finite sequences in $A$ (where $A^n=\times_{i=1}^n A$).
 
 Find a way of uniquely defining each element of $A^*$ as a set and prove its correctness. (this set should only be made up of elements of $A$, or nested sets containing elements of $A$) 
+
+You are **not** allowed to assume that the set definition of a tuple shown in the script is adequate, and you are welcome to use a different definition.
 </div>
 </Problem>
 
