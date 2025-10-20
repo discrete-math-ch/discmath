@@ -87,4 +87,52 @@ the elements of $A$ for which $P$ holds. In set notation:
       </div>
 </Problem>
 
+<Problem title="Proving Consistency (Theorem 3.4)" source="Noah Tittelbach">
+    <div label="question">
+        Prove that: $A\subseteq B \iff A = A\cap B$ (The lemma also includes $B = A\cup B$, but we sill skip that here.)
+    </div>
+    <div label="hint">Make use of the Axiom of Pairing.</div>
+    <div label="chyop">
+        {{
+            "id": "root",
+            "text": "The first question we have to ask is what kind of proof we want to write.",
+            "choices":[
+                {
+                    "text": "Very formal proof straight from the definitions of = and $\\subseteq$",
+                    "child": {
+                        "id": "formal",
+                        "text": "UNDER CONSTRUCTION",
+                        "choices": []
+                    }
+                },
+                {
+                    "text": "Less formal proof where we separate the two implications $\\implies$ and $\\impliedby$",
+                    "child":{
+                        "id": "sepDir",
+                        "text": "We start with $A\\subseteq B \\implies A = A\\cap B$. Lets assume that $A\\subseteq B$. We then need to prove that $A=A\\cap B$. For this purpose let $x$ be arbitrary\n$$  \n\\begin{align*}\n    &x\\in A\\\\\n    \\iff\\;& x\\in A \\text{ and } x\\in B  &\\hspace{10pt}(A\\subseteq B)\\\\\n    \\iff\\;& x\\in A\\cap B                &\\hspace{10pt}(\\text{def. } \\cap)\\\\\n\\end{align*}\n$$\nThis proves that $A=A\\cap B$ and therefore conludes this direction of the proof.\n\nIt remains to show the other direction $A\\subseteq B \\impliedby A = A\\cap B$. For this direction we can choose from the following approaches:\n",
+                        "choices" :[
+                            {
+                                "text": "Direct Proof",
+                                "child":{
+                                    "id": "direct",
+                                    "text": "Assume that $A = A\\cap B$. We then need to prove that $A\\subseteq B$. For this let $x$ be arbitrary.\n$$\n\\begin{align*}\n    &\\; x\\in A \\\\\n    \\iff&\\; x\\in A\\cap B        &\\hspace{10pt}(A=A\\cap B)\\\\\n    \\implies&\\; x\\in B          &\\hspace{10pt}(\\text{def. }\\cap)\n\\end{align*}\n$$\nThis proves that $A\\subseteq B$.",
+                                    "choices":[]
+                                }
+                            },
+                            {
+                                "text": "Indirect Proof",
+                                "child":{
+                                    "id": "indirect",
+                                    "text":"Assume that $A\\not\\subseteq B$. We then have to prove that $A\\neq A\\cap B$. By the definition of $\\subseteq$ this meana that there is an $x\\in A$ for which $x\\not\\in B$. If such an $x$ did not exist, then it would have to hold that $A\\subseteq B$. But for this particular $x$ we have that $x\\not\\in A\\cap B$ since $x\\not\\in B$. Combining $x\\not\\in A\\cap B$ and $x\\in A$ we get that $A\\neq A\\cap B$ which concludes the proof.",
+                                    "choices":[]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }}
+    </div>
+</Problem>
+
  {/* TODO exercises */}
