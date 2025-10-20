@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Tabs } from 'nextra/components';
 import ChyopRenderer from '@/components/ChyopRenderer.jsx';
 
@@ -137,3 +137,4 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
 };
 
 export default Problem;
+
