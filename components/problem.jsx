@@ -32,9 +32,9 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
   }
   
   if (chyop.length > 1) {
-    chyop.forEach((_, index) => items.push(`ChYOP ${index + 1}`));
+    chyop.forEach((_, index) => items.push(`Choose Your Own Proof ${index + 1}`));
   } else if (chyop.length === 1) {
-    items.push('ChYOP');
+    items.push('Choose Your Own Proof');
   }
   
   if (takeaway.length > 1) {
