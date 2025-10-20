@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tabs } from 'nextra/components';
+import ChyopRenderer from '@/components/ChyopRenderer.jsx';
 
 const Problem = ({ title, difficulty, relevance, children, source, link }) => {
   const labeledChildren = React.Children.toArray(children);
 
   const question = labeledChildren.filter(child => child?.props?.label === 'question');
   const answer = labeledChildren.filter(child => child?.props?.label === 'answer');
+  const chyop = labeledChildren.filter(child => child?.props?.label === 'chyop');
   const hints = labeledChildren.filter(child => child?.props?.label === 'hint');
   const takeaway = labeledChildren.filter(child => child?.props?.label === 'takeaway');
 
@@ -27,6 +29,12 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
     answer.forEach((_, index) => items.push(`Answer ${index + 1}`));
   } else if (answer.length === 1) {
     items.push('Answer');
+  }
+  
+  if (chyop.length > 1) {
+    chyop.forEach((_, index) => items.push(`ChYOP ${index + 1}`));
+  } else if (chyop.length === 1) {
+    items.push('ChYOP');
   }
   
   if (takeaway.length > 1) {
@@ -111,6 +119,11 @@ const Problem = ({ title, difficulty, relevance, children, source, link }) => {
         {answer.map((a, index) => (
           <Tabs.Tab key={`Answer-${index}`}>
             <div>{a}</div>
+          </Tabs.Tab>
+        ))}
+        {chyop.map((c, idx) => (
+          <Tabs.Tab key={`Chyop-${idx}`}>
+            <ChyopRenderer story={c.props.children} />
           </Tabs.Tab>
         ))}
         {takeaway.map((t, index) => (
