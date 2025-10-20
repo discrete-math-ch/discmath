@@ -2,39 +2,3 @@ import { Callout, Tabs} from 'nextra/components'
 import Problem from '@/components/problem';
 
 # General Logic
-
-<Problem title="Small quest">
-  <div label="question">
-    My Quest
-  </div>
-  <div label="chyop">
-    {{
-      "id": "root",
-      "text": "You wake up in a dark forest. A path splits left and right.",
-      "choices": [
-        {
-          "text": "Go left",
-          "child": {
-            "id": "left",
-            "text": "A wolf blocks the trail.",
-            "choices": [
-              { "text": "Fight it", "child": { "id": "end-fight", "text": "You died.", "choices": [] } },
-              { "text": "Run away", "child": { "id": "end-run", "text": "You escaped.", "choices": [] } }
-            ]
-          }
-        },
-        {
-          "text": "Go right",
-          "child": {
-            "id": "right",
-            "text": "You find a chest. Open it?",
-            "choices": [
-              { "text": "Open it",  "child": { "id": "treasure", "text": "Gold! You win.", "choices": [] } },
-              { "text": "Leave it", "child": { "id": "end-leave", "text": "You moved on.", "choices": [] } }
-            ]
-          }
-        }
-      ]
-    }}
-  </div>
-</Problem>
