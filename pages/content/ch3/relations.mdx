@@ -389,10 +389,69 @@ In the graph of an antisymmetric relation, it can never be the case that there i
 
 ### Equivalence Relations
 
+An equivalence relation needs to satisfy three properties:
+
+<Callout type="-">
+An *equivalence relation* is a relation over a set $A$ which satisfies **reflexivity**, **symmetry** and **transitivity**.
+</Callout>
+
+This means to show that a relation is an equivalence relation, we simply need to confirm all
+of the three properties one by one. To disprove that a relation is an equivalence relation, it is enough to
+disprove one of the properties (often using a concrete counterexample). The graphs of equivalence relations look like this:
+
+<figure
+  className="block my-10 text-center break-inside-avoid-column">
+  <center>
+  <Image
+    width="500"
+    height="500"
+    className="object-cover rounded-xl align-center"
+    src="/relations/equiv_rel.png">
+  </Image>
+  </center>
+  <figcaption className="z-10 mt-4 text-sm italic text-gray-600">
+  Example of a graph of an equivalence relation
+  </figcaption>
+</figure>
+
+We can see that the graph is divided into connected components. Symmetry and transitivity ensure that an element is either connected
+to all other elements in a component or none. This motivates the following definition:
 
 #### Equivalence classes
 
+<Callout type="-">
+For a set $A$ with an equivalence relation $\theta$, the *equivalence class of a* is a set
+including all elements which are in relation with $a$:
+$$
+[a]_\theta = \{ b \in A \medspace | \medspace b \thinspace \theta \thinspace a \}
+$$
+</Callout>
 
+Intuitively, an equivalence relation builds a "complete" connection between the elements in an
+equivalence class. For example, for the relation $R$ in the picture above we would have:
+
+$$
+\begin{align*}
+[A]_R &= \{ A, B, C \} \\
+[D]_R &= \{ D, E \} \\
+[F]_R &= \{ F \}
+\end{align*}
+$$
+
+Note that the same equivalence class can have multiple notations. Here $[A]_R = [B]_R$.
+
+Equivalence classes of an equivalence relation over $A$ form a *partition* of $A$:
+
+<Callout type="-">
+A *partition* of a set $A$ is a set $\{ S_i \medspace | \medspace i \in \mathcal{I} \}$ (for some index set $\mathcal{I}$)
+which satisfies two properties:
+1. $S_i \cap S_j = \varnothing$ for $i \neq j$
+2. $\bigcup_{i \in \mathcal{I}} S_i = A$
+</Callout>
+
+The sets in a partition are disjunct while "covering" the entire set $A$.
+We name the set of all equivalence classes of $\theta$ over $A$ the *quotient set* of $A$ by $\theta$ and write
+$A / \theta$. Since $A / \theta$ is a partition of $A$, this means that every element of $A$ is contained in **exactly** one equivalence class.
 
 ### Partial Order Relations
 
