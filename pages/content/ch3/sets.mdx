@@ -87,4 +87,68 @@ the elements of $A$ for which $P$ holds. In set notation:
       </div>
 </Problem>
 
+<Problem title="Proving Consistency (Theorem 3.4)" source="Noah Tittelbach">
+    <div label="question">
+        Prove that: $A\subseteq B \iff A = A\cap B$ (The lemma also includes $B = A\cup B$, but we will skip that here.)
+    </div>
+    <div label="chyop">
+        {{
+            "id": "root",
+            "text": "The first question we have to ask is what kind of proof we want to write.",
+            "choices":[
+                {
+                    "text": "Very formal proof straight from the definitions of = and $\\subseteq$",
+                    "child": {
+                        "id": "formal",
+                        "text": "We prove both directions of the implication at the same time using logical equivalences. But we still have two choices. Either we can use simple logical equivalence transformations as in Lemma 2.1 or we can use function table to prove a more non-standard equivalence but reduce the number of steps.",
+                        "choices": [
+                            {
+                                "text": "Simple Steps",
+                                "child":{
+                                    "id": "steps",
+                                    "text": "$$\n\\begin{align*}\n    &\\; A\\subseteq B \\\\\n    \\iff&\\; \\forall x\\; (x\\in A \\rightarrow x\\in B)     &\\hspace{10pt}(\\text{def. } \\subseteq)\\\\\n    \\iff&\\; \\forall x\\; (x\\not\\in A \\lor x\\in B)    &\\hspace{10pt}(\\text{def. }\\rightarrow)\\\\\n    \\iff&\\; \\forall x\\; (\\top\\land(x\\not\\in A \\lor x\\in B))     &\\hspace{10pt}(F\\land \\top \\equiv F)\\\\\n    \\iff&\\; \\forall x\\; ((x\\not\\in A \\lor x\\in A)\\land(x\\not\\in A \\lor x\\in B))     &\\hspace{10pt}(F\\lor \\neg F \\equiv \\top)\\\\\n    \\iff&\\; \\forall x\\; (x\\not\\in A \\lor (x\\in A \\land x\\in B))     &\\hspace{10pt}(\\text{distributive law})\\\\\n    \\iff&\\; \\forall x\\; ((x\\not\\in A \\lor (x\\in A \\land x\\in B)\\land \\top))     &\\hspace{10pt}(F\\land \\top \\equiv F)\\\\\n    \\iff&\\;\\begin{array}{l}\n        \\forall x\\; ((x\\not\\in A \\lor (x\\in A \\land x\\in B)\\,\\land\\\\ \\hspace{60pt}(x\\not\\in A \\lor x\\not\\in B \\lor x\\in A)))\n    \\end{array}     &\\hspace{10pt}(F\\lor\\top \\equiv \\top, F\\lor \\neg F \\equiv \\top)\\\\\n    \\iff&\\;\\begin{array}{l}\n        \\forall x\\; ((x\\not\\in A \\lor (x\\in A \\land x\\in B)\\,\\land\\\\ \\hspace{60pt}(\\neg(x\\in A \\land x\\in B) \\lor x\\in A)))\n    \\end{array}     &\\hspace{10pt}(\\text{de Morgan's rule})\\\\\n    \\iff&\\;\\begin{array}{l}\n        \\forall x\\; ((x\\in A \\rightarrow (x\\in A \\land x\\in B)\\,\\land\\\\ \\hspace{60pt}(\\neg(x\\in A \\land x\\in B) \\rightarrow x\\in A)))\n    \\end{array}     &\\hspace{10pt}(\\text{def. }\\rightarrow)\\\\\n    \\iff&\\;\\forall x\\; (x\\in A \\leftrightarrow (x\\in A \\land x\\in B))     &\\hspace{10pt}(*)\\\\\n    \\iff&\\;\\forall x\\; (x\\in A \\leftrightarrow x\\in A\\cap B)     &\\hspace{10pt}(\\text{def. }\\cap)\\\\\n    \\iff&\\;A =  A\\cap B     &\\hspace{10pt}(\\text{def. }=)\\\\\n\\end{align*}\n$$\n\nTechnically, the step marked with $(*)$, where we use that $(F\\rightarrow G) \\land (G\\rightarrow F)\\equiv F\\leftrightarrow G$, is not given in the script and would have to be proven via a function table. The reason we use it here is because it is commonly known and sometimes used as a definition of $\\leftrightarrow$ (though the script defines it differently).\n\nThis concludes the proof.",
+                                    "choices":[]
+                                }
+                            },
+                            {
+                                "text": "Big Step + Function Table",
+                                "child":{
+                                    "id": "table",
+                                    "text":"$$\n\\begin{align*}\n    &\\; A\\subseteq B \\\\\n    \\iff&\\; \\forall x\\; (x\\in A \\rightarrow x\\in B)     &\\hspace{10pt}(\\text{def. } \\subseteq)\\\\\n     \\iff&\\;\\forall x\\; (x\\in A \\leftrightarrow (x\\in A \\land x\\in B))     &\\hspace{10pt}(*)\\\\\n    \\iff&\\;\\forall x\\; (x\\in A \\leftrightarrow x\\in A\\cap B)     &\\hspace{10pt}(\\text{def. }\\cap)\\\\\n    \\iff&\\;A =  A\\cap B     &\\hspace{10pt}(\\text{def. }=)\\\\\n\\end{align*}\n$$\n\nTo justify the step marked $(*)$ we will prove that\n$$\n    F\\rightarrow G \\equiv F \\leftrightarrow (F\\land G)\n$$\nWe prove this with the function table\n\n$$\n    \\begin{matrix}\n        F & G  & F\\rightarrow G & F\\land G & F \\leftrightarrow (F\\land G)\\\\\n        \\hline\n        0 & 0 & 1 & 0 & 1\\\\\n        0 & 1 & 1 & 0 & 1\\\\\n        1 & 0 & 0 & 0 & 0\\\\\n        1 & 1 & 1 & 1 & 1\\\\\n    \\end{matrix}\n$$\n\nThe function table shows that for any truth assignment to $F$ and $G$ the formulas have the same truth value. Thus the formulas are equivalent. This concludes the proof.",
+                                    "choices":[]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "text": "Less formal proof where we separate the two implications $\\implies$ and $\\impliedby$",
+                    "child":{
+                        "id": "sepDir",
+                        "text": "We start with $A\\subseteq B \\implies A = A\\cap B$. Lets assume that $A\\subseteq B$. We then need to prove that $A=A\\cap B$. For this purpose let $x$ be arbitrary\n$$  \n\\begin{align*}\n    &x\\in A\\\\\n    \\iff\\;& x\\in A \\text{ and } x\\in B  &\\hspace{10pt}(A\\subseteq B)\\\\\n    \\iff\\;& x\\in A\\cap B                &\\hspace{10pt}(\\text{def. } \\cap)\\\\\n\\end{align*}\n$$\nThis proves that $A=A\\cap B$ and therefore concludes this direction of the proof.\n\nIt remains to show the other direction $A\\subseteq B \\impliedby A = A\\cap B$. For this direction we can choose from the following approaches:\n",
+                        "choices" :[
+                            {
+                                "text": "Direct Proof",
+                                "child":{
+                                    "id": "direct",
+                                    "text": "Assume that $A = A\\cap B$. We then need to prove that $A\\subseteq B$. For this let $x$ be arbitrary.\n$$\n\\begin{align*}\n    &\\; x\\in A \\\\\n    \\iff&\\; x\\in A\\cap B        &\\hspace{10pt}(A=A\\cap B)\\\\\n    \\implies&\\; x\\in B          &\\hspace{10pt}(\\text{def. }\\cap)\n\\end{align*}\n$$\nThis proves that $A\\subseteq B$.",
+                                    "choices":[]
+                                }
+                            },
+                            {
+                                "text": "Indirect Proof",
+                                "child":{
+                                    "id": "indirect",
+                                    "text":"Assume that $A\\not\\subseteq B$. We then have to prove that $A\\neq A\\cap B$. By the definition of $\\subseteq$ this means that there is an $x\\in A$ for which $x\\not\\in B$. If such an $x$ did not exist, then it would have to hold that $A\\subseteq B$. But for this particular $x$ we have that $x\\not\\in A\\cap B$ since $x\\not\\in B$. Combining $x\\not\\in A\\cap B$ and $x\\in A$ we get that $A\\neq A\\cap B$ which concludes the proof.",
+                                    "choices":[]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }}
+    </div>
+</Problem>
+
  {/* TODO exercises */}
