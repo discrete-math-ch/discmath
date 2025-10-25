@@ -39,6 +39,8 @@ By case distinction, such a triangle must exist.
 
 ## Week 4
 
+<Callout type='info' emoji="🔓">
+**SOLVED** by `rmajumdar`, `12d 07:00h` after deployment ([solution file](/challenge_solutions/tuple_challenge.pdf)):
 <Problem
 title="Taming the Tuple"
 difficulty={3}
@@ -54,7 +56,83 @@ Find a way of uniquely defining each element of $A^*$ as a set and prove its cor
 
 You are **not** allowed to assume that the set definition of a tuple shown in the script is adequate, and you are welcome to use a different definition.
 </div>
+<div label="answer">
+The key insight to this question is that any tuple $t=(a_1,\ldots, a_n), n\geq 2$ can be expressed as $((a_1,\ldots,a_{n-1}), a_n)$.
+
+We thus simply need to find a representation for the 2-element case that allows us to recurse down to a smaller tuple until we reach a base case (tuple of length 1).
+
+We define for any tuple $(a_1,\ldots, a_n)\in A^n,n\in\mathbb{N}^*$ ($\mathbb N^*=\mathbb N\setminus\{0\}$) the set representation: 
+$$
+S((a_1,\ldots,a_n))=
+\begin{cases}
+\{a_1\}&\text{if } n=1\\
+\{a_n, \{a_n,S((a_1,\ldots,a_n-1))\}\} &\text{else}
+\end{cases}
+$$
+
+We now prove that this representation is adequate by induction.
+Let $\mathcal P(n)$ be the property defined as:
+$$
+\mathcal P(n)\iff\forall w\in A^*\forall v\in A^n: (S(w)=S(v)\implies w=v)
+$$
+
+Base case:
+
+For $n=1$, consider any $v=(a)\in A^1$ and $w\in A^*$ satisfying $S(w)=S(v)$.
+
+$|S(v)|=|\{a\}|=1$
+
+Assume $w$ has length greater than $1$. Then $w=(b_1,\ldots,b_m)$ for some $m>1$, and $S(w)=\{b_m,\{S((b_1,\ldots,b_{m-1}))\}\}$.
+$$
+\begin{align*}
+&b_m\in \{b_m,S((b_1,\ldots,b_{m-1}))\}\\
+&\implies b_m\neq \{b_m,S((b_1,\ldots,b_{m-1}))\} &(\text{a set cannot contain itself})\\
+&\implies |S(w)|=2&(S(w)\text{ contains exactly $2$ distinct elements})\\
+&\implies |S(v)|=2 & (\text{for } A,B\text{ finite}: A=B\implies |A|=|B|)(\star)\\
+\end{align*}
+$$
+By contradiction, $w$ must have length $1$, meaning $w=(b)$ for some $b\in A$.
+$$
+\begin{align*}
+S(w)=S(v)&\implies \{a\}=\{b\} & (\text{Definition of representation})\\
+&\implies a=b & (\text{Lemma 3.1})\\
+&\implies (a)=(b)\\
+&\implies v=w\\
+\end{align*}
+$$
+Thus, $\mathcal P(1)$ holds
+
+Induction Step:
+
+Assume now that $\mathcal P(n)$ holds for some $n\in\mathbb N^*$. Let $v=(a_1,\ldots, a_{n+1})\in A^{n+1}$ and $w\in A^*$ with $S(w)=S(v)$.
+
+Since $n+1>1$, we know that $|S(v)=2|$ by $(\star)$.
+The same line of argumentation as in the base case implies that $w$ must also contain more than $1$ element.
+
+Thus, $w=(b_1,\ldots,b_m)\in A^m$ for some $m>1$.
+
+We thus have:
+$\{a_{n+1},\{a_{n+1},S((a_1,\ldots,a_n))\}\}=\{b_m,\{b_m,S((b_1,\ldots,b_{m-1}))\}\}$
+
+We have previously shown that in this case $S(w)$ contains two distinct elements, one of which is contained in the other.
+Let $x$ and $y$ be these two elements. 
+We can easily determine $b_m$ by checking if $x\in y$ or if $y\in x$.
+W.l.o.g., let $x=b_m$.
+We can also determine $S((b_1,\ldots, b_{m-1}))$ by looking at the cardinality of $y$. If $|y|=1$, then $b_m=S((b_1,\ldots,b_{m-1}))$ and $y=\{S((b_1,\ldots,b_{m-1}))\}$, otherwise, $y\setminus\{b_m\}=\{S((b_1,\ldots,b_{m}))\}$.
+Either way, $S((b_1,\ldots,b_{m-1}))$ is uniquely determined. The same must also hold for $a_{n+1}$ and $S((a_1,\ldots,a_n))$. 
+$$
+\begin{align*}
+S(w)=S(v)&\implies a_{n+1}=b_m\land S((a_1,\ldots,a_n))=S((b_1,\ldots,b_{m-1}))\\
+&\implies a_{n+1}=b_m\land (a_1,\ldots, a_n)=(b_1,\ldots, b_{m-1})&(I.H.)\\
+&\implies w=v
+\end{align*}
+$$
+Thus, $\mathcal P(n)\implies \mathcal P(n+1)$
+
+By induction, $\mathcal P(n)$ holds for all $n$, meaning the representation is adequate.
+</div>
 </Problem>
+</Callout>
 
 
 ## Week 5
@@ -75,6 +153,20 @@ Use logical operators.
 </div>
 </Problem>
 </Callout>
+
+<Problem
+title="Repeating Relations"
+difficulty={2}
+relevance={2}
+source="Leo Schmidt-Traub"
+>
+<div label="question">
+For any $n\in\mathbb N\setminus\{0\}$ and $k\in\{1,\ldots,n\}$, find a relation $\rho$ on $A=\{1,\ldots, n\}$ satisfying $\rho^k=\rho$ and $\rho^i\neq\rho^j\forall i,j\in\{1,\ldots,k-1\},i\neq j$.
+</div>
+<div label="hint">
+Thinking of the graph- and matrix-representations of $\rho$ might help.
+</div>
+</Problem>
 
 
 ## Week 6
@@ -104,5 +196,7 @@ Certain real numbers have multiple representations in binary form.
 
 </Problem>
 </Callout>
+
+
 
 Challenges from the past year as well as their solutions can be found [here](/past_challenges/2024)
