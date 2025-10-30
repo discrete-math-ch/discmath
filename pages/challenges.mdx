@@ -232,6 +232,32 @@ Let $A$ be an arbitrary set, and $\text{Eq}(A)$ the set of equivalence relations
 
 Prove that $(\text{Eq}(A);\subseteq)$ is a lattice.
 </div>
+<div label="answer">
+We prove that $(\text{Eq}(A);\subseteq)$ is a lattice by showing that every pair of equivalence relations on $A$ has a meet and a join.
+
+For all $\rho,\sigma\in\text{Eq}(A)$, consider $\pi=\rho\cap\sigma$.
+By Lemma 3.10, $\pi\in\text{Eq}(A)$.
+Furthermore,  for all $\theta\in \text{Eq}(A)$: 
+$$
+\begin{align*}
+&\theta\subseteq \rho\land\theta\subseteq \sigma\\
+\implies& \forall x\in\theta : (x\in \rho\land x\in \sigma)\\
+\implies& \forall x\in\theta : (x\in \rho\cap \sigma)\\
+\implies& \theta\subseteq\pi
+\end{align*}
+$$
+Thus, $\pi=\text{glb}(\rho,\sigma)\implies \pi=\rho\land\sigma$.
+
+Now consider the relation $\pi=(\rho\cup\sigma)^*$.
+
+Reflexive:
+$$
+\rho\text{ reflexive}&\implies \text{id}_A\subseteq\rho\\
+&\implies \text{id}_A\subseteq \rho\cup\sigma\\
+&\implies \text{id}_A\subseteq \pi\\
+&\implies \pi \text{ reflexive}\\
+$$
+</div>
 </Problem>
 
 
