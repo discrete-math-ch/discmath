@@ -1,6 +1,33 @@
 
+import { Callout, Tabs } from 'nextra/components'
+
 # Number Theory
 
+The Number Theory is a wonderful part of mathematics which studies how to solve various problems using properties that different numbers possess.
+
+## Motivation
+
+As a **motivation for studying**, the following example might be good:
+
+<Callout type="-"> 
+**Is there a solution of $x^3 + x^2 = y^4 + y + 1$?**
+
+Aaaand ... No there is no solution due to the fact that both sides can't be at the same time $odd = odd$ or $even = even$. 
+
+**Let us take two cases:**
+1. **y = even**, then when we have $y^4 + y + 1$, then $y^4$ is as well even,. Now, adding  $(y^4) \  even + (y) \  even = even$. Finally, $((y^4 + y) + 1)$ results in $even + odd$, which is always $odd$.
+2. **y = odd**, then $y^4 + y + 1 = odd + odd + odd = odd$
+
+So the LHS is always odd. Now, considering LHS, we can do a **similar analysis**:
+
+1. **x - even**, then $x^3 + x^2 = even + even = even$
+2. **x - odd**, then $x^3 + x^2 = odd + odd = even$
+
+RHS is always $even$. Here we arrive at a contradiction ⚡️
+$even \neq odd$, which proves, that there is no solution to the given equation. 
+</Callout>
+
+This **example reveals** that by knowing how even and odd numbers react to adding them or raising to some power (in a sense **knowing some theory behind these numbers**), we can prove that there is no solution for a given equation.
 
 ## References
 
@@ -11,4 +38,6 @@ The following are some references to problem sets which were quite useful to get
 - [*MATH 312 An Introduction to number theory: problem sets* - University of British Colombia](https://personal.math.ubc.ca/~lior/teaching/1718/312_S18/Notes/PracticeSets.pdf): Very nice problem set with interesting exercises. Some of them are a bit out of scope, but the first sections definitly provide good practice to get faster with computations or get an intuition for core proof strategies.
 
 - [*Number Theory Document* - artofproblemsolving.com](https://artofproblemsolving.com/articles/files/SatoNT.pdf?srsltid=AfmBOopyi3E0r3pHpuDR7Oi9LV55TyzI33f5T_rF-udQyytDC7x8g6za) 
+
+
 
