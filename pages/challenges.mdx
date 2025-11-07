@@ -224,7 +224,7 @@ Restrict yourself to a line, rather than the whole plane.
 <Problem
 title="Lattice"
 difficulty={2}
-relevance={4}
+relevance={5}
 source="Leo Schmidt-Traub"
 >
 <div label="question">
@@ -232,6 +232,7 @@ Let $A$ be an arbitrary set, and $\text{Eq}(A)$ the set of equivalence relations
 
 Prove that $(\text{Eq}(A);\subseteq)$ is a lattice.
 </div>
+{/*
 <div label="answer">
 We prove that $(\text{Eq}(A);\subseteq)$ is a lattice by showing that every pair of equivalence relations on $A$ has a meet and a join.
 
@@ -258,6 +259,7 @@ $$
 &\implies \pi \text{ reflexive}\\
 $$
 </div>
+*/}
 </Problem>
 
 
@@ -287,5 +289,30 @@ However, the tools provided in **Chapter 4** are sufficient to prove the theorem
 
 </Problem>
 
+
+<Problem
+title=""
+difficulty={5}
+relevance={3}
+source="Leo Schmidt-Traub"
+>
+<div label="question">
+Consider the function $f:\mathbb R_{\ge0}\mapsto \mathbb R_{\ge0}$ defined by $f(x)=\frac{1}{1+2\lfloor x\rfloor-x}$ for all $x\in \mathbb R_{\ge0}$.
+
+Prove that the sequence $(u_n)_{n\in\mathbb N}$ defined for all $n\in\mathbb N$ as:
+$$
+u_n=
+\begin{cases}
+0 &\text{if }n=0\\
+f(u_{n-1}) &\text{else}
+\end{cases}
+$$
+
+visits every nonnegative rational number exactly once.
+</div>
+<div label="hint">
+Google the [Calkin-Wilf tree](https://en.wikipedia.org/wiki/Calkin%E2%80%93Wilf_tree).
+</div>
+</Problem>
 
 Challenges from the past year as well as their solutions can be found [here](/past_challenges/2024)
