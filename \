@@ -225,7 +225,7 @@ Restrict yourself to a line, rather than the whole plane.
 **SOLVED** by `ngassner`, `2d 3:00h` after deployment ([solution file](/challenge_solutions/Lattice.pdf)):
 <Problem
 title="Lattice"
-difficulty={3}
+difficulty={2}
 relevance={5}
 source="Leo Schmidt-Traub"
 >
@@ -246,9 +246,9 @@ Furthermore,  for all $\theta\in \text{Eq}(A)$:
 $$
 \begin{align*}
 &\theta\subseteq \rho\land\theta\subseteq \sigma\\
-\implies& \forall x\in\theta : (x\in \rho\land x\in \sigma)&(\text{def. }\subseteq)\\
-\implies& \forall x\in\theta : (x\in \rho\cap \sigma)&(\text{def. }\cap)\\
-\implies& \theta\subseteq\pi&(\text{def. }\subseteq)
+\implies& \forall x\in\theta : (x\in \rho\land x\in \sigma)\\
+\implies& \forall x\in\theta : (x\in \rho\cap \sigma)\\
+\implies& \theta\subseteq\pi
 \end{align*}
 $$
 Thus, $\pi=\text{glb}(\rho,\sigma)\implies \pi=\rho\land\sigma$.
@@ -334,10 +334,9 @@ IS:
 For all $(x,y)\in(\rho\cup\sigma)^{k+1}$:
 $$
 \begin{align*}
-&x(\rho\cup\sigma)^{k+1}y\\
-&\implies \exists z:x(\rho\cup\sigma)z\land z(\rho\cup\sigma)^ky& (\text{def. composition})\\
+x(\rho\cup\sigma)^{k+1}y&\implies \exists z:x(\rho\cup\sigma)z\land z(\rho\cup\sigma)y& (\text{def. composition})\\
 &\implies \exists z: x\theta z\land z\theta y &(\text{Base case + Induction hypothesis})\\
-&\implies x\theta y & (\theta\text{ transitive})\\
+&\implies x\theta y & (\theta\text{ transitive})
 &\implies (\rho\cup\sigma)^{k+1}\subseteq \theta
 \end{align*}
 $$
