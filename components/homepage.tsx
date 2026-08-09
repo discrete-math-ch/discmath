@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
           Welcome to Discrete Mathematics
         </h1>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-          This website was originally created by a few teaching assisitants for
+          This website was originally created by a few teaching assistants for
           the HS24 Discrete Mathematics course. It is now maintained by a group
           of HS25 TAs. Feel free to contribute wherever you believe your input
           could benefit other students.
